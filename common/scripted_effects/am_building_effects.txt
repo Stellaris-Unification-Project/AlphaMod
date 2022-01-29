@@ -1,0 +1,270 @@
+end_game_automation = {
+	if = {
+		limit = {
+			num_owned_planets > 7
+		}
+		random_owned_planet = {
+			limit = {
+				free_jobs > 4
+				num_pops > 84
+				or = {
+					uses_district_set = standard
+					uses_district_set = hostile
+					uses_district_set = habitat
+				}
+			}
+			if = {
+				limit = {
+					has_building = building_mining_consortium
+					num_buildings = { type = building_auto_mine value < 5 }
+				}
+				remove_building = building_mining_consortium
+				add_building = building_auto_mine				
+			}
+			else_if = {	
+				limit = {
+					has_building = building_energy_consortium
+					num_buildings = { type = building_auto_generator value < 5 }
+				}
+				remove_building = building_energy_consortium
+				add_building = building_auto_generator				
+			}
+		}
+	}
+}
+
+end_game_fill_slots = {
+	if = {
+		limit = {
+			num_owned_planets > 9
+		}
+		random_owned_planet = {
+			limit = {
+				free_housing < 6
+				uses_district_set = hostile
+				num_pops > 0
+				exists = owner
+				owner = { is_gestalt = no }
+			}
+			if = {
+				limit = {
+					free_building_slots > 1
+				}
+				if = {
+					limit = {
+						free_district_slots < 1
+						num_buildings = { type = building_atmos_gen value < 6 }
+					}
+					add_building = building_atmos_gen
+				}
+				else = { add_building = building_basic_quarters }
+			}
+			else_if = {
+				limit = {
+					num_free_districts = { type = district_habitation_dome value > 0 }
+				}
+				add_district = district_habitation_dome
+			}				
+		}
+		
+		random_owned_planet = {
+			limit = {
+				num_pops > 30
+				free_housing > 5
+				free_jobs > 1
+				or = {
+					has_modifier = rich_actinides
+					has_modifier = rich_natural_fuels
+					has_modifier = rich_rare_metals
+					has_modifier = rich_precious_stones
+				}
+				num_districts = { type = district_mining value < 3 }
+				or = {
+					has_district = district_habitation_dome
+					has_district = district_utility_domes
+					has_district = district_city
+				}
+			}
+			if = {
+				limit = { has_district = district_utility_domes }
+				remove_district = district_utility_domes
+			}
+			else_if = {
+				limit = { has_district = district_habitation_dome }
+				remove_district = district_habitation_dome			
+			}
+			else = {
+				remove_district = district_city
+			}
+			if = {
+				limit = {
+					num_free_districts = { type = district_mining value > 0 }
+				}
+				add_district = district_mining
+			}
+		}
+		
+		random_owned_planet = {
+			limit = {
+				free_building_slots > 1
+				free_jobs > 0
+				num_pops > 84
+				or = {
+					uses_district_set = standard
+					uses_district_set = hostile
+					uses_district_set = habitat
+				}
+			}
+			while = {
+				limit = { free_building_slots > 1 }
+				if = {
+					limit = {
+						has_resource = { type = energy amount < 1 }
+						num_buildings = { type = building_auto_generator value < 4 }
+					}
+					add_building = building_auto_generator
+				}
+				else_if = {
+					limit = {
+						has_resource = { type = minerals amount < 1 }
+						num_buildings = { type = building_auto_mine value < 4 }
+					}
+					add_building = building_auto_mine				
+				}
+				else_if = {
+					limit = {
+						exists = owner
+						owner = { country_uses_food = yes }
+						has_resource = { type = food amount < 1 }
+						num_buildings = { type = building_auto_farm value < 4 }
+					}
+					add_building = building_auto_farm				
+				}
+				else_if = {
+					limit = {
+						exists = owner
+						owner = { country_uses_consumer_goods = yes }
+						has_resource = { type = consumer_goods amount < 1 }
+						num_buildings = { type = building_auto_goodsfactory value < 2 }
+					}
+					add_building = building_auto_goodsfactory				
+				}
+				else_if = {
+					limit = {
+						num_buildings = { type = building_automated_alloyforge value < 3 }
+					}
+					add_building = building_automated_alloyforge				
+				}
+				else = {
+					add_building = building_resource_silo
+				}
+			}
+		}
+	}
+}
+
+replace_emergency_buildings = {
+	if = {
+		limit = {
+			has_building = building_goods_bank
+			free_jobs < 3
+			owner = { country_uses_consumer_goods = yes }
+		}
+		remove_building = building_goods_bank
+		add_building = building_factory_1						
+	}
+	if = {
+		limit = {
+			has_building = building_food_bank
+			num_free_districts = { type = district_farming value > 0 }
+			free_jobs < 3
+			exists = owner
+			owner = { country_uses_food = yes }
+		}
+		remove_building = building_food_bank
+		add_district = district_farming						
+	}
+}
+
+convert_districts_to_buildings = {
+	if = {
+		limit = {
+			free_building_slots > 1
+			free_housing > 4
+		}
+		if = {
+			limit = {
+				num_districts = { type = district_industrial value > 0 }
+				owner = { has_monthly_income = { resource = consumer_goods value < 25 }}
+				owner = { country_uses_consumer_goods = yes }
+			}
+			remove_district = district_industrial
+			add_building = building_factory_1
+		}						
+		else_if = {
+			limit = {
+				num_districts = { type = district_generator value > 0 }
+				owner = { has_monthly_income = { resource = energy value < 50 }}
+			}
+			remove_district = district_generator
+			add_building = building_energy_consortium
+		}						
+		else_if = {
+			limit = {
+				num_districts = { type = district_mining value > 0 }
+				owner = { has_monthly_income = { resource = minerals value < 200 }}
+			}
+			remove_district = district_mining
+			add_building = building_mining_consortium
+		}						
+	}
+}
+
+machine_use_building_slots = {
+	if = {
+		limit = {
+			free_jobs < 10
+			free_building_slots > 1
+			owner = { has_monthly_income = { resource = energy value > -1 }}
+		}
+		if = {
+			limit = { owner = { has_monthly_income = { resource = minerals value > 100 }}}
+			add_building = building_foundry_1
+		}
+		else_if = {
+			limit = { not = { has_building = building_maintenance_depot }}
+			add_building = building_maintenance_depot
+		}
+		else_if = {
+			limit = { not = { has_building = building_sentinel_posts }}
+			add_building = building_sentinel_posts
+		}
+		else_if = {
+			limit = { need_more_housing_soon = yes }
+			add_building = building_drone_storage
+		}
+		else = { add_building = building_research_lab_1 }
+	}
+	if = {
+		limit = { free_building_slots > 2 }
+		if = {
+			limit = { owner = { has_monthly_income = { resource = minerals value > 100 }}}
+			add_building = building_foundry_1
+		}
+		else_if = {
+			limit = { not = { has_building = building_maintenance_depot }}
+			add_building = building_maintenance_depot
+		}
+		else_if = {
+			limit = { not = { has_building = building_sentinel_posts }}
+			add_building = building_sentinel_posts
+		}
+		else_if = {
+			limit = { need_more_housing_soon = yes }
+			add_building = building_drone_storage
+		}
+		else = {
+			add_building = building_research_lab_1
+		}				
+	}
+}

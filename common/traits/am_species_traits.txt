@@ -1,0 +1,151 @@
+trait_metalworkers = {
+	cost = 2
+	potential_crossbreeding_chance = 0.1
+	allowed_archetypes = { BIOLOGICAL }
+	modifier = {
+		planet_jobs_alloys_produces_mult = 0.1
+	}
+	slave_cost = {
+		energy = 50
+	}
+}
+
+trait_artisanal = {
+	cost = 2
+	potential_crossbreeding_chance = 0.1
+	allowed_archetypes = { BIOLOGICAL }
+	modifier = {
+		planet_jobs_consumer_goods_produces_mult = 0.1
+	}
+	slave_cost = {
+		energy = 50
+	}
+}
+
+trait_greedy = {
+	cost = -2
+	potential_crossbreeding_chance = 1.0
+	allowed_archetypes = { BIOLOGICAL }
+	# opposites = { "trait_photosynthesis" }
+	modifier = {
+		planet_pops_organics_food_upkeep_mult = 0.25
+		planet_pops_organics_minerals_upkeep_mult = 0.25
+	}
+}
+
+trait_humungous = {
+	cost = -2
+	opposites = { "trait_weak" "trait_communal" "trait_solitary" }
+
+	potential_crossbreeding_chance = 0.2
+	allowed_archetypes = { BIOLOGICAL }
+
+	modifier = {
+		pop_housing_usage_mult = 0.2
+	}
+	ai_weight = {
+		factor = 0
+	}
+}
+
+trait_robocop = {
+	cost = 1
+	allowed_archetypes = { ROBOT MACHINE }
+	
+	initial = no
+	randomized = no
+	
+	species_potential_add = {
+		exists = from
+		from = {
+			has_technology = tech_droid_workers
+		}
+	}
+}
+
+trait_genetic_sterility = {
+	cost = 0
+	potential_crossbreeding_chance = 0
+	opposites = { "trait_slow_breeders" "trait_rapid_breeders" "trait_plantoid_budding" }
+	sorting_priority = 20
+
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	
+	initial = no
+	randomized = no
+	modification = no
+	infertile = yes
+
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_clone_soldier.dds"
+}
+
+trait_talented_empaths = {
+	cost = 0
+	potential_crossbreeding_chance = 0
+	opposites = { "trait_quarrelsome" "trait_unruly" "trait_deviants" }
+	sorting_priority = 20
+
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	
+	initial = no
+	randomized = no
+	modification = no
+	
+	modifier = {
+		planet_jobs_society_research_produces_mult = 0.05
+		planet_jobs_unity_produces_mult = 0.05
+		pop_government_ethic_attraction = 0.2
+		pop_happiness = 0.1
+	}
+	
+	triggered_pop_modifier = {
+		potential = {
+			exists = planet
+			planet = { is_planet_class = pc_habitat }
+		}
+		pc_habitat_habitability = 0.75
+	}
+
+	icon = "gfx/interface/icons/traits/trait_talented_empaths.dds"
+}
+
+trait_logical_philosophy = {
+	cost = 0
+	potential_crossbreeding_chance = 0
+	opposites = { "trait_slow_learners" "trait_deviants" "trait_hive_mind" "trait_machine_unit" }
+	sorting_priority = 20
+
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	
+	initial = no
+	randomized = no
+	modification = no
+	
+	modifier = {
+		planet_researchers_produces_mult = 0.05
+		species_leader_exp_gain = 0.1
+		pop_government_ethic_attraction = 0.1
+	}
+	icon = "gfx/interface/icons/traits/trait_logical_philosophy.dds"
+}
+
+trait_emotional_suppression = {
+	cost = 0
+	potential_crossbreeding_chance = 0
+	opposites = { "trait_rapid_breeders" "trait_rapid_breeders_lithoid" "trait_wasteful" }
+	sorting_priority = 20
+
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	
+	initial = no
+	randomized = no
+	modification = no
+	
+	modifier = {
+		pop_growth_speed = -0.10
+		army_damage_mult = -0.10
+		planet_pops_consumer_goods_upkeep_mult = -0.10
+		pop_happiness = 0.1
+	}
+	icon = "gfx/interface/icons/traits/trait_emotional_suppression.dds"
+}

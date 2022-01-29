@@ -1,0 +1,943 @@
+decision_expanded_suburbia = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+
+	resources = {
+		category = decisions
+		cost = {
+			sr_wealth = 100
+		}			
+	}
+	
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_wealth }
+		not = { has_planet_flag = pf_hide_decisions_pop }
+		not = { has_planet_flag = pf_filter_vanilla }
+		exists = owner
+		or = {
+			owner = { is_ai = no }
+			and = {
+				owner = { is_ai = yes }
+				not = { has_planet_flag = pf_no_decision_spam_please_ai }
+			}
+		}
+		owner = { is_regular_empire = yes }
+		not = { has_planet_flag = pf_expanded_suburbia }
+		or = {
+			num_districts = { type = district_city value > 0 }
+			num_districts = { type = district_megacity value > 0 }
+		}
+	}
+	
+	effect = {
+		set_planet_flag = pf_expanded_suburbia
+		check_planet_employment = yes
+		set_timed_planet_flag = {
+			flag = pf_no_decision_spam_please_ai
+			days = 3600
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 9999
+			num_pops > 50
+			free_housing < 2
+			free_jobs > 10
+			or = {
+				num_districts = { type = district_city value > 1 }
+				num_districts = { type = district_megacity value > 0 }
+			}
+		}
+	}
+}
+
+decision_end_expanded_suburbia = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 10
+		}			
+	}
+	
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_axe }
+		not = { has_planet_flag = pf_filter_vanilla }
+		has_planet_flag = pf_expanded_suburbia
+		exists = owner
+		or = {
+			owner = { is_ai = no }
+			and = {
+				owner = { is_ai = yes }
+				or = {
+					owner = { is_regular_empire = no }
+					not = { has_planet_flag = pf_no_decision_spam_please_ai }
+				}
+			}
+		}
+	}
+	
+	effect = {
+		remove_planet_flag = pf_expanded_suburbia
+		check_planet_employment = yes
+		set_timed_planet_flag = {
+			flag = pf_no_decision_spam_please_ai
+			days = 3600
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1000
+			exists = owner
+			owner = { is_regular_empire = no }
+		}
+		modifier = {
+			weight = 10
+			free_jobs < 1
+			free_housing > 25
+		}
+	}
+}
+
+decision_automated_mining = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+
+	resources = {
+		category = decisions
+		cost = {
+			sr_wealth = 25
+		}			
+	}
+	
+	potential = {
+		owner = { 
+			is_regular_empire = yes
+			nor = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		not = { has_planet_flag = pf_automated_mining }
+		num_districts = { type = district_mining value > 0 }
+		not = { has_planet_flag = pf_hide_decisions_automation }
+		not = { has_planet_flag = pf_filter_vanilla }
+		not = { has_planet_flag = pf_hide_decisions_wealth }
+	}
+	
+	effect = {
+		set_planet_flag = pf_automated_mining
+		check_planet_employment = yes
+		add_modifier = {
+			modifier = pm_automated_mining
+			days = -1
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 5
+			num_pops > 10
+			free_jobs > 5
+			not = { any_owned_pop = { is_unemployed = yes }}
+		}
+	}
+}
+
+decision_end_automated_mining = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+
+	resources = {
+		category = decisions
+		cost = {
+		}			
+	}
+	
+	potential = {
+		or = {
+			has_planet_flag = pf_automated_mining
+			has_modifier = pm_automated_mining
+		}
+		not = { has_planet_flag = pf_hide_decisions_axe }
+		not = { has_planet_flag = pf_filter_vanilla }
+	}
+	
+	effect = {
+		remove_planet_flag = pf_automated_mining
+		remove_modifier = pm_automated_mining
+		check_planet_employment = yes
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 25
+			or = {
+				num_pops < 10
+				free_jobs < 1
+				any_owned_pop = { is_unemployed = yes }
+				and = {
+					exists = owner
+					owner = { is_regular_empire = no }
+				}
+			}
+		}
+	}
+}
+
+decision_automated_farming = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+
+	resources = {
+		category = decisions
+		cost = {
+			sr_wealth = 25
+		}			
+	}
+	
+	potential = {
+		owner = {
+			is_regular_empire = yes
+			nor = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		not = { has_planet_flag = pf_automated_farming }
+		num_districts = { type = district_farming value > 0 }
+		not = { has_planet_flag = pf_hide_decisions_automation }
+		not = { has_planet_flag = pf_filter_vanilla }
+		not = { has_planet_flag = pf_hide_decisions_wealth }
+	}
+	
+	effect = {
+		set_planet_flag = pf_automated_farming
+		check_planet_employment = yes
+		add_modifier = {
+			modifier = pm_automated_farming
+			days = -1
+		}
+	}
+	
+	prerequisites = {
+		"tech_am_automated_farming"
+	}
+	show_tech_unlock_if = {
+		owner = {
+			is_regular_empire = yes
+			nor = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 5
+			num_pops > 10
+			free_jobs > 5
+			not = { any_owned_pop = { is_unemployed = yes }}
+		}
+	}
+}
+
+decision_end_automated_farming = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+
+	resources = {
+		category = decisions
+		cost = {
+		}			
+	}
+	
+	potential = {
+		or = {
+			has_modifier = pm_automated_farming
+			has_planet_flag = pf_automated_farming
+		}
+		not = { has_planet_flag = pf_hide_decisions_axe }
+		not = { has_planet_flag = pf_filter_vanilla }
+	}
+	
+	effect = {
+		remove_modifier = pm_automated_farming
+		remove_planet_flag = pf_automated_farming
+		check_planet_employment = yes
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 25
+			or = {
+				num_pops < 10
+				free_jobs < 1
+				any_owned_pop = { is_unemployed = yes }
+				and = {
+					exists = owner
+					owner = { is_regular_empire = no }
+				}
+			}
+		}
+	}
+}
+
+decision_generator_privatisation = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+
+	resources = {
+		category = decisions
+		cost = {}			
+	}
+	
+	potential = {
+		owner = { 
+			is_regular_empire = yes
+			or = {
+				is_ai = yes
+				and = {
+					is_ai = no
+					or = {
+						has_authority = auth_corporate
+						has_ethic = ethic_pacifist
+						has_ethic = ethic_fanatic_pacifist
+						has_ethic = ethic_egalitarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+			}
+		}
+		not = { has_planet_flag = pf_privatise_generators }
+		not = { has_planet_flag = pf_hide_decisions_pop }
+		not = { has_planet_flag = pf_filter_vanilla }
+	}
+	
+	allow = {
+		num_districts = { type = district_generator value > 0 }
+		exists = owner
+		owner = {
+			not = { has_policy_flag = alp_private_businesses_prohibited }
+			not = { has_policy_flag = alp_private_businesses_restricted }
+		}
+	}
+	
+	prerequisites = {
+		"tech_power_hub_1"
+	}
+	show_tech_unlock_if = {
+		owner = {
+			or = {
+				has_authority = auth_corporate
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_fanatic_pacifist
+				has_ethic = ethic_egalitarian
+				has_ethic = ethic_fanatic_egalitarian
+			}
+		}
+	}
+	
+	effect = {
+		add_modifier = {
+			modifier = plm_privatise_generators
+			days = -1
+		}
+		set_planet_flag = pf_privatise_generators
+		check_planet_employment = yes
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1000
+			count_owned_pop = { 
+				limit = { is_unemployed = yes }
+				count > 0
+			}
+			free_jobs < 2
+			num_districts = { type = district_generator value > 2 }
+			owner = { 
+				has_monthly_income = {
+					resource = sr_wealth
+					value < 10
+				}			
+			}
+			owner = { 
+				has_monthly_income = {
+					resource = food
+					value > 25
+				}
+				has_monthly_income = {
+					resource = minerals
+					value > 50
+				}				
+			}
+		}
+	}
+}
+
+decision_end_generator_privatisation = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+
+	resources = {
+		category = decisions
+		cost = {
+			sr_wealth = 5
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = { 
+					is_gestalt = no 
+					is_ai = no
+				}
+			}
+			sr_wealth = 195
+		}			
+	}
+	
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_wealth }
+		not = { has_planet_flag = pf_hide_decisions_axe }
+		not = { has_planet_flag = pf_filter_vanilla }
+		has_planet_flag = pf_privatise_generators
+	}
+	
+	effect = {
+		remove_modifier = plm_privatise_generators
+		remove_planet_flag = pf_privatise_generators
+		check_planet_employment = yes
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1000
+			or = {
+				free_jobs > 3
+				owner = {
+					has_monthly_income = {
+						resource = sr_wealth
+						value > 100
+					}
+				}
+				owner = {
+					has_monthly_income = {
+						resource = energy
+						value > 250
+					}
+				}
+			}
+		}
+	}
+}
+
+decision_preserving_fuels = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	
+	resources = {
+		category = decisions
+		cost = {}
+	}
+	
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_resources }
+		not = { has_planet_flag = pf_filter_vanilla }
+		not = { has_planet_flag = preserving_fuels }
+		not = { has_modifier = plm_preserving_fuels }
+		exists = owner
+		owner = { is_gestalt = no }
+		or = {
+			num_districts = { type = district_generator value > 0 }
+			num_districts = { type = district_industrial value > 0 }
+		}
+	}
+	
+	allow = {
+		nor = { 
+			has_modifier = aggressive_fuels_sourcing
+			has_modifier = renewable_fuels_sourcing 
+		}
+		or = {
+			num_districts = { type = district_generator value > 1 }
+			num_districts = { type = district_industrial value > 1 }
+		}
+	}
+	
+	effect = {
+		custom_tooltip = decision_preserving_fuels_custom
+		set_planet_flag = preserving_fuels
+		add_modifier = {
+			modifier = plm_preserving_fuels
+			days = -1
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1000
+			owner = {
+				has_monthly_income = {
+					resource = sr_natural_fuels
+					value < 2
+				}
+				resource_stockpile_compare = {
+					resource = sr_natural_fuels
+					value < 500
+				}
+			}
+		}
+		modifier = {
+			weight = 5000
+			owner = {
+				has_monthly_income = {
+					resource = sr_natural_fuels
+					value < 0
+				}				
+			}
+		}
+	}
+}
+
+decision_end_preserving_fuels = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	
+	resources = {
+		category = decisions
+		cost = {}
+	}
+	
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_axe }
+		not = { has_planet_flag = pf_filter_vanilla }
+		has_planet_flag = preserving_fuels
+	}
+	
+	effect = {
+		custom_tooltip = end_decision_preserving_fuels_custom
+		remove_planet_flag = preserving_fuels
+		remove_modifier = plm_preserving_fuels
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 200
+			owner = {
+				has_monthly_income = {
+					resource = sr_natural_fuels
+					value > 10
+				}
+				resource_stockpile_compare = {
+					resource = sr_natural_fuels
+					value > 1500
+				}
+			}
+		}
+		modifier = {
+			weight = 1000
+			owner = {
+				resource_stockpile_compare = {
+					resource = sr_natural_fuels
+					value > 4000
+				}				
+			}
+		}
+	}
+}
+
+decision_preserving_biomass = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	
+	resources = {
+		category = decisions
+		cost = { sr_biomass = 500 }
+	}
+	
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_resources }
+		not = { has_planet_flag = pf_filter_vanilla }
+		habitable_structure = no
+		not = { has_planet_flag = preserving_biomass }
+		not = { has_modifier = plm_preserving_biomass }
+		not = { has_planet_flag = recycling_biomass }
+		NOT = { is_planet_class = pc_machine }
+		NOT = { is_planet_class = pc_city }
+		NOT = { is_planet_class = pc_barren_habitable }
+		NOT = { is_planet_class = pc_molten_habitable }
+		NOT = { is_planet_class = pc_toxic_habitable }
+		NOT = { is_planet_class = pc_frozen_habitable }
+		owner = { is_machine_empire = no }
+		num_districts = { type = district_farming value > 0 }
+	}
+	
+	allow = {
+		nor = { 
+			has_modifier = aggressive_biomass_sourcing 
+			has_modifier = renewable_biomass_sourcing
+		}
+	}
+	
+	effect = {
+		custom_tooltip = decision_preserving_biomass_custom
+		set_planet_flag = preserving_biomass
+		add_modifier = {
+			modifier = plm_preserving_biomass
+			days = -1
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_end_preserving_biomass = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	
+	resources = {
+		category = decisions
+		cost = {
+			trigger = {
+				exists = owner
+				owner = { is_ai = no }
+			}
+			energy = 250 
+		}
+	}
+	
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_axe }
+		not = { has_planet_flag = pf_filter_vanilla }
+		has_planet_flag = preserving_biomass
+	}
+	
+	effect = {
+		custom_tooltip = end_decision_preserving_biomass_custom
+		remove_planet_flag = preserving_biomass
+		remove_modifier = plm_preserving_biomass
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+decision_preserving_actinides = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	
+	resources = {
+		category = decisions
+		cost = {}
+	}
+	
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_resources }
+		not = { has_planet_flag = pf_filter_vanilla }
+		not = { has_planet_flag = preserving_actinides }
+		not = { has_modifier = plm_preserving_actinides }
+		num_districts = { type = district_generator value > 0 }
+	}
+	
+	allow = {
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = decision_preserving_actinides_custom
+		set_planet_flag = preserving_actinides
+		add_modifier = {
+			modifier = plm_preserving_actinides
+			days = -1
+		}
+		hidden_effect = {
+			set_timed_planet_flag = {
+				flag = pf_no_decision_spam_please_ai
+				days = 3600
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1000
+			owner = {
+				has_monthly_income = {
+					resource = sr_actinides
+					value < 2
+				}
+				resource_stockpile_compare = {
+					resource = sr_actinides
+					value < 250
+				}				
+			}
+		}
+		modifier = {
+			weight = 5000
+			owner = {
+				has_monthly_income = {
+					resource = sr_actinides
+					value < 0
+				}				
+			}
+		}
+	}
+}
+
+decision_end_preserving_actinides = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	
+	resources = {
+		category = decisions
+		cost = {}		
+	}
+	
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_axe }
+		not = { has_planet_flag = pf_filter_vanilla }
+		has_planet_flag = preserving_actinides
+		exists = owner
+		or = {
+			owner = { is_ai = no }
+			and = {
+				owner = { is_ai = yes }
+				not = { has_planet_flag = pf_no_decision_spam_please_ai }
+			}
+		}
+	}
+	
+	effect = {
+		custom_tooltip = end_decision_preserving_actinides_custom
+		remove_planet_flag = preserving_actinides
+		remove_modifier = plm_preserving_actinides
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 200
+			owner = {
+				has_monthly_income = {
+					resource = sr_actinides
+					value > 10
+				}
+				resource_stockpile_compare = {
+					resource = sr_actinides
+					value > 500
+				}				
+			}
+		}
+		modifier = {
+			weight = 1000
+			owner = {
+				resource_stockpile_compare = {
+					resource = sr_actinides
+					value > 4000
+				}				
+			}
+		}
+	}
+}
+	
+decision_preserving_ice = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	
+	resources = {
+		category = decisions
+		cost = {}
+	}
+	
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_resources }
+		not = { has_planet_flag = pf_filter_vanilla }
+		habitable_structure = no
+		not = { has_planet_flag = preserving_ice }
+		not = { has_modifier = plm_preserving_ice }
+		NOT = { is_planet_class = pc_machine }
+		NOT = { is_planet_class = pc_city }
+		NOT = { is_planet_class = pc_barren_habitable }
+		NOT = { is_planet_class = pc_molten_habitable }
+		NOT = { is_planet_class = pc_toxic_habitable }
+		NOT = { is_planet_class = pc_frozen_habitable }
+	}
+	
+	allow = {
+		or = {
+			owner = { is_ai = no }
+			num_districts = { type = district_farming value > 0 }
+		}
+	}
+	
+	effect = {
+		custom_tooltip = decision_preserving_ice_custom
+		set_planet_flag = preserving_ice
+		add_modifier = {
+			modifier = plm_preserving_ice
+			days = -1
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1000
+			owner = {
+				has_monthly_income = {
+					resource = sr_ice
+					value < 2
+				}
+				resource_stockpile_compare = {
+					resource = sr_ice
+					value < 500
+				}				
+			}
+		}
+		modifier = {
+			weight = 5000
+			owner = {
+				has_monthly_income = {
+					resource = sr_ice
+					value < 0
+				}				
+			}
+		}
+	}
+}
+
+decision_end_preserving_ice = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	
+	resources = {
+		category = decisions
+		cost = {}
+	}
+	
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_axe }
+		not = { has_planet_flag = pf_filter_vanilla }
+		has_planet_flag = preserving_ice
+	}
+	
+	effect = {
+		custom_tooltip = end_decision_preserving_ice_custom
+		remove_planet_flag = preserving_ice
+		remove_modifier = plm_preserving_ice
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 200
+			owner = {
+				has_monthly_income = {
+					resource = sr_ice
+					value > 5
+				}
+				resource_stockpile_compare = {
+					resource = sr_ice
+					value > 1000
+				}				
+			}
+		}
+		modifier = {
+			weight = 1000
+			owner = {
+				resource_stockpile_compare = {
+					resource = sr_ice
+					value > 4000
+				}				
+			}
+		}
+	}
+}
+
+decision_credit_managers = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	
+	resources = {
+		category = decisions
+		cost = {
+			sr_wealth = 25
+		}
+	}
+	
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_wealth }
+		not = { has_planet_flag = pf_hide_decisions_pop }
+		not = { has_planet_flag = pf_filter_vanilla }
+		not = { has_planet_flag = pf_credit_managers }
+		exists = owner
+		owner = { 
+			is_gestalt = no
+			is_fallen_empire_spiritualist = no
+		}
+		num_districts = { type = district_generator value > 0 }		
+	}
+
+	effect = {
+		custom_tooltip = decision_credit_managers_custom
+		hidden_effect = {
+			set_planet_flag = pf_credit_managers
+			check_planet_employment = yes
+		}		
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_no_credit_managers = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	
+	resources = {
+		category = decisions
+		cost = {
+			sr_wealth = 10
+		}
+	}
+	
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_wealth }
+		not = { has_planet_flag = pf_hide_decisions_axe }
+		not = { has_planet_flag = pf_filter_vanilla }
+		has_planet_flag = pf_credit_managers	
+	}
+
+	effect = {
+		custom_tooltip = decision_no_credit_managers_custom
+		hidden_effect = {
+			remove_planet_flag = pf_credit_managers
+			check_planet_employment = yes
+		}		
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+}

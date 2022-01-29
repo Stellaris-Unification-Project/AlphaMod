@@ -1,0 +1,196 @@
+building_paradise_citydomes = {
+	base_buildtime = 720
+	can_build = no
+
+	category = amenity
+	
+	planet_modifier = {
+		planet_housing_add = 12
+		planet_amenities_add = 20
+		planet_max_buildings_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_elite_easy_living }					
+		}
+		modifier = {
+			job_beneficiary_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_domination_imperious_architecture }					
+		}
+		modifier = { planet_housing_add = 2 }
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_modifier = resort_colony }
+																															  
+		}
+		modifier = {
+			job_service_add = 1
+			job_beneficiary_add = 1
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 1000
+			rare_crystals = 100
+		}
+		upkeep = {
+			energy = 4
+			#rare_crystals = 2
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { not = { has_valid_civic = civic_elite_easy_living }}
+			}
+			rare_crystals = 2
+		}
+	}
+}
+
+building_basic_quarters = {
+	base_buildtime = 90
+	base_cap_amount = 5
+
+	category = amenity
+	
+	potential = {
+		or = {
+			is_hostile_planet_ia = yes
+			is_planet_class = pc_nuked
+		}
+		owner = { 
+			is_regular_empire = yes
+			is_machine_empire = no
+		}
+	}
+	
+	allow = {
+		exists = owner
+		or = {
+			owner = { is_ai = no }
+			and = {
+				owner = { is_ai = yes }
+				free_housing < 7
+				or = {
+					free_building_slots > 1
+					free_district_slots < 1
+				}
+			}
+		}
+	}
+		
+	planet_modifier = {
+		planet_housing_add = 4
+		planet_amenities_add = 3
+		pop_environment_tolerance = 0.01
+		planet_max_buildings_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_domination_imperious_architecture }					
+		}
+		modifier = { planet_housing_add = 1 }
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				or = {
+					resource_stockpile_compare = { resource = sr_ice value > 0 }
+					has_origin = origin_iceaged
+					has_origin = origin_primordials
+				}
+			}					
+		}
+		modifier = {
+			pop_environment_tolerance = 0.02
+			planet_amenities_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				or = {
+					resource_stockpile_compare = { resource = sr_biomass value > 0 }
+					has_origin = origin_poisonedpast
+				}
+			}					
+		}
+		modifier = {
+			pop_environment_tolerance = 0.02
+			planet_amenities_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_origin = origin_steppingstone }
+		}
+		modifier = {
+			pop_environment_tolerance = 0.05
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_origin = origin_drumsofwar }
+		}
+		modifier = {
+			pop_environment_tolerance = 0.02
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 50 }
+		upkeep = {
+			sr_ice = 1
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { resource_stockpile_compare = { resource = sr_ice value < 1 }}
+			}
+			energy = 1	
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { 
+					country_uses_food = yes
+					resource_stockpile_compare = { resource = sr_biomass value >= 1 }
+				}
+			}
+			sr_biomass = 1	
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { 
+					country_uses_food = yes
+					resource_stockpile_compare = { resource = sr_biomass value < 1 }
+				}
+			}
+			food = 1	
+		}
+	}
+}

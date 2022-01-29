@@ -1,0 +1,6 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_imperial_icon_button"
+		texturefile = "gfx/interface/icons/text_icons/text_icon_imperial.dds"
+	}
+}

@@ -1,0 +1,69 @@
+ice_expenditure_decisions  = {
+	resource = sr_ice
+	type = expenditure
+	category = decisions
+	
+	potential = {
+		is_at_war = no
+	}
+	
+	fraction = {
+		weight = 0.2
+	}	
+}
+
+ice_upkeep_planets = {
+	resource = sr_ice
+	type = upkeep
+	category = planets
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.6
+	}	
+}
+
+ice_expenditure_rare_edicts = {
+	resource = sr_ice 
+	type = expenditure
+	category = rare_edicts
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.2
+	}	
+}
+
+ice_expenditure_ship_edicts = {
+	resource = sr_ice 
+	type = expenditure
+	category = ship_edicts
+	
+	potential = {
+		is_at_war = yes
+	}
+	
+	fraction = {
+		weight = 0.2
+	}	
+}
+
+ice_expenditure_campaigns = {
+	resource = sr_ice 
+	type = expenditure
+	category = campaigns
+	
+	potential = {
+		is_at_war = yes
+	}
+	
+	fraction = {
+		weight = 0.2
+	}	
+}

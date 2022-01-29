@@ -1,0 +1,174 @@
+building_mineral_replication_hub = {
+	base_buildtime = 1040
+	base_cap_amount = 1
+	category = resource
+	
+	prerequisites = { "tech_mine_dark_matter" }
+	
+	potential = {
+		exists = owner
+		owner = { has_monthly_income = { resource = sr_dark_matter value > 0 }}
+	}
+	
+	allow = {
+		exists = owner
+		owner = { 
+			not = { has_country_flag = cf_one_mrh_atatime }
+			has_monthly_income = { resource = sr_dark_matter value >= 1 }
+			has_monthly_income = { resource = volatile_motes value >= 3 }			
+		}
+		has_building = building_mineral_purification_hub
+	}
+	
+	destroy_trigger = {
+		exists = owner
+		not = { has_building = building_mineral_purification_hub }
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 500
+			volatile_motes = 250
+			sr_dark_matter = 100
+		}
+		cost = {
+			trigger = {
+				owner = { 
+					is_robot_empire = yes
+				}
+			}
+			minerals = 300
+			alloys = 150
+		}
+		upkeep = {
+			volatile_motes = 3
+			sr_dark_matter = 1
+		}
+		produces = {
+			minerals = 50
+		}
+	}
+		
+	planet_modifier = {
+		planet_miners_minerals_produces_mult = 0.25
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_miner_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_mining_drone_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_robot_empire = yes
+			}
+		}
+		modifier = {
+			planet_miners_minerals_produces_mult = 0.1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_robot_empire = yes
+			}
+			NOR  = {
+				is_planet_class = pc_habitat
+				is_planet_class = pc_machine
+				is_planet_class = pc_hive
+				is_planet_class = pc_city
+			}
+		}
+		modifier = {
+			district_mining_max = 5
+		}
+	}
+	
+	on_queued = {
+		owner = { set_country_flag = cf_one_mrh_atatime }
+	}
+	
+	on_unqueued = {
+		owner = { remove_country_flag = cf_one_mrh_atatime }
+	}
+	
+	on_built = {
+		owner = { remove_country_flag = cf_one_mrh_atatime }
+	}
+
+	ai_resource_production = {
+		minerals = 10
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_resource_silo_2 = {
+	base_buildtime = 360
+	category = resource
+	base_cap_amount = 2
+	
+	prerequisites = { "tech_alloys_2" }
+
+	potential = {
+		NOT = { has_modifier = resort_colony }
+	}
+
+	allow = { 
+		buildings_simple_allow = yes 
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 400
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_clerk_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_maintenance_drone_add = 1
+		}
+	}
+
+	country_modifier = {
+		country_resource_max_add = 5000
+	}
+}

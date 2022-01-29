@@ -1,0 +1,295 @@
+chance_of_nomadic_pop = {
+	random_list = {
+		75 = {}
+		25 = {
+			remove_modifier = pop_qualified
+			remove_modifier = pop_transcendent
+			add_modifier = {
+				modifier = pop_nomadic
+				days = -1
+			}
+		}
+	}
+}
+
+chance_of_tribal_pop = {
+	random_list = {
+		75 = {}
+		25 = {
+			remove_modifier = pop_qualified
+			remove_modifier = pop_transcendent
+			remove_modifier = pop_nomadic
+			add_modifier = {
+				modifier = pop_tribal
+				days = -1
+			}
+		}
+	}
+}
+
+chance_of_communal_pop = {
+	random_list = {
+		66 = {}
+		34 = {
+			remove_modifier = pop_qualified
+			remove_modifier = pop_transcendent
+			remove_modifier = pop_nomadic
+			remove_modifier = pop_tribal
+			add_modifier = {
+				modifier = pop_communal
+				days = -1
+			}
+		}
+	}
+}
+
+chance_of_transcendent_ed = {
+	random_list = {
+		50 = {
+			root = {
+				random_owned_pop = {
+					limit = {
+						not = { has_modifier = pop_transcendent }
+						not = { has_trait = trait_mechanical }
+						is_enslaved = no
+					}
+					add_modifier = {
+						modifier = pop_transcendent
+						days = -1
+					}
+					remove_modifier = pop_inexperienced
+					remove_modifier = pop_qualified
+				}
+			}
+		}
+		50 = {}
+	}
+}
+
+pop_may_be_transcendent = {
+	random_list = {
+		33 = {
+			add_modifier = {
+				modifier = pop_transcendent
+				days = -1
+			}
+			remove_modifier = pop_inexperienced
+		}
+		5 = {
+			set_timed_pop_flag = {
+				flag = pf_uneducated
+				days = 360
+			}
+		}
+		25 = {
+			remove_modifier = pop_inexperienced
+			add_modifier = {
+				modifier = pop_qualified
+				days = -1
+			}						
+		}
+		37 = {}
+	}
+}
+
+genetic_welfare_pop = {
+	random_list = {
+		40 = {}
+		58 = {
+			remove_modifier = pop_tribal
+			add_modifier = {
+				modifier = pop_healthy
+				days = -1
+			}
+		}
+		1 = {
+			remove_modifier = pop_qualified
+			remove_modifier = pop_transcendent
+			remove_modifier = pop_nomadic
+			remove_modifier = pop_tribal
+			remove_modifier = pop_communal
+			add_modifier = {
+				modifier = pop_aberrant
+				days = -1
+			}						
+		}
+		1 = {
+			remove_modifier = pop_qualified
+			remove_modifier = pop_transcendent
+			remove_modifier = pop_nomadic
+			remove_modifier = pop_tribal
+			remove_modifier = pop_communal
+			add_modifier = {
+				modifier = pop_deviant
+				days = -1
+			}						
+		}
+	}
+}
+
+genetic_inheritance_pop = {
+	remove_modifier = pop_qualified
+	remove_modifier = pop_nomadic
+	remove_modifier = pop_tribal
+	remove_modifier = pop_communal
+	add_modifier = {
+		modifier = pop_qualified
+		days = -1
+	}
+}
+
+make_pop_aberrant = {
+	remove_modifier = pop_qualified
+	remove_modifier = pop_transcendent
+	remove_modifier = pop_nomadic
+	remove_modifier = pop_tribal
+	remove_modifier = pop_communal
+	remove_modifier = pop_healthy
+	remove_modifier = pop_aberrant
+	add_modifier = {
+		modifier = pop_aberrant
+		days = -1
+	}	
+}
+
+make_pop_deviant = {
+	remove_modifier = pop_qualified
+	remove_modifier = pop_transcendent
+	remove_modifier = pop_nomadic
+	remove_modifier = pop_tribal
+	remove_modifier = pop_communal
+	remove_modifier = pop_healthy
+	remove_modifier = pop_deviant
+	add_modifier = {
+		modifier = pop_deviant
+		days = -1
+	}
+}
+
+make_pop_loyalist = {
+	remove_modifier = pop_nomadic
+	remove_modifier = pop_tribal
+	remove_modifier = pop_aberrant
+	remove_modifier = pop_deviant
+	remove_modifier = pop_loyalist
+	add_modifier = {
+		modifier = pop_loyalist
+		days = -1
+	}
+}
+
+make_pop_vigilant = {
+	remove_modifier = pop_nomadic
+	remove_modifier = pop_tribal
+	remove_modifier = pop_aberrant
+	remove_modifier = pop_deviant
+	remove_modifier = pop_vigilant
+	add_modifier = {
+		modifier = pop_vigilant
+		days = -1
+	}
+}
+
+clear_negative_pop_modifiers = {
+	remove_modifier = pop_inexperienced
+	remove_modifier = pop_aberrant
+	remove_modifier = pop_deviant
+	remove_modifier = pop_tribal
+	remove_modifier = pop_nomadic
+}
+
+clone_boost_may_gene_drift = {
+	random_list = {
+		5 = {
+			add_modifier = {
+				modifier = pop_aberrant
+				days = -1
+			}
+			remove_modifier = pop_inexperienced
+		}
+		5 = {
+			add_modifier = {
+				modifier = pop_deviant
+				days = -1
+			}
+			remove_modifier = pop_inexperienced
+		}
+		5 = {
+			add_modifier = {
+				modifier = pop_tribal
+				days = -1
+			}
+			remove_modifier = pop_inexperienced
+		}
+		85 = {}
+	}
+}
+
+set_pop_as_inexperienced = {
+	random_list = {
+		10 = {
+			set_timed_pop_flag = {
+				flag = pf_inexperienced
+				days = 360
+			}
+			add_modifier = {
+				modifier = pop_inexperienced
+				days = 360
+			}
+		}
+		70 = {
+			set_timed_pop_flag = {
+				flag = pf_inexperienced
+				days = 180
+			}
+			add_modifier = {
+				modifier = pop_inexperienced
+				days = 180
+			}
+		}
+		20 = {
+			set_timed_pop_flag = {
+				flag = pf_inexperienced
+				days = 90
+			}
+			add_modifier = {
+				modifier = pop_inexperienced
+				days = 90
+			}
+		}
+	}
+}
+
+educate_student = {
+	random_owned_pop = {
+		limit = {
+			is_enslaved = no
+			has_job = student
+			not = { has_modifier = pop_qualified }
+			not = { has_modifier = pop_transcendent }
+			not = { has_trait = trait_mechanical }
+		}
+		make_pop_qualified = yes
+	}
+}
+
+planet_educate_student = {
+	random_owned_pop = {
+		limit = {
+			is_enslaved = no
+			has_job = student
+			not = { has_modifier = pop_qualified }
+			not = { has_modifier = pop_transcendent }
+			not = { has_trait = trait_mechanical }
+		}
+		make_pop_qualified = yes
+	}
+}
+
+make_pop_qualified = {
+	add_modifier = {
+		modifier = pop_qualified
+		days = -1
+	}
+	remove_modifier = pop_inexperienced
+}

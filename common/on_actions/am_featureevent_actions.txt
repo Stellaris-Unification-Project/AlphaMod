@@ -1,0 +1,8 @@
+on_building_complete = {
+	events = {
+		amfeatureevents.10
+		stateoflies.3
+		stateoflies.4
+		stateoflies.8
+	}
+}

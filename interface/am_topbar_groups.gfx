@@ -1,0 +1,18 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_alphamod_symbol"
+		texturefile = "gfx/interface/icons/resources/alphamod.dds"
+	}	
+	spriteType = {
+		name = "GFX_motes_group"
+		texturefile = "gfx/interface/icons/resources/volatile_motes.dds"
+	}
+	spriteType = {
+		name = "GFX_gases_group"
+		texturefile = "gfx/interface/icons/resources/exotic_gases.dds"
+	}	
+	spriteType = {
+		name = "GFX_crystals_group"
+		texturefile = "gfx/interface/icons/resources/rare_crystals.dds"
+	}
+}

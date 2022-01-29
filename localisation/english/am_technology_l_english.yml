@@ -1,0 +1,68 @@
+﻿l_english:   
+ tech_basic_plastics: "Intelligent Plastics"
+ tech_basic_plastics_desc: "We can make plastics stronger, smarter and possibly less dull, and develop alternative processes for producing goods without consuming so many minerals."
+ tech_advanced_plastics: "Advanced Plastics"
+ tech_advanced_plastics_desc: "We can make plastics stronger, smarter and possibly even less dull."
+ 
+ tech_am_hyperlane_generation: "Hyperlane Generators"
+ tech_am_hyperlane_generation_desc: "Our starbases are fitted with advanced hyperlane generators, creating connections between systems."
+ 
+ tech_megacities: "Mega-Cities"
+ tech_megacities_desc: "Having multiple large urban centers spread across a planet results in inefficiency in productivity, employment, law enforcement and other service provision. Instead, cities could be merged into much more efficient mega-cities."
+ tech_heavy_industrialisation: "Centralised Industrialisation"
+ tech_heavy_industrialisation_desc: "Lengthy and costly mineral supply chains from mining facilities to the industries that process them can be reduced by simply locating the industries alongside the mines that feed them."
+ 
+ tech_am_automated_farming: "Automated Farming"
+ tech_am_automated_farming_desc: "A lot of labour-intensive processes needed in agriculture could easily be automated."
+ 
+ tech_toxic_world_terraforming: "Toxic World Colonies"
+ tech_frozen_world_terraforming: "Frozen World Colonies"
+ tech_molten_world_terraforming: "Molten World Colonies"
+ tech_toxic_world_terraforming_desc: "With other technologies now available to us, we should be able to develop the means to place working colonies on toxic worlds."
+ tech_frozen_world_terraforming_desc: "With other technologies now available to us, we should be able to develop the means to place working colonies on frozen worlds."
+ tech_molten_world_terraforming_desc: "With other technologies now available to us, we should be able to develop the means to place working colonies on molten worlds."
+ 
+ tech_mega_foundries: "Mega-Foundries"
+ tech_mega_foundries_desc: "Alloy manufacturing can be scaled up by merging facilities and in the process freeing up land for more construction."
+ tech_paradise_citydomes: "Paradise City Domes"
+ tech_paradise_citydomes_desc: "Luxury living space can be easily scaled up by merging domes into small cities and in the process freeing up land for more construction."
+ tech_vertical_farms: "Vertical Farms"
+ tech_vertical_farms_desc: "Hydroponic farming can be easily scaled up by merging facilities into towers and in the process freeing up land for more construction."
+ 
+ tech_alloy_alternatives: "Alloy Alternatives"
+ tech_alloy_alternatives_desc: "Producing alternative materials that are equivalent to alloys but with processes that do not consume minerals."
+ 
+ tech_am_gigarelays: "Giga Communications"
+ tech_am_gigarelays_desc: "Advanced communications technology to utilise hyperlane sub-space channels, providing practical real-time connections between systems."
+ 
+ TITAN_MID_M: "Missile Mid"
+ TITAN_MID_H: "Hangar Mid"
+ TITAN_STERN_M: "Missile Stern"
+ DESTROYER_BOW_L1_MM: "Torpedo Bow"
+ CORVETTE_MID_M1S1_R: "Ranger"
+ 
+ amterraforming.2.name: "Toxic Terraforming Candidate"
+ amterraforming.2.desc: "The toxic planetoid §H[new_terraforming_candidate_identified.GetName]§! has been confirmed as meeting the necessary criteria in order to be terraformed to support a colony."
+ amterraforming.2.option.a: "Excellent."
+ amterraforming.3.name: "Molten Terraforming Candidate"
+ amterraforming.3.desc: "The molten planetoid §H[new_terraforming_candidate_identified.GetName]§! has been confirmed as meeting the necessary criteria in order to be terraformed to support a colony."
+ amterraforming.3.option.a: "Excellent."
+ amterraforming.4.name: "Frozen Terraforming Candidate"
+ amterraforming.4.desc: "The frozen planetoid §H[new_terraforming_candidate_identified.GetName]§! has been confirmed as meeting the necessary criteria in order to be terraformed to support a colony."
+ amterraforming.4.option.a: "Excellent."
+ 
+ amterraforming.20.name: "Potential Terraforming Candidate"
+ amterraforming.20.desc: "The planetoid §H[new_terraforming_candidate_identified.GetName]§! has been identified as potentially meeting the necessary criteria in order to be terraformed to support a colony.\n\nAnalysts recommend a follow-up survey to confirm their findings."
+ amterraforming.20.option.a: "Prepare a Special Project."
+ amterraforming.20.option.b: "Tag it as a terraforming candidate now."
+ amterraforming.20.option.c: "Skip it. Something better will be found."
+ 
+ amterraforming.30.name: "Terraforming Trouble"
+ amterraforming.30.desc: "The terraforming operation of §H[new_terraforming_candidate_identified.GetName]§! has run into some problems. The on-site engineering team request the assistance of a Construction Ship in order to be able to continue."
+ amterraforming.30.option.a: "Prepare a Special Project."
+ amterraforming.30.option.b: "Abandon the op. Something better will be found."
+ 
+ tech_am_jump_drive: "Prototype Jump Drive"
+ prototype_jump_drive: "Prototype Jump Drive"
+ prototype_jump_drive_desc: "It'll work... we hope."
+ tech_am_jump_drive_desc: "Short-ranged jump drives are already here."

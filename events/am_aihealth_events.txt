@@ -1,0 +1,387 @@
+namespace = aihealthcheck
+
+# Gateway for yearly regular healthcheck
+country_event = {
+	id = aihealthcheck.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		years_passed > 10
+		years_passed < 150
+		is_ai = yes
+		is_regular_empire = yes
+		is_country_type = default
+		is_end_game_healthy_regular = no	
+	}
+	
+	immediate = {
+		random_list = {
+			90 = {}
+			10 = {
+				country_event = { id = aihealthcheck.7 }
+			}
+		}
+	}
+}
+
+# Gateway for machine healthcheck
+country_event = {
+	id = aihealthcheck.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		years_passed > 10
+		years_passed < 150
+		is_machine_empire = yes
+		is_ai = yes
+		is_country_type = default
+		is_end_game_healthy_machine = no
+	}
+	
+	immediate = {		
+		random_list = {
+			95 = {}
+			5 = {
+				country_event = { id = aihealthcheck.3 }
+			}
+		}
+	}
+}
+
+# Machine healthcheck			
+country_event = {
+	id = aihealthcheck.3
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		save_event_target_as = healthcheckedcountry
+		# Outposts with an empty building slot
+		if = {
+			limit = { is_at_war = no }
+			add_building_to_random_outpost_machine = yes
+			add_building_to_random_outpost_machine = yes
+		}
+		
+		if = {
+			limit = {
+				years_passed > 140
+				num_owned_planets > 5
+				is_at_war = no
+			}
+			end_game_pop_nerf = yes
+			end_game_automation = yes
+			end_game_fill_slots = yes
+		}
+		
+		random_owned_planet = {
+			limit = { machine_planet_needs_health_check = yes }
+			machine_set_planet_healthchecked = yes
+			
+			# Energy crisis
+			machine_fix_energy_deficit = yes
+			
+			# Actinides and Fuels deficits fix
+			machine_fix_fuels_actinides_overuse = yes
+			
+			# Replace Nexus with LANs
+			machine_replace_nexus_with_lans = yes
+			
+			# Prioritise energy districts
+			machine_prioritise_energy_districts = yes
+			
+			# Minerals crisis
+			machine_fix_minerals_crisis = yes
+			
+			# Housing shortage
+			machine_fix_housing_shortage = yes			
+			
+			# Unemployment
+			machine_fix_unemployment = yes
+			
+			# Empty building slots
+			machine_use_building_slots = yes
+		}
+	}
+}
+
+# Waste management and student education
+country_event = {
+	id = aihealthcheck.4
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_regular_empire = yes
+		is_country_type = default
+	}					
+
+	immediate = {
+		check_waste_management_bonus = yes
+		random_list = {
+			97 = {}
+			3 = { educate_student = yes }		
+		}
+	}
+}
+
+# Gateway for monthly regular healthcheck
+country_event = {
+	id = aihealthcheck.6
+	hide_window = yes
+	is_triggered_only = yes	
+	
+	trigger = {
+		is_ai = yes
+		is_regular_empire = yes
+		is_country_type = default
+		# is_end_game_healthy_regular = no
+	}
+	
+	immediate = {
+		random_list = {
+			85 = {}
+			10 = {
+				if = {
+					limit = {
+						is_end_game_healthy_regular = no
+					}
+					country_event = { id = aihealthcheck.7 }
+				}
+			}
+			5 = {
+				country_event = { id = aihealthcheck.7 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = aihealthcheck.7
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		save_event_target_as = healthcheckedcountry
+		
+		if = {
+			limit = { tanked_energy = yes }
+			fix_admiral_dragon_bug = yes
+		}
+		
+		# Starbases
+		if = {
+			limit = { is_at_war = no }
+			add_building_to_random_outpost = yes
+			add_building_to_random_outpost = yes
+			fill_out_random_starport = yes
+			upgrade_random_starhold = yes
+		}
+		
+		# More comm district spam fixing
+		fix_comms_district_spam = yes
+		
+		if = {
+			limit = {
+				years_passed > 140
+				num_owned_planets > 5
+				is_at_war = no
+			}
+			end_game_pop_nerf = yes
+			end_game_automation = yes
+			end_game_fill_slots = yes
+		}
+		
+		# HEALTH CHECK
+		random_owned_planet = {
+			limit = { regular_planet_needs_health_check = yes }				
+			set_random_healthcheck_flag = yes
+			
+			# Student job can make pop qualified
+			random_list = {
+				95 = {}
+				5 = { planet_educate_student = yes }			
+			}
+			
+			# Remove martial law like you were supposed to
+			check_end_martial_law = yes
+			
+			# Starbases in a colonised system
+			upgrade_colony_starbase = yes
+			
+			# Community District spam fix
+			fix_community_district_spam = yes
+			
+			# City spam fix
+			fix_city_spam = yes
+			
+			# Industrial District spam fix
+			fix_industrial_district_spam = yes
+			
+			# Energy deficit
+			fix_energy_deficit = yes
+			
+			# Minerals deficit and alloys or energy surplus
+			fix_minerals_deficit = yes
+			
+			# Crime and Instability
+			if = { limit = { planet_is_unlawful = yes } fix_crime_instability = yes	}
+			
+			# Amenities
+			if = { limit = { planet_is_bored = yes } fix_amenities = yes }
+			
+			# Create More Jobs
+			if = { limit = { planet_is_ready_to_grow = yes } fix_low_vacancies = yes }
+			
+			# Unemployment
+			if = { limit = { any_owned_pop = { is_unemployed = yes }} fix_unemployment = yes }
+			
+			# Peace/war production priorities
+			if = { limit = { owner = { is_at_war = no }} prioritise_peace_production = yes }
+			else = { prioritise_war_production = yes }
+			
+			# Uncleared blockers - just get rid of them
+			if = { limit = { free_district_slots < 2 } clear_blockers = yes }
+			
+			# Economic Fine Tuning - surplus is wasting space
+			fix_surplus_districts = yes
+			
+			# Housing
+			check_should_go_megacity = yes
+			check_need_for_housing = yes
+			
+			# Overcrowding - pointless unemployed pops lags up the game
+			fix_overcrowding = yes
+			
+			# Homeless pops are pointless
+			fix_homelessness = yes
+			
+			# Free housing and free building slots means convert districts to buildings
+			convert_districts_to_buildings = yes
+			
+			# If there is a need for jobs and has emergency buildings, replace them
+			replace_emergency_buildings = yes
+			
+			# Stop stockpiling like you were supposed to
+			check_to_stop_stockpiling = yes
+			
+			# Surplus housing getting in the way
+			fix_surplus_housing = yes
+			
+			# A free building slot is better than an unused commercial zone
+			remove_redundant_commercial_zones = yes
+			
+			# Shortages rectified by removing surplus
+			shuffle_surplus_to_shortage = yes
+			
+			# Minerals shortages are rare
+			fix_minerals_shortage_passtwo = yes
+			
+			# Consumer Goods deficit
+			fix_con_gs_shortage = yes
+			
+			# Alloys deficit
+			fix_alloys_shortage_passtwo = yes
+			
+			# Remaining alloys and CGs deficit
+			fix_alloys_cgs_shortage = yes
+			
+			# District spam
+			fix_community_district_spam_passtwo = yes
+
+			# Homeworld with too many empty building slots
+			fill_homeworld_building_slots = yes	
+
+			# Last resort
+			if = {
+				limit = { situation_fubar = yes }
+				kill_the_redundant = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = aihealthcheck.8
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		years_passed > 10
+		is_machine_empire = yes
+		is_ai = yes
+		is_country_type = default
+	}
+	
+	immediate = {
+		save_event_target_as = healthcheckedcountry
+		# Outposts with an empty building slot
+		if = {
+			limit = { is_at_war = no }
+			add_building_to_random_outpost_machine = yes
+			add_building_to_random_outpost_machine = yes
+		}
+	}
+}
+
+country_event = {
+	id = aihealthcheck.9
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_ai = yes
+		is_regular_empire = yes
+		is_country_type = default
+		is_machine_empire = no
+	}
+	
+	immediate = {
+		save_event_target_as = healthcheckedcountry
+		
+		# Starbases
+		if = {
+			limit = { is_at_war = no }
+			add_building_to_random_outpost = yes
+			add_building_to_random_outpost = yes
+			add_listening_post_to_random_border_outpost = yes
+			fill_out_random_starport = yes
+			upgrade_random_starhold = yes
+			random_owned_planet = {
+				limit = { 
+					is_colony = yes 
+					not = { has_planet_flag = pf_upgrade_colony_sb }
+				}
+				set_planet_flag = pf_upgrade_colony_sb
+				upgrade_colony_starbase = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = aihealthcheck.10
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_ai = yes
+		is_regular_empire = yes
+		is_country_type = default
+		is_machine_empire = no
+	}
+	
+	immediate = {
+		save_event_target_as = healthcheckedcountry
+		
+		# Starbases
+		if = {
+			limit = { is_at_war = no }
+			upgrade_colony_sb_to_citadel = yes
+			upgrade_border_starhold_to_trade_starhold = yes
+			upgrade_trade_starhold_to_alliance_starfortress = yes
+		}
+	}
+}

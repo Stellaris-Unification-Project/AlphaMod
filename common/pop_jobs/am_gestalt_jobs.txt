@@ -1,0 +1,382 @@
+biomass_processor_drone = {
+	category = simple_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_biomass_furnace
+	
+	possible = {
+		drone_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_labourers
+		produces = {
+			sr_biomass = 2
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { country_uses_food = no }
+			}
+			sr_biomass = 2
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { country_uses_food = yes }
+			}
+			food = 2
+		}
+	}	
+	
+	weight = {
+		weight = @simple_drone_job_weight
+		modifier = {
+			factor = 1.1
+			exists = owner
+			owner = { has_monthly_income = { resource = sr_biomass value < 1 }}
+		}
+		modifier = {
+			factor = 0.2
+			exists = owner
+			owner = { has_monthly_income = { resource = sr_biomass value > 20 }}
+		}
+		modifier = {
+			factor = 2
+			has_job = biomass_processor_drone
+		}
+	}
+}
+
+fuel_processor_drone = {
+	category = simple_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_fuel_sourcer
+	
+	possible = {
+		drone_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_labourers
+		produces = {
+			minerals = 2
+			energy = 2
+		}
+		upkeep = {
+			sr_natural_fuels = 2
+		}
+	}
+	
+	weight = {
+		weight = @simple_drone_job_weight
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_trait = trait_industrious
+				has_trait = trait_robot_power_drills
+			}		
+		}
+		modifier = {
+			factor = 1.1
+			exists = owner
+			owner = { has_monthly_income = { resource = sr_natural_fuels value > 20 }}
+		}
+		modifier = {
+			factor = 0.5
+			exists = owner
+			owner = { has_monthly_income = { resource = sr_natural_fuels value < 3 }}
+		}
+		modifier = {
+			factor = 2
+			has_job = fuel_processor_drone
+		}
+	}
+}
+
+water_processor_drone = {
+	category = simple_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_desalinator
+	
+	possible = {
+		drone_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_labourers
+		produces = {
+			sr_ice = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { country_uses_food = no }
+			}
+			sr_ice = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { country_uses_food = yes }
+			}
+			sr_biomass = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }		
+		}
+		modifier = {
+			planet_amenities_no_happiness_add = 2
+		}		
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+			has_trait = trait_charismatic
+		}
+		modifier = {
+			planet_amenities_no_happiness_add = 0.4
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+			has_trait = trait_repugnant
+		}
+		modifier = {
+			planet_amenities_no_happiness_add = -0.4
+		}
+	}
+	
+	weight = {
+		weight = @simple_drone_job_weight
+		modifier = {
+			factor = 1.1
+			exists = owner
+			owner = { has_monthly_income = { resource = sr_ice value < 1 }}
+		}
+		modifier = {
+			factor = 0.8
+			exists = owner
+			owner = { has_monthly_income = { resource = sr_ice value > 10 }}
+		}
+		modifier = {
+			factor = 2
+			has_job = water_processor_drone
+		}
+	}
+}
+
+actinides_utiliser_drone = {
+	category = complex_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_nuclear_plant
+	
+	possible = {
+		drone_job_check_trigger = yes
+	}
+
+	resources = {
+		category = planet_technician
+		produces = {
+			energy = 10
+			physics_research = 3
+		}
+		upkeep = {
+			sr_actinides = 1
+		}
+	}	
+
+	weight = {
+		weight = @complex_drone_job_weight
+		modifier = {
+			factor = 3
+			has_job = actinides_utiliser_drone
+		}
+		modifier = {
+			factor = 1.2
+			exists = owner
+			owner = { has_monthly_income = { resource = sr_actinides value > 10 }}
+		}
+		modifier = {
+			factor = 0.5
+			exists = owner
+			owner = { has_monthly_income = { resource = sr_actinides value < 1 }}
+		}		
+	}
+}
+
+biomass_architect_drone = {
+	category = complex_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_processedgoods_producer
+	
+	possible = {
+		drone_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_artisans
+		produces = {
+			sr_plastics = 1		
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { country_uses_consumer_goods = no }
+			}
+			minerals = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { country_uses_consumer_goods = yes }
+			}
+			consumer_goods = 2
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					resource_stockpile_compare = {
+						resource = sr_biomass
+						value >= 3
+					}					
+				}
+			}
+			sr_plastics = 1
+		}
+		upkeep = {
+			sr_biomass = 3
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				resource_stockpile_compare = {
+					resource = sr_biomass
+					value >= 3
+				}					
+			}
+		}
+		modifier = {
+			planet_building_build_speed_mult = 0.2
+		}		
+	}
+	
+	weight = {
+		weight = @complex_drone_job_weight
+		modifier = {
+			factor = 3
+			has_job = biomass_architect_drone
+		}		
+	}
+}
+
+altalloys_drone = {
+	category = complex_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_foundry_1
+
+	possible = {
+		drone_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_metallurgists
+		produces = {
+			alloys = 2
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { 
+					resource_stockpile_compare = { resource = sr_plastics value >= 5 }
+					resource_stockpile_compare = { resource = rare_crystals value >= 2 }				
+				}
+			}
+			alloys = 3
+		}
+		upkeep = {
+			sr_plastics = 4
+			rare_crystals = 1
+		}
+	}
+
+	weight = {
+		weight = @complex_drone_job_weight		
+		modifier = {
+           factor = 2
+           has_trait = trait_robot_efficient_processors
+        }
+		modifier = {
+			factor = 2
+			has_job = altalloys_drone
+		}
+		modifier = {
+			factor = 0.5
+			exists = owner
+			owner = { has_monthly_income = { resource = sr_plastics value < 20 }}
+		}
+		modifier = {
+			factor = 0.5
+			exists = owner
+			owner = { has_monthly_income = { resource = rare_crystals value < 2 }}
+		}
+		modifier = {
+			factor = 1.2
+			exists = owner
+			owner = { has_monthly_income = { resource = alloys value < 15 }}
+		}
+		modifier = {
+			factor = 1.1
+			exists = owner
+			owner = { has_monthly_income = { resource = alloys value < 40 }}
+		}
+	}
+}
+
+electronics_manufacturer_drone = {
+	category = complex_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_foundry_1
+
+	possible = {
+		drone_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_artisans
+		produces = {
+			sr_electronics = 2
+		}
+		upkeep = {
+			trigger = { owner = { resource_stockpile_compare = { resource = alloys value >= 1 }}}
+			alloys = 1
+		}
+		upkeep = {
+			trigger = { owner = { resource_stockpile_compare = { resource = alloys value < 1 }}}
+			minerals = 5
+		}
+	}	
+	
+	weight = {
+		weight = @complex_drone_job_weight		
+		modifier = {
+           factor = 2
+           has_trait = trait_robot_efficient_processors
+        }
+		modifier = {
+			factor = 2
+			has_job = electronics_manufacturer_drone
+		}		
+	}
+}

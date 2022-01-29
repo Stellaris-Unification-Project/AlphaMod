@@ -1,0 +1,548 @@
+namespace = amterraforming
+
+# Creating terraforming candidates on hostile planets if techs researched
+country_event = {
+	id = amterraforming.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_regular_empire = yes
+		is_country_type = default
+		or = {
+			has_technology = tech_toxic_world_terraforming
+			has_technology = tech_molten_world_terraforming
+			has_technology = tech_frozen_world_terraforming
+		}
+	}
+	
+	immediate = {
+		# AI pseudo-terraforming
+		if = {
+			limit = { is_ai = yes }
+			random_list = {
+				99 = {}
+				1 = {
+					random_planet_within_border = {
+						limit = { 
+							has_modifier = terraforming_candidate 
+							not = { has_planet_flag = pf_skipped_terraform_candidate }
+							not = { has_planet_flag = pf_terraform_special_project }
+							is_terraforming = no
+						}
+						if = {
+							limit = { is_planet_class = pc_toxic }
+							change_pc = pc_toxic_habitable
+							clear_deposits = yes
+							planet_event = { id = amterraforming.7 }
+						}
+						else_if = {
+							limit = { is_planet_class = pc_molten }
+							change_pc = pc_molten_habitable
+							clear_deposits = yes
+							planet_event = { id = amterraforming.7 }
+						}
+						else_if = {
+							limit = { is_planet_class = pc_frozen }
+							change_pc = pc_frozen_habitable
+							clear_deposits = yes
+							planet_event = { id = amterraforming.7 }
+						}
+						else_if = {
+							limit = { 
+								or = {
+									is_planet_class = pc_barren
+									is_planet_class = pc_barren_cold
+								}
+							}
+							change_pc = pc_barren_habitable
+							clear_deposits = yes
+							planet_event = { id = amterraforming.7 }
+						}
+					}
+				}
+			}
+		}
+		
+		random_list = {
+			97 = {}
+			1 = {
+				if = {
+					limit = { has_technology = tech_toxic_world_terraforming }
+					random_planet_within_border = {
+						limit = {
+							is_planet_class = pc_toxic
+							not = { has_modifier = potential_toxic_habitable }	
+							not = { has_deposit = d_biomass_orbital_2 }
+							is_suitable_terraforming_candidate = yes
+						}
+						save_event_target_as = new_terraforming_candidate_identified
+					}
+					if = {
+						limit = { 
+							is_ai = no
+							exists = event_target:new_terraforming_candidate_identified
+						}
+						random_list = {
+							75 = {}
+							25 = {
+								event_target:new_terraforming_candidate_identified = {
+									add_modifier = {
+										modifier = terraforming_candidate
+										days = -1
+									}								
+								}
+								country_event = { id = amterraforming.2 }
+							}
+						}
+					}
+				}
+			}
+			1 = {
+				if = {
+					limit = { has_technology = tech_molten_world_terraforming }
+					random_planet_within_border = {
+						limit = {
+							is_planet_class = pc_molten
+							not = { has_modifier = potential_molten_habitable }
+							is_suitable_terraforming_candidate = yes
+						}
+						save_event_target_as = new_terraforming_candidate_identified
+					}
+					if = {
+						limit = { 
+							is_ai = no
+							exists = event_target:new_terraforming_candidate_identified
+						}
+						random_list = {
+							75 = {}
+							25 = {
+								event_target:new_terraforming_candidate_identified = {
+									add_modifier = {
+										modifier = terraforming_candidate
+										days = -1
+									}								
+								}
+								country_event = { id = amterraforming.3 }
+							}
+						}
+					}
+				}
+			}
+			1 = {
+				if = {
+					limit = { has_technology = tech_frozen_world_terraforming }
+					random_planet_within_border = {
+						limit = {
+							is_planet_class = pc_frozen
+							not = { has_modifier = potential_frozen_habitable }
+							not = { has_deposit = d_orbital_ice_2 }
+							is_suitable_terraforming_candidate = yes
+						}
+						save_event_target_as = new_terraforming_candidate_identified
+					}
+					if = {
+						limit = { 
+							is_ai = no
+							exists = event_target:new_terraforming_candidate_identified
+						}
+						random_list = {
+							75 = {}
+							25 = {
+								event_target:new_terraforming_candidate_identified = {
+									add_modifier = {
+										modifier = terraforming_candidate
+										days = -1
+									}								
+								}
+								country_event = { id = amterraforming.4 }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+    id = amterraforming.2
+    is_triggered_only = yes
+    title = amterraforming.2.name
+    desc = amterraforming.2.desc
+    picture = GFX_evt_toxic
+	location = event_target:new_terraforming_candidate_identified
+
+    option = {
+        name = amterraforming.2.option.a
+    }
+}
+
+country_event = {
+    id = amterraforming.3
+    is_triggered_only = yes
+    title = amterraforming.3.name
+    desc = amterraforming.3.desc
+    picture = GFX_evt_molten
+	location = event_target:new_terraforming_candidate_identified
+
+    option = {
+        name = amterraforming.3.option.a
+    }
+}
+
+country_event = {
+    id = amterraforming.4
+    is_triggered_only = yes
+    title = amterraforming.4.name
+    desc = amterraforming.4.desc
+    picture = GFX_evt_frozen
+	location = event_target:new_terraforming_candidate_identified
+
+    option = {
+        name = amterraforming.4.option.a
+    }
+}
+
+# Post-terraforming district fixing
+country_event = {
+	id = amterraforming.5
+	hide_window = yes
+	is_triggered_only = yes	
+	
+	trigger = {
+		is_country_type = default
+	}
+
+	immediate = {
+		random_owned_planet = {
+			limit = {
+				or = {
+					has_planet_flag = pf_hide_city
+					has_planet_flag = pf_hide_generator
+					has_planet_flag = pf_hide_farming				
+				}
+				is_normal_planet_class = yes
+				is_colony = yes
+			}
+			remove_planet_flag = pf_hide_city
+			remove_planet_flag = pf_hide_generator
+			remove_planet_flag = pf_hide_farming
+			
+			# Hostile to gaia from abandoned terraforming fix
+			if = {
+				limit = { is_planet_class = pc_gaia }				
+				add_deposit = d_tempestous_mountain
+				add_deposit = d_bountiful_plains
+				add_deposit = d_green_hills
+			}
+		}			
+	}                                  
+}
+
+planet_event = {
+	id = amterraforming.7
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_planet_flag = pf_post_terraformed
+		if = {
+			limit = { has_modifier = terraforming_candidate }
+			remove_modifier = terraforming_candidate
+		}
+		
+		if = {
+			limit = { is_normal_planet_class = yes }
+			remove_planet_flag = pf_hide_city
+			remove_planet_flag = pf_hide_generator
+			remove_planet_flag = pf_hide_farming
+			remove_planet_flag = pf_hide_mining
+		}
+		
+		if = {
+			limit = { 
+				or = {
+					has_planet_flag = pf_retain_frozen_refinery
+					has_planet_flag = pf_retain_molten_refinery
+					has_planet_flag = pf_retain_toxic_refinery
+				}
+				num_pops > 1
+			}
+			add_modifier = {
+				modifier = post_terraforming_recovery
+				days = 3600
+			}
+		}
+		
+		if = {
+			limit = { is_planet_class = pc_frozen_habitable }
+			set_planet_flag = pf_retain_frozen_refinery
+		}
+		else_if = {
+			limit = { is_planet_class = pc_molten_habitable }
+			set_planet_flag = pf_retain_molten_refinery
+		}
+		else_if = {
+			limit = { is_planet_class = pc_toxic_habitable }
+			set_planet_flag = pf_retain_toxic_refinery
+		}
+		
+		if = {
+			limit = { 
+				has_modifier = hostile_home_molten
+				not = { is_planet_class = pc_molten_habitable }
+			}
+			remove_modifier = hostile_home_molten
+			add_modifier = {
+				modifier = hostile_world_legacy
+				days = -1
+			}
+		}
+		if = {
+			limit = { 
+				has_modifier = hostile_home_frozen
+				not = { is_planet_class = pc_frozen_habitable }
+			}
+			remove_modifier = hostile_home_frozen
+			add_modifier = {
+				modifier = hostile_world_legacy
+				days = -1
+			}
+		}
+		if = {
+			limit = { 
+				has_modifier = hostile_home_toxic
+				not = { is_planet_class = pc_toxic_habitable }
+			}
+			remove_modifier = hostile_home_toxic
+			add_modifier = {
+				modifier = hostile_world_legacy
+				days = -1
+			}
+		}
+		if = {
+			limit = { 
+				has_modifier = hostile_home_barren
+				not = { is_planet_class = pc_barren_habitable }
+			}
+			remove_modifier = hostile_home_barren
+			add_modifier = {
+				modifier = hostile_world_legacy
+				days = -1
+			}
+		}
+		if = {
+			limit = { 
+				has_modifier = hostile_home_gasgiant
+				not = { is_planet_class = pc_gas_giant_habitable }
+			}
+			remove_modifier = hostile_home_gasgiant
+			add_modifier = {
+				modifier = hostile_world_legacy
+				days = -1
+			}
+		}
+		if = {
+			limit = { 
+				has_modifier = hostile_home_asteroid
+				not = { is_planet_class = pc_asteroid_habitable }
+			}
+			remove_modifier = hostile_home_asteroid
+			add_modifier = {
+				modifier = hostile_world_legacy
+				days = -1
+			}
+		}
+		if = {
+			limit = { 
+				has_modifier = hostile_home_ice_asteroid
+				not = { is_planet_class = pc_ice_asteroid_habitable }
+			}
+			remove_modifier = hostile_home_ice_asteroid
+			add_modifier = {
+				modifier = hostile_world_legacy
+				days = -1
+			}
+		}
+		
+		if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_frozen_habitable
+					is_planet_class = pc_molten_habitable
+					is_planet_class = pc_toxic_habitable
+					is_planet_class = pc_barren_habitable
+					is_planet_class = pc_asteroid_habitable
+					is_planet_class = pc_ice_asteroid_habitable
+					is_planet_class = pc_gas_giant_habitable
+				}
+			}
+			set_planet_flag = pf_hide_city
+			set_planet_flag = pf_hide_generator
+			set_planet_flag = pf_hide_farming
+			
+			solar_system = {
+				if = {
+					limit = {
+						exists = space_owner
+						space_owner = { is_ai = yes }
+					}				
+					space_owner = { set_country_flag = cf_stop_hostile_terraforming }
+				}
+			}
+			
+			if = {
+				limit = {
+					not = { is_planet_class = pc_gas_giant_habitable }
+					good_for_mining = yes
+				}
+				add_deposit = d_ore_rich_caverns
+			}
+			
+			if = {
+				limit = {
+					or = {
+						is_planet_class = pc_asteroid_habitable
+						is_planet_class = pc_ice_asteroid_habitable
+					}
+				}
+				random_list = {
+					20 = { change_planet_size = 1 }
+					20 = { change_planet_size = 2 }
+					20 = { change_planet_size = -1 }
+					40 = {}
+				}
+			}
+			
+			if = {
+				limit = {
+					is_planet_class = pc_gas_giant_habitable
+					planet_size > 20
+				}
+				while = {
+					limit = { planet_size > 20 }
+					change_planet_size = -1
+				}
+			}
+			
+			if = {
+				limit = {
+					planet_size > 14
+					not = { is_planet_class = pc_gas_giant_habitable }
+				}
+				change_planet_size = -3
+			}
+			
+			if = {
+				limit = {
+					planet_size > 10
+					not = { is_planet_class = pc_gas_giant_habitable }
+				}
+				random_list = {
+					20 = { change_planet_size = -3 }
+					20 = { change_planet_size = -2 }
+					20 = { change_planet_size = -1 }
+					40 = {}
+				}
+			}
+			
+			if = {
+				limit = {
+					or = {
+						is_planet_class = pc_frozen_habitable
+						is_planet_class = pc_ice_asteroid_habitable
+					}
+				}
+				roll_freezing_habitable_features = yes
+			}		
+			else_if = {
+				limit = { is_planet_class = pc_molten_habitable }
+				roll_molten_habitable_features = yes
+			}			
+			else_if = {
+				limit = { is_planet_class = pc_toxic_habitable }
+				roll_toxic_habitable_features = yes
+			}
+			else_if = {
+				limit = { is_planet_class = pc_gas_giant_habitable }
+				roll_gasgiant_habitable_features = yes
+			}
+			else_if = {
+				limit = {
+					or = {
+						is_planet_class = pc_barren_habitable
+						is_planet_class = pc_asteroid_habitable
+					}
+					good_for_mining = yes
+				}
+				roll_barren_mining_features = yes
+			}
+			else_if = {
+				limit = {
+					or = {
+						is_planet_class = pc_barren_habitable
+						is_planet_class = pc_asteroid_habitable
+					}
+					good_for_mining = no
+				}
+				roll_barren_habitable_features = yes			
+			}			
+		}
+	}
+}
+
+# Removing lock on AI terraforming hostile planets
+country_event = {
+	id = amterraforming.100
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_flag = cf_stop_hostile_terraforming
+		is_ai = yes
+		is_country_type = default
+	}
+	
+	immediate = {
+		random_owned_planet = {
+			limit = {
+				is_colony = yes
+				is_hostile_planet_ia = yes
+				not = { has_planet_flag = pf_hostile_reached_10 }
+			}
+			if = {
+				limit = { num_pops > 9 }
+				set_planet_flag = pf_hostile_reached_10
+				owner = { remove_country_flag = cf_stop_hostile_terraforming }
+			}
+		}
+	}
+}
+
+planet_event = {
+	id = amterraforming.200
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				solar_system = {
+					exists = space_owner
+					space_owner = { is_ai = yes }
+				}
+				OR = {
+					is_planet_class = pc_frozen_habitable
+					is_planet_class = pc_molten_habitable
+					is_planet_class = pc_toxic_habitable
+					is_planet_class = pc_barren_habitable
+					is_planet_class = pc_asteroid_habitable
+					is_planet_class = pc_ice_asteroid_habitable
+					is_planet_class = pc_gas_giant_habitable
+				}
+			}
+			space_owner = { set_country_flag = cf_stop_hostile_terraforming }
+		}
+	}
+}

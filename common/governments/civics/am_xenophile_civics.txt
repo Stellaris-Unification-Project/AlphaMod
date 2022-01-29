@@ -1,0 +1,44 @@
+civic_galactic_resorts = {
+	description = "civic_tooltip_galactic_resorts_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		# authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophile
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+		}
+	}
+	modifier = {
+		planet_serviceproviders_consumer_goods_produces_add = 1
+		planet_pops_consumer_goods_upkeep_mult = -0.1
+	}
+	random_weight = { base = 6 }
+}
+
+civic_hunt_the_hunters = {
+	description = "civic_tooltip_hunt_the_hunters_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophile
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+			NOR = {
+				text = civic_tooltip_not_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+		}
+	}
+	random_weight = { base = 8 }
+}

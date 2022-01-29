@@ -1,0 +1,22 @@
+namespace = amorigin_electricsheep
+
+event = {
+	id = amorigin_electricsheep.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_country = {
+			limit = { 
+				has_origin = origin_electricsheep
+			}
+			give_technology = { message = no tech = tech_droid_workers }
+			give_technology = { message = no tech = tech_robotic_workers }
+			give_technology = { message = no tech = tech_synthetic_workers }
+			give_technology = { message = no tech = tech_sapient_ai }
+			capital_scope = {
+				amoes_initialize = yes
+			}
+		}
+	}
+}

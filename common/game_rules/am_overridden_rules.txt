@@ -1,0 +1,297 @@
+# This = country
+can_build_branch_offices = {
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_NOT_MEGACORP
+		or = {
+			has_authority = auth_corporate
+			has_origin = origin_warenders
+			has_valid_civic = civic_criminal_heritage
+			has_civic = civic_galactic_sovereign_megacorp
+			is_overlord = yes
+			is_subject = yes
+			has_federation = yes
+			is_galactic_emperor = yes
+		}
+	}
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_NOT_FALLEN_EMPIRES
+		NOR = {
+			is_country_type = fallen_empire
+			is_country_type = awakened_fallen_empire
+		}
+	}
+}
+
+# This = country
+can_support_branch_offices = {
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_NOT_FALLEN_EMPIRES
+		NOR = {
+			is_country_type = fallen_empire
+			is_country_type = awakened_fallen_empire
+		}
+	}
+	or = {
+		is_regular_empire = yes
+		has_federation = yes
+	}
+}
+
+# This = planet
+# Root = country
+can_build_branch_office_on_planet = {
+	custom_tooltip = {
+		fail_text = requires_owner_not_root
+		exists = owner
+		not = { owner = { is_same_value = root }}
+	}
+	
+	custom_tooltip = {
+		fail_text = requires_recipient_not_fanatic_purifiers
+		exists = owner
+		owner = {
+			OR = {
+				is_same_species = root
+				NOT = { has_civic = civic_fanatic_purifiers }
+			}
+		}
+	}
+	
+	# Explicitly prevent subjects opening foreign offices on anything but their overlords planets
+	# and only allow overlords opening foreign offices on their subjects worlds
+	# See if this deals with hard-code ignoring the nested rule that was supposed to be already preventing this
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_NOT_MY_OVERLORD
+		exists = owner
+		or = {
+			root = { is_subject = no }
+			root = {
+				is_subject = yes
+				overlord = { is_same_value = prevprev.owner }
+			}
+		}
+	}
+	
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_NOT_MY_SUBJECT
+		exists = owner
+		or = {
+			owner = { is_subject = no }
+			owner = {
+				is_subject = yes
+				overlord = { is_same_value = root }
+			}
+		}
+	}
+	
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_WARENDER_REQUIRE_TREATY
+		exists = owner
+		OR = {	
+			root = { not = { has_origin = origin_warenders }}
+			and = {
+				root = { has_origin = origin_warenders }
+				or = {
+					root = {
+						is_subject = yes
+						overlord = { is_same_value = prevprev.owner }
+					}
+					owner = {
+						is_subject = yes
+						overlord = { is_same_value = root }
+					}
+				}
+			}
+			root = {
+				has_origin = origin_warenders
+				or = {
+					is_criminal_syndicate = yes
+					has_diplo_migration_treaty = prevprev.owner	
+					has_commercial_pact = prevprev.owner 
+					is_in_federation_with = prevprev.owner
+				}
+			}
+		}
+	}
+		
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_NOT_COMMERCIAL_PACT
+		exists = owner
+		OR = {
+			root = { is_criminal_syndicate = yes }
+			owner = { has_commercial_pact = root }
+			owner = { is_in_federation_with = root }
+			root = {
+				has_origin = origin_warenders
+				has_diplo_migration_treaty = owner	
+			}
+
+			# allow branch offices in subsidiaries and vice versa
+			root = {
+				is_subject = yes
+				overlord = { is_same_value = prevprev.owner }
+			}
+			owner = {
+				is_subject = yes
+				overlord = { is_same_value = root }
+			}
+			AND = {
+				root = { has_civic = civic_galactic_sovereign_megacorp }
+				owner = { is_galactic_community_member = yes }
+			}
+			AND = {
+				root = { has_modifier = imperial_charter }
+				owner = { is_galactic_community_member = yes }
+			}
+		}
+	}
+	
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_CRIMINAL_HERITAGE_HAS_TRUCE
+		exists = owner
+		OR = {			
+			root = { not = { has_valid_civic = civic_criminal_heritage }}
+			owner = {
+				NOR = {
+					has_truce = root
+					is_at_war_with = root
+				}
+			}
+		}
+	}
+	
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_CRIMINAL_COOLDOWN
+		exists = owner
+		OR = {
+			root = { not = { has_valid_civic = civic_criminal_heritage }}
+			AND = {
+				root = { has_valid_civic = civic_criminal_heritage }
+				NOT = { has_planet_flag = criminal_branch_closed_cooldown_planet@root }
+			}
+		}
+	}
+	
+	custom_tooltip = {
+		fail_text = BRANCH_OFFICE_NOT_GONNA_HAPPEN
+		exists = owner
+		OR = {
+			root = { not = { has_valid_civic = civic_criminal_heritage }}
+			AND = {
+				root = { has_valid_civic = civic_criminal_heritage }
+				owner = {
+					nor = {
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_fanatic_xenophobe
+						has_ethic = ethic_gestalt_consciousness
+						has_valid_civic = civic_police_state
+						has_valid_civic = civic_inwards_perfection
+						has_valid_civic = civic_fanatic_purifiers
+					}
+				}
+			}
+		}
+	}
+}
+
+# This = country
+# Checked by is_criminal_syndicate trigger
+is_criminal_syndicate_rule = {
+	# has_authority = auth_corporate
+	has_valid_civic = civic_criminal_heritage
+}
+
+# Restrict AI selling organic slaves.
+can_be_sold_on_slave_market = {
+	OR = {
+		and = {
+			ROOT = { is_ai = no }
+			or = {
+				is_enslaved = yes
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}
+		}
+		and = {
+			ROOT = { 
+				is_ai = yes 
+				resource_stockpile_compare = { resource = energy value < 100 }
+			}
+			planet = { 			
+				num_pops > 70
+				or = {
+					free_jobs < 1
+					free_housing < 1
+				}
+			}
+			or = {
+				is_enslaved = yes
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}
+		}
+	}
+}
+
+# Checks if a pop can be assembled
+# This = Species
+# Root = Planet
+can_species_be_assembled = {
+	is_sapient = yes
+	OR = {
+		AND = {
+			is_robotic = yes
+			root = {
+				check_modifier_value = {
+					modifier = planet_pop_assembly_add
+					value > 0
+				}
+			}
+		}
+		AND = {
+			is_organic_species = yes
+			if = {
+				limit = {
+					root.owner = { is_hive_empire = yes }
+				}
+				has_trait = trait_hive_mind
+			}
+			else_if = {
+				limit = { has_trait = trait_plantoid_budding }
+				root = {
+					any_owned_species = { is_exact_same_species = prevprev }
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						has_trait = trait_clone_soldier_infertile
+						has_trait = trait_clone_soldier_infertile_full_potential
+					}
+				}
+				root = {
+					# Event 'clones.3' should cover this, but extra safety check.
+					has_building = building_clone_army_clone_vat
+					NOT = {
+						check_variable = {
+							which = clone_pops_missing
+							value = 0
+						}
+					}
+				}
+			}
+			else = {
+				root = { 
+					or = {
+						has_building = building_clone_vats 
+						has_building = building_organ_bank
+					}
+				}
+			}
+		}
+	}
+	has_population_control = {
+		value = no
+		country = root.owner
+	}
+}

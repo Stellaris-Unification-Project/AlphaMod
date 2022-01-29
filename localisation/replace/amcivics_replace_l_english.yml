@@ -1,0 +1,12 @@
+﻿l_english:
+ civic_criminal_heritage_desc:0 "This civilization can trace its trade and economic development back to crime syndicates that eventually grew powerful enough to supplant most forms of local government."
+
+ civic_tooltip_citizen_service_effects:4 "£point£ £job_soldier£ §Y$job_soldier_plural$§! also produce §Y2§! £unity£ Unity\n£point£ Start with the £freetech£ §YCentralized Command§! technology\n\n"
+ civic_tooltip_corporate_dominion_effects:4 "£point£ Starts with the £freetech£ §Y$tech_space_trading$§! technology\n£point£ §YUnlocks Ship Type:§! Private Colony Ship\n\n"
+ civic_tooltip_criminal_heritage_effects:3 "£point£ Cannot form §YCommercial Pacts§!\n£point£ Can build §YForeign Offices§! on the planet of any regular empire they have no war or active truce with\n£point£ Crime on §YForeign Office§! Planets increases Foreign Office Value\n£point£ Can build special Crime-increasing £building£ §Y$BRANCH_OFFICE_BUILDINGS$§!\n\n"
+ civic_tooltip_functional_architecture_effects:0 "£point£ Can build £building£ §YUtilitarian Housing Blocks§!\n\n"
+ civic_tooltip_gospel_of_the_masses_effects:1 "£point£ £pop£ §YSpiritualist Pops§! give additional £trade_value£ §Y$TRADE_VALUE$§! on all Planets and Foreign Offices\n£point£ Can build £building£ §Y$building_temple_of_prosperity$§! $BRANCH_OFFICE_BUILDING$\n\n"
+ civic_tooltip_merchant_guilds_effects:1 "£point£ §YCapital Buildings§! provide £job_merchant£ §Y$job_merchant$§! Jobs\n£point£ £job_merchant£ §Y$job_merchant_plural$§! also produce §Y2§! £unity£ Unity\n£point£ Start with the £freetech£ §YOffworld Trade Companies§! technology\n\n"
+ civic_tooltip_police_state_effects:1 "£point£ £job_enforcer §Y$job_enforcer_plural$§! also produce §Y1§! £unity£ Unity\n£point£ Start with the £freetech£ §YPenal Colonies§! technology\n\n"
+ civic_tooltip_private_prospectors_effects:2 "£point£ §HUnlocks Ship Type:§! Private Colony Ship\n£point£ Start with £freetech£ §Y$tech_cryostasis_1$§! tech\n\n"
+ civic_tooltip_warrior_culture_effects:1 "£point£ Start with the £freetech£ §YCentralized Command§! technology\n£point£ Replaces £job_entertainer£ §Y$job_entertainer$§! Jobs with £job_duelist£ §Y$job_duelist$§! jobs. $job_duelist_effect_desc$\n\n"

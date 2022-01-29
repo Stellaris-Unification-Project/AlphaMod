@@ -1,0 +1,134 @@
+building_inner_sanctum = {
+	base_buildtime = 360
+	base_cap_amount = 1
+	category = government
+	icon = building_palace
+	
+	potential = {
+		exists = owner
+		owner = { has_valid_civic = civic_imperial_cult }
+		original_owner = yes
+		is_homeworld = yes
+	}
+	
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { has_valid_civic = civic_imperial_cult }}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 1000
+		}
+		produces = {
+			influence = 0.5
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	
+	planet_modifier = {
+		job_imperial_agent_add = 1
+		job_imperial_agent_per_pop = 0.02
+	}
+}
+
+building_planetary_parliament = {
+	icon = building_palace
+	base_buildtime = 180
+	base_cap_amount = 1
+
+	category = government
+	
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		owner = { has_valid_civic = civic_parliamentary_system }				
+	}
+	
+	allow = {
+		has_upgraded_capital = yes
+	}
+	
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { has_valid_civic = civic_parliamentary_system }}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 250
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+	
+	planet_modifier = {
+		job_politician_add = 1
+		job_politician_per_pop = 0.04
+		pop_cat_worker_political_power = 0.1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				not = { has_valid_civic = civic_shadow_council }
+			}
+		}
+		modifier = {
+			pop_cat_worker_political_power = 0.4
+		}
+	}
+	
+	country_modifier = {
+		pop_factions_produces_mult = 0.01
+	}
+}
+
+building_athenaeum_of_liberty = {
+	icon = building_citadel_of_faith
+	base_buildtime = 360
+	base_cap_amount = 1
+
+	category = unity
+	
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		owner = { has_valid_civic = civic_idealistic_foundation }				
+	}
+	
+	allow = {
+		has_upgraded_capital = yes
+	}
+	
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { has_valid_civic = civic_idealistic_foundation }}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 250
+		}
+		upkeep = {
+			energy = 2
+		}
+		produces = {
+			unity = 3
+		}
+	}
+	
+	planet_modifier = {
+		job_culture_worker_add = 2
+		planet_culture_workers_upkeep_mult = -0.25
+		planet_culture_workers_produces_mult = 0.25
+		pop_ethic_authoritarian_attraction_mult = -0.25
+	}
+}

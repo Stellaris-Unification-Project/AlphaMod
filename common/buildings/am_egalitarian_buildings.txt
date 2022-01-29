@@ -1,0 +1,119 @@
+building_university = {
+	base_buildtime = 360
+	base_cap_amount = 1
+	category = amenity
+	
+	potential = {
+		NOT = { is_planet_class = pc_machine }
+		NOT = { has_modifier = slave_colony }
+		NOT = { has_modifier = penal_colony }
+		not_hostile_planet = yes
+		exists = owner
+		owner = { is_regular_empire = yes }
+		building_slot_not_needed = yes
+	}
+	
+	allow = {
+		hidden_trigger = { exists = owner }
+		owner = {
+			or = {
+				has_policy_flag = state_education_postadult
+				has_policy_flag = state_education_transcendent
+				has_valid_civic = civic_technocracy
+				has_tradition = tr_discovery_polytechnic_education
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { is_regular_empire = no }
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { not = { has_ethic = ethic_fanatic_spiritualist }}
+		}
+		modifier = {
+			job_academic_add = 1
+			planet_jobs_specialist_produces_mult = 0.05
+			pop_ethic_materialist_attraction_mult = 0.1
+			planet_housing_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ethic = ethic_fanatic_materialist }
+		}
+		modifier = {
+			job_student_per_pop = 0.05
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ethic = ethic_materialist }
+		}
+		modifier = {
+			job_student_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ethic = ethic_fanatic_spiritualist }
+		}
+		modifier = {
+			job_priest_add = 1
+			job_academic_add = 1
+			planet_housing_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = state_education_postadult }
+		}
+		modifier = {
+			job_academic_add = 1
+		}
+	}
+	
+	country_modifier = {
+		leaders_cost_mult = -0.01
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 250
+		}
+		cost = {
+			trigger = { 
+				planet = { 
+					exists = owner
+					owner = { is_ai = yes }
+				}
+			}
+			minerals = 250
+		}
+		cost = {
+			trigger = { 
+				planet = { 
+					exists = owner
+					owner = { is_ai = no }
+				}
+			}
+			energy = 100
+			influence = 25
+		}
+		upkeep = {
+			energy = 5
+		}
+	}	
+}

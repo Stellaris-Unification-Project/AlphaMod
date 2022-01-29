@@ -1,0 +1,18 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_front_menu_alphamod_discord"
+		texturefile = "gfx/interface/buttons/main_menu_alphamod_discord.dds"
+	}
+	spriteType = {
+		name = "GFX_front_menu_alphamod_steam"
+		texturefile = "gfx/interface/buttons/main_menu_alphamod_steam.dds"
+	}
+	spriteType = {
+		name = "GFX_alphastrike_logo"
+		texturefile = "gfx/interface/icons/logo_alphastrike.dds"
+	}	
+	spriteType = {
+		name = "GFX_front_menu_smd_discord"
+		texturefile = "gfx/interface/icons/logo_moddingden.dds"
+	}
+}

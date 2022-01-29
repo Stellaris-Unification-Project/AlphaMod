@@ -1,0 +1,95 @@
+tech_am_automated_farming = {
+	area = engineering
+	category = { industry }
+	tier = 1
+	cost = @tier1cost1
+	prerequisites = { "tech_food_processing_1" }
+	weight = @tier1weight1
+	is_rare = yes
+
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 0.01
+			OR = {
+				is_machine_empire = yes
+				is_lithoid_empire = yes
+			}
+			NOR = {
+				has_country_flag = non_lithoid_subspecies
+				has_valid_civic = civic_machine_servitor
+				has_valid_civic = civic_machine_assimilator
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				is_machine_empire = yes
+				is_lithoid_empire = yes
+			}
+		}
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_industry"
+			}
+		}
+		modifier = {
+			factor = 0
+			country_uses_food = no
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_industry"
+			}
+		}
+	}
+}
+
+tech_am_jump_drive = {
+	cost = 500
+	area = engineering
+	tier = 1
+	is_rare = yes
+	is_reverse_engineerable = no
+	category = { voidcraft }	
+	weight = 0
+	
+	potential = {
+		has_origin = origin_jumpstart
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+
+tech_am_hyperlane_generation = {
+	cost = 0
+	area = physics
+	tier = 1
+	is_rare = yes
+	is_reverse_engineerable = no
+	category = { voidcraft }	
+	weight = 0
+	
+	potential = {
+		has_origin = origin_isolated
+	}
+	
+	modifier = {
+		science_ship_survey_speed = 0.1
+		ship_sensor_range_add = 1
+		ship_hyperlane_range_add = 2
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}

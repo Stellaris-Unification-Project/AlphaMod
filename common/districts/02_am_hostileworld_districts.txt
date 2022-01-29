@@ -1,0 +1,533 @@
+district_utility_domes = {
+	base_buildtime = 180
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		exists = from
+		from = { is_gestalt = no }
+		uses_district_set = hostile
+	}
+	
+	potential = {
+		exists = owner
+		owner = { is_gestalt = no }
+		uses_district_set = hostile
+	}
+	
+	allow = {
+		or = {
+			not = { exists = owner }
+			owner = { is_ai = no }
+			and = {
+				owner = { 
+					is_ai = yes 
+					has_monthly_income = { resource = consumer_goods value > 0 }
+				}
+				free_jobs < 5
+				planet_devastation < 5
+				num_districts = { type = district_utility_domes value < 4 }
+				num_districts = { type = district_habitation_dome value > 0 }
+			}
+		}
+	}
+
+	conversion_ratio = 1
+	convert_to = { 
+		district_parish
+		district_warrior_house
+		district_labour_camp
+		district_markettowns
+		district_securityzone
+		district_local_network
+		district_wildnest
+		district_community
+	}	
+	
+	resources = {
+		category = planet_districts
+		cost = { minerals = 250 }
+		upkeep = {
+			energy = 1
+		}
+		produces = {
+			sr_waste = 1
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 3
+		job_healthcare_add = 1
+		job_clerk_add = 1
+		job_entertainer_add = 1
+		planet_max_buildings_add = 1
+	}
+
+	ai_resource_production = {
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_generator_dome = {
+	base_buildtime = 180
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		or = {
+			uses_district_set = hostile
+			from = { has_valid_civic = civic_children_of_the_atom }
+		}
+	}
+	
+	potential = {
+		exists = owner
+		or = {
+			uses_district_set = hostile
+			owner = { has_valid_civic = civic_children_of_the_atom } 
+		}
+		or = {
+			good_for_energy = no
+			owner = { has_valid_civic = civic_children_of_the_atom }
+		}
+	}
+	
+	allow = {
+		or = {
+			not = { exists = owner }
+			owner = { is_ai = no }
+			and = {
+				owner = { 
+					is_ai = yes 
+					has_monthly_income = { resource = sr_actinides value > 1 }
+					has_monthly_income = { resource = sr_ice value > 1 }
+					has_monthly_income = { resource = energy value < 250 }
+				}
+				free_jobs < 5
+				planet_devastation < 5
+				num_districts = { type = district_utility_domes value > 0 }
+				num_districts = { type = district_habitation_dome value > 0 }
+				num_districts = { type = district_generator_dome value < 4 }
+			}
+		}
+	}
+	
+	#conversion_ratio = 1
+	#convert_to = { 
+	#	district_generator
+	#	district_generator_uncapped
+	#}
+	
+	resources = {
+		category = planet_districts
+		cost = { minerals = 250 }
+		produces = {
+			energy = 4
+			sr_waste = 10
+		}
+		upkeep = {
+			trigger = { 
+				exists = owner
+				owner = {
+					resource_stockpile_compare = {
+						resource = sr_ice
+						value >= 1
+					}
+				}
+			}
+			sr_ice = 1
+		}
+		upkeep = {
+			trigger = { 
+				exists = owner
+				owner = {
+					resource_stockpile_compare = {
+						resource = sr_ice
+						value < 1
+					}
+				}
+			}
+			minerals = 1
+		}		
+		upkeep = {
+			trigger = { 
+				exists = owner
+				owner = {
+					resource_stockpile_compare = {
+						resource = sr_actinides
+						value >= 1
+					}
+				}
+			}
+			sr_actinides = 1
+		}
+		upkeep = {
+			trigger = { 
+				exists = owner
+				owner = {
+					resource_stockpile_compare = {
+						resource = sr_actinides
+						value < 1
+					}
+				}
+			}
+			minerals = 2
+		}	
+	}	
+	
+	planet_modifier = {
+		planet_housing_add = 2
+		planet_max_buildings_add = 1
+	}	
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_actinides_utiliser_drone_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_actinides_utiliser_drone_add = 2
+		}
+	}	
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		modifier = {
+			job_actinides_utiliser_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_fe_acolyte_generator_add = 2
+		}
+	}
+
+	ai_resource_production = {
+		energy = 2
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_toxin_refinery = {
+	base_buildtime = 360
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		exists = from
+		or = {
+			is_planet_class = pc_toxic_habitable
+			is_planet_class = pc_gas_giant_habitable
+			has_planet_flag = pf_retain_toxic_refinery
+		}
+	}
+	
+	potential = {
+		exists = owner
+		or = {
+			is_planet_class = pc_toxic_habitable
+			is_planet_class = pc_gas_giant_habitable
+			has_planet_flag = pf_retain_toxic_refinery
+		}
+	}
+
+	allow = {
+		or = {
+			not = { exists = owner }
+			owner = {
+				is_ai = no 
+				has_technology = tech_exotic_gases
+			}
+			and = {
+				owner = { 
+					is_ai = yes 
+					has_monthly_income = { resource = energy value > 0 }
+					has_technology = tech_exotic_gases
+				}
+				free_jobs < 5
+				planet_devastation < 5
+				num_districts = { type = district_utility_domes value > 0 }
+				num_districts = { type = district_habitation_dome value > 0 }
+			}
+		}
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = { minerals = 250 }
+		upkeep = {
+			energy = 3
+		}
+		produces = {
+			sr_waste = 25
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 3
+		planet_max_buildings_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }					
+		}
+		modifier = {
+			job_gas_extractor_add = 1
+			job_gas_refiner_add = 1
+			job_biomass_processor_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }					
+		}
+		modifier = {
+			job_gas_refiner_drone_add = 1
+			job_gas_extraction_drone_add = 1
+			job_biomass_processor_drone_add = 1
+		}
+	}
+
+	ai_resource_production = {
+		sr_biomass = 1
+		exotic_gases = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_molten_refinery = {
+	base_buildtime = 360
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		exists = from
+		or = {
+			is_planet_class = pc_molten_habitable
+			has_planet_flag = pf_retain_molten_refinery
+		}
+	}
+	
+	potential = {
+		exists = owner
+		or = {
+			is_planet_class = pc_molten_habitable
+			has_planet_flag = pf_retain_molten_refinery
+		}
+	}
+	
+	allow = {
+		or = {
+			not = { exists = owner }
+			owner = { 
+				is_ai = no 
+				has_technology = tech_volatile_motes
+			}
+			and = {
+				owner = { 
+					is_ai = yes 
+					has_monthly_income = { resource = energy value > 0 }
+					has_technology = tech_volatile_motes
+				}
+				free_jobs < 5
+				planet_devastation < 5
+				num_districts = { type = district_utility_domes value > 0 }
+				num_districts = { type = district_habitation_dome value > 0 }
+			}
+		}
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = { minerals = 250 }
+		upkeep = {
+			energy = 3
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 3
+		planet_max_buildings_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }					
+		}
+		modifier = {
+			job_mote_harvester_add = 1
+			job_chemist_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }					
+		}
+		modifier = {
+			job_chemist_drone_add = 1
+			job_mote_harvesting_drone_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_alloy_drone_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_fabricator_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_foundry_add = 1
+		}
+	}
+
+	ai_resource_production = {
+		alloys = 1
+		volatile_motes = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_frozen_refinery = {
+	base_buildtime = 360
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		exists = from
+		or = {
+			is_planet_class = pc_frozen_habitable
+			is_planet_class = pc_ice_asteroid_habitable
+			has_planet_flag = pf_retain_frozen_refinery
+		}
+	}
+	
+	potential = {
+		exists = owner
+		or = {
+			is_planet_class = pc_frozen_habitable
+			is_planet_class = pc_ice_asteroid_habitable
+			has_planet_flag = pf_retain_frozen_refinery
+		}
+	}
+
+	allow = {
+		or = {
+			not = { exists = owner }
+			owner = { 
+				is_ai = no 
+				has_technology = tech_rare_crystals			
+			}
+			and = {
+				owner = { 
+					is_ai = yes 
+					has_monthly_income = { resource = energy value > 0 }
+					has_technology = tech_rare_crystals
+				}
+				free_jobs < 5
+				planet_devastation < 5
+				num_districts = { type = district_utility_domes value > 0 }
+				num_districts = { type = district_habitation_dome value > 0 }
+			}
+		}
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = { minerals = 250 }
+		upkeep = {
+			energy = 3
+		}
+		produces = {
+			sr_ice = 2
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 3
+		planet_max_buildings_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }					
+		}
+		modifier = {
+			job_translucer_add = 1
+			job_crystal_miner_add = 1
+			job_water_processor_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }					
+		}
+		modifier = {
+			job_translucer_drone_add = 1
+			job_crystal_mining_drone_add = 1
+			job_water_processor_drone_add = 1
+		}
+	}
+
+	ai_resource_production = {
+		sr_ice = 2
+		rare_crystals = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

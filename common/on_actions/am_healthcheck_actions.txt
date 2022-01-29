@@ -1,0 +1,15 @@
+on_monthly_pulse_country = {
+	events = {
+		aihealthcheck.8
+		aihealthcheck.9
+		stateoflies.5
+		stateoflies.6
+		stateoflies.10
+	}
+}
+
+on_yearly_pulse_country = {
+	events = {
+		aihealthcheck.10
+	}
+}

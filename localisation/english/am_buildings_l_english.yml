@@ -1,0 +1,266 @@
+﻿l_english: 
+ # BUILDINGS 
+ building_athenaeum_of_liberty: "Athenaeum of Liberty"
+ building_athenaeum_of_liberty_desc: "A temple of sorts to the ideals the empire was built upon. This building contains a voluminous library of legislative and historical documents. It serves as the center of political discourse and teaching on this planet."
+ 
+ building_automated_alloyforge: "Auto Forge"
+ building_automated_alloyforge_desc: "No jobs here."
+ 
+ building_auto_goodsfactory: "Auto Factory"
+ building_auto_goodsfactory_desc: "No jobs here."
+
+ building_commercial_zone_alt:0 "Commercial Estates"
+ building_commercial_zone_alt_desc:0 "These commercial zones are home to towering office buildings and business complexes."
+ building_commercial_megaplex_alt:0 "Commercial Hubs"
+ building_commercial_megaplex_alt_desc:0 "Great commercial spires and towers rising up towards the sky, blotting out the light."
+ 
+ building_empath_peace_mission: "Peace Mission"
+ building_empath_peace_mission_desc: "Bringing empathy and aid."
+ building_empath_peacekeeping_agency: "Peacekeeping Agency"
+ building_empath_peacekeeping_agency_desc: "Providing assistance with law enforcement and security."
+ 
+ building_merchanttrade_centre: "Surplus Reseller"
+ building_merchanttrade_centre_desc: "Surplus fuels and biomass are gathered, stored and then sold by this facility to the private sector."
+ 
+ building_organ_bank: "Organ Bank"
+ building_organ_bank_desc: "Utilising the latest advances in cloning."
+ 
+ building_transport_hub: "Transport Hub"
+ building_transport_hub_desc: "Providing public transport across the colony."
+
+ building_foundry_estate: "Foundry Estate"
+ building_foundry_estate_desc: "Extended alloys production." 
+ 
+ building_factory_estate: "Factory Estate"
+ building_factory_estate_desc: "Extended goods production." 
+ 
+ building_food_bank: "Food Bank"
+ building_food_bank_desc: "Emergency provisions to deal with food shortages." 
+ 
+ building_goods_bank: "Relief Center"
+ building_goods_bank_desc: "Emergency supplies to deal with goods shortages."
+ 
+ building_hatching_forge: "Hatching Forge"
+ building_hatching_forge_desc: "Enormous pods full of metallic alloy sap are grown here."
+ building_hatching_forge_2: "Hyper Hatching Forges"
+ building_hatching_forge_2_desc: "A cluster of enormous pods full of grown metallic alloy sap. Volatile Motes are used to accelerate the production process."
+ 
+ building_ice_distributor: "Ice Distributor"
+ building_ice_distributor_desc: "This facility serves as the link between the massive offworld tankers that bring ice from the corporate supplier and the various planetside projects that utilize that water."
+ building_inner_sanctum: "Inner Sanctum"
+ building_inner_sanctum_desc: "The beating heart of Our Will, this temple holds the Initiate Quarters, where aspiring agents are indoctrinated; the Imperial Inquisition, where all threats to the Imperial Will are assessed and pursued; the Grand Archive of Imperial History, to assist investigations; and the Marvelous Court, the holiest of chambers, where the elite few are allowed into Our Imperial Presence."
+ 
+ building_mineral_replication_hub: "Minerals Replication Hub"
+ building_mineral_replication_hub_desc: "Purification of minerals, and replication thanks to the awesome power of Dark Matter."
+ 
+ building_planetary_parliament: "Planetary Parliament"
+ building_planetary_parliament_desc: "A building dedicated to providing planetwide democratic representation to the populace."
+ 
+ building_shanty: "Shanty Town"
+ building_shanty_desc: "Very basic housing, hopefully temporary."
+ 
+ building_temp_agency: "Temp Agency"
+ building_temp_agency_desc: "Local employers come here looking to hire the galaxy's cheapest contract workers."
+ 
+ building_utilitarian_arcology: "Utilitarian Housing Arcology"
+ building_utilitarian_arcology_desc: "Our society has learned that most sentient beings need relatively little space to live a productive life: this arcology design is proof of that concept. Work is only a few semi-functional, dirty, and packed-full elevator rides away from home. For the sake of efficiency, we have included one public bathroom and a communal kitchen on every other floor."
+ building_utilitarian_arcology_large: "Efficient Housing Arcology"
+ building_utilitarian_arcology_large_desc: "We have taken the science of living efficiency to its furthest conclusion: work is only a cramped elevator ride away from home. Although our arcologies resemble nothing so much as a heap of apartments and offices reaching into the upper atmosphere, we are comfortable with the reduction of wasteful urban sprawl we have achieved."
+
+ building_military_academy_alt: "Recruitment Center"
+ building_military_academy_alt_desc: "Recruiting and training military personnel."
+ building_planetary_shield_generator_alt: "Atmospheric Control"
+ building_planetary_shield_generator_alt_desc: "Further uses of planetary shield generation to provide better atmospheric conditions."
+ 
+ building_auto_farm: "Automated Farms"
+ building_auto_farm_desc: "All done by machines. No jobs here."
+ building_auto_generator: "Automated Generators"
+ building_auto_generator_desc: "All done by machines. No jobs here."
+ building_auto_mine: "Automated Mines"
+ building_auto_mine_desc: "All done by machines. No jobs here."
+ building_actinides_mine: "Actinides Mine"
+ building_actinides_mine_desc: "Obtains actinides from a deposit."
+ building_advanced_shuttleport: "Trade Port"
+ building_advanced_shuttleport_desc: "A busy planet-side port increases trade load and traffic between the planet and the system's starbase."
+ building_altalloys_producer: "Alt-Alloys Factory"
+ building_altalloys_producer_desc: "Rare crystals and intelligent plastics are combined to produce an alternative to standard minerals-based alloys."
+ building_atmos_gen: "Atmo Generator"
+ building_atmos_gen_desc: "This massive machine creates a breathable atmosphere for miles around it.\n\n§YThis building cannot be demolished§!"
+ 
+ building_basic_quarters: "Quarters"
+ building_basic_quarters_desc: "Additional accommodations. Very cramped. Minimal home comforts."
+ building_biofuels_processing_1: "Plastics Factory"
+ building_biofuels_processing_1_desc: "This industry converts biomass and natural fuels into advanced plastics, and energy as a by-product of waste-processing."
+ building_biofuels_processing_2: "Plastics Refinery"
+ building_biofuels_processing_2_desc: "This industry converts biomass and natural fuels into advanced plastics, and energy as a by-product of waste-processing."
+ building_biomass_architect: "Biomass Architect"
+ building_biomass_architect_desc: "Specialists re-purpose biomass for use in varied manufacturing."
+ building_biomass_furnace: "Biomass Furnace"
+ building_biomass_furnace_desc: "Biomass is used as a fuel for producing energy in this hot and noisy facility."
+ building_biomass_sourcer: "Biomass Collector"
+ building_biomass_sourcer_desc: "An industrial facility that sources biomass."
+ 
+ building_catalytic_processing_plant: "Catalytic Processor"
+ building_catalytic_processing_plant_desc: "Converts precious stones and minerals into rare resources, which depending on advances in technology."
+ building_chamberofexecutives:0 "Chamber of Executives"
+ building_chamberofexecutives_desc:1 "A board of powerful business executives provide important services and more delegation of enactment of government policy."
+ building_comms_array: "Comms Array"
+ building_comms_array_desc: "This massive complex handles all communications between the planet and other colonies, and increases the overall logistics of the empire for managing fleet actions."
+ building_adv_comms_array: "Advanced Comms Array"
+ building_adv_comms_array_desc: "This massive complex handles all communications between the planet and other colonies, and increases the overall logistics of the empire for managing fleet actions. Upgraded databanks and transceivers provide even more connectivity."
+ building_control_centre: "Control Centre"
+ building_control_centre_desc: "Colony operations are co-ordinated from this facility."
+ building_control_centre_major: "Upgraded Control Centre"
+ building_control_centre_major_desc: "Colony operations are co-ordinated from this facility."
+ building_councilhall:0 "Council Halls"
+ building_councilhall_desc:1 "Local councils provide important services and more delegation of enactment of government policy."
+ 
+ building_factory_4: "AI Auto Factory"
+ building_factory_4_desc: "Minerals will become consumer goods. No labour by autonomous units necessary."
+ 
+ building_food_bank: "Food Bank"
+ building_food_bank_desc: "Emergency provisions to deal with food shortages."
+ 
+ building_goods_bank: "Relief Center"
+ building_goods_bank_desc: "Emergency supplies to deal with goods shortages."
+ 
+ building_luxury_market: "Luxury Market"
+ building_luxury_market_desc: "Converting rare metals and precious stones into luxury items, and producing a steady stream of wealth."
+ 
+ building_materials_lab: "Materials Lab"
+ building_materials_lab_desc: "Studying advanced materials creation from rare metals and then producing them."
+ building_biochemicals_lab: "Biochemicals Lab"
+ building_biochemicals_lab_desc: "Studying rare biological and chemical matters and their application."
+ 
+ building_resource_silo_2:0 "Resource Depots"
+ building_resource_silo_2_desc:0 "Massive resource silos and storage facilities where large quantities of resources can be safely kept."
+ building_resource_silo_3:0 "Resource Vaults"
+ building_resource_silo_3_desc:0 "Massive resource silos and storage facilities where large quantities of resources can be safely kept."
+
+ building_shanty: "Shanty Town"
+ building_shanty_desc: "Very basic housing, hopefully temporary."
+ 
+ building_traditional_farm: "Traditional Farms"
+ building_traditional_farm_desc: "Farming the old fashioned way, without agricultural industrialisation and the mass processing."
+
+ building_starbase_relay: "Relay Center"
+ building_starbase_relay_desc: "This facility is dedicated to handling starbase-colony-starbase communications, linked with the empire wide comm-net through the comms array."
+ 
+ building_desalinator: "Desalination Plant"
+ building_desalinator_desc: "This large mechanised industry separates salt from water."
+ 
+ building_electronics_producer: "Systems Factory"
+ building_electronics_producer_desc: "This facility produces complex components for special equipment and goods." 
+ building_energy_consortium:0 "Energy Consortium"
+ building_energy_consortium_desc:0 "A group of businesses working together to provide additional energy operations and trade."
+ 
+ building_family_planning: "Family Clinic"
+ building_family_planning_desc: "The priority on a new colony should always be promoting propogation."
+ building_food_retailer:0 "Food Retailer"
+ building_food_retailer_desc:1 "A large business producing and then selling food for profit."
+ building_fuel_sourcer: "Fuels Extractor"
+ building_fuel_sourcer_desc: "An industrial platform that obtains natural fuels."
+ building_fuels_power_plant: "Fuels Plant"
+ building_fuels_power_plant_desc: "Natural fuels are consumed to produce energy and lots of smoke in this industrial facility."
+ 
+ building_geothermal_tap: "Geothermal Tap"
+ building_geothermal_tap_desc: "A facility that collects, stores and distributes geothermal energy."
+ building_governerspalace:0 "Governers Palace"
+ building_governerspalace_desc:1 "A delegation of subservient nobles provide important services and more enactments of government policy."
+
+ building_hallofwarriors:0 "Hall of Warriors"
+ building_hallofwarriors_desc:1 "A council of veteran warlords provide important services and more delegation of enactment of government policy." 
+ building_hydro_plant: "Hydro Plant"
+ building_hydro_plant_desc: "A facility designed to use water flow to produce energy."
+ building_hypermall:0 "Hypermall"
+ building_hypermall_desc:1 "Various commercial industries producing everything and then selling everything for profit, all under one roof."
+ 
+ building_ice_importer: "Ice Processor"
+ building_ice_importer_desc: "This facility increases water availability and distribution across the planet and produces ice for export."
+ building_immigration_center: "Immigration Center"
+ building_immigration_center_desc: "A new colony must promote immigration and provide for the influx of pioneers."
+ 
+ building_job_center: "Job Center"
+ building_job_center_desc: "Unemployment is not a lifestyle option."
+ 
+ building_libraryofadministration:0 "Library of Administrators"
+ building_libraryofadministration_desc:1 "A directorate of senior administrators provide important services and more delegation of enactment of government policy."
+ 
+ building_mineral_replication_hub: "Minerals Replicator"
+ building_mineral_replication_hub_desc: "Purification of minerals, and replication thanks to the awesome power of Dark Matter."
+ 
+ building_mega_foundry: "Mega Foundry"
+ building_mega_foundry_desc: "A massive plant for mass-producing alloys."
+ building_mining_consortium:0 "Mining Consortium"
+ building_mining_consortium_desc:0 "A group of businesses working together to provide additional mining operations and minerals trade."
+ 
+ building_moisture_farm: "Moisture Farms"
+ building_moisture_farm_desc: "Extracting water from the atmosphere."
+ building_moisture_farm_2: "Intensive Moisture Farms"
+ building_moisture_farm_2_desc: "Extracting water from the atmosphere. Now with expansive underground reservoirs."
+ 
+ building_nuclear_plant: "Fission Plant"
+ building_nuclear_plant_desc: "Nuclear energy."
+ building_nuclear_plant_2: "Fusion Plant"
+ building_nuclear_plant_2_desc: "Efficient nuclear energy."
+ building_nuclear_plant_3: "Cold Fusion Plant"
+ building_nuclear_plant_3_desc: "Clean nuclear energy."
+ 
+ building_nutrient_resequencer: "Nutrient Resequencer"
+ building_nutrient_resequencer_desc: "Convert biomass and waste into edible matter."
+ 
+ building_paradise_citydomes: "Paradise City"
+ building_paradise_citydomes_desc: "Paradise Domes merged and expanded."
+ building_processedgoods_producer: "Goods Factory"
+ building_processedgoods_producer_desc: "Processed goods are consumer goods that require no minerals to produce. This facility makes use of advanced plastics and basic foodstuffs to produce them instead."
+ building_processedgoods_producer_2: "Goods Complex"
+ building_processedgoods_producer_2_desc: "Processed goods are consumer goods that require no minerals to produce. This facility makes use of advanced plastics, basic foodstuffs and rare crystals to produce them instead."
+ 
+ building_reservoir: "Reservoir"
+ building_reservoir_desc: "A large artificial lake used as a source of water supply."
+ 
+ building_solar_power_plant: "Solar Plant"
+ building_solar_power_plant_desc: "Massive arrays of solar panels that track the sun."
+ building_state_agency: "State Agency"
+ building_state_agency_desc: "You will be gainfully employed by the state or else."
+ 
+ building_templeofrule:0 "Temple of Rule"
+ building_templeofrule_desc:1 "An order of high clergy provide important services and more delegation of enactment of government policy."
+ building_traditional_entertainments_park: "Traditional Entertainments"
+ building_traditional_entertainments_park_desc: "Basic amusements and entertainments that never go out of fashion."
+ 
+ building_university:0 "University"
+ building_university_desc:1 "An academic institution dedicated to improving minds and skills, and producing future leaders."
+ 
+ building_vertical_farms: "Vertical Farms"
+ building_vertical_farms_desc: "Towers of hydroponic bays."
+
+ building_water_excavator: "Water Excavator"
+ building_water_excavator_desc: "A giant well that gets lots of water out of the ground."
+ 
+ building_gas_recycler: "Gas Recycler"
+ building_gas_recycler_desc: "This facility recycles exotic gases."
+ building_chemical_recycler: "Chemical Recycler"
+ building_chemical_recycler_desc: "This facility recycles chemicals and volatile motes."
+ building_crystal_purifier: "Crystal Purifier"
+ building_crystal_purifier_desc: "This facility processes and purifies rare crystals."
+
+ # PLANET FEATURE MODIFIERS
+ mod_building_actinides_mine_max: "Max Actinides Mines"
+ mod_building_biomass_sourcer_max: "Max Biomass Collectors"
+ mod_building_desalinator_max: "Max Desalination Plants"
+ mod_building_fuel_sourcer_max: "Max Natural Fuels Extractors"
+ mod_building_geothermal_tap_max: "Max Geothermal Taps"
+ mod_building_hydro_plant_max: "Max Hydro Plants"
+ mod_building_ice_processor_max: "Max Ice Importers"
+ mod_building_reservoir_max: "Max Reservoirs"
+ mod_building_solar_power_plant_max: "Max Solar Power Plants"
+ mod_building_water_excavator_max: "Max Water Excavators"
+ 
+ # EVENTS
+ amfeatureevents.11.name: "Reactor Leak!"
+ amfeatureevents.11.desc: "A worrying report has been received from a colony of a fault in a nuclear reactor resulting in a dangerous radiation leak. Authorities have so far managed to conceal the problem from the population, but are concerned about possible deaths from the radiation and panic that may result from the source being discovered."
+ amfeatureevents.11.option.a: "Reveal the truth and retire the facility."
+ amfeatureevents.11.option.b: "Reveal the truth and overhaul the facility."
+ amfeatureevents.11.option.c: "Bury the truth and fix the reactor."
+ amfeatureevents.11.option.d: "Bury the truth and keep that reactor running!"

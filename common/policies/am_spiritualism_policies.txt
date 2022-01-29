@@ -1,0 +1,197 @@
+alp_spiritual_belief = {
+	potential = {
+		NOT = { has_ethic = "ethic_gestalt_consciousness" }
+	}
+	
+	option = {
+		name = "alp_belief_atheism"
+		
+		policy_flags = {
+			alp_belief_atheism
+		}
+		
+		potential = {
+			NOT = { has_ethic = "ethic_fanatic_spiritualist" }
+			NOT = { has_ethic = "ethic_spiritualist" }
+			NOT = { has_policy_flag = religious_freedom_promoted }			
+		}
+		
+		modifier = {
+			pop_ethic_spiritualist_attraction_mult = -0.1
+		}
+		
+		ai_weight = {
+			weight = 2
+			modifier = {
+				weight = 100
+				or = {
+					has_ethic = ethic_fanatic_materialist
+					has_policy_flag = religious_freedom_ban
+				}
+				nor = {
+					has_ethic = ethic_spiritualist
+					has_ethic = ethic_fanatic_spiritualist
+					has_policy_flag = religious_freedom_promoted
+					has_policy_flag = religious_freedom_tolerance
+				}
+			}	
+		}
+	}
+	
+	option = {
+		name = "alp_belief_polytheism"
+		
+		policy_flags = {
+			alp_belief_polytheism
+		}
+		
+		potential = {
+			NOT = { has_ethic = "ethic_fanatic_authoritarian" }
+			NOT = { has_ethic = "ethic_authoritarian" }
+		}
+		
+		modifier = {
+			pop_ethic_egalitarian_attraction_mult = 0.1
+		}
+		
+		ai_weight = {
+			weight = 10
+		}
+	}
+	
+	option = {
+		name = "alp_belief_monotheism"
+		
+		policy_flags = {
+			alp_belief_monotheism
+		}
+		
+		potential = {
+			NOT = { has_ethic = "ethic_fanatic_materialist" }	
+			NOT = { has_ethic = "ethic_materialist" }			
+		}
+		
+		modifier = {
+			pop_ethic_spiritualist_attraction_mult = 0.1
+		}
+		
+		ai_weight = {
+			weight = 15
+		}
+	}
+	
+	option = {
+		name = "alp_belief_animism"
+		
+		policy_flags = {
+			alp_belief_animism
+		}
+		
+		potential = {
+			NOT = { has_ethic = "ethic_fanatic_xenophobe" }
+			NOT = { has_ethic = "ethic_xenophobe" }
+			NOT = { has_ethic = "ethic_materialist" }			
+		}
+		
+		modifier = {
+			pop_ethic_xenophile_attraction_mult = 0.1
+		}
+		
+		ai_weight = {
+			weight = 5
+		}
+	}
+	
+	option = {
+		name = "alp_belief_totemism"
+		
+		policy_flags = {
+			alp_belief_totemism
+		}
+		
+		potential = {
+			NOT = { has_ethic = "ethic_fanatic_authoritarian" }
+			NOT = { has_ethic = "ethic_authoritarian" }
+		}
+		
+		modifier = {
+			pop_ethic_egalitarian_attraction_mult = 0.1
+		}
+		
+		ai_weight = {
+			weight = 10
+		}
+	}
+	
+	option = {
+		name = "alp_belief_collective"
+		
+		policy_flags = {
+			alp_belief_collective
+		}
+		
+		potential = {
+			NOT = { has_ethic = "ethic_fanatic_xenophile" }
+			NOT = { has_ethic = "ethic_xenophile" }
+			NOT = { has_policy_flag = religious_freedom_promoted }
+		}
+		
+		modifier = {
+			pop_ethic_xenophile_attraction_mult = -0.1
+		}
+		
+		ai_weight = {
+			weight = 10
+		}
+	}
+	
+	option = {
+		name = "alp_belief_diversity"
+		
+		policy_flags = {
+			alp_belief_diversity
+		}
+		
+		potential = {
+			NOT = { has_ethic = "ethic_fanatic_xenophobe" }
+			NOT = { has_ethic = "ethic_xenophobe" }
+			NOT = { has_policy_flag = religious_freedom_onetrue }
+			NOT = { has_policy_flag = religious_freedom_secular }
+		}
+		
+		modifier = {
+			pop_ethic_xenophile_attraction_mult = 0.1
+		}
+		
+		ai_weight = {
+			weight = 10
+		}
+	}
+	
+	option = {
+		name = "alp_belief_deification"
+		
+		policy_flags = {
+			alp_belief_deification
+		}
+		
+		potential = {
+			NOT = { has_ethic = "ethic_fanatic_xenophile" }
+			NOT = { has_policy_flag = religious_freedom_promoted }
+			NOT = { has_policy_flag = religious_freedom_tolerance }
+			NOT = { has_ethic = "ethic_materialist" }
+			or = {
+				has_authority = auth_imperial
+				has_authority = auth_dictatorial
+			}
+		}
+		
+		modifier = {
+			ruler_skill_levels = 1
+		}
+		
+		ai_weight = {
+			weight = 20
+		}
+	}
+}

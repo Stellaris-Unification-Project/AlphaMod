@@ -1,0 +1,280 @@
+building_automated_alloyforge = {
+	base_buildtime = 180
+	base_cap_amount = 3
+	category = manufacturing
+	
+	prerequisites = {
+		tech_alloys_2
+	}
+	
+	allow = {
+		hidden_trigger = {
+			exists = owner
+			or = {
+				owner = { is_ai = no }
+				and = {
+					owner = { 
+						is_ai = yes 
+						has_monthly_income = { resource = minerals value > 49 }
+						has_monthly_income = { resource = alloys value < 200 }
+					}
+					free_housing > 1
+					free_jobs > 5
+				}
+			}
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 200
+		}
+		upkeep = {
+			energy = 1
+			minerals = 4
+		}
+		produces = {
+			alloys = 3
+		}
+	}
+	
+	ai_resource_production = {
+		alloys = 2
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_auto_goodsfactory = {
+	base_buildtime = 180
+	base_cap_amount = 3
+	category = manufacturing
+	
+	prerequisites = {
+		tech_luxuries_2
+	}
+	
+	potential = {
+		exists = owner
+		owner = { country_uses_consumer_goods = yes }
+	}
+	
+	allow = {
+		hidden_trigger = {
+			exists = owner
+			or = {
+				owner = {
+					is_ai = no 
+					country_uses_consumer_goods = yes
+				}
+				and = {
+					owner = { 
+						is_ai = yes
+						has_monthly_income = { resource = minerals value > 19 }	
+						has_monthly_income = { resource = consumer_goods value < 250 }
+						country_uses_consumer_goods = yes
+					}
+					free_housing > 1
+					free_jobs > 5
+				}
+			}
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 200
+		}
+		upkeep = {
+			energy = 1
+			minerals = 4
+		}
+		produces = {
+			consumer_goods = 6
+		}
+	}
+	
+	ai_resource_production = {
+		consumer_goods = 2
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_auto_mine = {
+	icon = building_private_mining_consortium
+	base_buildtime = 180
+	base_cap_amount = 5
+	category = resource
+	
+	prerequisites = {
+		"tech_mineral_purification_1"
+	}
+	
+	potential = {
+		habitable_structure = no
+		NOT = { is_planet_class = pc_machine }
+		NOT = { has_modifier = resort_colony }
+		exists = owner
+	}
+	
+	allow = {
+		hidden_trigger = {
+			exists = owner
+			or = {
+				owner = { is_ai = no }
+				and = {
+					owner = { 
+						is_ai = yes 
+						has_monthly_income = { resource = minerals value < 250 }
+					}
+					free_housing > 1
+					free_jobs > 5
+				}
+			}
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 150
+		}
+		upkeep = {
+			energy = 1
+		}
+		produces = {
+			sr_waste = 2
+			minerals = 3
+			sr_natural_fuels = 1
+		}
+	}
+	
+	ai_resource_production = {
+		minerals = 2
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_auto_generator = {
+	base_buildtime = 180
+	icon = building_power_plant
+	base_cap_amount = 5
+	category = resource
+	
+	prerequisites = {
+		"tech_power_plant_2"
+	}
+	
+	potential = {
+		NOT = { has_modifier = resort_colony }
+		exists = owner
+	}
+	
+	allow = {
+		hidden_trigger = {
+			exists = owner	
+			or = {
+				owner = { is_ai = no }
+				and = {
+					owner = { 
+						is_ai = yes 
+						has_monthly_income = { resource = energy value < 250 }
+					}
+					free_housing > 1
+					free_jobs > 5
+				}
+			}
+		}
+		owner = { has_monthly_income = { resource = sr_natural_fuels value > 0 }}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 150
+		}
+		upkeep = {
+			sr_natural_fuels = 1
+		}
+		produces = {
+			sr_waste = 2
+			energy = 3
+		}
+	}
+	
+	ai_resource_production = {
+		energy = 2
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_auto_farm = {
+	base_buildtime = 180
+	base_cap_amount = 5
+	category = resource
+	
+	prerequisites = {
+		"tech_am_automated_farming"
+	}
+	
+	potential = {
+		habitable_structure = no
+		NOT = { is_planet_class = pc_machine }
+		NOT = { has_modifier = resort_colony }
+		exists = owner
+		owner = { 
+			is_regular_empire = yes 
+			country_uses_food = yes
+		}
+	}
+	
+	allow = {
+		hidden_trigger = {
+			exists = owner	
+			or = {
+				owner = { is_ai = no }
+				and = {
+					owner = { 
+						is_ai = yes 
+						has_monthly_income = { resource = food value < 200 }
+					}
+					free_housing > 1
+					free_jobs > 5
+				}
+			}
+		}
+		owner = { has_monthly_income = { resource = sr_ice value > 0 }}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 150
+		}
+		upkeep = {
+			sr_ice = 1
+		}
+		produces = {
+			sr_waste = 2
+			food = 4
+			sr_biomass = 2
+		}
+	}
+	
+	ai_resource_production = {
+		food = 1
+		sr_biomass = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

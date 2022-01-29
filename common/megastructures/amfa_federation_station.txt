@@ -1,0 +1,124 @@
+federation_trade_superstructure = {
+	entity = "construction_platform_small_entity"
+	construction_entity = "construction_platform_small_entity"
+	portrait = "GFX_fedtradegate_background"
+	entity_offset = { x = -20 y = -20 }
+	rotate_to_center = no
+	scale_offset = yes
+	place_entity_on_planet_plane = no
+	show_galactic_map_icon = yes
+	
+	build_time = 720
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 1000
+			sr_wealth = 1000
+			influence = 50
+		}
+		produces = {
+			sr_wealth = 5
+			unity = 5
+		}
+		upkeep = {
+			energy = 10
+		}
+	}
+
+	potential = {
+		has_federation = yes
+		is_regular_empire = yes
+		is_country_type = default
+		has_technology = tech_space_trading
+	}
+	
+	possible = {
+		exists = starbase
+		#custom_tooltip = {
+		#	fail_text = "requires_starbase_with_fedtrade"
+			starbase = {
+				has_starbase_building = foreign_trading_company
+			}
+		#}
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}		
+		custom_tooltip = {
+			fail_text = "requires_surveyed_system"
+			NOT = {
+				any_system_planet = {
+					is_surveyed = {
+						who = prev.from
+						status = no
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_no_binary_trinary"
+			NOR = {
+				is_star_class = sc_binary_1
+				is_star_class = sc_binary_2
+				is_star_class = sc_binary_3
+				is_star_class = sc_binary_4
+				is_star_class = sc_binary_5
+				is_star_class = sc_binary_6
+				is_star_class = sc_binary_7
+				is_star_class = sc_binary_8
+				is_star_class = sc_binary_9
+				is_star_class = sc_binary_10
+				is_star_class = sc_trinary_1
+				is_star_class = sc_trinary_2
+				is_star_class = sc_trinary_3
+				is_star_class = sc_trinary_4
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_no_existing_megastructure"
+			has_no_non_gate_megastructure = yes
+		}
+	}
+	
+	placement_rules = {
+		planet_possible = {
+			custom_tooltip = {
+				fail_text = "must_build_around_star"
+				is_star = yes
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_existing_megastructure"
+				NOR = {
+					has_planet_flag = megastructure
+					# has_planet_flag = has_megastructure
+					solar_system = { has_star_flag = ring_world_built }
+				}
+			}
+		}
+	}
+	
+	country_modifier = {
+		trade_value_mult = 0.05
+		diplo_weight_economy_mult = 0.05		
+	}
+	
+	station_modifier = {
+		starbase_shipyard_capacity_add = 1
+	}
+
+	ai_weight = {
+		factor = 500
+	}
+	
+	on_build_start = {}
+	on_build_cancel = {}
+	on_build_complete = {
+		fromfrom.solar_system = {
+			set_star_flag = sf_federation_trade_mega
+		}
+		fromfrom.planet = {
+			set_planet_flag = has_megastructure
+			set_planet_flag = megastructure
+		}
+	}
+}

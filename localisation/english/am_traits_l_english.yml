@@ -1,0 +1,53 @@
+﻿l_english:  
+ trait_artisanal: "Artisanal"
+ trait_artisanal_desc: "This species are natural artisans, inclined to make various quality goods to share or sell." 
+ trait_greedy: "Gluttonous"
+ trait_greedy_desc: "This species loves to eat. Often and in excess."
+ trait_metalworkers: "Metalworkers"
+ trait_metalworkers_desc: "Working metal comes naturally to this species."
+ trait_verybig: "Big"
+ trait_verybig_desc: "This species needs more personal living space."
+ trait_humungous: "Humungous"
+ trait_humungous_desc: "This species needs a lot more personal living space."
+ 
+ trait_robocop: "Law Enforcer"
+ trait_robocop_desc: "Serve the public trust. Protect the innocent. Uphold the law.\nWhen employed as a £job_ranger£ Ranger, £job_marshall£ Marshall or £job_security_guard£ Security Guard, £crime£ Crime reduction is increased."
+ 
+ trait_talented_empaths: "Strong Empathy"
+ trait_talented_empaths_desc: "An increased ability to understand and share the feelings of others."
+ 
+ trait_pc_asteroid_habitable_preference:0 "Asteroid Preference"
+ trait_pc_asteroid_habitable_preference_desc:1 "§LClimate preference is determined at the genetic level, by eons of evolution or skillful manipulation.§!"
+ 
+ trait_pc_barren_habitable_preference:0 "Barren World Preference"
+ trait_pc_barren_habitable_preference_desc:1 "§LClimate preference is determined at the genetic level, by eons of evolution or skillful manipulation.§!"
+ 
+ trait_pc_frozen_habitable_preference:0 "Frozen World Preference"
+ trait_pc_frozen_habitable_preference_desc:1 "§LClimate preference is determined at the genetic level, by eons of evolution or skillful manipulation.§!"
+ 
+ trait_pc_gas_giant_habitable_preference:0 "Gas Giant Preference"
+ trait_pc_gas_giant_habitable_preference_desc:1 "§LClimate preference is determined at the genetic level, by eons of evolution or skillful manipulation.§!"
+ 
+ trait_pc_ice_asteroid_habitable_preference:0 "Ice Asteroid Preference"
+ trait_pc_ice_asteroid_habitable_preference_desc:1 "§LClimate preference is determined at the genetic level, by eons of evolution or skillful manipulation.§!"
+
+ trait_pc_molten_habitable_preference:0 "Molten World Preference"
+ trait_pc_molten_habitable_preference_desc:1 "§LClimate preference is determined at the genetic level, by eons of evolution or skillful manipulation.§!"
+ 
+ trait_pc_toxic_habitable_preference:0 "Toxic World Preference"
+ trait_pc_toxic_habitable_preference_desc:1 "§LClimate preference is determined at the genetic level, by eons of evolution or skillful manipulation.§!"
+ 
+ trait_genetic_sterility: "Gene Sterile"
+ trait_genetic_sterility_desc: "This pop has been genetically modified to be unable to reproduce."
+ 
+ leader_trait_unb_popularpolitics: "Popular Politics"
+ leader_trait_unb_popularpolitics_desc: "This leader has popular support for their politics and voices a desire to rule."
+ leader_trait_unb_ambitous: "Ambitous"
+ leader_trait_unb_ambitous_desc: "This leader clearly wants to have the biggest chair at the table of rulers."
+ leader_trait_unb_disloyal: "Disloyal"
+ leader_trait_unb_disloyal_desc: "This leader is not hiding the fact they want to replace the current ruler."
+ 
+ trait_logical_philosophy: "Logical Philosophy"
+ trait_logical_philosophy_desc: "Logic is a focus on discovering truth, a state of mind that allows rational thought and universal understanding, clear of feeling or intent."
+ trait_emotional_suppression: "Emotional Suppression"
+ trait_emotional_suppression_desc: "The nature of emotion is selfish and destructive. Practiced control and elimination of intense, negative feelings avoids waste and conflict."

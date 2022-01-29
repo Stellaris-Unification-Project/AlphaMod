@@ -1,0 +1,175 @@
+# Base AI economic plans
+
+# Early ---------------------------------------
+
+basic_economy_plan = {
+	income = {
+		energy = 400
+		minerals = 600
+
+	}
+
+	focus = {
+		energy = 100
+		minerals = 100
+	}
+
+	subplan = {
+		potential = {
+			country_uses_consumer_goods = yes
+			has_monthly_income = { resource = minerals value > 30 }
+		}
+
+		income = {
+			consumer_goods = 30
+		}
+
+	}
+	
+	subplan = {
+		potential = {
+			has_monthly_income = { resource = energy value < 1 }
+		}
+		income = {
+			energy = 25
+		}		
+		focus = {
+			energy = 1
+		}
+	}
+	subplan = {
+		potential = {
+			has_monthly_income = { resource = minerals value < 5 }
+		}
+		income = {
+			minerals = 20
+		}		
+		focus = {
+			minerals = 5
+		}
+	}
+	subplan = {
+		potential = {
+			has_monthly_income = { resource = minerals value > 50 }
+			has_monthly_income = { resource = alloys value < 10 }
+		}
+		income = {
+			alloys = 15
+		}		
+		focus = {
+			alloys = 10
+		}
+	}
+	
+	subplan = {
+		potential = {
+			is_at_war = yes
+			has_monthly_income = { resource = minerals value < 50 }
+		}
+		income = {
+			minerals = 100
+		}		
+		focus = {
+			minerals = 50
+		}
+	}
+	subplan = {
+		potential = {
+			is_at_war = yes
+			has_monthly_income = { resource = alloys value < 25 }
+		}
+		income = {
+			alloys = 50
+		}		
+		focus = {
+			alloys = 25
+		}
+	}
+
+	subplan = {
+		potential = {
+			country_uses_food = yes
+		}
+
+		income = {
+			food = 40
+		}
+
+		focus = {
+			food = 30
+		}
+	}
+
+	subplan = {
+		potential = {
+			is_catalytic_empire = no
+			has_monthly_income = { resource = minerals value > 30 }
+		}
+
+		income = {
+			alloys = 30
+		}
+
+	}
+
+	subplan = {
+		potential = {
+			is_catalytic_empire = yes
+			has_monthly_income = { resource = food value > 30 }
+		}
+
+		income = {
+			alloys = 30
+		}
+
+	}
+
+	subplan = {
+		potential = {
+			country_uses_consumer_goods = no
+			has_monthly_income = { resource = energy value > 60 }			
+			has_monthly_income = { resource = minerals value > 20 }
+		}
+
+		income = {
+			physics_research = 500
+			society_research = 500
+			engineering_research = 500
+			unity = 70
+			alloys = 300
+			exotic_gases = 4
+			volatile_motes = 4
+			rare_crystals = 4
+		}
+		pops = 9000
+	}
+
+
+	subplan = {
+		potential = {
+			country_uses_consumer_goods = yes
+			has_monthly_income = { resource = energy value > 60 }
+			has_monthly_income = { resource = minerals value > 60 }
+			has_monthly_income = { resource = consumer_goods value > 30 }
+		}
+		
+		income = {
+			physics_research = 500
+			society_research = 500
+			engineering_research = 500
+			unity = 70
+			alloys = 300
+			exotic_gases = 4
+			volatile_motes = 4
+			rare_crystals = 4
+		}		
+		pops = 9000
+	}
+
+
+	empire_size = 1.1 #admin cap is fine with being 10% over limit
+
+	ai_weight = {
+		weight = 1
+	}
+}

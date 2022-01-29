@@ -1,0 +1,131 @@
+end_game_pop_nerf = {
+	if = {
+		limit = {
+			num_owned_planets > 7
+		}
+		random_owned_planet = {
+			limit = {
+				not = { has_planet_flag = pf_endgame_purged }
+				num_pops > 85
+				or = {
+					uses_district_set = standard
+					uses_district_set = hostile
+					uses_district_set = habitat
+				}
+			}
+			set_timed_planet_flag = {
+				flag = pf_endgame_purged
+				days = 1800
+			}
+			if = {
+				limit = {
+					num_pops = 86
+				}
+				random_owned_pop = {
+					kill_pop = yes
+				}
+			}
+			else = {
+				while = {
+					limit = { num_pops > 85 }
+					random_owned_pop = {
+						kill_pop = yes
+					}
+				}
+			}
+		}
+	}
+}
+
+fix_homelessness = {
+	if = {
+		limit = {
+			free_housing < -2
+			num_pops > 92
+			free_building_slots < 2
+			free_district_slots < 2					
+		}
+		random_owned_pop = {
+			limit = {
+				or = {
+					is_unemployed = yes
+					has_job = clerk
+				}
+			}
+			kill_pop = yes
+		}
+		random_owned_pop = {
+			limit = {
+				or = {
+					is_unemployed = yes
+					has_job = clerk
+				}
+			}
+			kill_pop = yes
+		}
+		if = {
+			limit = {
+				num_districts = { type = district_city value > 3 }
+				not = { has_planet_flag = pf_mega_cities }
+				exists = owner
+				owner = {
+					resource_stockpile_compare = {
+						resource = minerals
+						value > 5000
+					}
+				}
+			}
+			set_planet_flag = pf_mega_cities
+			add_district = district_megacity
+			owner = { add_resource = { minerals = -4000 }}
+		}
+	}
+}
+
+fix_overcrowding = {
+	if = {
+		limit = {
+			any_owned_pop = { is_unemployed = yes }
+			num_pops > 93
+		}
+		if = {
+			limit = { free_building_slots > 1 }
+			if = {
+				limit = {
+					exists = owner
+					owner = { is_at_war = yes }
+				}
+				add_building = building_stronghold
+			}
+			else_if = {
+				limit = { free_amenities < 50 }
+				add_building = building_holo_theatres
+			}
+			else_if = {
+				limit = { planet_crime > 0 }
+				add_building = building_precinct_house						
+			}
+			else = {
+				random_list = {
+					25 = {
+						add_building = building_commercial_zone
+					}
+					25 = {
+						add_building = building_research_lab_1
+					}
+					25 = {
+						add_building = building_mining_consortium
+					}
+					25 = {
+						add_building = building_energy_consortium
+					}
+				}
+			}
+		}
+		else = {
+			kill_the_unemployed = yes
+			kill_the_unemployed = yes
+			kill_the_unemployed = yes
+		}
+	}
+}

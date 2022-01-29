@@ -1,0 +1,44 @@
+# They just forced a branch office to close
+opinion_forced_closure = {
+	opinion = {
+		base = -50
+	}
+
+	accumulative = yes
+
+	min = -250
+
+	decay = {
+		base = 1
+	}
+}
+
+# They took er L-Gert
+opinion_lgate_lost = {
+	opinion = {
+		base = -50
+	}
+
+	accumulative = yes
+
+	min = -200
+
+	decay = {
+		base = 1
+	}
+}
+
+# They flipped a starbase
+opinion_starbase_flipped = {
+	opinion = {
+		base = -25
+	}
+
+	accumulative = yes
+
+	min = -250
+
+	decay = {
+		base = 1
+	}
+}

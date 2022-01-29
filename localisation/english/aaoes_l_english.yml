@@ -1,0 +1,11 @@
+﻿l_english: 
+ origin_electricsheep: "Electric Sheep"
+ origin_electricsheep_desc: "This civilization has already developed highly advanced AI and a synthetic labour-force. Unfortunately they quickly became highly dependent on their creations not long after making them."
+ origin_tooltip_electricsheep_effects: "Start with advanced technologies for producing Synthetics, nearly half of the population of the homeworld being synthetic, and a trait that makes their organic creators dependent on them."
+ trait_synth_dependent: "Synth Dependence"
+ trait_synth_dependent_desc: "This species is highly dependent on their artificial creations."
+ 
+ civic_corporate_police: "Corporate Enforcers"
+ civic_corporate_police_desc: "If you're not cop, you're little people."
+ civic_synthetic_makers: "Synthetic Engineers"
+ civic_synthetic_makers_desc: "This corporation specialises in making synthetic life-forms, capable of many different kinds of employment."

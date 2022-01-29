@@ -1,0 +1,114 @@
+fix_surplus_housing = {
+	if = {
+		limit = {
+			free_housing > 9
+			num_districts = { type = district_city value > 0 }
+			free_jobs > 2
+		}
+		remove_district = district_city
+	}
+	else_if = {
+		limit = {
+			free_housing > 9
+			num_districts = { type = district_city value > 0 }
+			free_jobs < 1
+			free_district_slots < 1
+			exists = owner
+			owner = { country_uses_food = yes }
+		}
+		remove_district = district_city
+		random_list = {
+			33 = { add_district = district_farming }
+			33 = { add_district = district_mining }
+			33 = { add_district = district_generator }
+		}
+	}				
+	else_if = {
+		limit = {
+			free_housing > 15
+			num_districts = { type = district_megacity value > 0 }
+			free_jobs > 4
+		}
+		remove_district = district_megacity
+	}
+	else_if = {
+		limit = {
+			free_housing > 15
+			num_districts = { type = district_megacity value > 0 }
+			free_jobs < 1
+			free_district_slots < 1
+			exists = owner
+			owner = { country_uses_food = yes }
+		}
+		remove_district = district_megacity
+		random_list = {
+			33 = { add_district = district_farming }
+			33 = { add_district = district_mining }
+			33 = { add_district = district_generator }
+		}
+	}
+}
+
+check_need_for_housing = {
+	if = {
+		limit = {
+			needs_more_housing = yes
+			not = { has_planet_flag = pf_mega_cities }
+			num_districts = { type = district_city value > 7 }
+		}
+		set_planet_flag = pf_mega_cities
+		owner = { add_resource = { minerals = -6000 }}
+	}
+	else_if = {
+		limit = {
+			needs_more_housing = yes
+			not = { has_planet_flag = pf_mega_cities }
+			num_free_districts = { type = district_city value > 0 }
+		}
+		add_district = district_city
+	}
+	else_if = {
+		limit = {
+			needs_more_housing = yes
+			has_planet_flag = pf_mega_cities
+			num_free_districts = { type = district_megacity value > 0 }
+		}
+		add_district = district_megacity
+	}
+	else_if = {
+		limit = { free_housing < -1 }
+		clear_blockers = yes
+	}
+}
+
+check_should_go_megacity = {
+	if = {
+		limit = {
+			not = { has_planet_flag = pf_mega_cities }
+			num_districts = { type = district_city value > 5 }
+			free_housing > 8			
+			num_pops > 90
+		}
+		set_planet_flag = pf_mega_cities
+		owner = { add_resource = { minerals = -4000 }}
+	}
+}
+
+machine_fix_housing_shortage = {
+	if = {
+		limit = {
+			free_housing < 3
+			free_building_slots > 1
+			planet_devastation < 1
+		}
+		add_building = building_drone_storage
+	}
+	else_if = {
+		limit = {
+			free_housing < 2
+			planet_devastation < 1
+			num_free_districts = { type = district_nexus value > 0 }
+		}
+		add_district = district_nexus
+	}
+}

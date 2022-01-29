@@ -1,0 +1,174 @@
+alp_ecology = {
+	potential = {
+		NOT = { has_ethic = "ethic_gestalt_consciousness" }
+	}
+	
+	option = {
+		name = "alp_ecology_max_exploit"
+		
+		policy_flags = {
+			alp_ecology_max_exploit
+		}
+		
+		valid = {
+			NOT = { has_ethic = "ethic_fanatic_xenophile" }
+			NOT = { has_ethic = "ethic_xenophile" }	
+			NOT = { has_valid_civic = civic_galactic_resorts }
+			NOT = { has_valid_civic = civic_environmentalist }			
+		}
+		
+		# Cannot switch to Nature Reserves
+		
+		modifier = {
+			pop_environment_tolerance = -0.1
+			country_sr_waste_produces_mult = 0.5
+			country_sr_ice_produces_mult = 0.25
+			planet_farmers_sr_biomass_produces_add = 0.5
+		}
+		
+		AI_weight = {
+			weight = 0
+			modifier = {
+				weight = 4
+				NOT = { has_ethic = "ethic_fanatic_xenophile" }
+				NOT = { has_ethic = "ethic_xenophile" }				
+				or = {
+					has_monthly_income = { resource = sr_ice value < 1 }
+					has_monthly_income = { resource = sr_biomass value < 1 }
+				}
+				or = {
+					resource_stockpile_compare = { resource = sr_ice value < 1 }
+					resource_stockpile_compare = { resource = sr_biomass value < 1 }
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "alp_ecology_lightregulations"
+		
+		policy_flags = {
+			alp_ecology_lightregulations
+		}
+		
+		valid = {
+			NOT = { has_ethic = "ethic_fanatic_xenophile" }		
+		}
+		
+		modifier = {
+			pop_environment_tolerance = -0.05
+			country_sr_waste_produces_mult = 0.25
+			country_sr_ice_produces_mult = 0.1
+			planet_farmers_sr_biomass_produces_add = 0.25
+		}
+		
+		AI_weight = {
+			weight = 0
+			modifier = {
+				weight = 3
+				NOT = { has_ethic = "ethic_fanatic_xenophile" }			
+				or = {
+					has_monthly_income = { resource = sr_ice value < 2 }
+					has_monthly_income = { resource = sr_biomass value < 2 }
+				}
+				or = {
+					resource_stockpile_compare = { resource = sr_ice value < 25 }
+					resource_stockpile_compare = { resource = sr_biomass value < 25 }
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "alp_ecology_balanced"
+		
+		policy_flags = {
+			alp_ecology_balanced
+		}
+		
+		valid = {
+			always = yes	
+		}
+		
+		modifier = {
+			planet_farmers_sr_biomass_produces_add = 0.1
+		}
+		
+		AI_weight = {
+			weight = 1
+			modifier = {
+				weight = 2			
+				has_monthly_income = { resource = sr_ice value >= 2 }
+				has_monthly_income = { resource = sr_biomass value >= 2 }
+			}
+		}
+	}
+	
+	option = {
+		name = "alp_ecology_heavyregulations"
+		
+		policy_flags = {
+			alp_ecology_heavyregulations
+		}
+		
+		valid = {
+			always = yes		
+		}
+		
+		# Cannot build biomass furnaces
+		
+		modifier = {
+			pop_environment_tolerance = 0.02
+			country_sr_waste_produces_mult = -0.05
+			pop_growth_speed = 0.05
+		}
+		
+		AI_weight = {
+			weight = 0
+			modifier = {
+				weight = 3	
+				has_monthly_income = { resource = energy value >= 50 }
+				has_monthly_income = { resource = sr_ice value >= 5 }
+				has_monthly_income = { resource = sr_biomass value >= 5 }
+				resource_stockpile_compare = { resource = sr_ice value > 500 }
+				resource_stockpile_compare = { resource = sr_biomass value > 500 }
+			}
+		}
+	}
+	
+	option = {
+		name = "alp_ecology_max_protection"
+		
+		policy_flags = {
+			alp_ecology_max_protection
+		}
+		
+		valid = {
+			NOT = { has_ethic = "ethic_fanatic_xenophobe" }		
+		}
+		
+		# Cannot build biomass sourcers or furnaces
+		# Cannot switch to Biomass Cultivation
+		
+		modifier = {
+			pop_environment_tolerance = 0.05
+			country_sr_waste_produces_mult = -0.1
+			planet_pops_organics_food_upkeep_mult = -0.05
+			planet_pops_organics_minerals_upkeep_mult = -0.05
+			pop_growth_speed = 0.05
+		}
+		
+		AI_weight = {
+			weight = 0
+			modifier = {
+				weight = 5	
+				NOT = { has_ethic = "ethic_fanatic_xenophobe" }
+				has_monthly_income = { resource = energy value >= 100 }
+				has_monthly_income = { resource = sr_ice value >= 10 }
+				has_monthly_income = { resource = sr_biomass value >= 10 }
+				resource_stockpile_compare = { resource = sr_ice value > 2000 }
+				resource_stockpile_compare = { resource = sr_biomass value > 2500 }
+			}
+		}
+	}
+}

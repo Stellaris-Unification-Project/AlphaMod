@@ -1,0 +1,781 @@
+add_planet_type_outpost = {
+	if = {
+		limit = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+			# uses_district_set = standard
+			num_pops > 0
+			free_district_slots > 2
+		}
+		if = {
+			limit = {
+				is_planet_class = pc_alpine
+			}
+			if = {
+				limit = {
+					num_pops > 2
+					num_districts = { type = district_outpostalpine value < 1 }
+				}
+				add_district = district_outpostalpine
+			}
+			else_if = {
+				limit = {
+					num_pops > 4
+					num_districts = { type = district_outpostalpine value < 2 }
+				}
+				add_district = district_outpostalpine			
+			}
+			else_if = {
+				limit = {
+					num_pops > 9
+					num_districts = { type = district_outpostalpine value < 3 }
+				}
+				add_district = district_outpostalpine			
+			}
+			else_if = {
+				limit = {
+					num_pops > 19
+					num_districts = { type = district_outpostalpine value < 4 }
+				}
+				add_district = district_outpostalpine			
+			}
+			else_if = {
+				limit = {
+					num_pops > 29
+					or = {
+						free_jobs < 2
+						free_housing < 2
+					}
+					num_districts = { type = district_outpostalpine value < 8 }
+				}
+				add_district = district_outpostalpine			
+			}
+		}
+		else_if = {
+			limit = {
+				or = {
+					is_planet_class = pc_arctic
+					is_planet_class = pc_frozen_habitable
+				}
+			}
+			if = {
+				limit = {
+					num_pops > 2
+					num_districts = { type = district_outpostarctic value < 1 }
+				}
+				add_district = district_outpostarctic
+			}
+			else_if = {
+				limit = {
+					num_pops > 4
+					num_districts = { type = district_outpostarctic value < 2 }
+				}
+				add_district = district_outpostarctic			
+			}
+			else_if = {
+				limit = {
+					num_pops > 9
+					num_districts = { type = district_outpostarctic value < 3 }
+				}
+				add_district = district_outpostarctic			
+			}
+			else_if = {
+				limit = {
+					num_pops > 19
+					num_districts = { type = district_outpostarctic value < 4 }
+				}
+				add_district = district_outpostarctic			
+			}
+			else_if = {
+				limit = {
+					num_pops > 29
+					or = {
+						free_jobs < 2
+						free_housing < 2
+					}
+					num_districts = { type = district_outpostarctic value < 8 }
+				}
+				add_district = district_outpostarctic			
+			}
+		}
+		else_if = {
+			limit = {
+				is_planet_class = pc_arid
+			}
+			if = {
+				limit = {
+					num_pops > 2
+					num_districts = { type = district_outpostarid value < 1 }
+				}
+				add_district = district_outpostarid
+			}
+			else_if = {
+				limit = {
+					num_pops > 4
+					num_districts = { type = district_outpostarid value < 2 }
+				}
+				add_district = district_outpostarid			
+			}
+			else_if = {
+				limit = {
+					num_pops > 9
+					num_districts = { type = district_outpostarid value < 3 }
+				}
+				add_district = district_outpostarid			
+			}
+			else_if = {
+				limit = {
+					num_pops > 19
+					num_districts = { type = district_outpostarid value < 4 }
+				}
+				add_district = district_outpostarid			
+			}
+			else_if = {
+				limit = {
+					num_pops > 29
+					or = {
+						free_jobs < 2
+						free_housing < 2
+					}
+					num_districts = { type = district_outpostarid value < 8 }
+				}
+				add_district = district_outpostarid			
+			}
+		}
+		else_if = {
+			limit = {
+				is_planet_class = pc_desert
+			}
+			if = {
+				limit = {
+					num_pops > 2
+					num_districts = { type = district_outpostdesert value < 1 }
+				}
+				add_district = district_outpostdesert
+			}
+			else_if = {
+				limit = {
+					num_pops > 4
+					num_districts = { type = district_outpostdesert value < 2 }
+				}
+				add_district = district_outpostdesert			
+			}
+			else_if = {
+				limit = {
+					num_pops > 9
+					num_districts = { type = district_outpostdesert value < 3 }
+				}
+				add_district = district_outpostdesert			
+			}
+			else_if = {
+				limit = {
+					num_pops > 19
+					num_districts = { type = district_outpostdesert value < 4 }
+				}
+				add_district = district_outpostdesert			
+			}
+			else_if = {
+				limit = {
+					num_pops > 29
+					or = {
+						free_jobs < 2
+						free_housing < 2
+					}
+					num_districts = { type = district_outpostdesert value < 8 }
+				}
+				add_district = district_outpostdesert			
+			}
+		}
+		else_if = {
+			limit = {
+				is_planet_class = pc_tundra
+			}
+			if = {
+				limit = {
+					num_pops > 2
+					num_districts = { type = district_outposttundra value < 1 }
+				}
+				add_district = district_outposttundra
+			}
+			else_if = {
+				limit = {
+					num_pops > 4
+					num_districts = { type = district_outposttundra value < 2 }
+				}
+				add_district = district_outposttundra			
+			}
+			else_if = {
+				limit = {
+					num_pops > 9
+					num_districts = { type = district_outposttundra value < 3 }
+				}
+				add_district = district_outposttundra			
+			}
+			else_if = {
+				limit = {
+					num_pops > 19
+					num_districts = { type = district_outposttundra value < 4 }
+				}
+				add_district = district_outposttundra			
+			}
+			else_if = {
+				limit = {
+					num_pops > 29
+					or = {
+						free_jobs < 2
+						free_housing < 2
+					}
+					num_districts = { type = district_outposttundra value < 8 }
+				}
+				add_district = district_outposttundra			
+			}
+		}
+		else_if = {
+			limit = {
+				is_planet_class = pc_gaia
+			}
+			if = {
+				limit = {
+					num_pops > 2
+					num_districts = { type = district_outpostgaia value < 1 }
+				}
+				add_district = district_outpostgaia
+			}
+			else_if = {
+				limit = {
+					num_pops > 4
+					num_districts = { type = district_outpostgaia value < 2 }
+				}
+				add_district = district_outpostgaia			
+			}
+			else_if = {
+				limit = {
+					num_pops > 9
+					num_districts = { type = district_outpostgaia value < 3 }
+				}
+				add_district = district_outpostgaia			
+			}
+			else_if = {
+				limit = {
+					num_pops > 19
+					num_districts = { type = district_outpostgaia value < 4 }
+				}
+				add_district = district_outpostgaia			
+			}
+			else_if = {
+				limit = {
+					num_pops > 29
+					or = {
+						free_jobs < 2
+						free_housing < 2
+					}
+					num_districts = { type = district_outpostgaia value < 8 }
+				}
+				add_district = district_outpostgaia			
+			}
+		}
+		else_if = {
+			limit = {
+				is_planet_class = pc_savannah
+			}
+			if = {
+				limit = {
+					num_pops > 2
+					num_districts = { type = district_outpostsavannah value < 1 }
+				}
+				add_district = district_outpostsavannah
+			}
+			else_if = {
+				limit = {
+					num_pops > 4
+					num_districts = { type = district_outpostsavannah value < 2 }
+				}
+				add_district = district_outpostsavannah			
+			}
+			else_if = {
+				limit = {
+					num_pops > 9
+					num_districts = { type = district_outpostsavannah value < 3 }
+				}
+				add_district = district_outpostsavannah			
+			}
+			else_if = {
+				limit = {
+					num_pops > 19
+					num_districts = { type = district_outpostsavannah value < 4 }
+				}
+				add_district = district_outpostsavannah			
+			}
+			else_if = {
+				limit = {
+					num_pops > 29
+					or = {
+						free_jobs < 2
+						free_housing < 2
+					}
+					num_districts = { type = district_outpostsavannah value < 8 }
+				}
+				add_district = district_outpostsavannah			
+			}
+		}
+		else_if = {
+			limit = {
+				or = {
+					is_planet_class = pc_nuked
+					is_planet_class = pc_toxic_habitable
+					is_planet_class = pc_molten_habitable
+				}
+			}
+			if = {
+				limit = {
+					num_pops > 2
+					num_districts = { type = district_outpostnuked value < 1 }
+				}
+				add_district = district_outpostnuked
+			}
+			else_if = {
+				limit = {
+					num_pops > 4
+					num_districts = { type = district_outpostnuked value < 2 }
+				}
+				add_district = district_outpostnuked			
+			}
+			else_if = {
+				limit = {
+					num_pops > 9
+					num_districts = { type = district_outpostnuked value < 3 }
+				}
+				add_district = district_outpostnuked			
+			}
+			else_if = {
+				limit = {
+					num_pops > 19
+					num_districts = { type = district_outpostnuked value < 4 }
+				}
+				add_district = district_outpostnuked			
+			}
+			else_if = {
+				limit = {
+					num_pops > 29
+					or = {
+						free_jobs < 2
+						free_housing < 2
+					}
+					num_districts = { type = district_outpostnuked value < 8 }
+				}
+				add_district = district_outpostnuked			
+			}
+		}
+		else_if = {
+			limit = {
+				is_planet_class = pc_ocean
+			}
+			if = {
+				limit = {
+					num_pops > 2
+					num_districts = { type = district_outpostocean value < 1 }
+				}
+				add_district = district_outpostocean
+			}
+			else_if = {
+				limit = {
+					num_pops > 4
+					num_districts = { type = district_outpostocean value < 2 }
+				}
+				add_district = district_outpostocean			
+			}
+			else_if = {
+				limit = {
+					num_pops > 9
+					num_districts = { type = district_outpostocean value < 3 }
+				}
+				add_district = district_outpostocean			
+			}
+			else_if = {
+				limit = {
+					num_pops > 19
+					num_districts = { type = district_outpostocean value < 4 }
+				}
+				add_district = district_outpostocean			
+			}
+			else_if = {
+				limit = {
+					num_pops > 29
+					or = {
+						free_jobs < 2
+						free_housing < 2
+					}
+					num_districts = { type = district_outpostocean value < 8 }
+				}
+				add_district = district_outpostocean			
+			}
+		}
+		else_if = {
+			limit = {
+				is_planet_class = pc_tropical
+			}
+			if = {
+				limit = {
+					num_pops > 2
+					num_districts = { type = district_outposttropical value < 1 }
+				}
+				add_district = district_outposttropical
+			}
+			else_if = {
+				limit = {
+					num_pops > 4
+					num_districts = { type = district_outposttropical value < 2 }
+				}
+				add_district = district_outposttropical			
+			}
+			else_if = {
+				limit = {
+					num_pops > 9
+					num_districts = { type = district_outposttropical value < 3 }
+				}
+				add_district = district_outposttropical			
+			}
+			else_if = {
+				limit = {
+					num_pops > 19
+					num_districts = { type = district_outposttropical value < 4 }
+				}
+				add_district = district_outposttropical			
+			}
+			else_if = {
+				limit = {
+					num_pops > 29
+					or = {
+						free_jobs < 2
+						free_housing < 2
+					}
+					num_districts = { type = district_outposttropical value < 8 }
+				}
+				add_district = district_outposttropical		
+			}
+		}
+		else_if = {
+			limit = {
+				is_planet_class = pc_continental
+			}
+			if = {
+				limit = {
+					num_pops > 2
+					num_districts = { type = district_outpostcontinental value < 1 }
+				}
+				add_district = district_outpostcontinental
+			}
+			else_if = {
+				limit = {
+					num_pops > 4
+					num_districts = { type = district_outpostcontinental value < 2 }
+				}
+				add_district = district_outpostcontinental			
+			}
+			else_if = {
+				limit = {
+					num_pops > 9
+					num_districts = { type = district_outpostcontinental value < 3 }
+				}
+				add_district = district_outpostcontinental			
+			}
+			else_if = {
+				limit = {
+					num_pops > 19
+					num_districts = { type = district_outpostcontinental value < 4 }
+				}
+				add_district = district_outpostcontinental			
+			}
+			else_if = {
+				limit = {
+					num_pops > 29
+					or = {
+						free_jobs < 2
+						free_housing < 2
+					}
+					num_districts = { type = district_outpostcontinental value < 8 }
+				}
+				add_district = district_outpostcontinental			
+			}
+		}
+	}
+}
+
+pop_force_ethos_adherence = {
+	if = {
+		limit = { exists = owner }
+		if = { 
+			limit = { owner = { has_ethic = ethic_fanatic_pacifist }}
+			pop_change_ethic = ethic_pacifist
+		}
+		else_if = {
+			limit = { owner = { has_ethic = ethic_fanatic_authoritarian }}
+			pop_change_ethic = ethic_authoritarian
+		}
+		else_if = {
+			limit = { owner = { has_ethic = ethic_fanatic_xenophobe }}
+			pop_change_ethic = ethic_xenophobe
+		}
+		else_if = {
+			limit = { owner = { has_ethic = ethic_fanatic_spiritualist }}
+			pop_change_ethic = ethic_spiritualist
+		}
+		else_if = {
+			limit = { owner = { has_ethic = ethic_fanatic_egalitarian }}
+			pop_change_ethic = ethic_egalitarian
+		}
+		else_if = {
+			limit = { owner = { has_ethic = ethic_fanatic_militarist }}
+			pop_change_ethic = ethic_militarist
+		}
+		else_if = {
+			limit = { owner = { has_ethic = ethic_fanatic_xenophile }}
+			pop_change_ethic = ethic_xenophile
+		}
+		else_if = {
+			limit = { owner = { has_ethic = ethic_fanatic_materialist }}
+			pop_change_ethic = ethic_materialist
+		}
+		else_if = { 
+			limit = { owner = { not = { has_ethic = ethic_militarist }}}
+			pop_change_ethic = ethic_pacifist
+		}
+		else = {
+			pop_change_ethic = ethic_militarist
+		}
+	}
+}
+
+pop_force_ethos_dissidence = {
+	if = {
+		limit = { exists = owner }
+		if = { 
+			limit = { owner = { has_ethic = ethic_fanatic_pacifist }}
+			pop_change_ethic = ethic_militarist
+		}
+		else_if = {
+			limit = { owner = { has_ethic = ethic_fanatic_authoritarian }}
+			pop_change_ethic = ethic_egalitarian
+		}
+		else_if = {
+			limit = { owner = { has_ethic = ethic_fanatic_xenophobe }}
+			pop_change_ethic = ethic_xenophile
+		}
+		else_if = {
+			limit = { owner = { has_ethic = ethic_fanatic_spiritualist }}
+			pop_change_ethic = ethic_materialist
+		}
+		else_if = {
+			limit = { owner = { has_ethic = ethic_fanatic_egalitarian }}
+			pop_change_ethic = ethic_authoritarian
+		}
+		else_if = {
+			limit = { owner = { has_ethic = ethic_fanatic_militarist }}
+			pop_change_ethic = ethic_pacifist
+		}
+		else_if = {
+			limit = { owner = { has_ethic = ethic_fanatic_xenophile }}
+			pop_change_ethic = ethic_xenophobe
+		}
+		else_if = {
+			limit = { owner = { has_ethic = ethic_fanatic_materialist }}
+			pop_change_ethic = ethic_spiritualist
+		}
+		else_if = { 
+			limit = { owner = { not = { has_ethic = ethic_authoritarian }}}
+			pop_change_ethic = ethic_authoritarian
+		}
+		else_if = { 
+			limit = { owner = { not = { has_ethic = ethic_militarist }}}
+			pop_change_ethic = ethic_militarist
+		}
+		else = {
+			pop_change_ethic = ethic_egalitarian
+		}
+	}
+}
+
+prepare_separatist = {
+	while = {
+		limit = { has_modifier = pop_tribal }
+		remove_modifier = pop_tribal
+	}
+	while = {
+		limit = { has_modifier = pop_nomadic }
+		remove_modifier = pop_nomadic
+	}
+	remove_modifier = pop_loyalist
+	remove_modifier = pop_vigilant
+	remove_modifier = pop_qualified
+	remove_modifier = pop_transcendent
+
+	if = {
+		limit = { not = { has_modifier = pop_separatist }}
+		add_modifier = {
+			modifier = pop_separatist
+			days = -1
+		}
+	}
+	
+	if = { 
+		limit = { 
+			owner = { 
+				or = {
+					has_ethic = ethic_xenophobe 
+					has_ethic = ethic_fanatic_xenophobe
+				}
+			}
+		}
+		pop_change_ethic = ethic_xenophile
+	}
+	else = {
+		pop_change_ethic = ethic_xenophobe
+	}
+}
+
+prepare_nomadic = {
+	while = {
+		limit = { has_modifier = pop_tribal }
+		remove_modifier = pop_tribal
+	}
+	while = {
+		limit = { has_modifier = pop_separatist }
+		remove_modifier = pop_separatist
+	}
+	while = {
+		limit = { has_modifier = pop_loyalist }
+		remove_modifier = pop_loyalist
+	}
+	remove_modifier = pop_vigilant
+	remove_modifier = pop_qualified
+	remove_modifier = pop_transcendent
+
+	if = {
+		limit = { not = { has_modifier = pop_nomadic }}
+		add_modifier = {
+			modifier = pop_nomadic
+			days = -1
+		}
+	}
+	
+	if = { 
+		limit = { 
+			owner = { 
+				or = {
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+				}
+			}
+		}
+		pop_change_ethic = ethic_militarist
+	}
+	else = {
+		pop_change_ethic = ethic_pacifist
+	}
+}
+
+prepare_tribal = {
+	while = {
+		limit = { has_modifier = pop_nomadic }
+		remove_modifier = pop_nomadic
+	}
+	while = {
+		limit = { has_modifier = pop_separatist }
+		remove_modifier = pop_separatist
+	}
+	remove_modifier = pop_loyalist
+	remove_modifier = pop_vigilant
+	remove_modifier = pop_qualified
+	remove_modifier = pop_transcendent
+
+	if = {
+		limit = { not = { has_modifier = pop_tribal }}
+		add_modifier = {
+			modifier = pop_tribal
+			days = -1
+		}
+	}
+	
+	if = { 
+		limit = { 
+			owner = { 
+				or = {
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_fanatic_xenophobe
+				}
+			}
+		}
+		pop_change_ethic = ethic_militarist
+	}
+	else = {
+		pop_change_ethic = ethic_xenophobe
+	}
+}
+
+prepare_dissident = {
+	while = {
+		limit = { has_modifier = pop_tribal }
+		remove_modifier = pop_tribal
+	}
+	while = {
+		limit = { has_modifier = pop_loyalist }
+		remove_modifier = pop_loyalist
+	}
+	while = {
+		limit = { has_modifier = pop_nomadic }
+		remove_modifier = pop_nomadic
+	}
+	while = {
+		limit = { has_modifier = pop_separatist }
+		remove_modifier = pop_separatist
+	}
+	remove_modifier = pop_communal
+	remove_modifier = pop_vigilant
+	remove_modifier = pop_qualified
+	remove_modifier = pop_transcendent
+	if = {
+		limit = { not = { has_modifier = pop_dissident }}
+		add_modifier = {
+			modifier = pop_dissident
+			days = -1
+		}
+	}
+	pop_force_ethos_dissidence = yes
+}
+
+prepare_loyalist = {
+	while = {
+		limit = { has_modifier = pop_tribal }
+		remove_modifier = pop_tribal
+	}
+	while = {
+		limit = { has_modifier = pop_separatist }
+		remove_modifier = pop_separatist
+	}
+	while = {
+		limit = { has_modifier = pop_nomadic }
+		remove_modifier = pop_nomadic
+	}
+	while = {
+		limit = { has_modifier = pop_dissident }
+		remove_modifier = pop_dissident
+	}
+	if = {
+		limit = { not = { has_modifier = pop_loyalist }}
+		add_modifier = {
+			modifier = pop_loyalist
+			days = -1
+		}
+	}
+}
+
+sack_and_arrest_dissidents = {
+	every_owned_pop = {
+		limit = { 
+			has_modifier = pop_dissident 
+			not = { has_job = incarcerated }
+		}
+		unemploy_pop = yes
+	}
+	check_planet_employment = yes
+}

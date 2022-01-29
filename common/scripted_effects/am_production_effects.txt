@@ -1,0 +1,426 @@
+fix_alloys_cgs_shortage = {
+	if = {
+		limit = {
+			free_housing > 1
+			num_districts = { type = district_generator value > 1 }
+			num_free_districts = { type = district_industrial value > 0 }
+			owner = { has_monthly_income = { resource = energy value > 150 }}
+			owner = { has_monthly_income = { resource = alloys value < 30 }}
+			owner = { has_monthly_income = { resource = consumer_goods value < 25 }}
+		}
+		remove_district = district_generator
+		add_district = district_industrial
+	}
+}
+
+fix_alloys_shortage_passtwo = {
+	if = {
+		limit = {
+			owner = { has_monthly_income = { resource = alloys value < 25 }}
+			owner = { has_monthly_income = { resource = minerals value > 150 }}		
+		}
+		if = {
+			limit = { has_building = building_mining_consortium }
+			remove_building = building_mining_consortium
+			add_building = building_foundry_1
+		}
+		else_if = {
+			limit = {
+				num_districts = { type = district_generator value > 1 }
+				free_housing > 3
+				free_building_slots > 0
+			}
+			remove_district = district_generator
+			add_building = building_foundry_1
+		}
+	}
+}
+
+fix_con_gs_shortage = {
+	if = {
+		limit = { owner = { country_uses_consumer_goods = yes }}
+		if = {
+			limit = {
+				has_building = building_mining_consortium
+				owner = { has_monthly_income = { resource = consumer_goods value < 5 }}
+				owner = { has_monthly_income = { resource = minerals value > 150 }}
+			}
+			remove_building = building_mining_consortium
+			add_building = building_factory_1
+		}
+		else_if = {
+			limit = {
+				num_districts = { type = district_generator value > 1 }
+				free_housing > 3
+				free_building_slots > 0
+				owner = { has_monthly_income = { resource = consumer_goods value < 10 }}
+				owner = { has_monthly_income = { resource = energy value > 150 }}
+			}
+			remove_district = district_generator
+			add_building = building_factory_1
+		}
+		else_if = {
+			limit = {
+				has_building = building_research_lab_1
+				has_tanked_goods = yes
+			}
+			remove_building = building_research_lab_1
+			add_building = building_factory_1
+		}
+	}
+}
+
+fix_minerals_shortage_passtwo = {
+	if = {
+		limit = {
+			num_free_districts = { type = district_mining value > 0 }
+			free_jobs < 5
+			num_pops > 25
+			owner = { has_monthly_income = { resource = minerals value < 25 }}
+		}
+		add_district = district_mining
+	}
+	
+	if = {
+		limit = {
+			has_building = building_factory_1
+			owner = {
+				has_monthly_income = {
+					resource = minerals
+					value < 50
+				}
+			}
+			owner = {
+				has_monthly_income = {
+					resource = consumer_goods
+					value > 75
+				}
+			}
+		}
+		remove_building = building_factory_1
+		add_building = building_mining_consortium
+	}
+	
+	if = {
+		limit = {
+			num_free_districts = { type = district_mining value > 0 }
+			num_districts = { type = district_industrial value > 0 }
+			owner = {
+				has_monthly_income = {
+					resource = minerals
+					value < 50
+				}
+			}
+			owner = {
+				has_monthly_income = {
+					resource = consumer_goods
+					value > 75
+				}
+			}
+		}
+		remove_district = district_industrial
+		add_district = district_mining
+	}
+}
+
+fill_homeworld_building_slots = {
+	if = {
+		limit = {
+			or = {
+				is_homeworld = yes
+				is_capital = yes
+			}
+		}
+		
+		if = {
+			limit = {
+				free_building_slots > 2
+				num_pops > 50			
+			}
+			if = {
+				limit = { owner = { has_monthly_income = { resource = minerals value < 200 }}}
+				add_building = building_mining_consortium
+			}
+			else_if = {
+				limit = { owner = { has_monthly_income = { resource = energy value < 100 }}}
+				add_building = building_energy_consortium
+			}				
+			else_if = {
+				limit = { free_jobs < 3 }
+				add_building = building_research_lab_1
+			}
+		}
+		
+		if = {
+			limit = {
+				free_building_slots > 1
+				num_pops > 50
+			}
+			if = {
+				limit = { owner = { has_monthly_income = { resource = minerals value < 200 }}}
+				add_building = building_mining_consortium
+			}
+			else_if = {
+				limit = { owner = { has_monthly_income = { resource = energy value < 100 }}}
+				add_building = building_energy_consortium
+			}				
+			else_if = {
+				limit = { free_jobs < 10 }
+				add_building = building_research_lab_1
+			}
+		}
+	}
+}
+
+shuffle_surplus_to_shortage = {
+	if = {
+		limit = {
+			has_district = district_mining
+			owner = {
+				has_monthly_income = { resource = minerals value > 50 }
+				resource_stockpile_compare = { resource = minerals value > 1000 }
+			}
+		}
+		if = {
+			limit = {
+				num_free_districts = { type = district_farming value > 0 }
+				owner = {
+					country_uses_food = yes
+					has_monthly_income = { resource = food value < 2 }					
+				}
+			}
+			remove_district = district_mining
+			add_district = district_farming
+		}
+		else_if = {
+			limit = {
+				has_building = building_goods_bank
+				owner = { country_uses_consumer_goods = yes }
+				owner = {
+					has_monthly_income = {
+						resource = minerals
+						value > 100
+					}
+					resource_stockpile_compare = {
+						resource = minerals
+						value > 2000
+					}
+					has_monthly_income = {
+						resource = consumer_goods
+						value < 6
+					}
+				}
+			}
+			remove_district = district_mining
+			remove_building = building_goods_bank
+			add_building = building_factory_1
+		}
+		else_if = {
+			limit = {
+				num_free_districts = { type = district_industrial value > 0 }
+				owner = {
+					has_monthly_income = {
+						resource = minerals
+						value > 120
+					}
+					resource_stockpile_compare = {
+						resource = minerals
+						value > 5000
+					}
+					has_monthly_income = {
+						resource = consumer_goods
+						value < 2
+					}
+				}
+			}
+			remove_district = district_mining
+			add_district = district_industrial
+		}
+	}
+	
+	if = {
+		limit = {
+			has_district = district_generator
+			num_free_districts = { type = district_farming value > 0 }
+			owner = {
+				country_uses_food = yes
+				has_monthly_income = {
+					resource = energy
+					value > 100
+				}
+				resource_stockpile_compare = {
+					resource = energy
+					value > 500
+				}
+				has_monthly_income = {
+					resource = food
+					value < 2
+				}
+			}
+		}
+		remove_district = district_generator
+		add_district = district_farming
+	}	
+	else_if = {
+		limit = {
+			has_district = district_farming
+			num_free_districts = { type = district_generator value > 0 }
+			owner = {
+				has_monthly_income = {
+					resource = energy
+					value < 2
+				}
+				resource_stockpile_compare = {
+					resource = energy
+					value < 500
+				}
+				has_monthly_income = {
+					resource = food
+					value > 100
+				}
+				resource_stockpile_compare = {
+					resource = food
+					value > 500
+				}
+			}
+		}
+		remove_district = district_farming
+		add_district = district_generator
+	}
+}
+
+remove_redundant_commercial_zones = {
+	if = {
+		limit = {
+			has_building = building_commercial_zone
+			free_jobs > 4
+			free_amenities > 25
+			owner = {
+				has_monthly_income = {
+					resource = energy
+					value > 150
+				}
+				has_monthly_income = {
+					resource = consumer_goods
+					value > 75
+				}
+			}
+		}
+		remove_building = building_commercial_zone
+	}
+}
+
+check_to_stop_stockpiling = {
+	if = {
+		limit = { 
+			has_planet_flag = preserving_fuels
+			owner = {
+				resource_stockpile_compare = {
+					resource = sr_natural_fuels
+					value > 3000
+				}
+				resource_stockpile_compare = {
+					resource = energy
+					value < 10000
+				}
+				has_monthly_income = {
+					resource = sr_natural_fuels
+					value > -1
+				}
+			}
+		}
+		remove_planet_flag = preserving_fuels
+		remove_modifier = plm_preserving_fuels
+	}
+	if = {
+		limit = { 
+			has_planet_flag = preserving_ice
+			owner = {
+				resource_stockpile_compare = {
+					resource = sr_ice
+					value > 2000
+				}
+				resource_stockpile_compare = {
+					resource = food
+					value < 10000
+				}
+				has_monthly_income = {
+					resource = sr_ice
+					value > -1
+				}
+			}
+		}
+		remove_planet_flag = preserving_ice
+		remove_modifier = plm_preserving_ice
+	}
+	if = {
+		limit = { 
+			has_planet_flag = preserving_actinides
+			owner = {
+				resource_stockpile_compare = {
+					resource = sr_actinides
+					value > 2000
+				}
+				resource_stockpile_compare = {
+					resource = energy
+					value < 10000
+				}
+				has_monthly_income = {
+					resource = sr_actinides
+					value > -1
+				}
+			}	
+		}
+		remove_planet_flag = preserving_actinides
+		remove_modifier = plm_preserving_actinides
+	}
+}
+
+prioritise_peace_production = {
+	# Research > Alloys when not at war
+	if = {
+		limit = {
+			has_building = building_foundry_1
+			owner = { has_monthly_income = { resource = alloys value > 20 }}
+			owner = { has_monthly_income = { resource = consumer_goods value > 20 }}
+		}
+		remove_building = building_foundry_1
+		add_building = building_research_lab_1
+	}
+	
+	# CGs > Alloys when not at war
+	if = {
+		limit = {
+			has_building = building_foundry_1
+			owner = { has_monthly_income = { resource = alloys value > 25 }}
+			owner = { has_monthly_income = { resource = consumer_goods value < 25 }}
+			owner = { country_uses_consumer_goods = yes }
+		}
+		remove_building = building_foundry_1
+		add_building = building_factory_1
+	}
+}
+
+prioritise_war_production = {
+	# Alloys > CGs when at war
+	if = {
+		limit = {
+			has_building = building_factory_1
+			owner = { has_monthly_income = { resource = alloys value < 50 }}
+			owner = { has_monthly_income = { resource = consumer_goods value > 20 }}
+		}
+		remove_building = building_factory_1
+		add_building = building_foundry_1
+	}
+	
+	# Alloys > Research when at war
+	if = {
+		limit = {
+			has_building = building_research_lab_1
+			owner = { has_monthly_income = { resource = alloys value < 50 }}
+			owner = { has_monthly_income = { resource = minerals value > 25 }}
+		}
+		remove_building = building_research_lab_1
+		add_building = building_foundry_1
+	}
+}

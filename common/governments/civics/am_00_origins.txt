@@ -1,0 +1,583 @@
+origin_isolated = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_isolated.dds"
+	picture = GFX_evt_origin_isolated
+	max_once_global = yes
+
+	potential = {
+		always = yes
+	}
+
+	possible = {
+		always = yes
+	}
+	
+	modifier = {
+	}
+
+	random_weight = {
+		base = 2
+	}
+	description = "origin_tooltip_isolated_effects"
+
+	advanced_start = no
+}
+
+origin_drumsofwar = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_barbarichorde.dds"
+	picture = GFX_evt_barbarichorde
+	max_once_global = yes
+
+	potential = {
+		always = yes
+	}
+
+	possible = {
+		ethics = {
+			or = {
+				value = ethic_fanatic_militarist
+				value = ethic_militarist
+			}
+			not = { value = ethic_xenophile }
+			not = { value = ethic_fanatic_xenophile }
+			not = { value = ethic_egalitarian }
+			not = { value = ethic_fanatic_egalitarian }
+		}
+	}
+	
+	modifier = {
+		army_damage_mult = 0.1
+		pop_amenities_usage_mult = -0.25
+		planet_pops_consumer_goods_upkeep_mult = -0.1
+		ships_upkeep_mult = -0.2
+		starbase_shipyard_build_speed_mult = 0.2
+	}
+	
+	# Additional stability when at war
+	
+	starting_colony = pc_nuked
+	
+	traits = {
+		trait = trait_survivor
+	}
+
+	random_weight = {
+		base = 2
+	}
+	description = "origin_tooltip_drumsofwar_effects"
+
+	advanced_start = yes
+}
+
+origin_warenders = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_paindrinkers.dds"
+	picture = GFX_evt_paindrinkers
+	max_once_global = yes
+
+	potential = {
+		always = yes
+	}
+
+	possible = {
+		ethics = {
+			or = {
+				value = ethic_fanatic_pacifist
+				value = ethic_pacifist
+			}
+			or = {
+				value = ethic_fanatic_xenophile
+				value = ethic_xenophile
+			}
+		}
+	}
+	
+	starting_colony = pc_gaia
+	habitability_preference = pc_gaia
+	preferred_planet_class_neighbor = no
+	
+	traits = {
+		trait = trait_talented_empaths
+	}
+	
+	modifier = {
+		envoys_add = 2
+		country_trust_cap_add = 25
+		country_trust_growth = 1.0
+		diplo_action_acceptance_add = 5
+		country_border_friction_mult = -0.25
+		intel_decryption_add = 2
+	}
+
+	random_weight = {
+		base = 5
+	}
+	description = "origin_tooltip_warenders_effects"
+
+	advanced_start = yes
+}
+
+# Predators
+origin_thehuntisall = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_shroudrage.dds"
+	picture = GFX_evt_shroudrage
+	max_once_global = yes
+
+	potential = {
+		always = no
+	}
+
+	possible = {
+		ethics = {
+			value = ethic_fanatic_xenophobe
+			not = { value = ethic_pacifist }
+			not = { value = ethic_egalitarian }
+		}
+	}
+	
+	starting_colony = pc_relic
+	preferred_planet_class_neighbor = no
+
+	playable = {
+		has_ancrel = yes
+	}
+	
+	modifier = {
+		army_damage_mult = 0.5
+		pop_amenities_usage_mult = -0.5
+		planet_pops_consumer_goods_upkeep_mult = -0.25
+	}
+
+	random_weight = {
+		base = 5
+	}
+	description = "origin_tooltip_thehuntisall_effects"
+
+	advanced_start = yes
+}
+
+# Its vulcan philosophy 
+origin_infinitediversity = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_soulkeepers.dds"
+	picture = GFX_evt_soulkeepers
+	max_once_global = yes
+
+	potential = {
+		always = yes
+	}
+
+	possible = {
+		ethics = {
+			or = {
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+			not = { value = ethic_fanatic_militarist }
+			not = { value = ethic_fanatic_authoritarian }
+			not = { value = ethic_militarist }
+			not = { value = ethic_authoritarian }
+		}
+		authority = {
+			NOT = { value = auth_corporate }
+		}
+		civics = {
+			NOR = {
+				value = civic_criminal_heritage
+				value = civic_barbaric_despoilers
+				value = civic_fanatic_purifiers
+			}
+		}
+	}
+	
+	modifier = {
+		diplomacy_upkeep_mult = -0.25
+		envoys_add = 1
+		pop_amenities_usage_mult = -0.25
+		planet_crime_mult = -0.5
+	}
+	
+	traits = {
+		trait = trait_logical_philosophy
+		trait = trait_emotional_suppression
+	}
+
+	random_weight = {
+		base = 5
+	}
+	description = "origin_tooltip_infinitediversity_effects"
+
+	advanced_start = yes
+}
+
+# Roboticists wanting to discover, learn and record everything in a giant computer network.
+origin_grandarchivists = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_shroudsinners.dds"
+	picture = GFX_evt_shroudsinners
+	starting_colony = pc_habitat
+	initializers = { void_dweller_system sol_system_void_dweller_system }
+	habitability_preference = pc_habitat
+	max_once_global = yes
+	preferred_planet_class_neighbor = no
+
+	playable = {
+		host_has_dlc = Federations
+	}
+
+	potential = {
+		always = no
+	}
+
+	possible = {
+		ethics = {
+			value = ethic_fanatic_materialist
+		}
+	}
+	
+	traits = {
+		trait = trait_cybernetic
+		trait = trait_void_dweller_1
+	}
+	
+	modifier = {
+		job_roboticist_add = 2
+		planet_pops_robotics_upkeep_mult = -0.25
+	}
+
+	random_weight = {
+		base = 5
+	}
+	description = "origin_tooltip_grandarchivists_effects"
+
+	advanced_start = yes
+}
+
+# Homeworld halfway into the Shroud, and pops are primarily psychic energy that can take physical form.
+origin_shroudbringers = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_shroudmutated.dds"
+	picture = GFX_evt_shroudmutated
+	max_once_global = yes
+	starting_colony = pc_relic
+	preferred_planet_class_neighbor = no
+
+	potential = {
+		always = no
+	}
+	
+	playable = {
+		has_ancrel = yes
+	}
+
+	possible = {
+		ethics = {
+			value = ethic_fanatic_spiritualist
+			not = { value = ethic_pacifist }
+			not = { value = ethic_egalitarian }
+		}
+	}
+	
+	modifier = {
+		army_damage_mult = 0.5
+		planet_colony_development_speed_mult = 1.0
+		pop_environment_tolerance = 0.25
+		pop_housing_usage_mult = -0.25
+	}
+	
+	traits = {
+		trait = trait_psionic
+	}
+
+	random_weight = {
+		base = 5
+	}
+	description = "origin_tooltip_shroudbringers_effects"
+
+	advanced_start = yes
+}
+
+origin_starclaimers = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_starclaimers.dds"
+	picture = GFX_evt_starclaimers
+	max_once_global = yes
+
+	potential = {
+		always = yes
+	}
+
+	possible = {
+		civics = {
+			OR = {
+				value = civic_barbaric_despoilers
+				value = civic_fanatic_purifiers
+				value = civic_machine_assimilator
+				value = civic_machine_terminator
+				value = civic_hive_devouring_swarm
+			}
+		}
+	}
+	
+	modifier = {
+		planet_colony_development_speed_mult = -0.5
+		megastructures_habitat_cost_mult = -0.25
+		empire_size_systems_mult = -0.25
+		country_starbase_influence_cost_mult = -0.25
+		starbases_upkeep_mult = -0.25
+		country_base_influence_produces_add = 1
+		station_gatherers_produces_mult = 0.25
+	}
+
+	random_weight = {
+		base = 2
+	}
+	description = "origin_tooltip_starclaimers_effects"
+
+	advanced_start = yes
+}
+
+origin_steppingstone = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_steppingstone.dds"
+	picture = GFX_evt_steppingstone
+	max_once_global = yes
+
+	potential = {
+		always = yes
+	}
+
+	possible = {
+		ethics = {
+			NOT = { value = ethic_gestalt_consciousness }
+		}
+		
+		species_archetype = {
+			NOT = { value = LITHOID }
+		}
+	}
+
+	random_weight = {
+		base = 2
+	}
+	description = "origin_tooltip_steppingstone_effects"
+
+	advanced_start = yes
+}
+
+origin_jumpstart = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_jumpstart.dds"
+	picture = GFX_evt_jumpstart
+	max_once_global = yes
+
+	potential = {
+		always = yes
+	}
+
+	possible = {
+		ethics = {
+			or = {
+				value = ethic_fanatic_materialist
+				value = ethic_materialist
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+
+	random_weight = {
+		base = 2
+	}
+	description = "origin_tooltip_jumpstart_effects"
+
+	advanced_start = no
+}
+
+origin_forgedinfire = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_forgedinfire.dds"
+	picture = GFX_evt_forgedinfire
+	max_once_global = yes
+
+	potential = {
+		always = yes
+	}
+
+	possible = {
+		ethics = {
+			NOT = { value = ethic_gestalt_consciousness }
+			NOT = { value = ethic_xenophile }
+			NOT = { value = ethic_fanatic_xenophile }
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+	}
+
+	random_weight = {
+		base = 2
+	}
+	description = "origin_tooltip_forgedinfire_effects"
+
+	advanced_start = yes
+}
+
+origin_ascendant = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_ascendant.dds"
+	picture = GFX_evt_ascendant
+	max_once_global = yes
+
+	potential = {
+		always = yes
+	}
+
+	possible = {
+		ethics = {
+			NOT = { value = ethic_gestalt_consciousness }
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+	}
+
+	random_weight = {
+		base = 2
+	}
+	description = "origin_tooltip_ascendant_effects"
+
+	advanced_start = yes
+}
+
+origin_cyberpunked = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_cyberpunked.dds"
+	picture = GFX_evt_cyberpunked
+	max_once_global = yes
+
+	potential = {
+		always = yes
+	}
+
+	possible = {
+		ethics = {
+			NOT = { value = ethic_gestalt_consciousness }
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
+	}
+
+	random_weight = {
+		base = 2
+	}
+	description = "origin_tooltip_cyberpunked_effects"
+
+	advanced_start = yes
+}
+
+origin_genepurists = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_genepurists.dds"
+	picture = GFX_evt_genepurists
+	max_once_global = yes
+
+	potential = {
+		always = yes
+	}
+
+	possible = {
+		ethics = {
+			NOT = { value = ethic_gestalt_consciousness }
+			OR = {
+				text = civic_tooltip_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+		}
+	}
+
+	random_weight = {
+		base = 2
+	}
+	description = "origin_tooltip_genepurists_effects"
+
+	advanced_start = yes
+}
+
+origin_afterjudgement = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_afterjudgement.dds"
+	picture = GFX_evt_afterjudgement
+	max_once_global = yes
+	
+	starting_colony = pc_nuked
+
+	playable = {
+		host_has_dlc = "Apocalypse"
+	}
+
+	possible = {
+		ethics = {
+			NOT = { value = ethic_gestalt_consciousness }
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
+	}
+	
+	traits = {
+		trait = trait_survivor
+	}
+
+	random_weight = {
+		base = 2
+	}
+	description = "origin_tooltip_afterjudgement_effects"
+
+	advanced_start = yes
+}
+
+origin_electricsheep = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_electricsheep.dds"
+	picture = GFX_evt_electricsheep
+	max_once_global = yes
+
+	playable = {
+		host_has_dlc = "Utopia"
+	}
+
+	possible = {
+		ethics = {
+			value = ethic_fanatic_materialist
+		}
+	}
+	
+	traits = {
+		trait = trait_synth_dependent
+	}
+
+	description = "origin_tooltip_electricsheep_effects"
+
+	advanced_start = yes
+
+	random_weight = {
+		base = 3
+	}
+}

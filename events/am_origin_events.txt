@@ -1,0 +1,1044 @@
+namespace = amoriginstarts
+
+event = {
+	id = amoriginstarts.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_country = {
+			limit = {
+				is_regular_empire = yes
+				exists = capital_scope
+			}
+			capital_scope = {
+				remove_district = district_city
+			}
+		}
+		every_country = {
+			limit = {
+				has_origin = origin_infinitediversity
+			}
+			give_technology = { message = no tech = tech_planetary_unification }
+		}
+		every_country = {
+			limit = {
+				has_origin = origin_isolated
+			}
+			give_technology = { message = no tech = tech_am_hyperlane_generation }
+			save_event_target_as = soulkeeper_country
+			home_planet.solar_system = {
+				set_star_flag = donotincludesystem
+				every_neighbor_system = {
+					limit = { not = { has_star_flag = donotincludesystem }}
+					set_star_flag = donotincludesystem
+					set_surveyed = { surveyed = yes surveyor = event_target:soulkeeper_country }
+					every_neighbor_system = {
+						limit = { not = { has_star_flag = donotincludesystem }}
+						set_star_flag = donotincludesystem
+						set_surveyed = { surveyed = yes surveyor = event_target:soulkeeper_country }
+						every_neighbor_system = {
+							limit = { not = { has_star_flag = donotincludesystem }}
+							set_star_flag = donotincludesystem
+							save_event_target_as = removemyhyperlane
+							every_neighbor_system = {
+								limit = { not = { has_star_flag = donotincludesystem }}
+								save_event_target_as = neighborsystem
+								remove_hyperlane = { from = this to = event_target:removemyhyperlane }							
+								if = {
+									limit = {
+										event_target:removemyhyperlane = { has_hyperlane_to = event_target:neighborsystem }
+									}
+									remove_hyperlane = { from = event_target:removemyhyperlane to = event_target:neighborsystem }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	
+		every_country = {
+			limit = { 
+				has_origin = origin_iceaged
+			}		
+			give_technology = { message = no tech = tech_rare_crystals }
+			give_technology = { message = no tech = tech_massive_glacier }
+			give_technology = { message = no tech = tech_frozen_world_terraforming }
+			give_technology = { message = no tech = tech_hydroponics }
+			capital_scope = {
+				set_planet_flag = pf_hide_city
+				set_planet_flag = pf_hide_hab_science
+				set_planet_flag = pf_industrial_districts
+				set_planet_flag = pf_retain_frozen_refinery
+				
+				add_deposit = d_massive_glacier
+				add_deposit = d_frozen_gas_lake
+				add_deposit = d_ore_rich_caverns
+				add_deposit = d_ore_rich_caverns
+				add_deposit = d_ore_rich_caverns
+				add_deposit = d_fungal_caves
+				add_deposit = d_biovault
+				
+				validate_planet_buildings_and_districts = yes
+				
+				add_district = district_frozen_refinery
+				#remove_district = district_generator
+				#remove_district = district_generator
+				add_district = district_utility_domes
+				add_district = district_habitation_dome
+				#add_district =  district_generator_dome
+				
+				if = { 
+					limit = {
+						exists = owner
+						owner = {
+							is_machine_empire = no
+							is_lithoid_empire = no
+						}
+					}
+					add_building = building_hydroponics_farm
+				}
+				if = { 
+					limit = {
+						exists = owner
+						owner = {
+							is_machine_empire = yes
+						}
+					}
+					add_building = building_energy_grid
+				}
+				if = { 
+					limit = {
+						exists = owner
+						owner = {
+							is_lithoid_empire = yes
+						}
+					}
+					add_building = building_mineral_purification_plant
+				}
+
+				check_planet_employment = yes
+			}
+		}
+		every_country = {
+			limit = { 
+				has_origin = origin_primordials
+			}		
+			give_technology = { message = no tech = tech_volatile_motes }
+			give_technology = { message = no tech = tech_volcano }
+			give_technology = { message = no tech = tech_molten_world_terraforming }
+			give_technology = { message = no tech = tech_hydroponics }
+			capital_scope = {
+				set_planet_flag = pf_hide_city
+				set_planet_flag = pf_industrial_districts
+				set_planet_flag = pf_retain_molten_refinery	
+				set_planet_flag = pf_hide_hab_science
+				add_deposit = d_active_volcano
+				add_deposit = d_hot_springs
+				add_deposit = d_searing_desert
+				add_deposit = d_geothermal_vent
+				add_deposit = d_ore_rich_caverns
+				add_deposit = d_ore_rich_caverns
+				add_deposit = d_ore_rich_caverns
+				add_deposit = d_nutritious_mudland
+				
+				remove_building = building_commercial_zone
+				add_district = district_habitation_dome
+				add_district = district_utility_domes
+				validate_planet_buildings_and_districts = yes
+				add_district = district_molten_refinery
+				#remove_district = district_generator
+				#remove_district = district_generator
+				#add_district =  district_generator_dome
+				
+				if = { 
+					limit = {
+						exists = owner
+						owner = {
+							is_machine_empire = no
+							is_lithoid_empire = no
+						}
+					}
+					add_building = building_hydroponics_farm
+				}
+				if = { 
+					limit = {
+						exists = owner
+						owner = {
+							is_machine_empire = yes
+						}
+					}
+					add_building = building_energy_grid
+				}
+				if = { 
+					limit = {
+						exists = owner
+						owner = {
+							is_lithoid_empire = yes
+						}
+					}
+					add_building = building_mineral_purification_plant
+				}
+				add_deposit = d_biovault
+				add_deposit = d_biovault
+
+				check_planet_employment = yes
+			}
+		}
+		every_country = {
+			limit = { 
+				has_origin = origin_poisonedpast
+			}		
+			give_technology = { message = no tech = tech_exotic_gases }
+			give_technology = { message = no tech = tech_noxious_swamp }
+			give_technology = { message = no tech = tech_toxic_world_terraforming }
+			give_technology = { message = no tech = tech_hydroponics }
+			capital_scope = {
+				set_planet_flag = pf_hide_city
+				set_planet_flag = pf_industrial_districts
+				set_planet_flag = pf_retain_toxic_refinery
+				set_planet_flag = pf_hide_hab_science
+				
+				add_deposit = d_noxious_swamp
+				add_deposit = d_geothermal_vent
+				add_deposit = d_ore_rich_caverns
+				add_deposit = d_ore_rich_caverns
+				add_deposit = d_ore_rich_caverns
+				add_deposit = d_boggy_fens
+				add_deposit = d_fungal_caves
+				add_deposit = d_fungal_forest
+				add_deposit = d_bubbling_swamp
+				add_deposit = d_fuming_bog
+				add_deposit = d_biovault
+
+				add_district = district_habitation_dome
+				add_district = district_habitation_dome				
+				validate_planet_buildings_and_districts = yes
+
+				add_district = district_toxin_refinery
+				add_district = district_utility_domes
+				# remove_district = district_generator
+				remove_district = district_generator
+				# add_district =  district_generator_dome
+				
+				if = { 
+					limit = {
+						exists = owner
+						owner = {
+							is_machine_empire = no
+							is_lithoid_empire = no
+						}
+					}
+					add_building = building_hydroponics_farm
+				}
+				if = { 
+					limit = {
+						exists = owner
+						owner = {
+							is_machine_empire = yes
+						}
+					}
+					add_building = building_energy_grid
+				}
+				if = { 
+					limit = {
+						exists = owner
+						owner = {
+							is_lithoid_empire = yes
+						}
+					}
+					add_building = building_mineral_purification_plant
+				}
+
+				check_planet_employment = yes
+			}
+		}
+		every_country = {
+			limit = { 
+				has_origin = origin_forgedinfire
+			}
+			save_event_target_as = forgedinfire_country
+			capital_scope = {
+				solar_system = {
+					random_system_planet = {
+						limit = {
+							is_star = no
+							is_colony = no
+						}
+						set_planet_size = 12
+						change_pc = pc_nuked
+						every_deposit = {
+							remove_deposit = yes
+						}
+						roll_barren_habitable_features = yes
+						create_colony = {
+							owner = event_target:forgedinfire_country
+							# species = owner_main_species
+						}
+						clear_blockers = yes
+						#add_district = district_outpostnuked
+						#add_district = district_outpostnuked
+					}
+					random_system_planet = {
+						limit = {
+							is_star = no
+							not = { is_planet_class = pc_nuked }
+							is_colony = no
+						}
+						set_planet_size = 4
+						change_pc = pc_asteroid_habitable
+						every_deposit = {
+							remove_deposit = yes
+						}
+						roll_barren_mining_features = yes
+						create_colony = {
+							owner = event_target:forgedinfire_country
+							# species = owner_main_species
+						}
+						clear_blockers = yes
+						add_modifier = {
+							modifier = "criminal_underworld"
+							days = -1
+						}
+					}
+					random_system_planet = {
+						limit = {
+							is_star = no
+							not = { is_planet_class = pc_nuked }
+							not = { is_planet_class = pc_asteroid_habitable }
+							is_colony = no
+						}
+						set_planet_size = 8
+						change_pc = pc_shattered
+						every_deposit = {
+							remove_deposit = yes
+						}
+						#add_deposit = d_orbital_fuels_4
+					}
+					random_system_planet = {
+						limit = {
+							is_star = no
+							not = { is_planet_class = pc_nuked }
+							not = { is_planet_class = pc_asteroid_habitable }
+							not = { is_planet_class = pc_shattered }
+							is_colony = no
+						}
+						set_planet_size = 12
+						change_pc = pc_broken
+						every_deposit = {
+							remove_deposit = yes
+						}
+						#add_deposit = d_toxic_variety
+					}
+				}
+			}
+			
+			give_technology = { message = no tech = tech_destroyers }
+			give_technology = { message = no tech = tech_strike_craft_1 }
+			create_fleet = {
+				set_take_point = yes
+				effect = {
+					set_owner = prev
+
+					while = {
+						count = 2
+						create_ship = {
+							name = random
+							random_existing_design = destroyer
+						}
+					}
+
+					set_location = prev.capital_star
+				}
+			}
+		}
+		every_country = {
+			limit = { 
+				has_origin = origin_starclaimers
+			}
+			give_technology = { message = no tech = tech_habitat_1 }
+			add_resource = { alloys = 2500 }
+		}
+		every_country = {
+			limit = { 
+				has_origin = origin_jumpstart
+			}
+			give_technology = { message = no tech = tech_am_jump_drive }
+			give_technology = { message = no tech = tech_experimental_subspace_navigation }
+			give_technology = { message = no tech = tech_automated_exploration }
+			give_technology = { message = no tech = tech_sensors_2 }
+		}
+		every_country = {
+			limit = { 
+				has_origin = origin_steppingstone
+			}
+			save_event_target_as = steppingstone_country
+			give_technology = { message = no tech = tech_hydroponics }
+			give_technology = { message = no tech = tech_starbase_3 }
+			capital_scope = {
+				solar_system = {
+					if = {
+						limit = { exists = starbase }
+						starbase = {
+							set_starbase_size = starbase_starhold
+						}
+					}
+				}
+				random_moon = {
+					save_event_target_as = steppingstone_moon					
+				}
+			}
+			if = {
+				limit = { not = { exists = event_target:steppingstone_moon }}
+				capital_scope = {
+					solar_system = {
+						random_system_planet = {
+							limit = {
+								is_ringworld = no
+								is_asteroid = no
+								is_star = no
+								is_colony = no
+							}
+							save_event_target_as = steppingstone_moon
+						}
+					}
+				}				
+			}
+			
+			event_target:steppingstone_moon = {
+				change_pc = pc_barren_habitable
+				set_planet_size = 10
+				every_deposit = {
+					remove_deposit = yes
+				}
+				roll_barren_mining_features = yes
+				create_colony = {
+					owner = event_target:steppingstone_country
+					# species = owner_main_species
+				}
+				validate_planet_buildings_and_districts = yes
+				add_district = district_habitation_dome
+				add_building = building_hydroponics_farm
+				add_building = building_basic_quarters
+				while = {
+					count = 2
+					create_pop = {
+						species = owner_main_species
+					}
+				}
+				check_planet_employment = yes
+			}			
+		}
+		
+		every_country = {
+			limit = { 
+				has_origin = origin_warenders
+			}
+			save_event_target_as = warenders_country
+			give_technology = { message = no tech = tech_psionic_theory }
+			give_technology = { message = no tech = tech_planetary_unification }
+			give_technology = { message = no tech = tech_habitat_1 }
+			capital_scope = {
+				clear_blockers = yes
+				add_deposit = d_rushing_waterfalls
+				add_deposit = d_bountiful_plains
+				add_deposit = d_green_hills
+				add_deposit = d_ore_rich_caverns
+				add_deposit = d_geothermal_vent
+				validate_planet_buildings_and_districts = yes
+				add_district = district_farming
+				add_district = district_generator
+				add_district = district_mining
+				remove_building = building_factory_1
+				remove_building = building_temple
+				add_building = building_luxury_residence
+				check_planet_employment = yes
+			}
+		}
+		every_country = {
+			limit = { 
+				has_origin = origin_drumsofwar
+			}
+			save_event_target_as = drumsofwar_country
+			give_technology = { message = no tech = tech_strike_craft_1 }
+			give_technology = { message = no tech = tech_planetary_defenses }
+			
+			capital_scope = {
+				add_deposit = d_warring_nation
+				add_deposit = d_warring_nation
+				add_deposit = d_fungal_caves
+				validate_planet_buildings_and_districts = yes
+				remove_district = district_city
+				add_district = district_farming
+				check_planet_employment = yes
+				random_moon = {
+					save_event_target_as = drumsofwar_moon					
+				}
+			}
+			if = {
+				limit = { not = { exists = event_target:drumsofwar_moon }}
+				capital_scope = {					
+					solar_system = {
+						random_system_planet = {
+							limit = {
+								is_ringworld = no
+								is_asteroid = no
+								is_star = no
+								is_colony = no
+							}
+							save_event_target_as = drumsofwar_moon
+						}
+					}
+				}				
+			}
+			
+			event_target:drumsofwar_moon = {
+				change_pc = pc_barren_habitable
+				set_planet_size = 10
+				every_deposit = {
+					remove_deposit = yes
+				}
+				roll_barren_mining_features = yes
+				create_colony = {
+					owner = event_target:drumsofwar_country
+				}
+				add_district = district_habitation_dome
+				add_district = district_habitation_dome
+				add_district = district_mining
+				add_deposit = d_biovault
+				validate_planet_buildings_and_districts = yes
+				add_building = building_stronghold
+				add_building = building_foundry_1
+				add_building = building_basic_quarters
+				
+				while = {
+					count = 9
+					create_pop = {
+						species = owner_main_species
+						ethos = { ethic = ethic_militarist }
+					}
+				}
+				check_planet_employment = yes
+			}			
+		}
+		
+		every_country = {
+			limit = { 
+				has_authority = auth_machine_intelligence
+			}		
+			give_technology = { message = no tech = tech_power_hub_1 }
+		}
+		every_country = {
+			limit = { 
+				has_authority = auth_corporate
+				exists = capital_scope
+			}		
+			capital_scope = {
+				remove_district = district_city
+				remove_district = district_city
+				remove_building = building_foundry_1
+				check_planet_employment = yes
+			}
+		}
+		
+		every_country = {
+			limit = { 
+				is_lithoid_empire = yes
+			}		
+			give_technology = { message = no tech = tech_mineral_purification_1 }
+		}
+		
+		every_country = {
+			limit = { 
+				has_origin = origin_ascendant
+			}		
+			give_technology = { message = no tech = tech_ascension_theory }
+			give_technology = { message = no tech = tech_psionic_theory }
+		}
+		every_country = {
+			limit = { 
+				has_origin = origin_cyberpunked
+			}		
+			give_technology = { message = no tech = tech_ascension_theory }
+			give_technology = { message = no tech = tech_droid_workers }
+			give_technology = { message = no tech = tech_robotic_workers }
+		}
+		every_country = {
+			limit = { 
+				has_origin = origin_genepurists
+			}		
+			give_technology = { message = no tech = tech_ascension_theory }
+			give_technology = { message = no tech = tech_cloning }
+			give_technology = { message = no tech = tech_gene_tailoring }
+			add_modifier = {
+				modifier = use_eugenics
+				days = -1
+			}
+		}
+		every_country = {
+			limit = { 
+				has_civic = civic_elite_easy_living
+			}		
+			give_technology = { message = no tech = tech_paradise_citydomes }
+		}
+		every_country = {
+			limit = { 
+				has_civic = civic_trading_posts
+			}		
+			give_technology = { message = no tech = tech_space_trading }
+			give_technology = { message = no tech = tech_starbase_2 }
+		}
+		every_country = {
+			limit = { 
+				has_civic = civic_police_state
+			}		
+			give_technology = { message = no tech = tech_penal_colonies }
+		}
+		every_country = {
+			limit = { 
+				or = {
+					has_civic = civic_merchant_guilds
+					has_civic = civic_free_traders
+					has_civic = civic_trading_posts
+				}
+			}		
+			give_technology = { message = no tech = tech_space_trading }
+		}
+		every_country = {
+			limit = {
+				or = {
+					has_civic = civic_indentured_assets
+					has_civic = civic_slaver_guilds
+				}
+			}		
+			give_technology = { message = no tech = tech_neural_implants }
+			give_technology = { message = no tech = tech_slave_colonies }
+		}
+		every_country = {
+			limit = {
+				or = {
+					has_civic = civic_citizen_service
+					has_civic = civic_warrior_culture
+					has_civic = civic_nationalistic_zeal
+					has_civic = civic_private_military_companies
+				}
+			}		
+			give_technology = { message = no tech = tech_centralized_command }
+		}
+		every_country = {
+			limit = {
+				has_civic = civic_distinguished_admiralty
+			}		
+			give_technology = { message = no tech = tech_interstellar_fleet_traditions }
+		}	
+		every_country = {
+			limit = {
+				has_civic = civic_naval_contractors
+			}		
+			give_technology = { message = no tech = tech_corvette_hull_1 }
+			give_technology = { message = no tech = tech_doctrine_navy_size_1 }
+		}
+		every_country = {
+			limit = {
+				has_civic = civic_private_military_companies
+			}
+			give_technology = { message = no tech = tech_combat_training }
+		}		
+		every_country = {
+			limit = {
+				has_civic = civic_private_prospectors
+			}
+			give_technology = { message = no tech = tech_cryostasis_1 }
+		}
+		every_country = {
+			limit = {
+				has_civic = civic_nature_worship
+			}
+			capital_scope = {
+				remove_district = district_city
+				set_planet_flag = pf_nature_reserves 
+				add_deposit = d_default_nature_conserve
+				validate_planet_buildings_and_districts = yes
+				check_planet_employment = yes
+			}
+		}
+		every_country = {
+			limit = {
+				or = {
+					has_civic = civic_natural_harmony
+					has_civic = civic_environmentalist
+					has_civic = civic_galactic_resorts
+					has_civic = civic_hunt_the_hunters
+					has_civic = civic_idyllic_bloom
+					has_civic = civic_agrarian_idyll
+				}
+			}
+			capital_scope = {
+				remove_district = district_city
+				set_planet_flag = pf_nature_reserves 
+				add_deposit = d_default_nature_conserve
+				add_building = building_factory_1
+				validate_planet_buildings_and_districts = yes
+				check_planet_employment = yes
+			}
+		}
+		every_country = {
+			limit = {
+				or = {
+					has_civic = civic_natural_harmony
+					has_civic = civic_idyllic_bloom
+				}
+			}
+			capital_scope = {
+				add_deposit = d_rushing_waterfalls
+				add_deposit = d_rushing_waterfalls
+				add_deposit = d_bountiful_plains
+				add_deposit = d_green_hills
+				remove_district = district_city
+				validate_planet_buildings_and_districts = yes
+				add_district = district_nature_reserve
+				check_planet_employment = yes
+			}
+		}
+		every_country = {
+			limit = { 
+				is_ai = no 
+			}
+			capital_scope = {
+				if = {
+					limit = { any_owned_pop = { is_unemployed = yes }}
+					every_owned_pop = {
+						limit = { is_unemployed = yes }
+						clear_pop_category = yes
+					}
+					check_planet_employment = yes
+				}
+			}
+		}
+		every_galaxy_planet = {
+			limit = {
+				is_capital = yes
+				is_ringworld_colony = yes
+			}
+
+			if = {
+				limit = { NOT = { has_deposit = d_fuels_cache } }
+				add_deposit = d_fuels_cache
+			}
+			if = {
+				limit = { NOT = { has_deposit = d_biovault } }
+				add_deposit = d_biovault
+			}
+		}
+	}
+}
+
+# Survey Complete
+ship_event = {
+	id = amoriginstarts.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = { has_origin = origin_starclaimers }
+		solar_system = { not = { has_star_flag = sf_origin_star_claimed }}
+	}
+
+	immediate = {
+		solar_system = { 
+			set_star_flag = sf_origin_star_claimed
+			set_star_flag = sf_origin_star_claimer@root.owner
+			set_timed_star_flag = {
+				flag = sf_origin_star_claimable_in
+				days = 358
+			}
+		}
+		owner = {
+			country_event = { id = amoriginstarts.3 days = 360 }
+		}
+	}
+}
+
+country_event = {
+	id = amoriginstarts.3
+	hide_window = yes
+	is_triggered_only = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_starclaimers
+	}
+
+	immediate = {
+		random_system = {
+			limit = {
+				has_star_flag = sf_origin_star_claimed
+				has_star_flag = sf_origin_star_claimer@root
+				not = { has_star_flag = sf_origin_star_claimable_in }
+				not = { exists = space_owner }
+				not = { exists = starbase }
+				not = { any_system_planet = { is_colony = yes }}
+				not = {
+					any_ship_in_system = {
+						exists = owner
+						owner = { is_hostile = root }
+					}
+				}
+			}
+			create_starbase = {
+				size = starbase_outpost
+				owner = root
+			}
+			every_system_planet = {
+				limit = {
+					has_deposit_for = shipclass_mining_station
+				}
+				create_mining_station = { owner = root }
+			}
+			every_system_planet = {
+				limit = {
+					has_deposit_for = shipclass_research_station
+				}
+				create_research_station = { owner = root }
+			}
+		}
+	}
+}
+
+ship_event = {
+	id = amoriginstarts.4
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		exists = owner
+		owner = { has_origin = origin_starclaimers }
+		exists = solar_system
+	}
+
+	immediate = {
+		solar_system = {
+			every_system_planet = {
+				limit = {
+					has_deposit_for = shipclass_mining_station
+				}
+				create_mining_station = { owner = root.owner }
+			}
+			every_system_planet = {
+				limit = {
+					has_deposit_for = shipclass_research_station
+				}
+				create_research_station = { owner = root.owner }
+			}
+		}
+	}
+}
+
+ship_event = {
+	id = amoriginstarts.5
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		exists = owner
+		owner = { has_technology = tech_am_hyperlane_generation }
+		exists = solar_system
+	}
+
+	immediate = {
+		solar_system = {
+			save_event_target_as = system_has_outpost
+			every_neighbor_system_euclidean = {
+				limit = {
+					not = { has_hyperlane_to = event_target:system_has_outpost }
+				}
+				add_hyperlane = { from = this to = event_target:system_has_outpost }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = amoriginstarts.100
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_drumsofwar
+		num_communications > 0
+	}
+	
+	immediate = {
+		if = {
+			limit = { is_at_war = yes }
+			remove_modifier = peace_sucks_1
+			remove_modifier = peace_sucks_2
+			remove_modifier = peace_sucks_3
+			remove_modifier = peace_sucks_4
+			remove_modifier = peace_sucks_5
+			if = {
+				limit = { 
+					not = { has_modifier = we_love_war }
+				}
+				add_modifier = {
+					modifier = we_love_war
+					days = -1
+				}
+			}
+		}
+		else = {
+			remove_modifier = we_love_war
+			if = {
+				limit = {
+					nor = {
+						has_modifier = peace_sucks_1
+						has_modifier = peace_sucks_2
+						has_modifier = peace_sucks_3
+						has_modifier = peace_sucks_4
+						has_modifier = peace_sucks_5
+					}
+				}
+				if = {
+					limit = { years_of_peace = { value > 2 }}
+					add_modifier = {
+						modifier = peace_sucks_1
+						days = -1
+					}	
+				}
+			}
+			else = {
+				if = {
+					limit = { 
+						years_of_peace = { value > 9 }
+						years_of_peace = { value <= 15 }						
+					}
+					remove_modifier = peace_sucks_1
+					if = { 
+						limit = { not = { has_modifier = peace_sucks_2 }} 
+						add_modifier = {
+							modifier = peace_sucks_2
+							days = -1
+						}
+					}
+					remove_modifier = peace_sucks_3
+					remove_modifier = peace_sucks_4
+					remove_modifier = peace_sucks_5					
+				}
+				else_if = {
+					limit = { 
+						years_of_peace = { value > 15 }
+						years_of_peace = { value <= 20 }						
+					}
+					remove_modifier = peace_sucks_1
+					remove_modifier = peace_sucks_2
+					if = { 
+						limit = { not = { has_modifier = peace_sucks_3 }} 
+						add_modifier = {
+							modifier = peace_sucks_3
+							days = -1
+						}
+					}
+					remove_modifier = peace_sucks_4
+					remove_modifier = peace_sucks_5					
+				}
+				else_if = {
+					limit = { 
+						years_of_peace = { value > 20 }
+						years_of_peace = { value <= 25 }						
+					}
+					remove_modifier = peace_sucks_1
+					remove_modifier = peace_sucks_2
+					remove_modifier = peace_sucks_3
+					if = { 
+						limit = { not = { has_modifier = peace_sucks_4 }} 
+						add_modifier = {
+							modifier = peace_sucks_4
+							days = -1
+						}
+					}
+					remove_modifier = peace_sucks_5					
+				}
+				else = {
+					remove_modifier = peace_sucks_1
+					remove_modifier = peace_sucks_2
+					remove_modifier = peace_sucks_3
+					remove_modifier = peace_sucks_4
+					if = { 
+						limit = { not = { has_modifier = peace_sucks_5 }} 
+						add_modifier = {
+							modifier = peace_sucks_5
+							days = -1
+						}
+					}				
+				}
+			}
+		}
+	}
+}
+
+# Make starting colonisables be Primitives
+country_event = {
+	id = amoriginstarts.2500
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		has_origin = origin_warenders
+	}
+
+	immediate = {
+		capital_scope.solar_system = {
+			closest_system = {
+				limit = { has_star_flag = neighbor_t1_first_colony }
+				max_steps = 3
+				random_system_planet = {
+					limit = {
+						is_colonizable = yes
+						is_colony = no
+						has_planet_flag = prescripted_ideal
+					}
+					generate_very_early_primitives_on_planet = yes
+					set_name = random
+					change_colony_foundation_date = -461
+
+					while = {
+						count = 4
+						create_army = {
+							owner = last_created_country
+							type = primitive_additional_army
+							species = last_created_country
+						}
+					}
+				}
+			}
+			reroll_random = yes
+			closest_system = {
+				limit = { has_star_flag = neighbor_t2_second_colony }
+				max_steps = 6
+				random_system_planet = {
+					limit = {
+						is_colonizable = yes
+						is_colony = no
+						has_planet_flag = prescripted_ideal
+					}
+					generate_very_early_primitives_on_planet = yes
+					set_name = random
+					change_colony_foundation_date = -1275
+
+					while = {
+						count = 4
+						create_army = {
+							owner = last_created_country
+							type = primitive_additional_army
+							species = last_created_country
+						}
+					}
+				}
+			}
+		}
+	}
+}

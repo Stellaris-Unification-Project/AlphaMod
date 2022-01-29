@@ -1,0 +1,150 @@
+ext_communications_relay = {
+	icon = "GFX_sb_comms_relay"
+	construction_days = 90
+	section = "REFINERY_STARBASE_SECTION"
+	initial = no
+
+	possible = {
+		always = yes
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = 25
+		}
+		upkeep = {
+			energy = 1
+		}
+		produces = {
+			unity = 1
+			sr_comms = 5
+		}
+	}
+	
+	potential = {
+		has_starbase_building = communications_relay
+	}
+	
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 0
+	}
+}
+
+ext_hydroponics_bay = {
+	icon = "GFX_spaceport_module_hydroponic_farms"
+	construction_days = 180	
+	section = "REFINERY_STARBASE_SECTION"
+	initial = no
+
+	possible = {
+		always = yes
+	}
+	
+	potential = {
+		has_starbase_building = hydroponics_bay
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 50
+		}
+
+		produces = {
+			food = 4
+			sr_biomass = 2
+		}
+
+		upkeep = {
+			sr_ice = 1
+		}
+	}
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 0
+	}
+}
+
+ext_resource_silo = {
+	icon = "GFX_spaceport_module_resource_silo"
+	construction_days = 180
+	section = "REFINERY_STARBASE_SECTION"
+	initial = no
+
+	possible = {
+		always = yes
+	}
+	
+	potential = {
+		has_starbase_building = resource_silo
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 25
+		}
+		produces = {
+			sr_logistics = 3
+		}
+	}
+
+	country_modifier = {
+		country_resource_max_add = 2500
+	}
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 0
+	}
+}
+
+empathy_amplifier = {
+	icon = "GFX_spaceport_module_empathy_amplifier"
+	construction_days = 180
+	section = "REFINERY_STARBASE_SECTION"
+	initial = no
+	
+	potential = {
+		exists = owner
+		owner = {
+			has_origin = origin_warenders
+		}
+	}
+	
+	possible = {
+		has_starbase_building = sb_empath_enclave
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 50
+			sr_electronics = 10
+		}
+		produces = {
+			unity = 3
+			sr_comms = 2
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+	
+	system_modifier = {
+		pop_ethic_pacifist_attraction_mult = 0.05
+		planet_stability_add = 1		
+	}
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 0
+	}
+}

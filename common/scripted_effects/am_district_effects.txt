@@ -1,0 +1,409 @@
+fix_surplus_districts = {
+	if = {
+		limit = {
+			free_housing > 4
+			free_jobs > 3
+			free_district_slots < 2
+			not = { any_owned_pop = { is_unemployed = yes }}
+		}
+		if = {
+			limit = {
+				has_district = district_industrial
+				owner = { 
+					has_monthly_income = { resource = consumer_goods value > 150 }
+					has_monthly_income = { resource = alloys value > 75 }
+					resource_stockpile_compare = { resource = consumer_goods value > 5000 }
+					resource_stockpile_compare = { resource = alloys value > 2500 }
+				}
+			}
+			remove_district = district_industrial
+		}
+		else_if = {
+			limit = {
+				has_district = district_farming
+				owner = {
+					or = {
+						country_uses_food = no
+						and = {
+							has_monthly_income = { resource = food value > 150 }
+							resource_stockpile_compare = { resource = food value > 5000 }
+						}
+					}
+				}
+			}
+			remove_district = district_farming
+		}
+		else_if = {
+			limit = {
+				has_district = district_mining
+				owner = {
+					has_monthly_income = { resource = minerals value > 500 }
+					resource_stockpile_compare = { resource = minerals value > 12000 }
+				}
+			}
+			remove_district = district_mining
+		}
+		else_if = {
+			limit = {
+				has_district = district_generator
+				owner = {
+					has_monthly_income = { resource = energy value > 250 }
+					resource_stockpile_compare = { resource = energy value > 10000 }
+				}
+			}
+			remove_district = district_generator
+		}
+	}
+}
+
+fix_industrial_district_spam = {
+	if = {
+		limit = {
+			free_jobs > 3
+			free_housing > 3
+			exists = owner
+			owner = {
+				owner = { has_monthly_income = { resource = consumer_goods value > 40 }}
+				owner = { has_monthly_income = { resource = alloys value > 25 }}
+			}
+			num_districts = { type = district_industrial value > 2 }
+		}
+		remove_district = district_industrial
+	}
+}
+
+fix_comms_district_spam = {
+	random_owned_planet = {
+		limit = {
+			owner = { not_fanatical = no }
+			is_colony = yes
+			not = { has_planet_flag = pf_comm_districts_fixed }
+			has_some_community_type_districts = yes				
+		}
+		set_planet_flag = pf_comm_districts_fixed
+		clear_district_flags = yes
+		reswap_comm_districts = yes
+	}
+}
+
+fix_city_spam = {
+	if = {
+		limit = {
+			free_housing > 7
+			free_jobs > 2
+		}
+		remove_district = district_city
+	}
+}
+
+fix_community_district_spam = {
+	if = {
+		limit = {
+			not = { has_planet_flag = pf_more_comm_spam_fixing_2 }
+			free_jobs > 7
+			free_housing > 7
+			has_too_many_comm_type_districts = yes
+		}
+		set_planet_flag = pf_more_comm_spam_fixing_2
+		remove_excess_comm_districts = yes
+	}
+}
+
+fix_community_district_spam_passtwo = {
+	if = {
+		limit = {
+			has_too_many_comm_districts = yes
+		}
+		remove_district = district_community
+		remove_district = district_labour_camp
+		remove_district = district_markettowns
+		remove_district = district_parish
+		remove_district = district_securityzone
+		remove_district = district_warrior_house
+		remove_district = district_campus
+		remove_district = district_culture_commune
+	}
+}
+
+machine_replace_nexus_with_lans = {
+	if = {
+		limit = {
+			num_pops > 4
+			free_housing > 4
+			num_districts = { type = district_nexus value > 1 }
+			num_districts = { type = district_local_network value < 2 }
+			num_free_districts = { type = district_local_network value > 1 }
+		}
+		remove_district = district_nexus
+		add_district = district_local_network
+		add_district = district_local_network
+	}
+}
+
+clear_district_flags = {
+	remove_planet_flag = pf_parishes
+	remove_planet_flag = pf_labour_camps
+	remove_planet_flag = pf_markettowns
+	remove_planet_flag = pf_securityzones
+	remove_planet_flag = pf_warriorhouses
+	remove_planet_flag = pf_campuses
+	remove_planet_flag = pf_culture_communes
+}
+
+remove_excess_comm_districts = {
+	remove_district = district_community
+	remove_district = district_community
+	remove_district = district_parish
+	remove_district = district_parish
+	remove_district = district_securityzone
+	remove_district = district_securityzone
+	remove_district = district_warrior_house
+	remove_district = district_warrior_house
+	remove_district = district_markettowns
+	remove_district = district_markettowns
+	remove_district = district_labour_camp
+	remove_district = district_labour_camp
+}
+
+reswap_comm_districts = {
+	if = {
+		limit = {
+			owner = { has_ethic = ethic_fanatic_authoritarian }
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_community value > 0 }
+			}
+			remove_district = district_community
+			add_district = district_labour_camp
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_parish value > 0 }
+			}
+			remove_district = district_parish
+			add_district = district_labour_camp
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_securityzone value > 0 }
+			}
+			remove_district = district_securityzone
+			add_district = district_labour_camp
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_markettowns value > 0 }
+			}
+			remove_district = district_markettowns
+			add_district = district_labour_camp
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_warrior_house value > 0 }
+			}
+			remove_district = district_warrior_house
+			add_district = district_labour_camp
+		}
+		while = {
+			limit = {
+				free_jobs > 3
+				free_housing > 3
+				num_districts = { type = district_labour_camp value > 1 }
+			}
+			remove_district = district_labour_camp
+		}
+	}
+	if = {
+		limit = {
+			owner = { has_ethic = ethic_fanatic_spiritualist }
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_community value > 0 }
+			}
+			remove_district = district_community
+			add_district = district_parish
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_labour_camp value > 0 }
+			}
+			remove_district = district_labour_camp
+			add_district = district_parish
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_securityzone value > 0 }
+			}
+			remove_district = district_securityzone
+			add_district = district_parish
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_markettowns value > 0 }
+			}
+			remove_district = district_markettowns
+			add_district = district_parish
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_warrior_house value > 0 }
+			}
+			remove_district = district_warrior_house
+			add_district = district_parish
+		}
+		while = {
+			limit = {
+				free_jobs > 3
+				free_housing > 3
+				num_districts = { type = district_parish value > 1 }
+			}
+			remove_district = district_parish
+		}
+	}
+	if = {
+		limit = {
+			owner = { has_ethic = ethic_fanatic_militarist }
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_community value > 0 }
+			}
+			remove_district = district_community
+			add_district = district_warrior_house
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_parish value > 0 }
+			}
+			remove_district = district_parish
+			add_district = district_warrior_house
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_securityzone value > 0 }
+			}
+			remove_district = district_securityzone
+			add_district = district_warrior_house
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_markettowns value > 0 }
+			}
+			remove_district = district_markettowns
+			add_district = district_warrior_house
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_labour_camp value > 0 }
+			}
+			remove_district = district_labour_camp
+			add_district = district_warrior_house
+		}
+		while = {
+			limit = {
+				free_jobs > 3
+				free_housing > 3
+				num_districts = { type = district_warrior_house value > 1 }
+			}
+			remove_district = district_warrior_house
+		}
+	}				
+	if = {
+		limit = {
+			owner = { has_ethic = ethic_fanatic_pacifist }
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_community value > 0 }
+			}
+			remove_district = district_community
+			add_district = district_markettowns
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_parish value > 0 }
+			}
+			remove_district = district_parish
+			add_district = district_markettowns
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_securityzone value > 0 }
+			}
+			remove_district = district_securityzone
+			add_district = district_markettowns
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_labour_camp value > 0 }
+			}
+			remove_district = district_labour_camp
+			add_district = district_markettowns
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_warrior_house value > 0 }
+			}
+			remove_district = district_warrior_house
+			add_district = district_markettowns
+		}
+		while = {
+			limit = {
+				free_jobs > 3
+				free_housing > 3
+				num_districts = { type = district_markettowns value > 1 }
+			}
+			remove_district = district_markettowns
+		}
+	}
+	if = {
+		limit = {
+			owner = { has_ethic = ethic_fanatic_xenophobe }
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_community value > 0 }
+			}
+			remove_district = district_community
+			add_district = district_securityzone
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_parish value > 0 }
+			}
+			remove_district = district_parish
+			add_district = district_securityzone
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_labour_camp value > 0 }
+			}
+			remove_district = district_labour_camp
+			add_district = district_securityzone
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_markettowns value > 0 }
+			}
+			remove_district = district_markettowns
+			add_district = district_securityzone
+		}
+		while = {
+			limit = {
+				num_districts = { type = district_warrior_house value > 0 }
+			}
+			remove_district = district_warrior_house
+			add_district = district_securityzone
+		}
+		while = {
+			limit = {
+				free_jobs > 3
+				free_housing > 3
+				num_districts = { type = district_securityzone value > 1 }
+			}
+			remove_district = district_securityzone
+		}
+	}
+}

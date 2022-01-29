@@ -1,0 +1,210 @@
+d_charted_subcaverns = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	
+	icon = d_ore_rich_caverns
+	
+	planet_modifier = { 
+		# district_subcaverns_max = 3
+		planet_max_districts_add = 3
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_charted_oceanbeds = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	
+	icon = d_teeming_reef
+	
+	planet_modifier = { 
+		# district_oceanbeds_max = 3
+		planet_max_districts_add = 3
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_reservoirs = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_water_processor_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_water_processor_drone_add = 2
+		}
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_subterranean_reservoirs = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_water_processor_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_water_processor_drone_add = 2
+		}
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_ringworld_biomass = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	
+	icon = d_huge_tree
+	
+	planet_modifier = { 
+		district_biomass_cultivation_max = 10
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_astro_mining = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	
+	icon = d_huge_tree
+	
+	planet_modifier = { 
+		district_mining_max = 3
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_storage_complex = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	
+	icon = d_huge_tree
+	
+	resources = {
+		category = orbital_mining_deposits
+		upkeep = {
+			sr_wealth = 5
+		}
+	}
+	
+	country_modifier = { 
+		country_resource_max_add = 25000
+	}
+	
+	planet_modifier = { 
+		job_clerk_add = 5
+		job_administrator_add = 1
+		job_manager_add = 2
+		planet_max_districts_add = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_warring_nation = {
+	icon = d_city
+	time = 720
+	
+	is_for_colonizable = yes
+	category = deposit_cat_blockers	
+	
+	potential = { always = no }
+	
+	planet_modifier = { 
+		planet_max_districts_add = -2
+		planet_stability_add = -10
+		pop_government_ethic_attraction = -0.25
+		pop_growth_speed_reduction = 0.1
+	}
+	
+	on_cleared = {
+		add_district = district_city
+		if = {
+			limit = {
+				any_owned_pop = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+			}
+			random_owned_pop = {
+				limit = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+				root = {
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+		else = {
+			random_owned_pop = {
+				root = {
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+	}
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 100
+			unity = 200
+			influence = 50
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}

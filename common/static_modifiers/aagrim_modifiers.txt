@@ -1,0 +1,23 @@
+we_love_war = {
+	planet_stability_add = 5
+}
+
+peace_sucks_1 = {
+	planet_crime_mult = 0.25
+}
+
+peace_sucks_2 = {
+	planet_crime_mult = 0.5
+}
+
+peace_sucks_3 = {
+	planet_crime_mult = 0.75
+}
+
+peace_sucks_4 = {
+	planet_crime_mult = 1.0
+}
+
+peace_sucks_5 = {
+	planet_crime_mult = 2.0
+}

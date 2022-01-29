@@ -1,0 +1,81 @@
+alp_outpost_building = {
+	potential = {
+		always = yes
+	}
+	
+	option = {
+		name = "alp_outpost_nobuilding"
+		
+		policy_flags = {
+			alp_outpost_nobuilding
+		}
+		
+		AI_weight = {
+			weight = 1
+			modifier = {
+				weight = 3
+				is_gestalt = yes
+			}
+			modifier = {
+				weight = 5
+				is_ai = yes
+			}
+		}
+	}
+	
+	option = {
+		name = "alp_outpost_commsrelay"
+		
+		policy_flags = {
+			alp_outpost_commsrelay
+		}
+		
+		AI_weight = {
+			weight = 0
+		}
+	}
+	
+	option = {
+		name = "alp_outpost_freightyard"
+		
+		potential = {
+			is_gestalt = no
+		}
+		
+		policy_flags = {
+			alp_outpost_freightyard
+		}
+		
+		AI_weight = {
+			weight = 0
+		}
+	}
+	
+	option = {
+		name = "alp_outpost_crewquarters"
+		
+		policy_flags = {
+			alp_outpost_crewquarters
+		}
+		
+		AI_weight = {
+			weight = 0
+			modifier = {
+				weight = 2
+				is_gestalt = no
+			}
+		}
+	}
+	
+	option = {
+		name = "alp_outpost_resourcesilo"
+		
+		policy_flags = {
+			alp_outpost_resourcesilo
+		}
+		
+		AI_weight = {
+			weight = 0
+		}
+	}
+}

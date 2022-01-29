@@ -1,0 +1,25 @@
+colonise_random_planet = {
+	random_planet_within_border = {
+		limit = {
+			is_colonizable = yes
+			not = { is_planet_class = pc_nuked }
+			is_terraforming = no
+			is_under_colonization = no
+			is_colony = no
+			num_pops < 1
+			not = { has_modifier = terraforming_candidate }	
+		}
+		save_event_target_as = new_colony_candidate_identified
+	}
+	if = {
+		limit = {
+			exists = event_target:new_colony_candidate_identified
+		}
+		event_target:new_colony_candidate_identified = {
+			create_colony = {
+				owner = root
+				species = owner_main_species
+			}		
+		}
+	}
+}

@@ -1,0 +1,147 @@
+namespace = amfeatureevents
+
+# Nuclear Plant built
+planet_event = {
+    id = amfeatureevents.10
+    is_triggered_only = yes
+	hide_window = yes
+
+    trigger = {
+        exists = owner
+		owner = { not = { has_country_flag = cf_amfev_nuclearplantbuilt_flag }}
+        has_building = building_nuclear_plant
+		num_pops > 5
+    }
+	
+	immediate = {
+		random_list = {
+			97 = {}
+			1 = {
+				owner = { set_country_flag = cf_amfev_nuclearplantbuilt_flag }
+				planet_event = { id = amfeatureevents.11 days = 3600 random = 3600 }
+			}
+			2 = {
+				owner = { set_country_flag = cf_amfev_nuclearplantbuilt_flag }
+				planet_event = { id = amfeatureevents.11 days = 7200 random = 7200 }
+			}
+		}
+	}
+}
+
+# Nuclear Plant Radioactive Leak
+planet_event = {
+    id = amfeatureevents.11
+    is_triggered_only = yes
+    title = amfeatureevents.11.name
+    desc = amfeatureevents.11.desc
+    picture = GFX_evt_glitchy_matrix
+	location = ROOT
+
+    trigger = {
+        exists = owner
+		owner = { has_country_flag = cf_amfev_nuclearplantbuilt_flag }
+        planet = { has_building = building_nuclear_plant }
+    }
+	
+	immediate = {
+	
+	}
+	
+    option = {
+		# Retire plant
+        name = amfeatureevents.11.option.a
+        #custom_tooltip = amfeatureevents.11.option.a.tooltip
+		owner = {
+			add_resource = {
+				unity = 100
+			}
+		}
+		remove_building = building_nuclear_plant
+        hidden_effect = {
+			owner = { remove_country_flag = cf_amfev_nuclearplantbuilt_flag }
+        }
+    }
+    option = {
+		# Overhaul plant
+        name = amfeatureevents.11.option.b
+        #custom_tooltip = amfeatureevents.11.option.b.tooltip
+		owner = {
+			add_resource = {
+				minerals = -200
+				sr_actinides = -10
+				unity = 100
+			}
+		}
+        hidden_effect = {
+			random_list = {
+				97 = {
+					owner = { remove_country_flag = cf_amfev_nuclearplantbuilt_flag }
+				}
+				1 = {
+					planet_event = { id = amfeatureevents.11 days = 3600 random = 3600 }
+				}
+				2 = {
+					planet_event = { id = amfeatureevents.11 days = 7200 random = 7200 }
+				}
+			}
+        }
+    }
+    option = {
+		# Fix and cover up
+        name = amfeatureevents.11.option.c
+        #custom_tooltip = amfeatureevents.11.option.c.tooltip
+		owner = {
+			add_resource = {
+				minerals = -50
+				influence = -25
+			}
+		}
+        hidden_effect = {
+			random_list = {
+				90 = {
+					owner = { remove_country_flag = cf_amfev_nuclearplantbuilt_flag }
+				}
+				4 = {
+					planet_event = { id = amfeatureevents.11 days = 720 random = 720 }
+				}
+				6 = {
+					planet_event = { id = amfeatureevents.11 days = 1800 random = 1800 }
+				}
+			}
+        }
+    }
+    option = {
+		# No fix, deny problem
+        name = amfeatureevents.11.option.d
+        # custom_tooltip = amfeatureevents.11.option.d.tooltip
+		owner = {
+			add_resource = {
+				influence = 25
+			}
+		}
+        hidden_effect = {
+			if = {
+				limit = { num_pops > 1 }
+				random_owned_pop = {
+					limit = {
+						is_robot_pop = no
+						is_being_assimilated = no
+						is_being_purged = no
+					}
+					kill_pop = yes
+				}
+			}
+			random_list = {
+				80 = {
+					owner = { remove_country_flag = cf_amfev_nuclearplantbuilt_flag }
+				}
+				8 = {
+					planet_event = { id = amfeatureevents.11 days = 720 random = 720 }
+				}
+				12 = {
+					planet_event = { id = amfeatureevents.11 days = 1800 random = 1800 }
+				}
+			}
+        }
+    }
+}

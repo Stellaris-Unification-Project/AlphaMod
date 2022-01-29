@@ -1,0 +1,239 @@
+building_commercial_zone_alt = {
+	base_buildtime = @b1_time
+	base_cap_amount = 3
+
+	category = trade
+
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		NOT = { has_modifier = slave_colony }
+	}
+
+	allow = {
+		buildings_simple_allow = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_regular_empire = no }
+			has_modifier = slave_colony
+		}
+	}
+	
+	planet_modifier = {
+		trade_value_add = 5
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_authority = auth_corporate }
+		}
+		modifier = {
+			job_wageslave_add = 1
+			job_retailer_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { not = { has_authority = auth_corporate }}
+		}
+		modifier = {
+			job_clerk_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = alp_private_businesses_prohibited }
+		}
+		modifier = {
+			job_clerk_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = alp_private_businesses_restricted }
+		}
+		modifier = {
+			job_clerk_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = alp_private_businesses_regulated }
+		}
+		modifier = {
+			job_retailer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = alp_private_businesses_freedom }
+		}
+		modifier = {
+			job_wageslave_add = 1
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 300
+			sr_wealth = 25
+		}
+		upkeep = {
+			energy = 3
+		}
+		produces = {
+			sr_wealth = 0.5
+		}
+	}
+
+	prerequisites = {
+		"tech_interplanetary_commerce"
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+
+	upgrades = {
+		"building_commercial_megaplex_alt"
+	}
+
+	ai_resource_production = {
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_commercial_megaplex_alt = {
+	base_buildtime = @b2_time
+	can_build = no
+
+	category = trade
+
+	potential = {
+		exists = owner
+		has_building = building_commercial_zone_alt
+	}
+
+	allow = {
+		buildings_upgrade_allow = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_regular_empire = no }
+			has_modifier = slave_colony
+			buildings_no_crystals = yes
+		}
+	}
+
+	planet_modifier = {
+		trade_value_add = 10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_authority = auth_corporate }
+		}
+		modifier = {
+			job_retailer_add = 2
+			job_wageslave_add = 2
+			job_executive_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { not = { has_authority = auth_corporate }}
+		}
+		modifier = {
+			job_clerk_add = 5
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = alp_private_businesses_prohibited }
+		}
+		modifier = {
+			job_clerk_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = alp_private_businesses_restricted }
+		}
+		modifier = {
+			job_clerk_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = alp_private_businesses_regulated }
+		}
+		modifier = {
+			job_retailer_add = 1
+			job_manager_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = alp_private_businesses_freedom }
+		}
+		modifier = {
+			job_wageslave_add = 1
+			job_merchant_add = 1
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 350
+			sr_wealth = 50
+		}
+		upkeep = {
+			energy = 3
+			rare_crystals = @b2_rare_upkeep
+		}
+		produces = {
+			sr_wealth = 1
+		}
+	}
+
+	prerequisites = {
+		"tech_interstellar_economics"
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+
+	ai_resource_production = {
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

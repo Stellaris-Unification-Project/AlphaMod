@@ -1,0 +1,15 @@
+fix_admiral_dragon_bug = {
+	every_owned_leader = {
+		limit = {
+			leader_class = admiral
+			has_level < 2
+		}
+		set_age = 900
+	}
+	every_owned_ship = {
+		limit = {
+			is_ship_size = nanite_space_dragon_baby
+		}
+		fleet = { destroy_fleet = this }
+	}
+}

@@ -1,0 +1,493 @@
+# Basic Outpost
+col_basic_outpost = {
+	icon = GFX_colony_type_basic_outpost
+
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes}
+		has_upgraded_capital = no
+		is_special_colony_type = no
+		has_modifier = pm_just_an_outpost
+	}
+
+	planet_modifier = {
+		pop_happiness = 0.10
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+# Free Port
+col_freeport = {
+	icon = GFX_colony_type_freeport
+
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes
+			or = {
+				has_ascension_perk = ap_universal_transactions
+				is_criminal_syndicate = yes
+				has_valid_civic = civic_merchant_guilds
+				has_ethic = ethic_xenophile
+				has_ethic = ethic_fanatic_xenophile
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_fanatic_pacifist
+			}
+			nor = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+				has_ethic = ethic_militarist
+				has_ethic = ethic_fanatic_militarist			
+			}
+		}
+		is_special_colony_type = no
+		owner = { is_ai = no }
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_machine
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_cybrex
+		}
+		has_building = building_advanced_shuttleport
+	}
+
+	planet_modifier = {
+		trade_value_mult = 0.5
+		planet_crime_mult = 0.5
+		pop_government_ethic_attraction = -0.25
+		planet_technician_sr_wealth_produces_add = 0.1
+		planet_merchants_sr_wealth_produces_add = 0.5
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = {
+			add = 3
+			has_designation = col_freeport
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_generator value > 0 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_generator value > 1 }
+		}
+		modifier = {
+			add = 3
+			num_districts = { type = district_generator value > 2 }
+		}
+		modifier = {
+			add = 1
+			num_pops > 20
+		}
+		modifier = {
+			add = 1
+			num_pops > 30
+		}
+	}
+}
+
+# Frontier World
+col_wildfrontier = {
+	icon = GFX_colony_type_wildfrontier
+
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes
+			has_policy_flag = alp_land_ownership_pioneerrights
+		}
+		is_special_colony_type = no
+		num_pops < 25
+		or = {
+			owner = { is_ai = no }
+			and = {
+				owner = { is_ai = yes }
+				num_pops > 9
+				num_districts = { type = district_city value < 3 }
+				num_districts = { type = district_farming value < 3 }
+				num_districts = { type = district_mining value < 3 }
+				num_districts = { type = district_generator value < 3 }
+			}
+		}
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_machine
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_habitat
+		}
+	}
+
+	planet_modifier = {
+		planet_structures_cost_mult = -0.25
+		planet_building_build_speed_mult = 0.5
+		planet_immigration_pull_mult = 0.50
+		pop_growth_from_immigration = 1.0
+		pop_amenities_usage_mult = -0.25
+		planet_pops_upkeep_mult = -0.25
+		planet_crime_mult = 0.5
+		pop_government_ethic_attraction = -0.5
+	}
+
+	weight_modifier = {
+		base = 1
+		modifier = {
+			add = 2
+			has_designation = col_wildfrontier
+		}
+		modifier = {
+			add = 2
+			num_pops < 10
+		}
+		modifier = {
+			add = 10
+			is_hostile_planet = yes
+		}
+	}
+}
+
+# Worship World
+col_worship = {
+	icon = GFX_colony_type_worship
+
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_machine
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_habitat
+		}
+		is_special_colony_type = no
+		num_districts = { type = district_parish value > 0 }
+		owner = { 
+			or = {
+				has_ethic = ethic_fanatic_spiritualist
+				has_ethic = ethic_spiritualist 
+			}
+		}
+	}
+	
+	planet_modifier = {
+		job_acolyte_per_pop = 0.05
+		pop_ethic_spiritualist_attraction_mult = 0.5
+		planet_acolytes_produces_mult = 0.25
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 2
+			has_designation = col_worship
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_parish value > 0 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_parish value > 1 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_parish value > 2 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_parish value > 3 }
+		}
+		modifier = {
+			add = 3
+			has_building = building_templeofrule
+		}
+		modifier = {
+			add = 2
+			or = {
+				has_building = building_temple
+				has_building = building_holotemple
+			}
+		}
+		modifier = {
+			add = 3
+			has_building = building_sacred_nexus 
+		}
+		modifier = {
+			add = 4
+			has_building = building_citadel_of_faith
+		}
+	}
+}
+
+# Labour World
+col_labour = {
+	icon = GFX_colony_type_labour
+
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_machine
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_habitat
+		}
+		is_special_colony_type = no
+		num_districts = { type = district_labour_camp value > 0 }
+		owner = {
+			or = {
+				has_ethic = ethic_fanatic_authoritarian 
+				has_ethic = ethic_authoritarian
+			}
+		}
+	}
+	
+	planet_modifier = {
+		job_labourer_per_pop = 0.05
+		planet_labourers_produces_mult = 0.25
+		pop_ethic_authoritarian_attraction_mult = 0.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 2
+			has_designation = col_labour
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_labour_camp value > 0 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_labour_camp value > 1 }
+		}
+		modifier = {
+			add = 3
+			num_districts = { type = district_labour_camp value > 2 }
+		}
+		modifier = {
+			add = 4
+			num_districts = { type = district_labour_camp value > 3 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_mining value > 0 }
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_farming value > 1 }
+		}
+		modifier = {
+			add = 3
+			num_districts = { type = district_industrial value > 0 }
+		}
+	}
+}
+
+# Market World
+col_market = {
+	icon = GFX_colony_type_market
+
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_machine
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_habitat
+		}
+		is_special_colony_type = no
+		num_districts = { type = district_markettowns value > 0 }
+	}
+	
+	planet_modifier = {
+		job_retailer_per_pop = 0.05
+		pop_ethic_pacifist_attraction_mult = 0.25
+		planet_retailers_produces_mult = 0.25
+		trade_value_mult = 0.25
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 2
+			has_designation = col_market
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_markettowns value > 0 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_markettowns value > 1 }
+		}
+		modifier = {
+			add = 3
+			num_districts = { type = district_markettowns value > 2 }
+		}
+		modifier = {
+			add = 4
+			num_districts = { type = district_markettowns value > 3 }
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_generator value > 0 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_generator value > 1 }
+		}
+		modifier = {
+			add = 3
+			num_districts = { type = district_generator value > 2 }
+		}
+	}
+}
+
+# Nature World
+col_natural = {
+	icon = GFX_colony_type_nature
+
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_machine
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_habitat
+		}
+		is_special_colony_type = no
+		or = {
+			num_districts = { type = district_nature_reserve value > 0 }
+			owner = { has_ethic = ethic_fanatic_xenophile }			
+		}
+		not = { num_districts = { type = district_city value > 2 }}
+		not = { num_districts = { type = district_industrial value > 1 }}
+		not = { num_districts = { type = district_megacity value > 0 }}
+		not = { num_districts = { type = district_mining value > 2 }}
+		not = { num_districts = { type = district_generator value > 2 }}
+	}
+	
+	planet_modifier = {
+		job_ranger_per_pop = 0.05
+		pop_ethic_xenophile_attraction_mult = 0.25
+		pop_amenities_usage_mult = -0.25
+		planet_pops_consumer_goods_upkeep_mult = -0.2
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 2
+			has_designation = col_natural
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_nature_reserve value > 0 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_nature_reserve value > 1 }
+		}
+		modifier = {
+			add = 3
+			num_districts = { type = district_nature_reserve value > 2 }
+		}
+		modifier = {
+			add = 4
+			num_districts = { type = district_nature_reserve value > 3 }
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_farming value > 0 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_farming value > 1 }
+		}
+		modifier = {
+			add = 3
+			num_districts = { type = district_farming value > 2 }
+		}
+	}
+}
+
+# Internment World
+col_internment = {
+	icon = GFX_colony_type_internment
+
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_machine
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_habitat
+		}
+		is_special_colony_type = no
+		or = {
+			planet_devastation > 0
+			has_modifier = culture_shock_stone_age
+			has_modifier = culture_shock_bronze_age
+			has_modifier = culture_shock_iron_age
+			has_modifier = culture_shock_late_medieval_age
+			has_modifier = culture_shock_renaissance_age
+			has_modifier = culture_shock_steam_age
+			has_modifier = culture_shock_industrial_age
+			has_modifier = culture_shock_machine_age
+			has_modifier = culture_shock_atomic_age
+			has_modifier = culture_shock_early_space_age
+			has_modifier = martial_law			
+		}
+		or = {
+			owner = { has_ethic = ethic_fanatic_authoritarian }
+			owner = { has_ethic = ethic_authoritarian }
+			owner = { has_origin = origin_genepurists }
+			owner = { has_civic = civic_feudal_realm }
+			owner = { has_civic = civic_police_state }
+		}
+	}
+	
+	planet_modifier = {
+		job_labourer_per_pop = 0.05
+		pop_ethic_egalitarian_attraction_mult = -0.9
+		planet_stability_add = 25
+		planet_crime_mult = -0.5
+		pop_happiness = -0.1
+		pop_amenities_usage_mult = -0.75
+		planet_immigration_pull_mult = -0.75
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 2
+			has_designation = col_internment
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_labour_camp value > 2 }
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_labour_camp value > 4 }
+		}
+		modifier = {
+			add = 1
+			planet_devastation > 25
+		}
+		modifier = {
+			add = 1
+			planet_devastation > 50
+		}
+	}
+}

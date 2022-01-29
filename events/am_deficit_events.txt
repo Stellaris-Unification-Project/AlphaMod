@@ -1,0 +1,25 @@
+namespace = amdeficits
+
+country_event = {
+	id = amdeficits.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_valid_civic = civic_hive_alloy_cultivator
+	}
+	
+	immediate = {
+		remove_modifier = biomass_deficit_alloys			
+		if = {
+			limit = {
+				resource_stockpile_compare = { resource = sr_biomass value < 2 }
+				has_monthly_income = { resource = sr_biomass value < 1 }
+			}
+			add_modifier = {
+				modifier = biomass_deficit_alloys
+				days = -1
+			}				
+		}
+	}
+}

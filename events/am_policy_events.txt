@@ -1,0 +1,1722 @@
+namespace = stateoflies
+
+planet_event = {
+	id = stateoflies.1
+	hide_window = yes
+	is_triggered_only = yes
+ 
+	immediate = {	
+		FromFrom = {
+			save_event_target_as = newly_born_pop
+			set_pop_as_inexperienced = yes
+			
+			root = {
+				planet_event = { id = stateoflies.2 days = 2 }
+				planet_event = { id = stateoflies.2 days = 15 }
+			}
+			
+			########################################################################
+			### Most effects in here are in scripted_effects\am_education_effects.txt			
+			
+			if = {
+				limit = { 
+					root = { has_modifier = planet_cloning_boost }
+					not = { has_trait = trait_mechanical }	
+				}
+				clone_boost_may_gene_drift = yes
+			}
+			
+			if = {
+				limit = { exists = owner }
+				if = {
+					limit = { owner = { has_policy_flag = state_education_transcendent }}
+					pop_may_be_transcendent = yes
+					
+					if = {
+						limit = { root = { has_modifier = education_programs }}
+						chance_of_transcendent_ed = yes
+					}
+				}				
+				else_if = {
+					limit = { owner = { has_policy_flag = state_education_postadult }}
+					random_list = {
+						80 = {}
+						20 = { make_pop_qualified = yes	}
+					}
+					if = {
+						limit = { root = { has_modifier = education_programs }}
+						random_list = {
+							50 = {
+								root = {
+									random_owned_pop = {
+										limit = { is_candidate_for_qualified = yes }
+										make_pop_qualified = yes
+									}
+								}
+							}
+							50 = {}
+						}
+					}
+				}				
+				else_if = {
+					limit = { owner = { has_policy_flag = state_education_preadult }}
+					random_list = {
+						90 = {}
+						10 = { make_pop_qualified = yes	}
+					}
+					if = {
+						limit = { root = { has_modifier = education_programs }}
+						random_list = {
+							25 = {
+								root = {
+									random_owned_pop = {
+										limit = { is_candidate_for_qualified = yes }
+										make_pop_qualified = yes
+									}
+								}
+							}
+							75 = {}
+						}
+					}
+				}				
+				else_if = {
+					limit = { owner = { has_policy_flag = state_education_grants }}
+					random_list = {
+						95 = {}
+						5 = { make_pop_qualified = yes }
+					}
+					if = {
+						limit = { root = { has_modifier = education_programs }}
+						random_list = {
+							10 = {
+								root = {
+									random_owned_pop = {
+										limit = { is_candidate_for_qualified = yes }
+										make_pop_qualified = yes
+									}
+								}
+							}
+							90 = {}
+						}
+					}
+				}				
+				else_if = {
+					limit = { owner = { has_policy_flag = state_education_none }}
+					set_pop_flag = pf_uneducated			
+				}
+				
+				if = {
+					limit = { owner = { has_valid_civic = civic_natural_harmony }}
+					chance_of_nomadic_pop = yes
+				}
+				
+				if = {
+					limit = { 
+						owner = {
+							not = { has_authority = auth_tribal }
+							or = {
+								has_valid_civic = civic_fury_road
+								has_valid_civic = civic_stellartisan
+							}
+						}
+					}
+					chance_of_tribal_pop = yes
+				}
+				
+				if = {
+					limit = { owner = { has_valid_civic = civic_communes }}
+					chance_of_communal_pop =  yes
+				}
+				
+				if = {
+					limit = { owner = { has_valid_civic = civic_genetic_welfare }}
+					genetic_welfare_pop = yes
+				}
+				
+				if = {
+					limit = { owner = { has_valid_civic = civic_genetic_inheritance }}
+					random_list = {
+						23 = {}
+						50 = {
+							if = {
+								limit = { not = { has_modifier = pop_transcendent }}
+								genetic_inheritance_pop = yes
+							}
+						}
+						25 = {
+							if = {
+								limit = {
+									owner = { not = { has_country_flag = has_sterilised_subspecies }}
+								}
+								owner = {
+									set_country_flag = has_sterilised_subspecies
+									species = {
+										create_species = {
+											is_mod = yes
+											name = this
+											plural = this
+											class = this
+											portrait = this
+											traits = this
+											homeworld = this
+											traits = {
+												ideal_planet_class = this
+												trait = trait_genetic_sterility
+											}
+										}
+										save_event_target_as = sterilised_species
+									}
+									last_created_species = {
+										modify_species = {
+											species = this
+											remove_trait = trait_slow_breeders
+											change_scoped_species = no
+										}
+									}
+									last_created_species = {
+										modify_species = {
+											species = this
+											remove_trait = trait_rapid_breeders
+											change_scoped_species = no
+										}
+									}
+									last_created_species = {
+										modify_species = {
+											species = this
+											remove_trait = trait_plantoid_budding
+											change_scoped_species = no
+										}
+									}
+								}
+								last_created_species = {
+									save_global_event_target_as = new_sterile_sub_species@root
+								}
+								event_target:newly_born_pop = { change_species = last_created_species }
+							}
+							else = {
+								event_target:newly_born_pop = { change_species = event_target:new_sterile_sub_species@root }
+							}						
+						}
+						1 = { make_pop_aberrant = yes }
+						1 = { make_pop_deviant = yes }
+					}					
+				}
+				if = {
+					limit = {
+						owner = {
+							or = {
+								has_ethic = ethic_authoritarian
+								has_ethic = ethic_fanatic_authoritarian
+								has_ethic = ethic_xenophobe
+								has_ethic = ethic_fanatic_xenophobe
+							}
+						}
+					}
+					random_list = {
+						5 = { make_pop_loyalist = yes }
+						95 = {}
+					}					
+				}
+				if = {
+					limit = { owner = { has_ethic = ethic_fanatic_authoritarian }}
+					random_list = {
+						5 = { make_pop_loyalist = yes }
+						95 = {}
+					}					
+				}
+				if = {
+					limit = {
+						owner = {
+							or = {
+								has_ethic = ethic_xenophobe
+								has_ethic = ethic_fanatic_xenophobe
+								has_valid_civic = civic_police_state
+							}
+						}
+					}
+					random_list = {
+						5 = { make_pop_vigilant = yes }
+						95 = {}
+					}					
+				}
+				if = {
+					limit = { 
+						owner = { has_ethic = ethic_fanatic_xenophobe }
+					}
+					random_list = {
+						5 = { make_pop_vigilant = yes }
+						95 = {}
+					}					
+				}
+				
+				if = {
+					limit = { root = { num_pops < 5 }}
+					clear_negative_pop_modifiers = yes
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				or = {
+					owner = { is_gestalt = yes }
+					owner = { has_valid_civic = civic_shared_burden }
+				}
+			}
+			remove_luxury_benefits_modifiers = yes
+		}
+		if = {
+			limit = { owner = { is_gestalt = yes }}
+			remove_destitution_modifiers = yes
+		}
+	}
+}
+
+planet_event = {
+	id = stateoflies.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		every_owned_pop = {
+			limit = {
+				has_modifier = pop_inexperienced
+				is_unemployed = yes
+				not = { is_pop_category = worker }
+			}
+			clear_pop_category = yes
+		}
+	}
+}
+
+planet_event = {
+	id = stateoflies.3
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = owner
+		owner = { has_origin = origin_warenders }
+	}
+ 
+	immediate = {
+		owner = {
+			save_event_target_as = empathic_country
+			if = { 
+				limit = { not = { has_technology = tech_habitat_1 }}
+				give_technology = { message = yes tech = tech_habitat_1 }
+			}
+		}
+		# remove_deposit = d_alm_districtmodifiers
+		save_event_target_as = empathic_planet
+		remove_modifier = empathic_field_domestic
+		set_variable = { which = empathic_pops_total value = 0 }
+		if = {
+			limit = { any_owned_pop = { has_trait = trait_talented_empaths }}
+			every_owned_pop = {
+				limit = { has_trait = trait_talented_empaths }
+				planet = {
+					change_variable = {
+						which = empathic_pops_total
+						value = 1
+					}
+				}
+			}
+		}
+		
+		if = {
+			limit = { check_variable = { which = empathic_pops_total value > 0 }}
+			multiply_variable = {
+				which = empathic_pops_total
+				value = 0.1
+			}
+			round_variable_to_closest = {
+				which = empathic_pops_total
+				value = 1
+			}
+			if = {
+				limit = { check_variable = { which = empathic_pops_total value < 1 }}
+				change_variable = {
+					which = empathic_pops_total
+					value = 1
+				}				
+			}
+			remove_all_empath_fields = yes
+			add_modifier = {
+				modifier = empathic_field_domestic
+				days = -1
+				multiplier = empathic_pops_total
+			}
+			
+			planet_event = { id = stateoflies.30 }
+		}
+	}
+}
+
+planet_event = {
+	id = stateoflies.30
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = event_target:empathic_planet
+	}
+
+	immediate = {
+		solar_system = {
+			save_event_target_as = empathic_solarsystem
+			save_event_target_as = neighbour_domestic_enclave_system
+			set_variable = { which = system_empathic_pops_total value = event_target:empathic_planet.empathic_pops_total }
+			if = {
+				limit = {
+					exists = starbase
+					starbase = { has_starbase_building = sb_empath_enclave }
+				}
+				change_variable = { which = system_empathic_pops_total value = 1 }
+			}
+			if = {
+				limit = { not = { is_variable_set = system_empathic_pops_total }}
+				set_variable = { which = system_empathic_pops_total value = 1 }				
+			}
+		}
+		planet_event = { id = stateoflies.60 }
+		planet_event = { id = stateoflies.40 }
+		planet_event = { id = stateoflies.50 }
+	}
+}
+
+# Neighbour Foreign Colony System
+planet_event = {
+	id = stateoflies.40
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = event_target:empathic_solarsystem
+		exists = event_target:empathic_planet
+		exists = event_target:empathic_country
+	}
+
+	immediate = {
+		solar_system = {
+			every_neighbor_system = {
+				limit = {
+					exists = space_owner
+					space_owner = { 
+						is_country_type = default
+						not = { has_ethic = ethic_gestalt_consciousness }
+						not = { is_same_value = event_target:empathic_country }
+					}
+					not = { is_same_value = event_target:empathic_solarsystem }
+					any_system_planet = { is_empath_field_candidate = yes }
+				}
+				this = {
+					save_event_target_as = neighbor_to_empath_system
+					set_variable = { which = system_empathic_pops_total value = event_target:empathic_solarsystem.system_empathic_pops_total }
+					if = {
+						limit = {
+							exists = starbase
+							starbase = { has_starbase_building = sb_empath_enclave }
+						}
+						change_variable = {
+							which = system_empathic_pops_total
+							value = 1
+						}
+					}
+					if = {
+						limit = { check_variable = { which = system_empathic_pops_total value < 1 }}
+						change_variable = {
+							which = system_empathic_pops_total
+							value = 1
+						}				
+					}
+					random_system_planet = {
+						limit = {
+							not = { is_same_value = event_target:empathic_planet }
+							is_empath_field_candidate = yes
+							owner = { not = { is_same_value = event_target:empathic_country }}
+						}
+						if = {
+							limit = {
+								root = { has_planet_flag = pf_empath_branch_office }
+							}
+							add_branch_empath_field = yes	
+						}
+						else = {
+							add_foreign_empath_field = yes	
+						}
+						random_owned_pop = {
+							limit = { has_ethic = ethic_militarist }
+							pop_change_ethic = ethic_pacifist
+						}
+						random_owned_pop = {
+							limit = { has_ethic = ethic_militarist }
+							pop_change_ethic = ethic_pacifist
+						}						
+					}
+				}
+			}
+		}
+	}
+}
+
+# Domestic Enclave System
+planet_event = {
+	id = stateoflies.50
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = event_target:empathic_solarsystem
+		exists = event_target:empathic_country
+	}
+
+	immediate = {
+		solar_system = {
+			every_neighbor_system = {
+				limit = {
+					exists = starbase
+					starbase = { has_starbase_building = sb_empath_enclave }
+					not = { any_system_planet = { is_colony = yes }}
+					exists = space_owner
+					space_owner = { is_same_value = event_target:empathic_country }
+				}
+				this = {
+					save_event_target_as = neighbour_domestic_enclave_system
+					set_variable = { which = system_empathic_pops_total value = event_target:empathic_solarsystem.system_empathic_pops_total }	
+					multiply_variable = {
+						which = system_empathic_pops_total
+						value = 0.5
+					}
+					round_variable_to_closest = {
+						which = system_empathic_pops_total
+						value = 1
+					}
+					if = {
+						limit = { check_variable = { which = system_empathic_pops_total value < 1 }}
+						change_variable = { which = system_empathic_pops_total value = 1 }				
+					}
+					root = { 
+						planet_event = { id = stateoflies.60 }
+						planet_event = { id = stateoflies.70 }
+					}
+				}
+			}
+		}
+	}
+}
+
+# Neighbour Foreign Outpost System			
+planet_event = {
+	id = stateoflies.60
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = event_target:neighbour_domestic_enclave_system
+		exists = event_target:empathic_country
+		exists = event_target:empathic_solarsystem
+	}
+	
+	immediate = {
+		event_target:neighbour_domestic_enclave_system = {
+			every_neighbor_system = {
+				limit = {
+					not = { is_same_value = event_target:empathic_solarsystem }
+					exists = space_owner
+					space_owner = { 
+						is_country_type = default
+						not = { is_same_value = event_target:empathic_country }
+						not = { has_ethic = ethic_gestalt_consciousness }
+					}	
+					not = {					
+						any_system_planet = {
+							or = {
+								is_colony = yes 
+								is_under_colonization = yes
+							}
+						}
+					}
+					exists = starbase					
+				}
+				this = {
+					save_event_target_as = neighbour_foreign_outpost_system
+					change_variable = {
+						which = system_empathic_pops_total
+						value = event_target:neighbour_domestic_enclave_system.system_empathic_pops_total
+					}
+					if = {
+						limit = { check_variable = { which = system_empathic_pops_total value < 1 }}
+						change_variable = {
+							which = system_empathic_pops_total
+							value = 1
+						}				
+					}
+					every_system_planet = {
+						limit = { is_star = yes }
+						if = {
+							limit = {
+								root = { has_planet_flag = pf_empath_branch_office }
+							}
+							add_branch_empath_field = yes
+						}
+						else = {
+							add_foreign_empath_field = yes
+						}
+					}
+					if = {
+						limit = {
+							root = { has_planet_flag = pf_empath_branch_office }
+							check_variable = { which = system_empathic_pops_total value > 100 }
+						}
+						random = {
+							chance = 5
+							clear_variable = system_empathic_pops_total
+							every_system_planet = {
+								limit = { is_star = yes }
+								remove_modifier = empathic_field_foreign
+								remove_modifier = empathic_field_branch
+							}
+							save_event_target_as = foreign_outpost_system
+							space_owner = { add_opinion_modifier = { modifier = opinion_starbase_flipped  who = event_target:empathic_country }}
+							starbase = { set_owner = event_target:empathic_country }
+							event_target:empathic_country = {
+								country_event = { id = stateoflies.9 days = 1 }
+							}
+						}
+					}
+					else = {
+						if = {
+							limit = {
+								check_variable = { which = system_empathic_pops_total value > 50 }
+							}
+							random = {
+								chance = 10
+								clear_variable = system_empathic_pops_total
+								every_system_planet = {
+									limit = { is_star = yes }
+									remove_modifier = empathic_field_foreign
+									remove_modifier = empathic_field_branch
+								}
+								save_event_target_as = foreign_outpost_system
+								space_owner = { add_opinion_modifier = { modifier = opinion_starbase_flipped  who = event_target:empathic_country }}
+								starbase = { set_owner = event_target:empathic_country }
+								event_target:empathic_country = {
+									country_event = { id = stateoflies.9 days = 1 }
+								}
+							}
+						}					
+					}
+				}
+			}
+		}
+	}
+}
+	
+# Neighbour Foreign Colony System	
+planet_event = {
+	id = stateoflies.70
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = event_target:neighbour_domestic_enclave_system
+		exists = event_target:empathic_country
+		exists = event_target:empathic_planet
+		exists = event_target:empathic_solarsystem
+	}
+	
+	immediate = {
+		event_target:neighbour_domestic_enclave_system = {
+			every_neighbor_system = {
+				limit = {
+					not = { is_same_value = event_target:empathic_solarsystem }
+					any_system_planet = { is_empath_field_candidate = yes }
+					exists = space_owner
+					space_owner = { 
+						is_country_type = default
+						not = { has_ethic = ethic_gestalt_consciousness }
+						not = { is_same_value = event_target:empathic_country }
+					}
+				}
+				this = {
+					set_variable = { which = system_empathic_pops_total value = event_target:neighbour_domestic_enclave_system.system_empathic_pops_total }
+					if = {
+						limit = {
+							exists = starbase
+							starbase = { has_starbase_building = sb_empath_enclave }
+						}
+						change_variable = {
+							which = system_empathic_pops_total
+							value = 1
+						}
+					}
+					if = {
+						limit = { check_variable = { which = system_empathic_pops_total value < 1 }}
+						change_variable = {
+							which = system_empathic_pops_total
+							value = 1
+						}				
+					}
+					random_system_planet = {
+						limit = {
+							not = { is_same_value = event_target:empathic_planet }
+							nor = { 
+								has_modifier = empathic_field_domestic 
+								has_modifier = empathic_field_branch
+							}
+							is_empath_field_candidate = yes	
+							owner = { not = { is_same_value = event_target:empathic_country }}									
+						}
+						
+						if = {
+							limit = {
+								root = { has_planet_flag = pf_empath_branch_office }
+							}
+							add_branch_empath_field = yes
+						}
+						else = {
+							add_foreign_empath_field = yes
+						}
+						
+						random_owned_pop = {
+							limit = {
+								is_robot_pop = no
+								not = { has_ethic = ethic_pacifist }
+							}
+							pop_change_ethic = ethic_pacifist
+						}
+						random_owned_pop = {
+							limit = {
+								is_robot_pop = no
+								not = { has_ethic = ethic_pacifist }
+							}
+							pop_change_ethic = ethic_pacifist
+						}
+						random_owned_pop = {
+							limit = { has_ethic = ethic_militarist }
+							pop_change_ethic = ethic_pacifist
+						}
+					} 						
+				}
+			}
+		}	
+	}
+}
+
+planet_event = {
+	id = stateoflies.4
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+			not = { has_ethic = ethic_gestalt_consciousness }
+			not = { has_origin = origin_warenders }
+		}
+		has_branch_office = yes
+		has_building = building_empath_peace_mission
+	}
+ 
+	immediate = {
+		branch_office_owner = { save_event_target_as = empathic_country }
+		save_event_target_as = empathic_planet
+		remove_modifier = empathic_field_branch
+		remove_planet_flag = pf_empath_branch_office
+		# clear_variable = empathic_pops_total
+		
+		if = {
+			limit = { any_owned_pop = { has_job = priest }}
+			set_variable = { which = empathic_pops_total value = 1 }
+			every_owned_pop = {
+				limit = { has_job = priest }
+				root = {
+					change_variable = {
+						which = empathic_pops_total
+						value = 1
+					}
+				}
+			}
+		}
+		
+		if = {
+			limit = { check_variable = { which = empathic_pops_total value > 0 }}
+			multiply_variable = { which = empathic_pops_total value = 1.5 }
+			round_variable_to_closest = { which = empathic_pops_total value = 1 }
+			if = {
+				limit = { check_variable = { which = empathic_pops_total value < 1 }}
+				change_variable = { which = empathic_pops_total value = 1 }				
+			}
+			remove_all_empath_fields = yes
+			set_planet_flag = pf_empath_branch_office			
+			planet_event = { id = stateoflies.30 }
+		}	
+	}
+}
+
+country_event = {
+	id = stateoflies.5
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_regular_empire = yes
+		not = { has_ethic = ethic_gestalt_consciousness }
+	}
+	
+	immediate = {
+		random_owned_planet = {
+			limit = {
+				has_branch_office = yes
+				has_building = building_empath_peace_mission
+			}
+			save_event_target_as = empath_branch_office
+			
+			if = {
+				limit = { 
+					solar_system = { 
+						not = { is_variable_set = system_empathic_pops_total }
+					}
+				}
+				solar_system  = { 
+					set_variable = { which = system_empathic_pops_total value = 2 }
+				}
+			}
+			if = {
+				limit = { not = { is_variable_set = thisplanetsempathstrength }}
+				set_variable = { which = thisplanetsempathstrength value = 2 }
+			}	
+			
+			set_variable = { which = thisplanetsempathstrength value = solar_system.system_empathic_pops_total }
+			multiply_variable = { which = thisplanetsempathstrength value = 2 }
+			
+			if = {
+				limit = { check_variable = { which = thisplanetsempathstrength value < 2 }}
+				set_variable = { which = thisplanetsempathstrength value = 2 }
+			}
+			if = {
+				limit = { check_variable = { which = thisplanetsempathstrength value > 10 }}
+				set_variable = { which = thisplanetsempathstrength value = 10 }
+			}
+			
+			if = {
+				limit = {
+					any_owned_pop = { has_job = priest }
+				}
+				random_owned_pop = {
+					limit = {
+						exists = planet
+						not = { has_modifier = pop_enamoured }
+						or = {
+							has_ethic = ethic_authoritarian
+							has_ethic = ethic_militarist
+							has_ethic = ethic_xenophobe
+							has_ethic = ethic_xenophile
+							has_ethic = ethic_spiritualist
+							has_ethic = ethic_materialist
+							has_ethic = ethic_egalitarian
+						}
+					}
+					add_modifier = {
+						modifier = pop_enamoured
+						days = 720
+						multiplier = planet.thisplanetsempathstrength
+					}
+				}
+			}
+			clear_variable = thisplanetsempathstrength
+		}
+	}
+}
+
+country_event = {
+	id = stateoflies.6
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_warenders
+	}
+	
+	immediate = {
+		random_list = {
+			50 = {}
+			20 = {
+				random_owned_planet = {
+					limit = {
+						has_modifier = empathic_field_domestic
+					}
+					planet_event = { id = stateoflies.3 days = 3 }
+				}
+			}
+			25 = {
+				random_owned_planet = {
+					limit = {
+						has_modifier = empathic_field_domestic
+					}
+					planet_event = { id = stateoflies.3 days = 9 }
+				}
+			}
+			5 = {
+				random_owned_planet = {
+					limit = {
+						has_modifier = empathic_field_domestic
+					}
+					planet_event = { id = stateoflies.3 days = 15 }
+					planet_event = { id = stateoflies.3 days = 25 }
+				}
+			}		
+		}
+	}
+}
+
+planet_event = {
+	id = stateoflies.7
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = owner
+		owner = {
+			or = {
+				has_authority = auth_tribal
+				has_authority = auth_theocratic
+			}
+		}
+	}
+ 
+	immediate = {				
+		if = {
+			limit = {
+				owner = { has_authority = auth_theocratic }
+				num_pops > 4
+			}
+			remove_modifier = secularchurch_militarist
+			remove_modifier = secularchurch_pacifist
+			remove_modifier = secularchurch_xenophobe
+			remove_modifier = secularchurch_xenophile
+			remove_modifier = movement_heretical
+			remove_modifier = secularchurch_authoritarian
+			remove_modifier = secularchurch_egalitarian
+			if = {
+				limit = {
+					pop_percentage = {
+						percentage > 0.25
+						limit = { pop_has_ethic = ethic_militarist }
+					}
+				}
+				if = {
+					limit = {
+						owner = {
+							nor = {
+								has_ethic = ethic_pacifist
+								has_ethic = ethic_fanatic_pacifist
+							}
+						}
+					}
+					add_modifier = {
+						modifier = secularchurch_militarist
+						days = -1
+					}
+				}
+				else = {
+					add_modifier = {
+						modifier = movement_heretical
+						days = -1
+					}						
+				}
+			}
+			if = {
+				limit = {
+					pop_percentage = {
+						percentage > 0.25
+						limit = { pop_has_ethic = ethic_pacifist }
+					}
+				}
+				if = {
+					limit = {
+						owner = {
+							nor = {
+								has_ethic = ethic_militarist
+								has_ethic = ethic_fanatic_militarist
+							}
+						}
+					}
+					add_modifier = {
+						modifier = secularchurch_pacifist
+						days = -1
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							not = { has_modifier = movement_heretical }
+						}
+						add_modifier = {
+							modifier = movement_heretical
+							days = -1
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					pop_percentage = {
+						percentage > 0.25
+						limit = { pop_has_ethic = ethic_xenophile }
+					}
+				}
+				if = {
+					limit = {
+						owner = {
+							nor = {
+								has_ethic = ethic_xenophobe
+								has_ethic = ethic_fanatic_xenophobe
+							}
+						}
+					}
+					add_modifier = {
+						modifier = secularchurch_xenophile
+						days = -1
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							not = { has_modifier = movement_heretical }
+						}
+						add_modifier = {
+							modifier = movement_heretical
+							days = -1
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					pop_percentage = {
+						percentage > 0.25
+						limit = { pop_has_ethic = ethic_xenophobe }
+					}
+				}
+				if = {
+					limit = {
+						owner = {
+							nor = {
+								has_ethic = ethic_xenophile
+								has_ethic = ethic_fanatic_xenophile
+							}
+						}
+					}
+					add_modifier = {
+						modifier = secularchurch_xenophobe
+						days = -1
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							not = { has_modifier = movement_heretical }
+						}
+						add_modifier = {
+							modifier = movement_heretical
+							days = -1
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					pop_percentage = {
+						percentage > 0.25
+						limit = { pop_has_ethic = ethic_egalitarian }
+					}
+				}
+				if = {
+					limit = {
+						owner = {
+							nor = {
+								has_ethic = ethic_authoritarian
+								has_ethic = ethic_fanatic_authoritarian
+							}
+						}
+					}
+					add_modifier = {
+						modifier = secularchurch_egalitarian
+						days = -1
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							not = { has_modifier = movement_heretical }
+						}
+						add_modifier = {
+							modifier = movement_heretical
+							days = -1
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					pop_percentage = {
+						percentage > 0.25
+						limit = { pop_has_ethic = ethic_authoritarian }
+					}
+				}
+				if = {
+					limit = {
+						owner = {
+							nor = {
+								has_ethic = ethic_egalitarian
+								has_ethic = ethic_fanatic_egalitarian
+							}
+						}
+					}
+					add_modifier = {
+						modifier = secularchurch_authoritarian
+						days = -1
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							not = { has_modifier = movement_heretical }
+						}
+						add_modifier = {
+							modifier = movement_heretical
+							days = -1
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					pop_percentage = {
+						percentage > 0.1
+						limit = { pop_has_ethic = ethic_materialist }
+					}
+				}
+				if = {
+					limit = {
+						not = { has_modifier = movement_heretical }
+					}
+					add_modifier = {
+						modifier = movement_heretical
+						days = -1
+					}
+				}				
+			}
+		}
+			
+		if = {
+			limit = {
+				owner = { has_authority = auth_tribal }
+				num_pops > 2
+			}
+			remove_modifier = dominanttribe_militarist
+			remove_modifier = dominanttribe_pacifist
+			remove_modifier = dominanttribe_xenophobe
+			remove_modifier = dominanttribe_xenophile
+			remove_modifier = dominanttribe_materialist
+			remove_modifier = dominanttribe_spiritualist
+			remove_modifier = dominanttribe_authoritarian
+			remove_modifier = dominanttribe_egalitarian
+			if = {
+				limit = {
+					pop_percentage = {
+						percentage > 0.32
+						limit = { pop_has_ethic = ethic_spiritualist }
+					}
+				}
+				add_modifier = {
+					modifier = dominanttribe_spiritualist
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					pop_percentage = {
+						percentage > 0.32
+						limit = { pop_has_ethic = ethic_materialist }
+					}
+				}
+				add_modifier = {
+					modifier = dominanttribe_materialist
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					pop_percentage = {
+						percentage > 0.32
+						limit = { pop_has_ethic = ethic_xenophobe }
+					}
+				}
+				add_modifier = {
+					modifier = dominanttribe_xenophobe
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					pop_percentage = {
+						percentage > 0.32
+						limit = { pop_has_ethic = ethic_xenophile }
+					}
+				}
+				add_modifier = {
+					modifier = dominanttribe_xenophile
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					pop_percentage = {
+						percentage > 0.32
+						limit = { pop_has_ethic = ethic_egalitarian }
+					}
+				}
+				add_modifier = {
+					modifier = dominanttribe_egalitarian
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					pop_percentage = {
+						percentage > 0.32
+						limit = { pop_has_ethic = ethic_authoritarian }
+					}
+				}
+				add_modifier = {
+					modifier = dominanttribe_authoritarian
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					pop_percentage = {
+						percentage > 0.32
+						limit = { pop_has_ethic = ethic_militarist }
+					}
+				}
+				add_modifier = {
+					modifier = dominanttribe_militarist
+					days = -1
+				}
+			}
+			if = {
+				limit = {
+					pop_percentage = {
+						percentage > 0.32
+						limit = { pop_has_ethic = ethic_pacifist }
+					}
+				}
+				add_modifier = {
+					modifier = dominanttribe_pacifist
+					days = -1
+				}
+			}
+		}
+	}
+}
+
+planet_event = {
+	id = stateoflies.8
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+			not = { has_ethic = ethic_gestalt_consciousness }
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				owner = { 
+					not = { has_country_flag = cf_luxury_benefits_cooldown }
+					not = { has_valid_civic = civic_shared_burden }
+				}
+			}
+			owner = {
+				set_timed_country_flag = {
+					flag = cf_luxury_benefits_cooldown
+					days = 720
+				}
+			}
+			remove_luxury_benefits_modifiers = yes
+			if = {
+				limit = {
+					owner = { not = { has_valid_civic = civic_elite_easy_living }}
+				}
+				if = {
+					limit = {
+						num_pops > 80
+						free_amenities > 150
+						free_amenities < 200
+					}
+					add_modifier = {
+						modifier = luxury_benefits_low
+						days = -1
+					}
+				}
+				if = {
+					limit = {
+						num_pops > 80
+						free_amenities >= 200
+						free_amenities < 250
+					}
+					add_modifier = {
+						modifier = luxury_benefits_medium
+						days = -1
+					}
+				}
+				if = {
+					limit = {
+						num_pops > 80
+						free_amenities >= 250
+					}
+					add_modifier = {
+						modifier = luxury_benefits_high
+						days = -1
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						num_pops > 25
+						free_amenities > 50
+						free_amenities < 100
+					}
+					add_modifier = {
+						modifier = luxury_benefits_low
+						days = -1
+					}
+				}
+				if = {
+					limit = {
+						num_pops > 40
+						free_amenities >= 100
+						free_amenities < 200
+					}
+					add_modifier = {
+						modifier = luxury_benefits_medium
+						days = -1
+					}
+				}
+				if = {
+					limit = {
+						num_pops > 70
+						free_amenities >= 200
+					}
+					add_modifier = {
+						modifier = luxury_benefits_high
+						days = -1
+					}
+				}			
+			}
+		}
+
+		if = {
+			limit = {
+				owner = { 
+					not = { has_country_flag = cf_destitution_cooldown }
+				}
+			}
+			owner = {
+				set_timed_country_flag = {
+					flag = cf_destitution_cooldown
+					days = 720
+				}
+			}		
+			remove_destitution_modifiers = yes
+			if = {
+				limit = {
+					num_pops > 80
+					free_amenities > 100
+					count_owned_pop = { 
+						limit = { 
+							is_unemployed = yes 
+						}
+						count > 6
+					}
+				}
+				add_modifier = {
+					modifier = destitute_lots
+					days = -1
+				}
+			}
+			else_if = {
+				limit = {
+					num_pops > 75
+					free_amenities > 125
+					count_owned_pop = { 
+						limit = { 
+							is_unemployed = yes 
+						}
+						count > 4
+					}
+				}
+				add_modifier = {
+					modifier = destitute_many
+					days = -1
+				}
+			}
+			else_if = {
+				limit = {
+					num_pops > 70
+					free_amenities > 150
+					count_owned_pop = { 
+						limit = { 
+							is_unemployed = yes 
+						}
+						count > 2
+					}
+				}
+				add_modifier = {
+					modifier = destitute_some
+					days = -1
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = stateoflies.9
+	title = "stateoflies.9.name"
+	desc = "stateoflies.9.desc"
+	picture = GFX_evt_space_hangar
+	location = event_target:foreign_outpost_system
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = OK
+	}
+}
+
+
+country_event = {
+	id = stateoflies.10
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_warenders
+	}
+	
+	immediate = {
+		save_event_target_as = empathic_country
+		random_system_within_border = {
+			limit = {
+				exists = starbase
+				starbase = {
+					has_starbase_building  = sb_empath_enclave
+				}
+			}
+			save_event_target_as = empathic_solarsystem
+			random_list = {
+				75 = {}
+				25 = {
+					if = {
+						limit = {
+							or = {
+								not = { is_variable_set = system_empathic_pops_total }
+								check_variable = { which = system_empathic_pops_total value < 1 }
+							}
+						}
+						change_variable = { which =  system_empathic_pops_total value = 1 }					
+					}
+					# Neighboor Foreign Outpost Flipping
+					# event_target:empathic_solarsystem = {
+						# check_to_flip_outposts = yes
+					# }					
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = stateoflies.11
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_warenders
+	}
+ 
+	immediate = {
+		save_event_target_as = empathic_country
+		random_system_within_border = {
+			limit = {
+				exists = starbase
+				starbase = { has_starbase_building = sb_empath_enclave }
+				not = { any_system_planet = { is_colony = yes }}
+			}
+			save_event_target_as = random_enclave_system
+			if = {
+				limit = {
+					or = {
+						not = { is_variable_set = system_empathic_pops_total }
+						check_variable = { which = system_empathic_pops_total value < 1 }					
+					}
+				}
+				set_variable = { which = system_empathic_pops_total value = 1 }
+			}				
+		}
+		random_owned_planet = {
+			limit = { 
+				is_colony = yes
+				num_pops > 0
+				not = { any_owned_pop = { has_trait = trait_talented_empaths }}
+			}
+			remove_modifier = empathic_field_domestic
+			remove_modifier = empathic_field_branch
+			remove_modifier = empathic_field_foreign
+			if = {
+				limit = { is_variable_set = empathic_pops_total }
+				clear_variable = empathic_pops_total
+			}
+			solar_system = {
+				save_event_target_as = non_empathic_system
+				if = {
+					limit = {
+						exists = starbase
+						starbase = { not = { has_starbase_building = sb_empath_enclave }}
+					}
+					if = {
+						limit = {
+							not = {
+								any_system_planet = {
+									any_owned_pop = { has_trait = trait_talented_empaths }
+								}
+							}
+						}
+						if = {
+							limit = { is_variable_set = system_empathic_pops_total }
+							clear_variable = system_empathic_pops_total
+						}						
+					}
+				}
+			}
+		}
+		random_owned_planet = {
+			limit = { 
+				is_colony = yes
+				num_pops > 0				
+			}
+			if = {
+				limit = {
+					any_owned_pop = { has_trait = trait_talented_empaths }
+				}
+				save_event_target_as = empathic_planet
+				set_variable = { which = empathic_pops_total value = 1 }
+				every_owned_pop = {
+					limit = { has_trait = trait_talented_empaths }
+					change_variable = {
+						which = empathic_pops_total
+						value = 1
+					}
+				}
+				multiply_variable = {
+					which = empathic_pops_total
+					value = 0.1
+				}
+				round_variable_to_closest = {
+					which = empathic_pops_total
+					value = 1
+				}
+				remove_all_empath_fields = yes
+				add_modifier = {
+					modifier = empathic_field_domestic
+					days = -1
+					multiplier = empathic_pops_total
+				}
+				solar_system = {
+					save_event_target_as = empathic_solarsystem
+					if = {
+						limit = { not = { is_variable_set = event_target:empathic_planet.empathic_pops_total }}
+						set_variable = { which = system_empathic_pops_total value = 1 }
+					}
+					else = {
+						set_variable = { which = system_empathic_pops_total value = event_target:empathic_planet.empathic_pops_total }
+					}
+					if = {
+						limit = {
+							exists = starbase
+							starbase = { has_starbase_building = sb_empath_enclave }
+						}
+						change_variable = {
+							which = system_empathic_pops_total
+							value = 1
+						}
+					}
+					if = {
+						limit = { 
+							or = {
+								not = { is_variable_set = system_empathic_pops_total }
+								check_variable = { which = system_empathic_pops_total value < 1 }
+							}
+						}
+						set_variable = { which = system_empathic_pops_total value = 1 }				
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = stateoflies.12
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		not = { has_origin = origin_warenders }
+		is_country_type = default
+		not = { has_ethic = ethic_gestalt_consciousness }
+	}
+	
+	immediate = {
+		random_system_within_border = {
+			limit = {
+				not = {
+					any_system_planet = {
+						is_colony = yes
+					}
+				}
+				any_system_planet = {
+					or = {
+						has_modifier = empathic_field_foreign
+						has_modifier = empathic_field_branch
+					}
+				}
+			}
+			save_event_target_as = random_system_in_border
+			if = {
+				limit = { 
+					or = {
+						not = { is_variable_set = system_empathic_pops_total }
+						check_variable = { which = system_empathic_pops_total value < 1 }
+					}
+				}
+				set_variable = { which = system_empathic_pops_total value = 1 }				
+			}
+			if = {
+				limit = {
+					any_neighbor_system = {
+						exists = starbase
+						starbase = { has_starbase_building = sb_empath_enclave }
+					}
+				}
+				change_variable = { which = system_empathic_pops_total value = 1 }
+			}
+			if = {
+				limit = {
+					any_neighbor_system = {
+						any_system_planet = {
+							or = {
+								has_modifier = empathic_field_domestic
+								has_modifier = empathic_field_branch
+								has_modifier = empathic_field_foreign
+							}
+						}
+					}
+				}
+				change_variable = { which = system_empathic_pops_total value = 1 }
+			}
+			every_system_planet = {
+				limit = { is_star = yes }
+				remove_modifier = empathic_field_foreign
+				remove_modifier = empathic_field_branch
+				add_modifier = {
+					modifier = empathic_field_foreign
+					days = -1
+					multiplier = solar_system.system_empathic_pops_total
+				}
+			}
+			if = {
+				limit = { 
+					check_variable = { which = system_empathic_pops_total value > 25 }
+				}
+				clear_variable = system_empathic_pops_total
+				every_system_planet = {
+					limit = { is_star = yes }
+					remove_modifier = empathic_field_foreign
+				}
+				if = {
+					limit = {
+						any_neighbor_system = {
+							any_system_planet = {
+								has_branch_office = yes
+								branch_office_owner = { has_origin = origin_warenders }
+								has_building = building_empath_peace_mission
+							}
+						}
+					}
+					random_neighbor_system = {
+						limit = {
+							any_system_planet = {
+								has_branch_office = yes
+								branch_office_owner = { has_origin = origin_warenders }
+								has_building = building_empath_peace_mission
+							}
+						}
+						branch_office_owner = { save_event_target_as = empathic_country }
+					}
+					if = {
+						limit = { exists = event_target:empathic_country }						
+						event_target:random_system_in_border.starbase = {
+							set_owner = event_target:empathic_country
+							solar_system = {
+								save_event_target_as = foreign_outpost_system
+								event_target:empathic_country = {
+									country_event = { id = stateoflies.9 days = 1 }
+								}
+							}
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						any_neighbor_system = {
+							exists = owner
+							owner = { has_origin = origin_warenders }
+						}
+					}
+					random_neighbor_system = {
+						limit = {
+							exists = owner
+							owner = { has_origin = origin_warenders }
+						}
+						owner = { save_event_target_as = empathic_country }
+					}
+					if = {
+						limit = { exists = event_target:empathic_country }						
+						event_target:random_system_in_border.starbase = {
+							set_owner = event_target:empathic_country
+							solar_system = {
+								save_event_target_as = foreign_outpost_system
+								event_target:empathic_country = {
+									country_event = { id = stateoflies.9 days = 1 }
+								}							
+							}
+						}
+					}
+				}
+			}
+		}
+	}	
+}
+ 

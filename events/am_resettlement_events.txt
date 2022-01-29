@@ -1,0 +1,128 @@
+namespace = amresettlement
+
+country_event = {
+	id = amresettlement.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_ai = no
+		is_country_type = default	
+	}
+	
+	immediate = {	
+		if = {
+			limit = {
+				has_edict = clear_down_biomass_stockpile
+			}
+			if = {
+				limit = {
+					resource_stockpile_compare = { resource = sr_biomass value > 500 }
+				}
+				add_resource = { sr_biomass = -50 }
+				add_resource = { minerals = 5 }
+				if = {
+					limit = {
+						has_monthly_income = { resource = sr_biomass value > 100 }
+					}
+					add_resource = { sr_biomass = -50 }
+					add_resource = { minerals = 5 }
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_edict = clear_down_ice_stockpile
+			}
+			if = {
+				limit = {
+					resource_stockpile_compare = { resource = sr_ice value > 100 }
+				}
+				add_resource = { sr_ice = -25 }
+				add_resource = { energy = 5 }
+				if = {
+					limit = {
+						has_monthly_income = { resource = sr_ice value > 50 }
+					}
+					add_resource = { sr_ice = -25 }
+					add_resource = { energy = 5 }
+				}
+			}
+		}
+		# Auto resettlement
+		random_owned_planet = {
+			limit = {
+				is_colony = yes
+				has_modifier = auto_resettling
+				not = { has_planet_flag = recent_resettlement_check }
+			}
+			set_timed_planet_flag = {
+				flag = recent_resettlement_check
+				days = 90
+			}
+			if = {
+				limit = {
+					not = { num_pops < 6 }
+					not = { num_pops = 10 }
+					not = { num_pops = 15 }
+					not = { num_pops = 20 }
+					not = { num_pops = 25 }
+					not = { num_pops = 30 }
+					not = { num_pops = 35 }
+					not = { num_pops = 40 }
+					not = { num_pops = 45 }
+					not = { num_pops = 50 }
+					not = { num_pops = 55 }
+					not = { num_pops = 60 }
+					not = { num_pops = 65 }
+					not = { num_pops = 70 }
+					not = { num_pops = 75 }
+					not = { num_pops = 80 }
+					not = { num_pops = 85 }				
+				}
+				random_owned_pop = {
+					limit = {
+						is_unemployed = yes
+						not = { has_pop_flag = just_resettled }
+					}
+					save_event_target_as = jobless_pop_to_resettle
+				}
+			}
+		}
+		if = {
+			limit = {
+				exists = event_target:jobless_pop_to_resettle
+			}
+			random_owned_planet = {
+				limit = {
+					is_colony = yes
+					not = { has_planet_flag = recent_resettlement_check }
+					free_jobs > 1
+				}
+				save_event_target_as = auto_resettle_destination
+				set_timed_planet_flag = {
+					flag = recent_resettlement_check
+					days = 30
+				}
+			}
+			if = {
+				limit = {
+					exists = event_target:auto_resettle_destination
+				}
+				event_target:jobless_pop_to_resettle = { 
+					set_timed_pop_flag = {
+						flag = just_resettled
+						days = 360
+					}
+				}
+				resettle_pop = {
+					pop = event_target:jobless_pop_to_resettle
+					planet = event_target:auto_resettle_destination
+				}
+				event_target:jobless_pop_to_resettle = { 
+					clear_pop_category = yes
+				}
+			}
+		}			
+	}
+}

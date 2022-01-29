@@ -1,0 +1,77 @@
+namespace = amstarbases
+
+# Policy that auto-builds building on outposts
+event = {
+	id = amstarbases.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_country_type = default
+		not = { has_policy_flag = alp_outpost_nobuilding }	
+	}
+	
+	immediate = {
+		save_event_target_as = healthcheckedcountry
+		if = {
+			limit = { has_policy_flag = alp_outpost_commsrelay }
+			add_relay_building_to_random_outpost = yes
+			add_relay_building_to_random_outpost = yes
+		}	
+		else_if = {
+			limit = { has_policy_flag = alp_outpost_freightyard }
+			add_freight_building_to_random_outpost = yes
+			add_freight_building_to_random_outpost = yes
+		}
+		else_if = {
+			limit = { has_policy_flag = alp_outpost_crewquarters }
+			add_crew_building_to_random_outpost = yes
+			add_crew_building_to_random_outpost = yes
+		}
+		else_if = {
+			limit = { has_policy_flag = alp_outpost_resourcesilo }
+			add_silo_building_to_random_outpost = yes
+			add_silo_building_to_random_outpost = yes
+		}			
+	}
+}
+
+# Orbital Framework Site Finished
+country_event = {
+	id = amstarbases.3
+	title = "amstarbases.3.name"
+	desc = "amstarbases.3.desc"
+	picture = GFX_evt_megastructure_construction
+	show_sound = event_radio_chatter
+	location = from
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		from = { save_event_target_as = orbitalframe_system }
+	}
+	
+	option = {
+		name = GOOD
+	}
+}
+
+# Orbital Finished
+country_event = {
+	id = amstarbases.4
+	title = "amstarbases.4.name"
+	desc = "amstarbases.4.desc"
+	picture = GFX_evt_megastructure_construction
+	show_sound = event_radio_chatter
+	location = from
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		from = { save_event_target_as = orbitalframe_system }
+	}
+	
+	option = {
+		name = GOOD
+	}
+}

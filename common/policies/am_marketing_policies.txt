@@ -1,0 +1,195 @@
+alp_food_marketing = {
+	potential = {
+		NOT = { has_ethic = "ethic_gestalt_consciousness" }
+		not = { has_policy_flag = alp_private_businesses_prohibited }
+	}
+	
+	option = {
+		name = "alp_food_marketing_default"
+		
+		policy_flags = {
+			alp_food_marketing_default
+		}
+		
+		AI_weight = {
+			weight = 1
+		}
+	}
+	
+	option = {
+		name = "alp_food_marketing_some"
+		valid = {
+			or = {
+				has_policy_flag = alp_private_businesses_regulated
+				has_policy_flag = alp_private_businesses_freedom
+			}
+		}
+		
+		policy_flags = {
+			alp_food_marketing_some
+		}
+		
+		modifier = {
+			planet_farmers_food_produces_add = -1
+			planet_farmers_energy_produces_add = 0.5
+			planet_farmers_sr_wealth_produces_add = 0.1
+		}
+		
+		AI_weight = {
+			weight = 0
+		}
+	}
+
+	option = {
+		name = "alp_food_marketing_lots"
+		valid = {
+			has_policy_flag = alp_private_businesses_freedom
+		}
+		
+		policy_flags = {
+			alp_food_marketing_lots
+		}
+		
+		modifier = {
+			planet_farmers_food_produces_add = -2
+			planet_farmers_energy_produces_add = 1
+			planet_farmers_sr_wealth_produces_add = 0.2
+		}
+		
+		AI_weight = {
+			weight = 0
+		}
+	}
+}
+
+alp_minerals_marketing = {
+	potential = {
+		NOT = { has_ethic = "ethic_gestalt_consciousness" }
+		not = { has_policy_flag = alp_private_businesses_prohibited }
+	}
+	
+	option = {
+		name = "alp_minerals_marketing_default"
+		
+		policy_flags = {
+			alp_minerals_marketing_default
+		}
+		
+		AI_weight = {
+			weight = 1
+		}
+	}
+	
+	option = {
+		name = "alp_minerals_marketing_some"
+		valid = {
+			or = {
+				has_policy_flag = alp_private_businesses_regulated
+				has_policy_flag = alp_private_businesses_freedom
+			}
+		}
+		
+		policy_flags = {
+			alp_minerals_marketing_some
+		}
+		
+		modifier = {
+			planet_miners_minerals_produces_add = -1
+			planet_miners_energy_produces_add = 0.5
+			planet_miners_sr_wealth_produces_add = 0.1
+		}
+		
+		AI_weight = {
+			weight = 0
+		}
+	}
+
+	option = {
+		name = "alp_minerals_marketing_lots"
+		valid = {
+			has_policy_flag = alp_private_businesses_freedom
+		}
+		
+		policy_flags = {
+			alp_minerals_marketing_lots
+		}
+		
+		modifier = {
+			planet_miners_minerals_produces_add = -2
+			planet_miners_energy_produces_add = 1
+			planet_miners_sr_wealth_produces_add = 0.2
+		}
+		
+		AI_weight = {
+			weight = 0
+		}
+	}
+}
+
+alp_goods_marketing = {
+	potential = {
+		NOT = { has_ethic = "ethic_gestalt_consciousness" }
+		not = { has_policy_flag = alp_private_businesses_prohibited }
+	}
+	
+	option = {
+		name = "alp_goods_marketing_default"
+		
+		policy_flags = {
+			alp_goods_marketing_default
+		}
+		
+		AI_weight = {
+			weight = 1
+		}
+	}
+	
+	option = {
+		name = "alp_goods_marketing_some"
+		valid = {
+			or = {
+				has_policy_flag = alp_private_businesses_restricted
+				has_policy_flag = alp_private_businesses_regulated
+				has_policy_flag = alp_private_businesses_freedom
+			}
+		}
+		
+		policy_flags = {
+			alp_goods_marketing_some
+		}
+		
+		modifier = {
+			planet_artisans_consumer_goods_produces_add = -1
+			planet_artisans_energy_produces_add = 1.5
+			planet_artisans_sr_wealth_produces_add = 0.2
+		}
+		
+		AI_weight = {
+			weight = 0
+		}
+	}
+
+	option = {
+		name = "alp_goods_marketing_lots"
+		valid = {
+			or = {
+				has_policy_flag = alp_private_businesses_regulated
+				has_policy_flag = alp_private_businesses_freedom
+			}
+		}
+		
+		policy_flags = {
+			alp_goods_marketing_lots
+		}
+		
+		modifier = {
+			planet_artisans_consumer_goods_produces_add = -2
+			planet_artisans_energy_produces_add = 3
+			planet_artisans_sr_wealth_produces_add = 0.4
+		}
+		
+		AI_weight = {
+			weight = 0
+		}
+	}
+}

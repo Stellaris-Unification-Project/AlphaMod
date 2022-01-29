@@ -1,0 +1,48 @@
+﻿l_english: 
+ # Empire Modifiers
+ mod_damage_vs_country_type_ruined_marauders_mult: "Damage to Ruined"
+ mod_damage_vs_country_type_marauder_raiders_mult: "Damage to Raiders"
+ mod_country_sr_wealth_produces_mult: "£sr_wealth£ Wealth Production"
+ mod_country_base_sr_wealth_produces_add: "£sr_wealth£ Monthly Wealth Produced"
+ mod_country_sr_ice_produces_mult: "£sr_ice£ Ice Production"
+ mod_country_sr_waste_produces_mult: "£sr_waste£ Waste Production"
+ 
+ waste_not_want_not: "Waste Not Want Not"
+ waste_not_want_not_desc: "Keeping a clean empire makes for a happy, conscientious citizenry."
+ 
+ logistics_net_1: "Logistics Rating (1)"
+ logistics_net_2: "Logistics Rating (2)" 
+ logistics_net_5: "Logistics Rating (5)"
+ logistics_net_10: "Logistics Rating (10)"
+ logistics_net_25: "Logistics Rating (25)"
+ logistics_net_50: "Logistics Rating (50)"
+ logistics_net_100: "Logistics Rating (100)"
+ logistics_net_150: "Logistics Rating (150)"
+ logistics_net_200: "Logistics Rating (200)"
+ logistics_net_250: "Logistics Rating (250)"
+ logistics_net_500: "Logistics Rating (500)"
+ 
+ comms_net_1: "Comms Rating (1)"
+ comms_net_2: "Comms Rating (2)" 
+ comms_net_5: "Comms Rating (5)"
+ comms_net_10: "Comms Rating (10)"
+ comms_net_25: "Comms Rating (25)"
+ comms_net_50: "Comms Rating (50)"
+ comms_net_100: "Comms Rating (100)"
+ comms_net_150: "Comms Rating (150)"
+ comms_net_200: "Comms Rating (200)"
+ comms_net_250: "Comms Rating (250)"
+ comms_net_500: "Comms Rating (500)"
+ 
+ we_love_war: "Glorious War!"
+ peace_sucks_1: "Peace"
+ peace_sucks_2: "More Peace"
+ peace_sucks_3: "Too Much Peace"
+ peace_sucks_4: "War Now!"
+ peace_sucks_5: "We Want War!"
+ 
+ # MISC
+ FROM_STARBASE_BUILDINGS:0 "From Starbases"
+ FROM_STARBASE_MODULES:0 "From Starbases"
+
+ tb_waste_group: "Waste"

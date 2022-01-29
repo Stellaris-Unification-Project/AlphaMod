@@ -1,0 +1,23 @@
+is_suitable_terraforming_candidate = {
+	is_colony = no
+	not = { has_modifier = terraforming_candidate }
+	is_terraforming = no
+	exists = space_owner
+
+	or = {
+		and = {
+			is_moon = yes
+			planet_size < 15
+			planet_size > 3
+		}
+		and = {
+			planet_size < 13
+			planet_size > 4
+		}
+		and = {
+			space_owner = { has_ascension_perk = ap_all_these_worlds }
+			planet_size < 19
+			planet_size > 3				
+		}
+	}
+}

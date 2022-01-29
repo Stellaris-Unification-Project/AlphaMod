@@ -1,0 +1,83 @@
+actinides_expenditure_decisions  = {
+	resource = sr_actinides
+	type = expenditure
+	category = decisions
+	
+	potential = {
+		is_at_war = no
+	}
+	
+	fraction = {
+		weight = 0.1
+	}	
+}
+
+actinides_upkeep_planets = {
+	resource = sr_actinides
+	type = upkeep
+	category = planets
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.5
+	}	
+}
+
+actinides_expenditure_ship_edicts = {
+	resource = sr_actinides 
+	type = expenditure
+	category = ship_edicts
+	
+	potential = {
+		is_at_war = yes
+	}
+	
+	fraction = {
+		weight = 0.1
+	}	
+}
+
+actinides_expenditure_rare_edicts = {
+	resource = sr_actinides 
+	type = expenditure
+	category = rare_edicts
+	
+	potential = {
+		is_at_war = yes
+	}
+	
+	fraction = {
+		weight = 0.1
+	}	
+}
+
+actinides_expenditure_campaigns = {
+	resource = sr_actinides 
+	type = expenditure
+	category = campaigns
+	
+	potential = {
+		is_at_war = yes
+	}
+	
+	fraction = {
+		weight = 0.1
+	}	
+}
+
+actinides_expenditure_planets = {
+	resource = sr_actinides
+	type = expenditure
+	category = planets
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.4
+	}	
+}

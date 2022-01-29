@@ -1,0 +1,153 @@
+metals_expenditure_planets = {
+	resource = sr_rare_metals 
+	type = expenditure
+	category = planets
+	
+	potential = {
+		resource_stockpile_compare = { resource = sr_rare_metals value > 500 }
+	}
+	
+	fraction = {
+		weight = 0.2
+	}	
+}
+
+stones_expenditure_planets = {
+	resource = sr_precious_stones
+	type = expenditure
+	category = planets
+	
+	potential = {
+		resource_stockpile_compare = { resource = sr_precious_stones value > 500 }
+	}
+	
+	fraction = {
+		weight = 0.5
+	}	
+}
+
+metals_upkeep_planets = {
+	resource = sr_rare_metals 
+	type = upkeep
+	category = planets
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.5
+	}	
+}
+
+stones_upkeep_planets = {
+	resource = sr_precious_stones
+	type = upkeep
+	category = planets
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.25
+	}	
+}
+
+metals_expenditure_edicts = {
+	resource = sr_rare_metals
+	type = expenditure
+	category = campaigns
+	
+	potential = {
+		resource_stockpile_compare = { resource = sr_rare_metals value > 250 }
+	}
+	
+	fraction = {
+		weight = 0.4
+	}	
+}
+
+metals_expenditure_rareedicts = {
+	resource = sr_rare_metals
+	type = expenditure
+	category = rare_edicts
+	
+	potential = {
+		resource_stockpile_compare = { resource = sr_rare_metals value > 250 }
+	}
+	
+	fraction = {
+		weight = 0.4
+	}	
+}
+
+stones_expenditure_edicts = {
+	resource = sr_precious_stones
+	type = expenditure
+	category = campaigns
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.25
+	}	
+}
+
+stones_expenditure_rareedicts = {
+	resource = sr_precious_stones
+	type = expenditure
+	category = rare_edicts
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.25
+	}	
+}
+
+plastics_expenditure_rareedicts = {
+	resource = sr_plastics
+	type = expenditure
+	category = rare_edicts
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.25
+	}	
+}
+
+electronics_expenditure_edicts = {
+	resource = sr_electronics
+	type = expenditure
+	category = campaigns
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.5
+	}	
+}
+
+electronics_expenditure_rareedicts = {
+	resource = sr_electronics
+	type = expenditure
+	category = rare_edicts
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.1
+	}	
+}

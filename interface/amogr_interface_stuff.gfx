@@ -1,0 +1,7 @@
+spriteTypes = {	
+	### ORIGINS ###
+	spriteType = {
+		name = "GFX_evt_godruler"
+		texturefile = "gfx/event_pictures/origins/origin_godruler.dds"
+	}
+}

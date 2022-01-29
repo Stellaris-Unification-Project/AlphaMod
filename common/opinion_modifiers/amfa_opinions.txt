@@ -1,0 +1,179 @@
+# Has an Open Embassy on border
+opinion_border_open_embassy = {
+	trigger = {
+		is_country_type = default
+		nor = {
+			has_ethic = ethic_xenophobe
+			has_ethic = ethic_fanatic_xenophobe
+		}
+		not = { is_in_federation_with = from }
+		not = { has_defensive_pact = from }
+		not = { is_overlord_to = from }		
+		any_system_within_border = {
+			has_hyperlane_to = from
+			any_neighbor_system = {
+				exists = starbase
+				starbase = { 
+					has_starbase_building = open_starbase_embassy
+				}
+			}
+		}					
+	}
+	
+	opinion = {
+		base = 25
+	}
+}
+
+# Has a border security post
+opinion_border_security_post = {
+	trigger = {
+		is_criminal_syndicate = no
+		is_country_type = default
+		or = {
+			has_ethic = ethic_xenophobe
+			has_ethic = ethic_fanatic_xenophobe
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+			has_ethic = ethic_authoritarian
+			has_ethic = ethic_fanatic_authoritarian
+		}
+		or = {
+			is_in_federation_with = from
+			has_migration_access = from
+		}
+		not = { is_overlord_to = from }		
+		any_system_within_border = {
+			has_hyperlane_to = from
+			any_neighbor_system = {
+				exists = starbase
+				starbase = { 
+					has_starbase_building = border_security_post
+				}
+			}
+		}					
+	}
+	
+	opinion = {
+		base = 10
+	}
+}
+
+# Has foreign trade across border
+opinion_border_trade = {
+	trigger = {
+		is_country_type = default
+		nor = {
+			has_ethic = ethic_fanatic_militarist
+			has_ethic = ethic_fanatic_xenophobe
+		}
+		or = {
+			is_in_federation_with = from
+			has_commercial_pact = from
+		}
+		not = { is_overlord_to = from }		
+		any_system_within_border = {
+			has_hyperlane_to = from
+			any_neighbor_system = {
+				exists = starbase
+				starbase = { 
+					has_starbase_building = foreign_trading_company
+				}
+			}
+		}					
+	}
+	
+	opinion = {
+		base = 25
+	}
+}
+
+# Has federation trade across border
+opinion_fed_border_trade = {
+	trigger = {
+		is_country_type = default
+		nor = {
+			has_ethic = ethic_fanatic_militarist
+			has_ethic = ethic_fanatic_xenophobe
+		}
+		or = {
+			is_in_federation_with = from
+			has_commercial_pact = from
+		}
+		not = { is_overlord_to = from }		
+		any_system_within_border = {
+			has_hyperlane_to = from
+			any_neighbor_system = {
+				has_star_flag = sf_federation_trade_mega
+				exists = starbase
+			}
+		}					
+	}
+	
+	opinion = {
+		base = 75
+	}
+}
+
+# Has smuggling across border
+opinion_border_smuggling = {
+	trigger = {
+		is_criminal_syndicate = no
+		is_country_type = default
+		or = {
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+			has_ethic = ethic_authoritarian
+			has_ethic = ethic_fanatic_authoritarian
+		}	
+		or = {
+			is_in_federation_with = from
+			has_commercial_pact = from
+		}
+		not = { is_overlord_to = from }		
+		any_system_within_border = {
+			has_hyperlane_to = from
+			any_neighbor_system = {
+				exists = starbase
+				starbase = { 
+					has_starbase_building = foreign_smuggling_company
+				}
+			}
+		}					
+	}
+	
+	opinion = {
+		base = -10
+	}
+}
+
+# Has joint fleet operations
+opinion_joint_crews = {
+	trigger = {
+		is_country_type = default
+		or = {
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+			has_ethic = ethic_xenophile
+			has_ethic = ethic_fanatic_xenophile
+		}
+		or = {
+			is_in_federation_with = from
+			has_defensive_pact = from
+		}
+		not = { is_overlord_to = from }
+		any_system_within_border = {
+			has_hyperlane_to = from
+			any_neighbor_system = {
+				exists = starbase
+				starbase = { 
+					has_starbase_building = joint_crew_quarters
+				}
+			}
+		}					
+	}
+	
+	opinion = {
+		base = 10
+	}
+}

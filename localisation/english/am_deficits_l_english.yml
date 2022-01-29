@@ -1,0 +1,10 @@
+﻿l_english: 
+ # Deficits
+ biomass_deficit_alloys: "§RBiomass Shortage§!"
+ biomass_deficit_alloys_desc: "Alloys production is severely impacted by a lack of biomass!"
+ plastics_deficit: "§RPlastics Shortage§!"
+ actinides_deficit: "§RActinides Shortage§!"
+ ice_deficit: "§RIce Shortage§!"
+ fuels_deficit: "§RFuels Shortage§!"
+ wealth_deficit: "§RWealth Depleted§!"
+ biomass_deficit: "§RBiomass Shortage§!"

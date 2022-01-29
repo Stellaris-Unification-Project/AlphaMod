@@ -1,0 +1,52 @@
+﻿l_english: 
+ galactic_focus_end_spiritual_intolerance: "End Spiritual Intolerance"
+ galactic_focus_end_spiritual_intolerance_desc: "Prosecuting those who choose to believe in something other than the material is unacceptable in an enlightened galaxy."
+ resolution_galactic_focus_end_spiritual_intolerance: "End Spiritual Intolerance"
+ resolution_galactic_focus_end_spiritual_intolerance_desc: "Prosecuting those who choose to believe in something other than the material is unacceptable in an enlightened galaxy."
+ resolution_galactic_focus_end_spiritual_intolerance_effect_success: "Any empire that has policy banning religion will be in §Rbreach of galactic law§!"
+
+ galactic_focus_law_and_order: "Law and Order"
+ galactic_focus_law_and_order_desc: "Crime must be eliminated. Liberty must be earnt and regulated. Equality is a myth - society must have rules, rulers and enforcers of rule. It must be understood and respected that personal freedoms are a privelige, not an entitlement, and not to be exploited."
+ resolution_galactic_focus_law_and_order: "Law and Order"
+ resolution_galactic_focus_law_and_order_desc: "Crime must be eliminated. Liberty must be earnt and regulated. Equality is a myth - society must have rules, rulers and enforcers of rule. It must be understood and respected that personal freedoms are a privelige, not an entitlement, and not to be exploited."
+ resolution_galactic_focus_law_and_order_effect_success: "- Any criminal or egalitarian empire will be in §Rbreach of galactic law§!\n- Any empire that fails to ban or regulate unions will be in §Rbreach of galactic law§!\n- Any empire that fails to provide organised and regulated law enforcement services will be in §Rbreach of galactic law§!"
+ 
+ galactic_focus_justice_and_freedom: "Justice and Freedom"
+ galactic_focus_justice_and_freedom_desc: "Tyranny must always be opposed. It is the fundamental right of all living beings to procreate without restriction, to never be threatened by genocide and to never be enslaved."
+ resolution_galactic_focus_justice_and_freedom: "Justice and Freedom"
+ resolution_galactic_focus_justice_and_freedom_desc: "Tyranny must always be opposed. It is the fundamental right of all living beings to procreate without restriction, to never be threatened by genocide and to never be enslaved."
+ resolution_galactic_focus_justice_and_freedom_effect_success: "- Any dictatorship will be in §Rbreach of galactic law§!\n- Any empire with policy that allows slavery, purging or population controls will be in §Rbreach of galactic law§!"
+ 
+ galactic_focus_sovereign_governance: "Sovereign Governance"
+ galactic_focus_sovereign_governance_desc: "It is the right of any empire to rule without interference from another empire. No nation should be owned by another."
+ resolution_galactic_focus_sovereign_governance: "Sovereign Governance"
+ resolution_galactic_focus_sovereign_governance_desc: "It is the right of any empire to rule without interference from another empire (except the Imperial Core). No nation should be owned by any other empire (except the Imperial Core)."
+ resolution_galactic_focus_sovereign_governance_effect_success: "Any empire, other than the Imperial Core, that is an overlord to another empire, will be in §Rbreach of galactic law.§!"
+
+ galactic_focus_freedom_of_independence: "Sanctity of Individuality"
+ galactic_focus_freedom_of_independence_desc: "The tolerance of the existence of gestalt monstrosities that desire to take away individuality must end." 
+ resolution_galactic_focus_freedom_of_independence: "Sanctity of Individuality"
+ resolution_galactic_focus_freedom_of_independence_desc: "The tolerance of gestalt monstrosities that desire to take away individuality must end."
+ resolution_galactic_focus_freedom_of_independence_effect_success: "Any gestalt empire is in §Rbreach of galactic law§! because it is a gestalt."
+ 
+ resolution_category_sanctions_trade_embargo: "Trade Restrictions"
+ 
+ resolution_trade_embargo_corporation: "Trade Embargo"
+ resolution_trade_embargo_corporation_desc: "The illicit activities of this so-called corporation on other worlds must cease and their operations be immediately removed."
+ resolution_trade_embargo_corporation_tooltip: "All of the target Megacorporation's branch offices must be immediately closed, and none may be opened whilst the embargo is in place.\n§YThe target of this resolution and any empire that fails to close a branch office owned by the target of this resolution, will be in§! §Rbreach of galactic law§!"
+ 
+ resolution_trade_embargo_corporation_repeal: "Lift Trade Embargo"
+ resolution_trade_embargo_corporation_repeal_desc: "The activities of this corporation on other worlds must be allowed to resume."
+ resolution_trade_embargo_corporation_repeal_tooltip: "The target Megacorporation may once again open branch offices."
+ 
+ resolution_imperial_lgate_control: "Imperial L-Gate Control"
+ resolution_imperial_lgate_control_desc: "Uncolonised systems that contain an L-Gate should have control immediately handed over to the Imperial Core."
+ resolution_imperial_lgate_control_tooltip: "Any Imperium member with a system containing an L-Gate but no colonies, is required to hand over control of that system, changing ownership to that of the Imperial Core. §RFailure to do so will be a breach of galactic law§!"
+ 
+ opinion_forced_closure: "Forced Closure"
+ opinion_forced_closure_desc: "Foreign operations were forced to close."
+ opinion_lgate_lost: "L-Gate Relenquished"
+ opinion_lgate_lost_desc: "Ownership of an L-Gate was taken away."
+ opinion_starbase_flipped: "System Defected"
+ opinion_starbase_flipped_desc: "A system was lost due to empathic subversion."
+ cf_force_election: "Recent Forced Election"

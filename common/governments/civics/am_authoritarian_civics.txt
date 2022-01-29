@@ -1,0 +1,48 @@
+civic_traditional_economy = {
+	# description = "civic_tooltip_traditional_economy_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+	}
+	modifier = {
+		pop_cat_worker_happiness = 0.2
+		planet_labourers_consumer_goods_produces_add = 1
+		planet_labourers_alloys_produces_add = 1
+	}
+	random_weight = { base = 12 }
+}
+
+civic_elite_easy_living = {
+	description = "civic_tooltip_elite_easy_living_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		# authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+		civics = {
+			not = { value = civic_functional_architecture }
+		}
+	}
+	modifier = {
+		job_beneficiary_per_pop = 0.04
+		planet_beneficiaries_unity_produces_add = 3
+		planet_beneficiaries_sr_wealth_produces_add = 0.5
+	}
+	random_weight = { base = 12 }
+}

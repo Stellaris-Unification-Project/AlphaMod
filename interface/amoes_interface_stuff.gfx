@@ -1,0 +1,7 @@
+spriteTypes = {
+	### ORIGINS ###
+	spriteType = {
+		name = "GFX_evt_electricsheep"
+		texturefile = "gfx/event_pictures/origins/origin_electricsheep.dds"
+	}
+}

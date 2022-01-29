@@ -1,0 +1,1553 @@
+@base_cost = 300
+@city_cost = 500
+
+district_generator = {
+	base_buildtime = 240
+
+	min_for_deposits_on_planet = 3	
+	max_for_deposits_on_planet = 15
+	
+	show_on_uncolonized = {
+		exists = from
+		show_generator_districts = yes
+	}
+	
+	potential = {
+		exists = owner
+		show_generator_districts = yes
+	}
+	
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		or = {
+			not = { exists = owner }
+			owner = { is_ai = no }
+			and = {
+				owner = { 
+					is_ai = yes 
+					has_monthly_income = { resource = minerals value > 0 }
+					or = {
+						country_uses_food = no
+						and = {
+							country_uses_food = yes
+							has_monthly_income = { resource = food value > 0 }
+						}
+					}
+				}					
+				planet_devastation < 5
+				num_districts = { type = district_generator value < 6 }
+			}
+		}
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_generator_uncapped
+	}	
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @base_cost
+		}
+		produces = {
+			trigger = {
+				planet = { 
+					not = { has_planet_flag = preserving_actinides }
+					has_actinides_left = yes
+				}
+			}
+			energy = 2
+		}
+		produces = {
+			sr_waste = 1
+		}
+		upkeep = {
+			trigger = {
+				planet = { 
+					not = { has_planet_flag = preserving_actinides }
+					has_actinides_left = yes
+				}
+			}
+			sr_actinides = 1
+		}
+		upkeep = {
+			trigger = {
+				planet = { 
+					not = { has_planet_flag = preserving_fuels }
+					has_natural_fuels_left = yes
+				}
+			}
+			sr_natural_fuels = 1
+		}
+		upkeep = {
+			trigger = {
+				planet = {
+					not = { has_planet_flag = preserving_fuels }
+					has_natural_fuels_left = no
+				}
+			}
+			energy = 1
+		}
+		upkeep = {
+			trigger = { planet = { has_planet_flag = preserving_fuels }}
+			energy = 1
+		}
+		produces = {
+			trigger = { planet = { has_planet_flag = pf_privatise_generators }}
+			sr_wealth = 0.5
+		}		
+	}	
+	
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+	
+	triggered_planet_modifier = {
+		potential = { 
+			has_planet_flag = pf_privatise_generators 
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_wageslave_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = { is_agrarian = yes }
+		modifier = {
+			planet_housing_add = 1
+		}
+	}	
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_technician_drone_add = 3
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			has_active_building = building_energy_nexus
+		}
+		modifier = {
+			job_technician_drone_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_technician_drone_add = 2
+			planet_housing_add = 1
+		}
+	}	
+		
+	triggered_planet_modifier = {
+		potential = {
+			not = { has_planet_flag = pf_credit_managers }
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		modifier = {
+			job_technician_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			has_active_building = building_energy_nexus
+		}
+		modifier = {
+			job_technician_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			has_planet_flag = pf_credit_managers
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		modifier = {
+			job_technician_add = 1
+			job_clerk_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_fe_acolyte_generator_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+			has_active_building = building_energy_nexus
+		}
+		modifier = {
+			job_fe_acolyte_generator_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_technician_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_technician_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		text = job_fe_acolyte_generator_effect_desc
+	}
+	
+	prerequisites = {
+		tech_power_plant_1
+	}
+
+	ai_resource_production = {
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_mining = {
+	base_buildtime = 240
+	
+	min_for_deposits_on_planet = 1
+	max_for_deposits_on_planet = 15
+	
+	show_on_uncolonized = {
+		exists = from
+		show_mining_districts = yes
+	}
+	
+	potential = {
+		exists = owner
+		show_mining_districts = yes
+	}
+	
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		or = {
+			not = { exists = owner }
+			owner = { is_ai = no }
+			and = {
+				owner = { 
+					is_ai = yes 
+					has_monthly_income = { resource = energy value > 0 }
+					or = {
+						country_uses_food = no
+						and = {
+							country_uses_food = yes
+							has_monthly_income = { resource = food value > 0 }
+						}
+					}
+				}
+				planet_devastation < 5
+				num_districts = { type = district_mining value < 6 }
+			}
+		}
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_mining_uncapped
+	}	
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @base_cost
+		}
+		upkeep = {
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { 
+					is_gestalt = no
+					is_fallen_empire_spiritualist = no
+				}
+				planet = { has_planet_flag = pf_automated_mining }
+			}
+			energy = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { 
+					is_gestalt = no
+					is_fallen_empire_spiritualist = no
+				}
+				planet = { has_planet_flag = pf_automated_mining }
+			}
+			minerals = 4
+		}
+		produces = {
+			sr_natural_fuels = 1
+			sr_waste = 1
+		}
+		produces = {
+			trigger = { planet = { has_modifier = rich_natural_fuels }}
+			sr_natural_fuels = 1
+		}
+		produces = {
+			trigger = { 
+				planet = {
+					exists = owner
+					owner = { is_machine_empire = yes }
+				}
+			}
+			sr_natural_fuels = 1
+		}
+		produces = {
+			trigger = { planet = { has_modifier = rich_actinides }}
+			sr_actinides = 1
+		}
+		produces = {
+			trigger = { planet = { has_modifier = rich_precious_stones }}
+			sr_precious_stones = 1
+		}
+		produces = {
+			trigger = { planet = { has_modifier = rich_rare_metals }}
+			sr_rare_metals = 1
+		}
+		produces = {
+			trigger = {
+				planet = {
+					or = {
+						is_planet_class = pc_arctic
+						is_planet_class = pc_frozen_habitable
+						is_planet_class = pc_ice_asteroid_habitable
+					}
+				}
+			}
+			sr_ice = 1
+		}
+		produces = {
+			trigger = {
+				planet = {
+					or = {
+						is_planet_class = pc_tundra
+						is_planet_class = pc_alpine
+					}
+				}
+			}
+			sr_ice = 0.5
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 2
+		# planet_max_buildings_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_moriacrafting
+			}
+		}
+		modifier = {
+			planet_housing_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = { is_agrarian = yes }
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_mining_drone_add = 3
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_mining_drone_add = 2
+			planet_housing_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			has_active_building = building_mineral_purification_hub
+		}
+		modifier = {
+			job_mining_drone_add = 1
+		}
+	}
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			not = { has_planet_flag = pf_automated_mining }
+		}
+		modifier = {
+			job_miner_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			has_planet_flag = pf_automated_mining
+		}
+		modifier = {
+			job_miner_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			has_active_building = building_mineral_purification_hub
+		}
+		modifier = {
+			job_miner_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_fe_acolyte_mine_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+			has_active_building = building_mineral_purification_hub
+		}
+		modifier = {
+			job_fe_acolyte_mine_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_mining_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_miner_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		text = job_fe_acolyte_mine_effect_desc
+	}
+	
+	prerequisites = {
+		tech_mechanized_mining
+	}
+
+	ai_resource_production = {
+		minerals = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_farming = {
+	base_buildtime = 240
+	
+	min_for_deposits_on_planet = 3	
+	max_for_deposits_on_planet = 15
+	
+	show_on_uncolonized = {
+		exists = from
+		not = { has_planet_flag = pf_hide_farming }
+		uses_district_set = standard				  
+	}
+	
+	potential = {
+		exists = owner
+		not = { has_planet_flag = pf_hide_farming }
+		uses_district_set = standard					  
+	}
+	
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		or = {
+			not = { exists = owner }
+			owner = { is_ai = no }
+			and = {
+				owner = { 
+					is_ai = yes 
+					has_monthly_income = { resource = minerals value > 0 }
+					has_monthly_income = { resource = energy value > 0 }
+					country_uses_food = yes
+				}
+				planet_devastation < 5
+				num_districts = { type = district_farming value < 6 }
+			}
+		}
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_farming_uncapped
+	}	
+		
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @base_cost
+		}
+		upkeep = {
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				planet = { 
+					has_planet_flag = pf_automated_farming
+				}
+			}
+			energy = 1
+		}
+		produces = {
+			trigger = {
+				planet = { 
+					has_planet_flag = pf_automated_farming
+					not = { has_planet_flag = preserving_biomass }
+				}
+			}
+			sr_biomass = 0.5
+			food = 7
+		}
+		produces = {
+			trigger = {
+				planet = { 
+					has_planet_flag = pf_automated_farming
+					has_planet_flag = preserving_biomass
+				}
+			}
+			food = 7
+		}
+		produces = {
+			trigger = {
+				planet = { 
+					not = { has_planet_flag = preserving_ice }
+					has_ice_left = yes
+				}
+			}
+			food = 1
+		}
+		upkeep = {
+			trigger = {
+				planet = { 
+					not = { has_planet_flag = preserving_ice }
+					has_ice_left = yes
+				}
+			}
+			sr_ice = 1
+		}
+		produces = {
+			trigger = { planet = { not = { has_planet_flag = preserving_biomass }}}
+			sr_biomass = 0.5
+		}
+		produces = {
+			trigger = {
+				planet = {
+					not = { has_planet_flag = preserving_biomass }
+					or = {
+						is_planet_class = pc_tropical
+						is_planet_class = pc_ocean
+						is_planet_class = pc_gaia
+					}
+				}
+			}
+			sr_biomass = 1
+		}
+		produces = {
+			trigger = {
+				planet = {
+					not = { has_planet_flag = preserving_biomass }
+					or = {
+						is_planet_class = pc_continental
+						is_planet_class = pc_alpine
+						is_planet_class = pc_savannah
+					}
+				}
+			}
+			sr_biomass = 0.5
+		}
+	}	
+	
+	planet_modifier = {
+		planet_housing_add = 2
+		# planet_max_buildings_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = { is_agrarian = yes }
+		modifier = {
+			planet_housing_add = 1
+			planet_max_buildings_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				has_valid_civic = civic_stellartisan
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_soldier_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = { 
+			has_planet_flag = preserving_biomass
+			exists = owner
+			owner = { is_machine_empire = no }
+		}
+		modifier = {
+			pop_environment_tolerance = 0.02
+		}
+	}
+	triggered_planet_modifier = {
+		potential = { 
+			not = { has_planet_flag = preserving_biomass }
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_biomass_processor_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = { 
+			not = { has_planet_flag = preserving_biomass }
+			exists = owner
+			owner = { is_regular_empire = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_biomass_processor_drone_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				has_technology = tech_housing_agrarian_idyll 
+				has_valid_civic = civic_agrarian_idyll
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}	
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_agri_drone_add = 3
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_agri_drone_add = 2
+			planet_housing_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			has_active_building = building_food_processing_center
+		}
+		modifier = {
+			job_agri_drone_add = 1
+		}
+	}
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			not = { has_planet_flag = pf_automated_farming }
+		}
+		modifier = {
+			job_farmer_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			has_planet_flag = pf_automated_farming
+		}
+		modifier = {
+			job_farmer_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			has_active_building = building_food_processing_center
+		}
+		modifier = {
+			job_farmer_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_fe_acolyte_farm_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+			has_active_building = building_food_processing_center
+		}
+		modifier = {
+			job_fe_acolyte_farm_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_agri_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_farmer_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		text = job_fe_acolyte_farm_effect_desc
+	}
+	
+	prerequisites = {
+		tech_industrial_farming
+	}
+
+	ai_resource_production = {
+		food = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_generator_uncapped = {
+	base_buildtime = 240
+	icon = district_generator
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			uses_district_set = hive_world
+			uses_district_set = machine_world
+			AND = {
+				exists = from
+				from = {
+					OR = {
+						is_gestalt = yes
+						is_fallen_empire = yes
+					}
+				}
+				uses_district_set = shattered_ring_world
+			}
+		}
+	}
+
+	potential = {
+		OR = {
+			uses_district_set = hive_world
+			uses_district_set = machine_world
+			AND = {
+				exists = owner
+				owner = {
+					OR = {
+						is_gestalt = yes
+						is_fallen_empire = yes
+					}
+				}
+				uses_district_set = shattered_ring_world
+			}
+		}
+	}
+	
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		or = {
+			not = { exists = owner }
+			owner = { is_ai = no }
+			and = {
+				owner = { 
+					is_ai = yes 
+					has_monthly_income = { resource = minerals value > 0 }
+					or = {
+						country_uses_food = no
+						and = {
+							country_uses_food = yes
+							has_monthly_income = { resource = food value > 0 }
+						}
+					}
+				}
+				planet_devastation < 5
+				num_districts = { type = district_generator_uncapped value < 6 }
+			}
+		}
+	}	
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_generator
+		district_rw_generator
+		district_srw_commercial
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @base_cost
+		}
+		produces = {
+			trigger = {
+				planet = {
+					not = { has_planet_flag = preserving_actinides }
+					has_actinides_left = yes
+				}
+			}
+			energy = 2
+		}
+		produces = {
+			sr_waste = 1
+		}
+		upkeep = {
+			trigger = {
+				planet = {
+					not = { has_planet_flag = preserving_actinides }
+					has_actinides_left = yes
+				}
+			}
+			sr_actinides = 1
+		}
+		upkeep = {
+			trigger = {
+				planet = {
+					not = { has_planet_flag = preserving_fuels }
+					has_natural_fuels_left = yes
+				}
+			}
+			sr_natural_fuels = 1
+		}
+		upkeep = {
+			trigger = {
+				planet = {
+					not = { has_planet_flag = preserving_fuels }
+					has_natural_fuels_left = no
+				}
+			}
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				planet = {
+					has_planet_flag = preserving_fuels
+				}
+			}
+			energy = 1
+		}		
+	}	
+	
+	planet_modifier = {
+		planet_housing_add = 2
+		# planet_max_buildings_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = { is_agrarian = yes }
+		modifier = {
+			planet_housing_add = 1
+		}
+	}		
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_technician_drone_add = 3
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_technician_drone_add = 2
+			planet_housing_add = 1
+		}
+	}	
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		modifier = {
+			job_technician_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_fe_acolyte_generator_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = { has_planet_flag = pf_privatise_generators }
+		modifier = {
+			planet_housing_add = 1
+			job_wageslave_add = 1
+			trade_value_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_technician_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_technician_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		text = job_fe_acolyte_generator_effect_desc
+	}
+
+	ai_resource_production = {
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_mining_uncapped = {
+	base_buildtime = 240
+	icon = district_mining
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			uses_district_set = hive_world
+			uses_district_set = machine_world
+			uses_district_set = shattered_ring_world
+		}
+	}
+
+	potential = {
+		OR = {
+			uses_district_set = hive_world
+			uses_district_set = machine_world
+			uses_district_set = shattered_ring_world
+		}
+	}
+	
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		or = {
+			not = { exists = owner }
+			owner = { is_ai = no }
+			and = {
+				owner = { 
+					is_ai = yes 
+					has_monthly_income = { resource = energy value > 0 }
+					or = {
+						country_uses_food = no
+						and = {
+							country_uses_food = yes
+							has_monthly_income = { resource = food value > 0 }
+						}
+					}
+				}
+				planet_devastation < 5
+				num_districts = { type = district_mining_uncapped value < 6 }
+			}
+		}
+	}	
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_mining
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @base_cost
+		}
+		upkeep = {
+			energy = 1
+		}
+		produces = {
+			sr_natural_fuels = 1
+			sr_waste = 1
+		}
+		produces = {
+			trigger = { has_modifier = rich_natural_fuels }
+			sr_natural_fuels = 1
+		}
+		produces = {
+			trigger = { has_modifier = rich_actinides }
+			sr_actinides = 1
+		}
+		produces = {
+			trigger = { has_modifier = rich_precious_stones }
+			sr_precious_stones = 1
+		}
+		produces = {
+			trigger = { has_modifier = rich_rare_metals}
+			sr_rare_metals = 1
+		}
+		produces = {
+			trigger = {
+				planet = {
+				or = {
+					is_planet_class = pc_arctic
+					is_planet_class = pc_frozen_habitable
+					is_planet_class = pc_ice_asteroid_habitable
+				}
+				}
+			}
+			sr_ice = 1
+		}
+		produces = {
+			trigger = {
+				planet = {
+				or = {
+					is_planet_class = pc_tundra
+					is_planet_class = pc_alpine
+				}
+				}
+			}
+			sr_ice = 0.5
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 2
+		# planet_max_buildings_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = { is_agrarian = yes }
+		modifier = {
+			planet_housing_add = 1
+		}
+	}		
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_mining_drone_add = 3
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_mining_drone_add = 2
+			planet_housing_add = 1
+		}
+	}	
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		modifier = {
+			job_miner_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_fe_acolyte_mine_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_mining_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_miner_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		text = job_fe_acolyte_mine_effect_desc
+	}
+	
+	prerequisites = {
+	}
+
+	ai_resource_production = {
+		minerals = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_farming_uncapped = {
+	base_buildtime = 240
+	icon = district_farming
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			uses_district_set = hive_world
+			uses_district_set = shattered_ring_world
+		}
+	}
+
+	potential = {
+		OR = {
+			uses_district_set = hive_world
+			uses_district_set = shattered_ring_world
+		}
+	}
+	
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		or = {
+			not = { exists = owner }
+			owner = { is_ai = no }
+			and = {
+				owner = { 
+					is_ai = yes 
+					has_monthly_income = { resource = minerals value > 0 }
+					has_monthly_income = { resource = energy value > 0 }
+					country_uses_food = yes
+				}
+				planet_devastation < 5
+				num_districts = { type = district_farming_uncapped value < 6 }
+			}
+		}
+	}	
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_farming
+		district_rw_farming
+	}
+		
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @base_cost
+		}
+		upkeep = {
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				planet = { 
+					has_planet_flag = pf_automated_farming
+				}
+			}
+			energy = 1
+		}
+		produces = {
+			trigger = {
+				planet = { 
+					has_planet_flag = pf_automated_farming
+					not = { has_planet_flag = preserving_biomass }
+				}
+			}
+			sr_biomass = 0.5
+			food = 7
+		}
+		produces = {
+			trigger = {
+				planet = { 
+					has_planet_flag = pf_automated_farming
+					has_planet_flag = preserving_biomass
+				}
+			}
+			food = 7
+		}
+		produces = {
+			trigger = {
+				planet = { 
+					not = { has_planet_flag = preserving_ice }
+					has_ice_left = yes
+				}
+			}
+			food = 1
+		}
+		upkeep = {
+			trigger = {
+				planet = { 
+					not = { has_planet_flag = preserving_ice }
+					has_ice_left = yes
+				}
+			}
+			sr_ice = 1
+		}
+		produces = {
+			trigger = { planet = { not = { has_planet_flag = preserving_biomass }}}
+			sr_biomass = 0.5
+		}
+		produces = {
+			trigger = {
+				planet = {
+					not = { has_planet_flag = preserving_biomass }
+					or = {
+						is_planet_class = pc_tropical
+						is_planet_class = pc_ocean
+						is_planet_class = pc_gaia
+					}
+				}
+			}
+			sr_biomass = 1
+		}
+		produces = {
+			trigger = {
+				planet = {
+					not = { has_planet_flag = preserving_biomass }
+					or = {
+						is_planet_class = pc_continental
+						is_planet_class = pc_alpine
+						is_planet_class = pc_savannah
+					}
+				}
+			}
+			sr_biomass = 0.5
+		}
+	}	
+	
+	planet_modifier = {
+		planet_housing_add = 2
+		# planet_max_buildings_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = { is_agrarian = yes }
+		modifier = {
+			planet_housing_add = 1
+			planet_max_buildings_add = 1
+		}
+	}	
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				has_technology = tech_housing_agrarian_idyll 
+				has_valid_civic = civic_agrarian_idyll
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}		
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_agri_drone_add = 3
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_agri_drone_add = 2
+			planet_housing_add = 1
+		}
+	}
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		modifier = {
+			job_farmer_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_fe_acolyte_farm_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = { 
+			has_planet_flag = preserving_biomass
+			exists = owner
+			owner = { is_machine_empire = no }
+		}
+		modifier = {
+			pop_environment_tolerance = 0.02
+		}
+	}
+	triggered_planet_modifier = {
+		potential = { 
+			not = { has_planet_flag = preserving_biomass }
+			exists = owner
+			owner = { is_hive_empire = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_biomass_processor_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = { 
+			not = { has_planet_flag = preserving_biomass }
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_biomass_processor_drone_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_agri_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_farmer_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		text = job_fe_acolyte_farm_effect_desc
+	}
+
+	ai_resource_production = {
+		food = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

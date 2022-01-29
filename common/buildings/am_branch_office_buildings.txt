@@ -1,0 +1,517 @@
+###########################
+# Branch Office Buildings #
+###########################
+
+building_empath_peace_mission = {
+	base_buildtime = @b2_time
+	base_cap_amount = 4
+
+	branch_office_building = yes
+
+	potential = {
+		has_branch_office = yes		
+		branch_office_owner = { 
+			has_origin = origin_warenders
+		}
+	}
+	
+	allow = {
+		branch_office_owner = { 
+			has_origin = origin_warenders
+		}
+	}
+
+	planet_modifier = {
+		branch_office_value_mult = 0.05
+		planet_max_branch_office_buildings_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			job_priest_add = 1
+			pop_ethic_militarist_attraction_mult = -0.25
+			pop_ethic_pacifist_attraction_mult = 0.25
+		}
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 400
+			influence = 25
+		}
+		upkeep = {
+			energy = 1
+		}
+		produces = {
+			unity = 3
+		}
+	}
+}
+
+### FEDERATION ###
+building_corporate_embassy_fed = {
+	icon = building_federation_embassy
+	base_buildtime = @b2_time
+	base_cap_amount = 1
+
+	branch_office_building = yes
+
+	potential = {
+		has_branch_office = yes		
+	}
+	
+	allow = {
+		branch_office_owner = { 
+			is_in_federation_with = root.owner 
+		}
+		or = {
+			num_pops > 70
+			is_homeworld = yes
+			is_capital = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_xeno_diplomacy"
+	}
+
+	show_tech_unlock_if = {
+		has_federation = yes
+	}
+
+	country_modifier = {
+		diplo_weight_economy_mult = 0.05
+		envoys_add = 1
+	}
+
+	planet_modifier = {
+		branch_office_value_mult = 0.1
+		planet_max_branch_office_buildings_add = 2
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			job_bureaucrat_add = 1
+		}
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = @b3_minerals
+			influence = 50
+		}
+		upkeep = {
+			energy = 1
+		}
+		produces = {
+			unity = 5
+		}
+	}
+}
+
+building_federation_aid_center = {
+	icon = building_federation_aid_center
+	base_buildtime = @b2_time
+	base_cap_amount = 2
+
+	branch_office_building = yes
+
+	potential = {
+		has_branch_office = yes
+	}
+	
+	allow = {
+		branch_office_owner = { is_in_federation_with = root.owner }
+	}
+
+	prerequisites = {
+		"tech_xeno_diplomacy"
+	}
+
+	show_tech_unlock_if = {
+		has_federation = yes
+	}
+
+	planet_modifier = {
+		planet_amenities_add = 5
+		planet_building_build_speed_mult = 0.1
+		# branch_office_value_mult = 0.05
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			job_healthcare_add = 1
+		}
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = @b3_minerals
+			sr_wealth = 100
+		}
+		upkeep = {
+			minerals = 5
+			sr_ice = 1
+			# sr_biomass = 1
+		}
+		produces = {
+			unity = 3
+		}
+	}
+}
+
+building_federation_law_authority = {
+	icon = building_federation_law_authority
+	base_buildtime = @b2_time
+	base_cap_amount = 1
+
+	branch_office_building = yes
+
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { is_criminal_syndicate = no }
+	}
+	
+	allow = {
+		branch_office_owner = { is_in_federation_with = root.owner }
+	}
+
+	prerequisites = {
+		"tech_xeno_diplomacy"
+	}
+
+	show_tech_unlock_if = {
+		has_federation = yes
+	}
+
+	planet_modifier = {
+		planet_crime_mult = -0.25
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			job_marshall_add = 1
+		}
+	}
+	
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = @b3_minerals
+			sr_wealth = 250
+		}
+		upkeep = {
+			energy = 2
+		}
+		produces = {
+			unity = 3
+		}
+	}
+}
+
+building_empath_peacekeeping_agency = {
+	base_buildtime = @b2_time
+	base_cap_amount = 5
+
+	branch_office_building = yes
+
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { 
+			is_criminal_syndicate = no 
+			has_origin = origin_warenders
+		}
+	}
+	
+	allow = {
+		branch_office_owner = { has_origin = origin_warenders }
+	}
+
+
+	planet_modifier = {
+		planet_crime_mult = -0.1
+		planet_stability_add = 2
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			job_marshall_add = 1
+			trade_value_mult = 0.05
+			pop_ethic_pacifist_attraction_mult = 0.1
+		}
+	}
+	
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 250
+		}
+		upkeep = {
+			energy = 1
+		}
+		produces = {
+			unity = 2
+		}
+	}
+}
+
+building_military_contractors_base = {
+	icon = building_military_contractors_base
+	base_buildtime = @b1_time
+
+	branch_office_building = yes
+
+	potential = {
+		has_branch_office = yes
+	}
+	
+	allow = {
+		branch_office_owner = { 
+			or = {
+				is_galactic_emperor = yes
+				is_in_federation_with = root.owner
+				is_overlord_to = root.owner
+			}
+		}
+	}
+
+	country_modifier = {
+		country_naval_cap_add = 5
+	}
+
+	planet_modifier = {
+		planet_stability_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			job_soldier_add = 1
+		}
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+}
+
+### OVERLORD ###
+building_commercial_forum_tithe = {
+	icon = building_commercial_forum_tithe
+	base_buildtime = @b2_time
+	base_cap_amount = 1
+
+	branch_office_building = yes
+
+	potential = {
+		has_branch_office = yes
+	}
+	
+	allow = {
+		branch_office_owner = { 
+			or = {
+				is_overlord_to = root.owner
+				is_galactic_emperor = yes
+			}
+		}
+	}
+
+	planet_modifier = {
+		branch_office_value_mult = 0.1
+		planet_stability_add = 5
+		planet_crime_mult = -0.1
+		planet_max_branch_office_buildings_add = 2
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			job_noble_add = 1
+			job_enforcer_add = 1
+		}
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = @b3_minerals
+			sr_wealth = 250
+		}
+	}
+}
+
+building_overlord_work_camps = {
+	icon = building_overlord_work_camps
+	base_buildtime = @b2_time
+	base_cap_amount = 3
+
+	branch_office_building = yes
+
+	potential = {
+		has_branch_office = yes		
+	}
+	
+	allow = {
+		branch_office_owner = { is_overlord_to = root.owner }
+	}
+
+	planet_modifier = {
+		planet_stability_add = 1
+		planet_building_build_speed_mult = 0.1
+		planet_max_branch_office_buildings_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			job_labourer_add = 2
+			job_enforcer_add = 1
+		}
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = @b3_minerals
+			sr_wealth = 100
+		}
+		upkeep = {
+			energy = 2
+		}
+		produces = {
+			alloys = 2
+			minerals = 3
+		}
+	}
+}
+
+
+### SUBJECT ###
+building_syndicate_outreach_office_work = {
+	icon = building_syndicate_outreach_office_work
+	base_buildtime = @b2_time
+
+	branch_office_building = yes
+
+	potential = {
+		has_branch_office = yes		
+	}
+	
+	allow = {
+		owner = { is_overlord_to = root.branch_office_owner }
+	}
+
+	planet_modifier = {
+		branch_office_value_mult = 0.05
+		planet_immigration_pull_mult = 0.1
+		planet_max_branch_office_buildings_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			job_service_add = 1
+		}
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = @b3_minerals
+		}
+		produces = {
+			unity = 3
+		}
+	}
+}
+
+building_sedition_center = {
+	icon = building_sedition_center
+	base_buildtime = 720
+	base_cap_amount = 2
+
+	branch_office_building = yes
+
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { NOT = { is_ai = yes }}
+	}
+
+	allow = {
+		num_pops >= 25
+		branch_office_owner = { 
+			is_subject = no
+			not = { is_overlord_to = root.owner } 
+		}
+	}
+
+	planet_modifier = {
+		planet_stability_add = -5
+		planet_crime_mult = 0.1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			pop_government_ethic_attraction = -0.1
+			job_criminal_add = 1
+		}
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = @b3_minerals
+			influence = 50
+			sr_electronics = 100
+		}
+		upkeep = {
+			energy = 10
+			sr_electronics = 1
+		}
+	}
+}

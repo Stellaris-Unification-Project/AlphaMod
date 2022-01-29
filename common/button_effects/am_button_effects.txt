@@ -1,0 +1,494 @@
+
+#Scope type varies depending on what is selected
+# This = selected object (if planet, ship, fleet, system, ambient object, megastructure, federation, espionage operation, arc site or first contact) or player country
+# From = player country
+# Note: It's advised to check is_scope_type = planet/whatever in the allow trigger, since it's possible to confuse the scopes if multiple interfaces are open
+
+# Usage example in a .gui file:
+# 	effectbuttonType = {					
+# 		name = button_effect_test
+# 		quadTextureSprite = GFX_fleetview_destroy_fleet
+# 		position = { x = 283 y = 0 }
+# 		scale = 1
+# 		orientation = UPPER_LEFT
+# 		effect = am_pressed_button_effect
+# 	}
+
+
+alphamod_theocratic_election = {
+	potential = {
+		is_scope_type = country
+		is_ai = no
+		has_authority = auth_theocratic
+	}
+	allow = {
+		custom_tooltip = force_election_tooltip
+		resource_stockpile_compare = { resource = unity value >= 10000 }
+		not = { has_country_flag = cf_force_election }
+	}
+	effect = {
+		custom_tooltip = force_election_tooltip
+		set_timed_country_flag = {
+			flag = cf_force_election
+			days = 3600
+		}
+		kill_leader = {
+			type = ruler
+			show_notification = no
+			fire = yes
+		}
+		add_resource = { unity = -10000 }
+	}
+}
+
+am_pressed_button_effect = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		not = { has_planet_flag = pf_filter_vanilla }
+	}
+	allow = {
+		custom_tooltip = HIDE_ALPHAMOD_DECISIONS
+		# not = { has_planet_flag = pf_filter_vanilla }
+	}
+	
+	effect = {
+		custom_tooltip = HIDE_ALPHAMOD_DECISIONS
+		set_planet_flag = pf_filter_vanilla
+	}
+}
+
+am_pressed_button_effect_2 = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		has_planet_flag = pf_filter_vanilla
+	}
+	allow = {
+		custom_tooltip = SHOW_ALPHAMOD_DECISIONS
+		# has_planet_flag = pf_filter_vanilla
+	}
+	
+	effect = {
+		custom_tooltip = SHOW_ALPHAMOD_DECISIONS
+		remove_planet_flag = pf_filter_vanilla
+	}
+}
+
+am_pressed_wealth_effect = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		not = { has_planet_flag = pf_hide_decisions_wealth }
+	}
+	allow = {
+		custom_tooltip = HIDE_WEALTH_DECISIONS
+		# not = { has_planet_flag = pf_hide_decisions_wealth }
+	}
+	
+	effect = {
+		custom_tooltip = HIDE_WEALTH_DECISIONS
+		set_planet_flag = pf_hide_decisions_wealth
+	}
+}
+
+am_pressed_wealth_effect_2 = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		has_planet_flag = pf_hide_decisions_wealth
+	}
+	allow = {
+		custom_tooltip = SHOW_WEALTH_DECISIONS
+		# has_planet_flag = pf_hide_decisions_wealth
+	}
+	
+	effect = {
+		custom_tooltip = SHOW_WEALTH_DECISIONS
+		remove_planet_flag = pf_hide_decisions_wealth
+	}
+}
+
+am_pressed_axe_effect = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		not = { has_planet_flag = pf_hide_decisions_axe }
+	}
+	allow = {
+		custom_tooltip = HIDE_AXE_DECISIONS
+		# not = { has_planet_flag = pf_hide_decisions_axe }
+	}
+	
+	effect = {
+		custom_tooltip = HIDE_AXE_DECISIONS
+		set_planet_flag = pf_hide_decisions_axe
+	}
+}
+
+am_pressed_axe_effect_2 = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		has_planet_flag = pf_hide_decisions_axe
+	}
+	allow = {
+		custom_tooltip = SHOW_AXE_DECISIONS
+		# has_planet_flag = pf_hide_decisions_axe
+	}
+	
+	effect = {
+		custom_tooltip = SHOW_AXE_DECISIONS
+		remove_planet_flag = pf_hide_decisions_axe
+	}
+}
+
+am_pressed_pop_effect = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		not = { has_planet_flag = pf_hide_decisions_pop }
+	}
+	allow = {
+		custom_tooltip = HIDE_POP_DECISIONS
+		# not = { has_planet_flag = pf_hide_decisions_pop}
+	}
+	
+	effect = {
+		custom_tooltip = HIDE_POP_DECISIONS
+		set_planet_flag = pf_hide_decisions_pop
+	}
+}
+
+am_pressed_pop_effect_2 = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		has_planet_flag = pf_hide_decisions_pop
+	}
+	allow = {
+		custom_tooltip = SHOW_POP_DECISIONS
+		# has_planet_flag = pf_hide_decisions_pop
+	}
+	
+	effect = {
+		custom_tooltip = SHOW_POP_DECISIONS
+		remove_planet_flag = pf_hide_decisions_pop
+	}
+}
+
+am_pressed_infra_effect = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		not = { has_planet_flag = pf_hide_decisions_infra }
+	}
+	allow = {
+		custom_tooltip = HIDE_INFRA_DECISIONS
+		# not = { has_planet_flag = pf_hide_decisions_infra }
+	}
+	
+	effect = {
+		custom_tooltip = HIDE_INFRA_DECISIONS
+		set_planet_flag = pf_hide_decisions_infra
+	}
+}
+
+am_pressed_infra_effect_2 = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		has_planet_flag = pf_hide_decisions_infra
+	}
+	allow = {
+		custom_tooltip = SHOW_INFRA_DECISIONS
+		# has_planet_flag = pf_hide_decisions_infra
+	}
+	
+	effect = {
+		custom_tooltip = SHOW_INFRA_DECISIONS
+		remove_planet_flag = pf_hide_decisions_infra
+	}
+}
+
+am_pressed_resources_effect = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		not = { has_planet_flag = pf_hide_decisions_resources }
+	}
+	allow = {
+		custom_tooltip = HIDE_RESOURCES_DECISIONS
+		# not = { has_planet_flag = pf_hide_decisions_resources }
+	}
+	
+	effect = {
+		custom_tooltip = HIDE_RESOURCES_DECISIONS
+		set_planet_flag = pf_hide_decisions_resources
+	}
+}
+
+am_pressed_resources_effect_2 = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		has_planet_flag = pf_hide_decisions_resources
+	}
+	allow = {
+		custom_tooltip = SHOW_RESOURCES_DECISIONS
+		# has_planet_flag = pf_hide_decisions_resources
+	}
+	
+	effect = {
+		custom_tooltip = SHOW_RESOURCES_DECISIONS
+		remove_planet_flag = pf_hide_decisions_resources
+	}
+}
+
+am_pressed_automation_effect = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		not = { has_planet_flag = pf_hide_decisions_automation }
+	}
+	allow = {
+		custom_tooltip = HIDE_AUTOMATION_DECISIONS
+		# not = { has_planet_flag = pf_hide_decisions_automation }
+	}
+	
+	effect = {
+		custom_tooltip = HIDE_AUTOMATION_DECISIONS
+		set_planet_flag = pf_hide_decisions_automation
+	}
+}
+
+am_pressed_automation_effect_2 = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		has_planet_flag = pf_hide_decisions_automation
+	}
+	allow = {
+		custom_tooltip = SHOW_AUTOMATION_DECISIONS
+		# has_planet_flag = pf_hide_decisions_automation
+	}
+	
+	effect = {
+		custom_tooltip = SHOW_AUTOMATION_DECISIONS
+		remove_planet_flag = pf_hide_decisions_automation
+	}
+}
+
+am_pressed_button_employment_review = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+	}
+	allow = {
+		custom_tooltip = decision_run_jobs_evaluation
+		not = { has_planet_flag = pf_did_job_eval }
+	}
+	
+	effect = {
+		custom_tooltip = decision_run_jobs_evaluation
+		every_owned_pop = {
+			limit = {
+				not = { has_job = criminal }
+				not = { has_job = destitute }
+				not = { is_unemployed = yes }
+				not = { is_pop_category = ruler }
+			}
+			unemploy_pop = yes
+		}
+		check_planet_employment = yes
+		
+		set_timed_planet_flag = {
+			flag = pf_did_job_eval
+			days = 5
+		}
+	}
+}
+
+am_pressed_clear_decision_filters = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+	}
+	
+	allow = {
+		custom_tooltip = CLEAR_DECISION_FILTERS
+		always = yes
+	}
+	
+	effect = {
+		custom_tooltip = CLEAR_DECISION_FILTERS
+		if = {
+			limit = {
+				has_planet_flag = pf_toggle_decisions_filter
+			}
+			remove_planet_flag = pf_toggle_decisions_filter
+			remove_planet_flag = pf_hide_decisions_automation
+			remove_planet_flag = pf_hide_decisions_infra
+			remove_planet_flag = pf_hide_decisions_pop
+			remove_planet_flag = pf_hide_decisions_resources
+			remove_planet_flag = pf_hide_decisions_axe
+			remove_planet_flag = pf_hide_decisions_wealth
+			remove_planet_flag = pf_filter_vanilla
+		}
+		else = {
+			set_planet_flag = pf_toggle_decisions_filter
+			set_planet_flag = pf_hide_decisions_automation
+			set_planet_flag = pf_hide_decisions_infra
+			set_planet_flag = pf_hide_decisions_pop
+			set_planet_flag = pf_hide_decisions_resources
+			set_planet_flag = pf_hide_decisions_axe
+			set_planet_flag = pf_hide_decisions_wealth
+			remove_planet_flag = pf_filter_vanilla			
+		}
+	}
+}
+
+am_button_policegarrisons_on = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		has_planet_flag = pf_no_police_garrisons
+	}
+	allow = {
+		custom_tooltip = decision_allow_police_garrisons
+	}
+	
+	effect = {
+		custom_tooltip = decision_allow_police_garrisons
+		remove_planet_flag = pf_no_police_garrisons
+	}
+}
+
+am_button_policegarrisons_off = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		not = { has_planet_flag = pf_no_police_garrisons }
+		any_owned_pop = {
+			or = {
+				has_job = enforcer
+				has_job = colonist
+				has_job = security_guard
+				has_job = ranger
+				has_job = imperial_agent
+			}
+		}
+	}
+	allow = {
+		custom_tooltip = decision_no_police_garrisons
+	}
+	effect = {
+		custom_tooltip = decision_no_police_garrisons
+		set_planet_flag = pf_no_police_garrisons
+		every_planet_army = {
+			limit = { army_type = defense_army }
+			remove_army = yes
+		}
+	}
+}
+
+alphamod_autoresettle_on = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		not = { has_modifier = auto_resettling }
+	}
+	allow = {
+		custom_tooltip = decision_auto_resettlement
+		owner = { has_policy_flag = resettlement_allowed }
+	}
+	effect = {
+		custom_tooltip = decision_auto_resettlement
+		hidden_effect = {
+			add_modifier = { modifier = "auto_resettling" days = -1 }
+		}
+	}
+}
+
+alphamod_autoresettle_off = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		owner = { is_ai = no }
+		has_modifier = auto_resettling
+	}
+	allow = {
+		custom_tooltip = decision_no_auto_resettlement
+	}
+	effect = {
+		custom_tooltip = decision_no_auto_resettlement
+		remove_modifier = "auto_resettling"
+	}
+}
+
+force_closure_button_effect = {
+	potential = {
+		is_scope_type = planet
+		exists = owner
+		exists = from
+		has_branch_office = yes
+		exists = branch_office_owner
+		from = {
+			is_ai = no
+			#or = {
+			#	 
+			#	is_overlord_to = owner
+			#}
+		}
+	}
+	allow = {
+		custom_tooltip = force_closure_button_effect_tooltip
+		from = { resource_stockpile_compare = { resource = influence value >= 100 }}
+		or = {
+			from = { is_overlord_to = root.owner }
+			and = {
+				from = { is_galactic_emperor = yes }
+				or = {
+					owner = { is_same_value = from }
+					is_homeworld = yes
+					is_capital = yes
+					num_pops > 69
+				}
+			}
+		}
+		branch_office_owner = { not = { is_same_value = from }}
+	}
+	effect = {
+		custom_tooltip = force_closure_button_effect_tooltip
+		from = {
+			add_resource = { influence = -100 }
+		}
+		hidden_effect = {
+			set_planet_flag = criminal_branch_closed_cooldown_planet@branch_office_owner
+			branch_office_owner = { 
+				country_event = { id = crime.1002 }
+			}
+		}
+		branch_office_owner = { add_opinion_modifier = { modifier = opinion_forced_closure who = from }}
+		close_branch_office = yes		
+	}
+}

@@ -1,0 +1,54 @@
+spriteTypes = {		
+	spriteType = {
+		name = "GFX_joint_crew_quarters"
+		texturefile = "gfx/interface/icons/modules/joint_crew_quarters.dds"
+	}
+	spriteType = {
+		name = "GFX_border_security_post"
+		texturefile = "gfx/interface/icons/modules/border_security_post.dds"
+	}
+	spriteType = {
+		name = "GFX_foreign_trading_company"
+		texturefile = "gfx/interface/icons/modules/foreign_trading_company.dds"
+	}
+	spriteType = {
+		name = "GFX_foreign_smuggling_company"
+		texturefile = "gfx/interface/icons/modules/foreign_smuggling_company.dds"
+	}
+	spriteType = {
+		name = "GFX_federation_fleet_academy"
+		texturefile = "gfx/interface/icons/modules/federation_fleet_academy.dds"
+	}
+	spriteType = {
+		name = "GFX_federation_starbase_embassy"
+		texturefile = "gfx/interface/icons/modules/federation_starbase_embassy.dds"
+	}
+	spriteType = {
+		name = "GFX_open_starbase_embassy"
+		texturefile = "gfx/interface/icons/modules/open_starbase_embassy.dds"
+	}
+	spriteType = {
+		name = "GFX_fedtradegate_background"
+		textureFile = "gfx/interface/planetview/orbitaltradegate.dds"
+	}
+	spriteType = {
+		name = "GFX_megastructure_nexus_core"
+		textureFile = "gfx/interface/planetview/think_tank_core.dds"
+	}
+	spriteType = {
+		name = "GFX_megastructure_nexus_wings"
+		textureFile = "gfx/interface/planetview/think_tank_wings.dds"
+	}
+	spriteType = {
+		name = "GFX_megastructure_atmos_injector"
+		textureFile = "gfx/interface/planetview/atmosphere_injector.dds"
+	}
+	spriteType = {
+		name = "GFX_megastructure_orbital_habitat_framework"
+		textureFile = "gfx/interface/planetview/orbital_habitat_framework.dds"
+	}
+	spriteType = {
+		name = "GFX_megastructure_orbital_habitat_complete"
+		textureFile = "gfx/interface/planetview/orbital_habitat_complete.dds"
+	}
+}

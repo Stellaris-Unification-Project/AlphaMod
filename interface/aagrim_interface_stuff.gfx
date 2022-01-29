@@ -1,0 +1,47 @@
+spriteTypes = {
+	### ORIGINS ###
+	spriteType = {
+		name = "GFX_evt_afterjudgement"
+		texturefile = "gfx/event_pictures/origins/origin_afterjudgement.dds"
+	}
+	spriteType = {
+		name = "GFX_evt_greatergood"
+		texturefile = "gfx/event_pictures/origins/origin_greatergood.dds"
+	}
+	spriteType = {
+		name = "GFX_evt_shroudmutated"
+		texturefile = "gfx/event_pictures/origins/origin_shroudmutated.dds"
+	}
+	spriteType = {
+		name = "GFX_evt_shroudsick"
+		texturefile = "gfx/event_pictures/origins/origin_shroudsick.dds"
+	}
+	spriteType = {
+		name = "GFX_evt_shroudsinners"
+		texturefile = "gfx/event_pictures/origins/origin_shroudsinners.dds"
+	}
+	spriteType = {
+		name = "GFX_evt_shroudrage"
+		texturefile = "gfx/event_pictures/origins/origin_shroudrage.dds"
+	}
+	spriteType = {
+		name = "GFX_evt_barbarichorde"
+		texturefile = "gfx/event_pictures/origins/origin_barbarichorde.dds"
+	}
+	spriteType = {
+		name = "GFX_evt_soulkeepers"
+		texturefile = "gfx/event_pictures/origins/origin_soulkeepers.dds"
+	}
+	spriteType = {
+		name = "GFX_evt_paindrinkers"
+		texturefile = "gfx/event_pictures/origins/origin_paindrinkers.dds"
+	}
+	spriteType = {
+		name = "GFX_evt_bioreformers"
+		texturefile = "gfx/event_pictures/origins/origin_bioreformers.dds"
+	}
+	spriteType = {
+		name = "GFX_evt_reawakened"
+		texturefile = "gfx/event_pictures/origins/origin_reawakened.dds"
+	}
+}

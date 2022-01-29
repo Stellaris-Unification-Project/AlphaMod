@@ -1,0 +1,413 @@
+building_organ_bank = {
+	base_buildtime = 360
+	base_cap_amount = 1
+	category = amenity
+	
+	prerequisites = {
+		"tech_cloning"
+	}
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+	}
+	
+	allow = {
+		or = {
+			has_building = building_clinic
+			has_building = building_hospital
+		}
+		NOT = { has_building = building_robot_assembly_plant }
+		NOT = { has_building_construction = building_robot_assembly_plant }
+	}
+
+	destroy_trigger = {
+		exists = owner
+		or = {
+			owner = { is_regular_empire = no }
+			has_building = building_robot_assembly_plant
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = 3
+		}
+		produces = {
+			society_research = 2
+		}
+	}
+
+	planet_modifier = {
+		job_healthcare_add = 1
+		planet_amenities_add = 5
+		planet_pop_assembly_organic_add = 1
+	}
+	
+	country_modifier = {
+		leader_age = 2
+	}
+}
+
+building_waste_recycle_center = {
+	icon = building_waste_reprocessing_center
+	base_buildtime = 180
+	category = amenity
+	base_cap_amount = 1
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+	}
+	
+	allow = {
+		owner = { has_policy_flag = alp_waste_recycle }	
+		hidden_trigger = {
+			or = {
+				owner = { is_ai = no }
+				and = {
+					owner = { is_ai = yes }
+					free_jobs < 4
+					has_waste_to_dispose_lots = yes
+				}
+			}
+		}
+	}
+	
+	destroy_trigger = {
+		exists = owner
+		owner = { is_regular_empire = no }
+	}	
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 150
+		}
+		upkeep = {
+			trigger = {
+				planet = {
+					or = {
+						is_producing_waste_lots = yes 
+						has_waste_to_dispose_lots = yes
+					}
+				}
+			}
+			sr_waste = 8
+		}
+		upkeep = {
+			trigger = {
+				planet = {
+					or = {
+						is_producing_waste_little = yes 
+						has_waste_to_dispose_little = yes
+					}
+				}
+			}
+			sr_waste = 1
+		}
+		produces = {
+			trigger = { planet = { has_waste_to_dispose_lots = yes }}
+			consumer_goods = 3
+		}
+	}
+	
+	planet_modifier = {
+		job_labourer_add = 1
+		planet_amenities_add = 5
+		planet_jobs_sr_waste_produces_mult = -0.1
+		pop_environment_tolerance = 0.05
+	}
+	
+	ai_resource_production = {
+		consumer_goods = 1
+		trigger = {
+			owner = {
+				country_uses_consumer_goods = yes
+			}
+		}
+	}
+}
+
+building_waste_elimination_center = {
+	icon = building_public_relations_office
+	base_buildtime = 360
+	category = amenity
+	base_cap_amount = 1
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+	}
+	
+	allow = {
+		owner = { has_policy_flag = alp_waste_eliminate }
+		hidden_trigger = {
+			or = {
+				owner = { is_ai = no }
+				and = {
+					owner = { is_ai = yes }
+					free_jobs < 4
+					has_waste_to_dispose_lots = yes
+				}
+			}
+		}
+	}
+	
+	destroy_trigger = {
+		exists = owner
+		owner = { is_regular_empire = no }
+	}	
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 250
+		}
+		upkeep = {
+			energy = 2
+		}
+		upkeep = {
+			trigger = {
+				planet = {
+					or = {
+						is_producing_waste_lots = yes 
+						has_waste_to_dispose_lots = yes
+					}
+				}
+			}
+			sr_waste = 8
+		}
+		upkeep = {
+			trigger = {
+				planet = {
+					or = {
+						is_producing_waste_little = yes 
+						has_waste_to_dispose_little = yes
+					}
+				}
+			}
+			sr_waste = 1
+		}
+	}
+	
+	planet_modifier = {
+		job_researcher_add = 1
+		planet_amenities_add = 10
+		planet_jobs_sr_waste_produces_mult = -0.25
+		pop_environment_tolerance = 0.05
+	}
+}
+
+building_atmos_gen = {
+	base_buildtime = 360
+	category = amenity
+	base_cap_amount = 3
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	
+	prerequisites = {
+		tech_colonization_2
+	}
+	show_tech_unlock_if = {
+		is_machine_empire = no
+	}
+	
+	potential = {
+		or = {
+			is_hostile_planet_ia = yes
+			is_planet_class = pc_nuked
+		}
+		exists = owner
+		owner = { is_machine_empire = no }
+	}
+	
+	allow = {
+		hidden_trigger = {
+			or = {
+				owner = { is_ai = no }
+				and = {
+					free_jobs > 1
+					free_housing > 1
+					owner = { is_ai = yes }
+					owner = { has_monthly_income = { resource = sr_biomass value > 6 }}
+					owner = { has_monthly_income = { resource = sr_ice value > 6 }}
+					num_free_districts = { type = district_habitation_dome value < 4 }
+				}
+			}
+		}
+	}
+	
+	planet_modifier = {
+		pop_environment_tolerance = 0.1
+		planet_max_districts_add = 1
+		planet_max_buildings_add = 2
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			sr_ice = 5
+		}
+		upkeep = {
+			trigger = { planet = { has_ice_left = no }}
+			minerals = 5
+		}
+		upkeep = {
+			sr_biomass = 5
+		}
+		upkeep = {
+			trigger = { planet = { has_biomass_left = no }}
+			energy = 5
+		}
+	}
+}
+
+building_transport_hub = {
+	base_buildtime = 180
+	category = amenity
+	base_cap_amount = 3
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+	}
+	
+	allow = {
+		owner = { not = { has_policy_flag = alp_ecology_max_protection }}
+		hidden_trigger = {
+			or = {
+				owner = { is_ai = no }
+				and = {
+					owner = { 
+						is_ai = yes 
+						has_monthly_income = { resource = sr_biomass value >= 2 }
+						has_monthly_income = { resource = sr_natural_fuels value >= 2 }						
+					}
+					free_jobs < 3
+					free_housing < 3
+					free_amenities < 20
+					free_building_slots > 1
+				}
+			}
+		}
+	}
+	
+	destroy_trigger = {
+		exists = owner
+		owner = { is_regular_empire = no }
+	}	
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 150
+		}
+		upkeep = {
+			trigger = { 
+				owner = { 
+					or = {
+						has_policy_flag = alp_ecology_max_exploit
+						has_policy_flag = alp_ecology_lightregulations
+					}
+				}
+			}
+			sr_natural_fuels = 2
+		}
+		upkeep = {
+			trigger = { 
+				owner = { 
+					has_policy_flag = alp_ecology_balanced
+				}
+			}
+			sr_biomass = 1
+			sr_natural_fuels = 1
+		}
+		upkeep = {
+			trigger = { 
+				owner = { 
+					has_policy_flag = alp_ecology_heavyregulations
+				}
+			}
+			energy = 1
+		}
+	}
+	
+	planet_modifier = {
+		job_service_add = 1
+		planet_amenities_add = 5
+		planet_max_buildings_add = 2
+		pop_housing_usage_mult = -0.05
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_children_of_the_atom }
+		}
+		modifier = {
+			job_actinides_utiliser_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				or = {
+					has_policy_flag = alp_ecology_max_exploit
+					has_policy_flag = alp_ecology_lightregulations				
+				}
+			}
+		}
+		modifier = {
+			trade_value_add = 5
+			pop_environment_tolerance = -0.025			
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_policy_flag = alp_ecology_balanced
+			}
+		}
+		modifier = {
+			trade_value_add = 3
+			pop_environment_tolerance = -0.01			
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_policy_flag = alp_ecology_heavyregulations
+			}
+		}
+		modifier = {
+			trade_value_add = 2		
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_policy_flag = alp_ecology_heavyregulations
+			}
+		}
+		modifier = {
+			trade_value_add = 2		
+		}
+	}
+}

@@ -1,0 +1,152 @@
+add_branch_empath_field = {
+	remove_modifier = empathic_field_branch
+	add_modifier = {
+		modifier = empathic_field_branch
+		days = -1
+		multiplier = prev.system_empathic_pops_total
+	}
+}
+
+add_foreign_empath_field = {
+	remove_modifier = empathic_field_foreign
+	add_modifier = {
+		modifier = empathic_field_foreign
+		days = -1
+		multiplier = solar_system.system_empathic_pops_total
+	}
+}
+
+check_to_flip_outposts = {
+	if = {
+		limit = { 
+			exists = event_target:empathic_solarsystem 
+			exists = event_target:empathic_country
+		}
+		if = {
+			limit = { not = { is_variable_set = event_target:empathic_solarsystem.system_empathic_pops }}
+			set_variable = { which = event_target:empathic_solarsystem.system_empathic_pops_total value = 1 }
+		}
+		event_target:empathic_solarsystem = {
+			every_neighbor_system = {
+				limit = {
+					exists = space_owner
+					space_owner = { 
+						is_country_type = default
+						not = { is_same_value = event_target:empathic_country }
+						not = { has_ethic = ethic_gestalt_consciousness }
+					}	
+					not = {					
+						any_system_planet = {
+							or = {
+								is_colony = yes 
+								is_under_colonization = yes
+							}
+						}
+					}
+					exists = starbase					
+				}
+				this = {
+					save_event_target_as = foreign_outpost_system
+					if = {
+						limit = { not = { is_variable_set = system_empathic_pops_total }}
+						set_variable = { which = system_empathic_pops_total value = 1 }
+					}
+					change_variable = { which = system_empathic_pops_total value = event_target:empathic_solarsystem.system_empathic_pops_total }
+					
+					every_system_planet = {
+						limit = { is_star = yes }
+						remove_modifier = empathic_field_foreign
+						add_modifier = {
+							modifier = empathic_field_foreign
+							days = -1
+							multiplier = solar_system.system_empathic_pops_total
+						}
+					}
+					
+					if = {
+						limit = { check_variable = { which = system_empathic_pops_total value > 50 }}
+						space_owner = {
+							add_opinion_modifier = { modifier = opinion_starbase_flipped  who = event_target:empathic_country }
+						}
+						clear_variable = system_empathic_pops_total
+						every_system_planet = {
+							limit = { is_star = yes }
+							remove_modifier = empathic_field_foreign
+						}
+						starbase = {
+							set_owner = event_target:empathic_country
+						}
+						solar_system = {
+							event_target:empathic_country = {
+								country_event = { id = stateoflies.9 days = 1 }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+remove_all_empath_fields = {
+	remove_modifier = empathic_field_domestic
+	remove_modifier = empathic_field_branch
+	remove_modifier = empathic_field_foreign
+}
+
+apply_fo_emp_field = {
+	if = {
+		limit = {
+			exists = event_target:empathic_targetworld_foreign
+		}
+		if = {
+			limit = { not = { is_variable_set = event_target:empathic_targetworld_foreign.empathic_field_strength_foreign }}
+			set_variable = { which = event_target:empathic_targetworld_foreign.empathic_field_strength_foreign value = 1 }
+		}
+		event_target:empathic_targetworld_foreign = {
+			remove_modifier = empathic_field_foreign
+			remove_modifier = empathic_field_gestalt
+			add_modifier = {
+				modifier = empathic_field_foreign
+				days = -1
+				multiplier = event_target:empathic_targetworld_foreign.empathic_field_strength_foreign 
+			}	
+		}
+	}
+}
+
+apply_foreign_empath_field = {
+	if = {
+		limit = {
+			exists = root.owner
+		}
+		every_system_planet = {
+			limit = {
+				is_colony = yes
+				exists = owner
+				num_pops > 1
+				owner = {
+					not = { is_same_value = root.owner }
+					or = {
+						is_regular_empire = yes
+						is_country_type = primitive
+					}
+					not = { has_ethic = ethic_gestalt_consciousness }
+				}
+			}
+			save_event_target_as:empathic_targetworld_foreign
+			if = {
+				limit = { not = { is_variable_set = event_target:empathic_targetworld_foreign.empathic_field_strength_foreign }}
+				set_variable = { which = event_target:empathic_targetworld_foreign.empathic_field_strength_foreign value = 1 }
+			}
+			if = {
+				limit = { not = { is_variable_set = root.empathic_pops_total }}
+				set_variable = { which = root.empathic_pops_total value = 1 }
+			}
+			set_variable = { which = event_target:empathic_targetworld_foreign.empathic_field_strength_foreign value = root.empathic_pops_total }
+			owner = {			
+				apply_fo_emp_field = yes
+			}
+		}
+	}
+}

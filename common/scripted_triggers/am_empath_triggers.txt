@@ -1,0 +1,25 @@
+is_empath_field_candidate = {
+	is_colony = yes
+	exists = owner
+	owner = {
+		not = { has_ethic = ethic_gestalt_consciousness }
+		or = {
+			is_primitive = yes 
+			is_regular_empire = yes
+		}
+	}
+}
+
+is_empathic_branch_candidate = {
+	is_colony = yes
+	not = { has_modifier = empathic_field_foreign }
+	not = { has_modifier = empathic_field_domestic }
+	exists = owner
+	owner = {
+		not = { has_ethic = ethic_gestalt_consciousness }
+		or = {
+			is_primitive = yes 
+			is_regular_empire = yes
+		}
+	}
+}

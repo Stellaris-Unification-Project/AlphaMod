@@ -1,0 +1,18 @@
+spriteTypes = {	
+	spriteType = {
+		name = "GFX_superstructure_research_background"
+		textureFile = "gfx/interface/planetview/orbitalsciencelabs.dds"
+	}
+	spriteType = {
+		name = "GFX_superstructure_solarfarm_background"
+		textureFile = "gfx/interface/planetview/orbitalsolarfarm.dds"
+	}
+	spriteType = {
+		name = "GFX_superstructure_foundry_background"
+		textureFile = "gfx/interface/planetview/orbitalfoundry.dds"
+	}
+	spriteType = {
+		name = "GFX_superstructure_hydroponics_background"
+		textureFile = "gfx/interface/planetview/orbitalhydroponics.dds"
+	}
+}

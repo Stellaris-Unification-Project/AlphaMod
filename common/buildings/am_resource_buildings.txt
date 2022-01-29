@@ -1,0 +1,861 @@
+building_traditional_farm = {
+	base_buildtime = 180
+	base_cap_amount = 3
+
+	category = resource
+	
+	potential = {
+		exists = owner
+		owner = { country_uses_food = yes }
+		not_hostile_planet = yes
+		NOT = { is_planet_class = pc_machine }
+		NOT = { is_planet_class = pc_habitat }
+	}
+	
+	allow = {
+		hidden_trigger = {
+			exists = owner
+			or = {
+				owner = { is_ai = no }
+				and = {
+					owner = { 
+						is_ai = yes 
+						has_monthly_income = { resource = food value < 200 }
+					}
+					free_building_slots > 1
+					free_jobs < 6
+					num_free_districts = { type = district_farming value < 2 }
+					has_district = district_farming
+				}
+			}
+		}
+	}
+	
+	destroy_trigger = {
+		exists = owner
+		owner = { 
+			is_ai = yes
+			country_uses_food = no 
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_farmer_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_agri_drone_add = 1
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 300
+		}
+		produces = {
+			food = 2
+			sr_biomass = 2
+			unity = 1
+		}
+		produces = {
+			trigger = { 
+				planet = {
+					exists = owner
+					owner = {
+						has_policy_flag = alp_renewable_power_focus
+					}
+				}
+			}
+			unity = 1
+		}
+		produces = {
+			trigger = { 
+				planet = { 
+					has_ice_left = yes
+					not = { has_planet_flag = preserving_ice }
+				}
+			}
+			food = 1
+		}
+		upkeep = {
+			trigger = { 
+				planet = { 
+					has_ice_left = yes
+					not = { has_planet_flag = preserving_ice }
+				}
+			}
+			sr_ice = 1
+		}
+	}	
+
+	ai_resource_production = {
+		food = 1
+		unity = 1
+		sr_biomass = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_moisture_farm = {
+	base_buildtime = 180
+	base_cap_amount = 2
+
+	category = resource
+	
+	potential = {
+		or = {
+			is_planet_class = pc_desert
+			is_planet_class = pc_arid
+			is_planet_class = pc_savannah
+		}
+	}
+	
+	allow = {
+		hidden_trigger = {
+			exists = owner
+			or = {
+				owner = { is_ai = no }
+				and = {
+					owner = { 
+						is_ai = yes 
+						or = {
+							has_monthly_income = { resource = sr_ice value < 20 }
+							has_monthly_income = { resource = sr_biomass value < 100 }
+							has_monthly_income = { resource = food value < 50 }
+						}
+					}
+					has_district = district_farming
+				}
+			}
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 100
+		}
+		upkeep = { energy = 1 }
+		produces = { sr_ice = 1 }
+	}
+	
+	planet_modifier = { 
+		planet_amenities_add = 5 
+		planet_farmers_sr_biomass_produces_add = 0.1
+		planet_farmers_food_produces_mult = 0.05
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_water_processor_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_water_processor_drone_add = 1
+		}
+	}
+	
+	upgrades = {
+		"building_moisture_farm_2"
+	}
+	
+	ai_resource_production = {
+		sr_ice = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_moisture_farm_2 = {
+	base_buildtime = 180
+	can_build = no
+
+	category = resource
+	
+	potential = {
+		has_building = building_moisture_farm
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 200
+		}
+		upkeep = { energy = 2 }
+		produces = { sr_ice = 2 }
+	}
+	
+	planet_modifier = { 
+		planet_amenities_add = 5 
+		planet_farmers_sr_biomass_produces_add = 0.2
+		planet_farmers_food_produces_mult = 0.05
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_water_processor_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_water_processor_drone_add = 2
+		}
+	}
+	
+	prerequisites = {
+		"tech_hydroponics"
+	}
+	
+	ai_resource_production = {
+		sr_ice = 2
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_ice_importer = {
+	base_buildtime = 360
+	base_cap_amount = 1
+
+	category = resource
+	
+	allow = {
+		or = {
+			has_building = building_moisture_farm
+			has_building = building_desalinator
+			has_building = building_reservoir
+			has_building = building_water_excavator
+			has_building = building_hydro_plant
+			is_planet_class = pc_ocean
+			is_planet_class = pc_arctic
+			is_planet_class = pc_frozen_habitable
+			is_planet_class = pc_ice_asteroid_habitable
+		}
+		hidden_trigger = {
+			exists = owner
+			or = {
+				owner = { is_ai = no }
+				and = {
+					owner = { 
+						is_ai = yes 
+						has_monthly_income = { resource = sr_ice value < 10 }
+					}
+					free_jobs < 5
+					free_building_slots > 1
+				}
+			}		
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 100
+		}
+		produces = {
+			trigger = { 
+				planet = { not = { has_planet_flag = pf_ice_to_crystals }}
+			}
+			sr_ice = 2
+		}
+		produces = {
+			trigger = { 
+				planet = { has_planet_flag = pf_ice_to_crystals }
+			}
+			rare_crystals = 1
+		}
+		upkeep = {
+			trigger = { 
+				planet = { has_planet_flag = pf_ice_to_crystals }
+			}
+			minerals = 2
+			sr_ice = 4
+		}
+	}
+	
+	planet_modifier = { planet_amenities_add = 5 }
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_water_processor_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_water_processor_drone_add = 1
+		}
+	}
+	
+	ai_resource_production = {
+		sr_ice = 2
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_nuclear_plant = {
+	base_buildtime = 360
+	category = resource
+	base_cap_amount = 2
+	
+	potential = { NOT = { has_modifier = resort_colony }}
+	
+	allow = {
+		hidden_trigger = {
+			exists = owner
+			or = {
+				owner = { is_ai = no }
+				and = {
+					owner = { 
+						is_ai = yes 
+						has_monthly_income = { resource = energy value < 250 }
+					}
+					has_district = district_generator
+					free_jobs < 6
+				}
+			}
+		}
+		owner = { 
+			not = { has_policy_flag = alp_renewable_power_focus }
+			has_monthly_income = { resource = sr_actinides value >= 1 }
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 200
+			sr_actinides = 10
+		}
+		upkeep = { sr_actinides = 1 }
+		produces = {
+			trigger = { planet = { has_actinides_left = yes }}
+			energy = 5
+		}
+		produces = {
+			sr_waste = 5
+		}
+	}
+	
+	upgrades = {
+		"building_nuclear_plant_2"
+	}
+
+	planet_modifier = {
+		planet_technician_energy_produces_add = 0.5
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_actinides_utiliser_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_actinides_utiliser_drone_add = 1
+		}
+	}
+	
+	ai_resource_production = {
+		energy = 2
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_nuclear_plant_2 = {
+	base_buildtime = 360
+	can_build = no
+
+	category = resource
+	
+	potential = { NOT = { has_modifier = resort_colony }}
+	
+	allow = {
+		exists = owner
+		owner = { 
+			not = { has_policy_flag = alp_renewable_power_focus }
+			has_monthly_income = { resource = sr_actinides value >= 2 }
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 200
+			sr_actinides = 10
+		}
+		upkeep = {
+			sr_actinides = 2
+		}
+		produces = {
+			trigger = { planet = { has_actinides_left = yes }}
+			energy = 10
+		}
+		produces = {
+			sr_waste = 4
+		}
+	}
+
+	planet_modifier = {
+		planet_technician_energy_produces_add = 0.75
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_actinides_utiliser_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_actinides_utiliser_drone_add = 1
+		}
+	}
+	
+	upgrades = {
+		"building_nuclear_plant_3"
+	}
+	
+	prerequisites = {
+		"tech_fusion_power"
+	}
+	
+	ai_resource_production = {
+		energy = 3
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_nuclear_plant_3 = {
+	base_buildtime = 360
+	can_build = no
+
+	category = resource
+	
+	potential = { NOT = { has_modifier = resort_colony }}
+	
+	allow = {
+		exists = owner
+		owner = { 
+			not = { has_policy_flag = alp_renewable_power_focus }
+			has_monthly_income = { resource = sr_actinides value >= 3 }
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 200
+			sr_actinides = 10
+		}
+		upkeep = {
+			sr_actinides = 3
+		}
+		produces = {
+			trigger = { planet = { has_actinides_left = yes }}
+			energy = 15
+		}
+		produces = {
+			sr_waste = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_technician_energy_produces_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_actinides_utiliser_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_actinides_utiliser_drone_add = 2
+		}
+	}
+	
+	prerequisites = {
+		"tech_cold_fusion_power"
+	}
+	
+	ai_resource_production = {
+		energy = 4
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_biomass_furnace = {
+	base_buildtime = 360
+	base_cap_amount = 1
+
+	category = resource
+	
+	potential = {
+		NOT = { has_modifier = resort_colony }
+		owner = {
+			nor = {
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_fanatic_pacifist
+				has_ethic = ethic_fanatic_xenophile
+			}
+		}
+	}
+	
+	allow = {
+		hidden_trigger = {
+			exists = owner
+			or = {
+				owner = { is_ai = no }
+				and = {
+					owner = { 
+						is_ai = yes 
+						has_monthly_income = { resource = energy value < 250 }
+					}
+					free_jobs < 6
+				}
+			}
+		}
+		owner = { 
+			has_monthly_income = { resource = sr_biomass value >= 10 }
+			nor = {
+				has_policy_flag = alp_renewable_power_focus
+				has_policy_flag = alp_ecology_max_protection
+				has_policy_flag = alp_ecology_heavyregulations
+			}
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 200
+			sr_biomass = 100
+		}
+		upkeep = {
+			trigger = { planet = { has_biomass_left = yes }}
+			sr_biomass = 10
+		}
+		upkeep = {
+			trigger = { planet = { has_biomass_left = no }}
+			food = 5
+		}
+		produces = {
+			trigger = { planet = { has_biomass_left = yes }}
+			energy = 5
+		}
+		produces = {
+			trigger = { planet = { has_biomass_left = no }}
+			energy = 1
+		}
+		upkeep = {
+			sr_waste = 10
+		}
+		upkeep = {
+			trigger = { planet = { has_lots_biomass_left = yes }}
+			sr_biomass = 10
+		}
+		produces = {
+			trigger = { planet = { has_lots_biomass_left = yes }}
+			energy = 5
+		}
+		upkeep = {
+			trigger = { planet = { has_loads_biomass_left = yes }}
+			sr_biomass = 10
+		}
+		produces = {
+			trigger = { planet = { has_loads_biomass_left = yes }}
+			energy = 5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_technician_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_technician_drone_add = 1
+		}
+	}
+	
+	ai_resource_production = {
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_fuels_power_plant = {
+	base_buildtime = 360
+	base_cap_amount = 4
+
+	category = resource
+	
+	potential = { NOT = { has_modifier = resort_colony }}
+	
+	allow = { 
+		hidden_trigger = {
+			exists = owner
+			or = {
+				owner = { is_ai = no }
+				and = {
+					owner = { 
+						is_ai = yes 
+						has_monthly_income = { resource = energy value < 300 }
+					}
+					has_district = district_generator
+				}
+			}
+		}
+		owner = { 
+			has_monthly_income = { resource = sr_natural_fuels value >= 5 }
+			not = { has_policy_flag = alp_renewable_power_focus }
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 200
+			sr_natural_fuels = 50
+		}
+		upkeep = {
+			trigger = { 
+				planet = { 
+					has_natural_fuels_left = yes
+					has_planet_flag = pf_fuels_to_gases
+				}
+			}
+			sr_natural_fuels = 2
+		}
+		produces = {
+			trigger = { 
+				planet = { 
+					has_natural_fuels_left = yes
+					has_planet_flag = pf_fuels_to_gases
+				}
+			}
+			exotic_gases = 1
+		}
+		upkeep = {
+			trigger = { planet = { has_natural_fuels_left = yes }}
+			sr_natural_fuels = 5
+		}
+		upkeep = {
+			trigger = { planet = { has_natural_fuels_left = no }}
+			minerals = 1
+		}
+		produces = {
+			trigger = { planet = { has_natural_fuels_left = yes }}
+			energy = 5
+		}
+		produces = {
+			trigger = { planet = { has_natural_fuels_left = no }}
+			energy = 1
+		}
+		produces = {
+			sr_waste = 3
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { planet = { has_natural_fuels_left = no }}
+		text = option_fuel_depleted_desc
+	}
+
+	planet_modifier = {
+		planet_technician_energy_produces_add = 0.25
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_freedom_molecules }
+		}
+		modifier = {
+			job_fuel_processor_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_fuel_processor_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_fury_road }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_soldier_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_fuel_processor_drone_add = 1
+		}
+	}
+	
+	ai_resource_production = {
+		energy = 2
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_vertical_farms = {
+	can_build = no
+	category = resource
+	
+	destroy_trigger = {
+		exists = owner
+		owner = { 
+			is_ai = yes
+			country_uses_food = no 
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		upkeep = { energy = 5 }
+		produces = {
+			trigger = { 
+				planet = { 
+					has_ice_left = yes
+					not = { has_planet_flag = preserving_ice }
+				}
+			}
+			food = 4
+		}
+		upkeep = {
+			trigger = { 
+				planet = { 
+					has_ice_left = yes
+					not = { has_planet_flag = preserving_ice }
+				}
+			}
+			sr_ice = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		modifier = {
+			job_farmer_add = 4
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_agri_drone_add = 4
+		}
+	}
+}

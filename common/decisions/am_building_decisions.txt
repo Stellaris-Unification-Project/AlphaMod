@@ -1,0 +1,188 @@
+decision_expel_disinformation = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+
+	resources = {
+		category = decisions
+		cost = {
+			sr_wealth = 100
+		}
+	}
+
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_wealth }
+		not = { has_planet_flag = pf_filter_vanilla }
+		has_building = building_disinformation_center
+		has_branch_office = yes
+		branch_office_owner = {
+			is_criminal_syndicate = no
+		}
+	}
+	
+	effect = {
+		set_planet_flag = pf_expelled_disinformation
+		remove_building = building_disinformation_center
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_robotbuilding_boost = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 100
+			sr_wealth = 1000
+		}
+	}
+
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_wealth }
+		not = { has_planet_flag = pf_hide_decisions_pop }
+		not = { has_planet_flag = pf_filter_vanilla }
+		not = { has_modifier = planet_robotbuilding_boost }
+		exists = owner
+		owner = { is_gestalt = no }
+	}
+
+	allow = {
+		has_building = building_robot_assembly_plant
+	}
+
+	effect = {
+		add_modifier = { modifier = "planet_robotbuilding_boost" days = 3600 }
+	}
+
+	ai_weight = {
+		weight = 5
+
+		# don't encourage growth if there is no free housing
+		modifier = {
+			factor = 0
+			free_housing < 1
+		}
+	}
+}
+
+decision_paradise_citydomes = {
+	owned_planets_only = yes
+	# enactment_time = 360
+	
+	prerequisites = {
+		"tech_paradise_citydomes"		
+	}
+	
+	resources = {
+		category = decisions
+		cost = {
+			minerals = 250
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = { 
+					is_gestalt = no
+					not = { has_valid_civic = civic_elite_easy_living }
+				}
+			}
+			sr_wealth = 200
+			rare_crystals = 50
+		}
+	}
+	
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_wealth }
+		not = { has_planet_flag = pf_hide_decisions_infra }
+		not = { has_planet_flag = pf_filter_vanilla }
+		not = { has_planet_flag = pf_filter_districts }
+		not = { has_building = building_paradise_citydomes }
+		exists = owner
+		or = {
+			num_buildings = { type = building_paradise_dome value > 0 }
+			and = {
+				owner = { has_valid_civic = civic_elite_easy_living }
+				free_building_slots > 0
+			}
+		}
+	}
+	
+	allow = {
+		or = {
+			num_buildings = { type = building_paradise_dome value > 1 }
+			owner = { has_valid_civic = civic_elite_easy_living }
+			not = { has_building = building_paradise_citydomes }
+		}
+	}
+	
+	effect = {
+		custom_tooltip = decision_paradise_citydomes_custom
+		hidden_effect = {
+			remove_building = building_paradise_dome
+			remove_building = building_paradise_dome
+			add_building = building_paradise_citydomes
+			validate_planet_buildings_and_districts = yes 
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+decision_vertical_farms = {
+	owned_planets_only = yes
+	enactment_time = 180
+	
+	prerequisites = {
+		"tech_vertical_farms"		
+	}
+	
+	resources = {
+		category = decisions
+		cost = {
+			minerals = 200
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = { is_gestalt = no }
+			}
+			sr_wealth = 200
+		}
+	}
+	
+	potential = {
+		not = { has_planet_flag = pf_hide_decisions_wealth }
+		not = { has_planet_flag = pf_hide_decisions_infra }
+		not = { has_planet_flag = pf_filter_vanilla }
+		not = { has_planet_flag = pf_filter_districts }
+		exists = owner
+		owner = {
+			has_technology = tech_food_processing_1
+		}
+		num_buildings = { type = building_hydroponics_farm value > 0 }
+	}
+	
+	allow = {
+		num_buildings = { type = building_hydroponics_farm value > 1 }
+	}
+	
+	effect = {
+		custom_tooltip = decision_vertical_farms_custom
+		hidden_effect = {
+			remove_building = building_hydroponics_farm
+			remove_building = building_hydroponics_farm
+			add_building = building_vertical_farms
+			validate_planet_buildings_and_districts = yes 
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
