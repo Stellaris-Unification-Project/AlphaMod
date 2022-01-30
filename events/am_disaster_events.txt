@@ -23,8 +23,8 @@ event = {
 					}	
 					if = {
 						limit = {
-							not = { has_modifier = galactic_exodus_urge }
-							nor = {
+							NOR = {
+								has_modifier = galactic_exodus_urge
 								has_modifier = environmental_collapse_begun
 								has_modifier = environmental_collapse_accelerating
 								has_modifier = environmental_collapse_deadline
@@ -197,7 +197,7 @@ event = {
 						limit = {
 							mid_game_years_passed >= 0
 							num_pops > 85
-							nor = {
+							NOR = {
 								has_modifier = environmental_collapse_begun
 								has_modifier = environmental_collapse_accelerating
 								has_modifier = environmental_collapse_deadline
@@ -205,18 +205,28 @@ event = {
 								has_modifier = core_meltdown_accelerating
 								has_modifier = core_meltdown_deadline
 								has_modifier = galactic_exodus_urge
+								is_planet_class = pc_habitat
 							}
-							not = { is_planet_class = pc_habitat }
-							not = { is_planet_class = pc_ringworld_habitable }
-							not = { is_planet_class = pc_city }
-							not = { is_planet_class = pc_relic }
-							not = { is_planet_class = pc_gas_giant_habitable }
-							not = { is_planet_class = pc_frozen_habitable }
-							not = { is_planet_class = pc_molten_habitable }
-							not = { is_planet_class = pc_asteroid_habitable }
-							not = { is_planet_class = pc_ice_asteroid_habitable }
-							not = { is_planet_class = pc_toxic_habitable }
-							not = { is_planet_class = pc_barren_habitable }
+							NOR = {
+								is_planet_class = pc_ringworld_habitable
+								is_planet_class = pc_city
+							}
+							NOR = {
+								is_planet_class = pc_relic
+								is_planet_class = pc_gas_giant_habitable
+							}
+							NOR = {
+								is_planet_class = pc_frozen_habitable
+								is_planet_class = pc_molten_habitable
+							}
+							NOR = {
+								is_planet_class = pc_asteroid_habitable
+								is_planet_class = pc_ice_asteroid_habitable
+							}
+							NOR = {
+								is_planet_class = pc_toxic_habitable
+								is_planet_class = pc_barren_habitable
+							}
 							not = { is_planet_class = pc_nuked }
 						}
 						random_list = {
@@ -238,7 +248,7 @@ event = {
 					else_if = {
 						limit = {
 							num_pops > 90
-							nor = {
+							NOR = {
 								has_modifier = environmental_collapse_begun
 								has_modifier = environmental_collapse_accelerating
 								has_modifier = environmental_collapse_deadline
@@ -246,18 +256,28 @@ event = {
 								has_modifier = core_meltdown_accelerating
 								has_modifier = core_meltdown_deadline
 								has_modifier = galactic_exodus_urge
+								is_planet_class = pc_habitat
 							}
-							not = { is_planet_class = pc_habitat }
-							not = { is_planet_class = pc_ringworld_habitable }
-							not = { is_planet_class = pc_city }
-							not = { is_planet_class = pc_relic }
-							not = { is_planet_class = pc_gas_giant_habitable }
-							not = { is_planet_class = pc_frozen_habitable }
-							not = { is_planet_class = pc_molten_habitable }
-							not = { is_planet_class = pc_asteroid_habitable }
-							not = { is_planet_class = pc_ice_asteroid_habitable }
-							not = { is_planet_class = pc_toxic_habitable }
-							not = { is_planet_class = pc_barren_habitable }
+							NOR = {
+								is_planet_class = pc_ringworld_habitable
+								is_planet_class = pc_city
+							}
+							NOR = {
+								is_planet_class = pc_relic
+								is_planet_class = pc_gas_giant_habitable
+							}
+							NOR = {
+								is_planet_class = pc_frozen_habitable
+								is_planet_class = pc_molten_habitable
+							}
+							NOR = {
+								is_planet_class = pc_asteroid_habitable
+								is_planet_class = pc_ice_asteroid_habitable
+							}
+							NOR = {
+								is_planet_class = pc_toxic_habitable
+								is_planet_class = pc_barren_habitable
+							}
 							not = { is_planet_class = pc_nuked }
 						}
 						random_list = {

@@ -49,8 +49,10 @@ chance_of_transcendent_ed = {
 			root = {
 				random_owned_pop = {
 					limit = {
-						not = { has_modifier = pop_transcendent }
-						not = { has_trait = trait_mechanical }
+						NOR = {
+							has_modifier = pop_transcendent
+							has_trait = trait_mechanical
+						}
 						is_enslaved = no
 					}
 					add_modifier = {
@@ -265,8 +267,10 @@ educate_student = {
 		limit = {
 			is_enslaved = no
 			has_job = student
-			not = { has_modifier = pop_qualified }
-			not = { has_modifier = pop_transcendent }
+			NOR = {
+				has_modifier = pop_qualified
+				has_modifier = pop_transcendent
+			}
 			not = { has_trait = trait_mechanical }
 		}
 		make_pop_qualified = yes
@@ -278,8 +282,10 @@ planet_educate_student = {
 		limit = {
 			is_enslaved = no
 			has_job = student
-			not = { has_modifier = pop_qualified }
-			not = { has_modifier = pop_transcendent }
+			NOR = {
+				has_modifier = pop_qualified
+				has_modifier = pop_transcendent
+			}
 			not = { has_trait = trait_mechanical }
 		}
 		make_pop_qualified = yes

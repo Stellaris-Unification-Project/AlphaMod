@@ -9,10 +9,14 @@ decision_no_police_garrisons = {
 	
 	potential = {
 		exists = owner
-		not = { has_planet_flag = pf_hide_decisions_pop }
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_no_police_garrisons }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_pop
+			has_planet_flag = pf_hide_decisions_axe
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_no_police_garrisons
+		}
 		any_owned_pop = {
 			or = {
 				has_job = enforcer
@@ -90,8 +94,10 @@ decision_allow_police_garrisons = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_pop }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_pop
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_planet_flag = pf_no_police_garrisons
 		exists = owner
 	}
@@ -118,8 +124,10 @@ decision_allow_military_garrisons = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_planet_flag = pf_no_military_garrisons
 		exists = owner
 	}
@@ -146,18 +154,24 @@ decision_run_jobs_evaluation = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_did_job_eval }
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_did_job_eval
+		}
 		exists = owner
 		owner = { is_ai = no }
 	}
 	effect = {
 		every_owned_pop = {
 			limit = {
-				not = { has_job = criminal }
-				not = { has_job = destitute }
-				not = { is_unemployed = yes }
-				not = { is_pop_category = ruler }
+				NOR = {
+					has_job = criminal
+					has_job = destitute
+				}
+				NOR = {
+					is_unemployed = yes
+					is_pop_category = ruler
+				}
 			}
 			# unemploy_pop = yes
 			# clear_pop_category = yes
@@ -187,10 +201,14 @@ decision_conscription = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_pop }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_filter_districts }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_pop
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
+		}
 		#or = {
 		#	num_pops > 80
 		#	and = {
@@ -202,17 +220,20 @@ decision_conscription = {
 			is_regular_empire = yes
 			or = {
 				# has_tradition = tr_prowess_1
-				has_ethic = ethic_militarist
-				has_ethic = ethic_fanatic_militarist
+				is_militarist = yes
 			}
 		}
 	}
 	
 	allow = {
-		NOT = { has_modifier = planet_employee_subsidies }
-		NOT = { has_modifier = planet_worship_as_work }
-		NOT = { has_modifier = planet_conscription }
-		NOT = { has_modifier = planet_state_labour }
+		NOR = {
+			has_modifier = planet_employee_subsidies
+			has_modifier = planet_worship_as_work
+		}
+		NOR = {
+			has_modifier = planet_conscription
+			has_modifier = planet_state_labour
+		}
 		exists = owner
 		or = {
 			free_jobs < 1
@@ -252,10 +273,14 @@ decision_end_conscription = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_filter_districts }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_axe
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
+		}
 		has_modifier = planet_conscription
 	}
 	
@@ -268,10 +293,7 @@ decision_end_conscription = {
 		modifier = {
 			weight = 10
 			owner = { 
-				nor = {
-					has_ethic = ethic_militarist
-					has_ethic = ethic_fanatic_militarist
-				}
+				is_militarist = no
 			}
 		}
 	}
@@ -287,28 +309,33 @@ decision_state_labour = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_pop }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_filter_districts }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_pop
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
+		}
 		habitable_structure = no
 		NOT = { is_planet_class = pc_city }
 		num_pops > 80
 		exists = owner
 		owner = { 
 			is_regular_empire = yes
-			or = {
-				has_ethic = ethic_authoritarian
-				has_ethic = ethic_fanatic_authoritarian
-			}
+			is_authoritarian = yes
 		}
 	}
 	
 	allow = {
-		NOT = { has_modifier = planet_employee_subsidies }
-		NOT = { has_modifier = planet_worship_as_work }
-		NOT = { has_modifier = planet_conscription }
-		NOT = { has_modifier = planet_state_labour }
+		NOR = {
+			has_modifier = planet_employee_subsidies
+			has_modifier = planet_worship_as_work
+		}
+		NOR = {
+			has_modifier = planet_conscription
+			has_modifier = planet_state_labour
+		}
 		free_jobs < 1		
 	}
 	
@@ -343,10 +370,14 @@ decision_end_state_labour = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_filter_districts }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_axe
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
+		}
 		has_modifier = planet_state_labour
 	}
 	
@@ -359,10 +390,7 @@ decision_end_state_labour = {
 		modifier = {
 			weight = 10
 			owner = { 
-				nor = {
-					has_ethic = ethic_authoritarian
-					has_ethic = ethic_fanatic_authoritarian
-				}
+				is_authoritarian = no
 			}
 		}
 	}
@@ -378,26 +406,31 @@ decision_worship_as_work = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_pop }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_filter_districts }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_pop
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
+		}
 		num_pops > 80
 		exists = owner
 		owner = {		
 			is_regular_empire = yes
-			or = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
-			}
+			is_spiritualist = yes
 		}
 	}
 	
 	allow = {
-		NOT = { has_modifier = planet_employee_subsidies }
-		NOT = { has_modifier = planet_worship_as_work }
-		NOT = { has_modifier = planet_conscription }
-		NOT = { has_modifier = planet_state_labour }
+		NOR = {
+			has_modifier = planet_employee_subsidies
+			has_modifier = planet_worship_as_work
+		}
+		NOR = {
+			has_modifier = planet_conscription
+			has_modifier = planet_state_labour
+		}
 		free_jobs < 1		
 	}
 	
@@ -432,10 +465,14 @@ decision_end_worship_as_work = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_filter_districts }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_axe
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
+		}
 		has_modifier = planet_worship_as_work
 	}
 	
@@ -448,10 +485,7 @@ decision_end_worship_as_work = {
 		modifier = {
 			weight = 10
 			owner = { 
-				nor = {
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
-				}
+				is_spiritualist = no
 			}
 		}
 	}
@@ -467,17 +501,20 @@ decision_employee_subsidies = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_pop }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_filter_districts }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_pop
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
+		}
 		num_pops > 80
 		exists = owner
 		owner = {		
 			is_regular_empire = yes
 			or = {
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
+				is_pacifist = yes
 				has_authority = auth_corporate
 				has_valid_civic = civic_corporate_dominion
 			}
@@ -485,10 +522,14 @@ decision_employee_subsidies = {
 	}
 	
 	allow = {
-		NOT = { has_modifier = planet_employee_subsidies }
-		NOT = { has_modifier = planet_worship_as_work }
-		NOT = { has_modifier = planet_conscription }
-		NOT = { has_modifier = planet_state_labour }
+		NOR = {
+			has_modifier = planet_employee_subsidies
+			has_modifier = planet_worship_as_work
+		}
+		NOR = {
+			has_modifier = planet_conscription
+			has_modifier = planet_state_labour
+		}
 		free_jobs < 1		
 	}
 	
@@ -523,10 +564,14 @@ decision_end_employee_subsidies = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_filter_districts }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_axe
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
+		}
 		has_modifier = planet_employee_subsidies
 	}
 	
@@ -539,10 +584,7 @@ decision_end_employee_subsidies = {
 		modifier = {
 			weight = 10
 			owner = { 
-				nor = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+				is_pacifist = no
 			}
 		}
 	}

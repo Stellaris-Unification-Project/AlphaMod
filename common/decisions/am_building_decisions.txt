@@ -10,8 +10,10 @@ decision_expel_disinformation = {
 	}
 
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_building = building_disinformation_center
 		has_branch_office = yes
 		branch_office_owner = {
@@ -42,10 +44,14 @@ decision_robotbuilding_boost = {
 	}
 
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_pop }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_modifier = planet_robotbuilding_boost }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_pop
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_modifier = planet_robotbuilding_boost
+		}
 		exists = owner
 		owner = { is_gestalt = no }
 	}
@@ -96,10 +102,14 @@ decision_paradise_citydomes = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_filter_districts }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
+		}
 		not = { has_building = building_paradise_citydomes }
 		exists = owner
 		or = {
@@ -157,10 +167,14 @@ decision_vertical_farms = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_filter_districts }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
+		}
 		exists = owner
 		owner = {
 			has_technology = tech_food_processing_1

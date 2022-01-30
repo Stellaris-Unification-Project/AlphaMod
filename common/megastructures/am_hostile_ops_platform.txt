@@ -121,8 +121,10 @@ terraforming_platform = {
 			is_hostile_candidate_na = yes
 			planet_size < 18
 			planet_size > 4
-			not = { has_anomaly = yes }
-			not = { is_colony = yes }
+			NOR = {
+				has_anomaly = yes
+				is_colony = yes
+			}
 			not = { has_modifier = terraforming_candidate }
 		}
 	}

@@ -305,8 +305,10 @@ event = {
 					random_system_planet = {
 						limit = {
 							is_star = no
-							not = { is_planet_class = pc_nuked }
-							not = { is_planet_class = pc_asteroid_habitable }
+							NOR = {
+								is_planet_class = pc_nuked
+								is_planet_class = pc_asteroid_habitable
+							}
 							is_colony = no
 						}
 						set_planet_size = 8
@@ -319,8 +321,10 @@ event = {
 					random_system_planet = {
 						limit = {
 							is_star = no
-							not = { is_planet_class = pc_nuked }
-							not = { is_planet_class = pc_asteroid_habitable }
+							NOR = {
+								is_planet_class = pc_nuked
+								is_planet_class = pc_asteroid_habitable
+							}
 							not = { is_planet_class = pc_shattered }
 							is_colony = no
 						}
@@ -701,7 +705,7 @@ event = {
 				check_planet_employment = yes
 			}
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { 
 				is_ai = no 
 			}
@@ -776,8 +780,10 @@ country_event = {
 			limit = {
 				has_star_flag = sf_origin_star_claimed
 				has_star_flag = sf_origin_star_claimer@root
-				not = { has_star_flag = sf_origin_star_claimable_in }
-				not = { exists = space_owner }
+				NOR = {
+					has_star_flag = sf_origin_star_claimable_in
+					exists = space_owner
+				}
 				not = { exists = starbase }
 				not = { any_system_planet = { is_colony = yes }}
 				not = {

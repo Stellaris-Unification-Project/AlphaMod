@@ -15,10 +15,7 @@ can_build_branch_offices = {
 	}
 	custom_tooltip = {
 		fail_text = BRANCH_OFFICE_NOT_FALLEN_EMPIRES
-		NOR = {
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
-		}
+		is_fallen_empire = no
 	}
 }
 
@@ -26,10 +23,7 @@ can_build_branch_offices = {
 can_support_branch_offices = {
 	custom_tooltip = {
 		fail_text = BRANCH_OFFICE_NOT_FALLEN_EMPIRES
-		NOR = {
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
-		}
+		is_fallen_empire = no
 	}
 	or = {
 		is_regular_empire = yes
@@ -43,7 +37,7 @@ can_build_branch_office_on_planet = {
 	custom_tooltip = {
 		fail_text = requires_owner_not_root
 		exists = owner
-		not = { owner = { is_same_value = root }}
+		not = { is_owned_by = root}
 	}
 	
 	custom_tooltip = {
@@ -67,7 +61,7 @@ can_build_branch_office_on_planet = {
 			root = { is_subject = no }
 			root = {
 				is_subject = yes
-				overlord = { is_same_value = prevprev.owner }
+				overlord = { is_same_empire = prevprev.owner }
 			}
 		}
 	}
@@ -94,7 +88,7 @@ can_build_branch_office_on_planet = {
 				or = {
 					root = {
 						is_subject = yes
-						overlord = { is_same_value = prevprev.owner }
+						overlord = { is_same_empire = prevprev.owner }
 					}
 					owner = {
 						is_subject = yes
@@ -129,7 +123,7 @@ can_build_branch_office_on_planet = {
 			# allow branch offices in subsidiaries and vice versa
 			root = {
 				is_subject = yes
-				overlord = { is_same_value = prevprev.owner }
+				overlord = { is_same_empire = prevprev.owner }
 			}
 			owner = {
 				is_subject = yes
@@ -272,12 +266,9 @@ can_species_be_assembled = {
 				root = {
 					# Event 'clones.3' should cover this, but extra safety check.
 					has_building = building_clone_army_clone_vat
-					NOT = {
-						check_variable = {
+					check_variable = {
 							which = clone_pops_missing
-							value = 0
-						}
-					}
+							value != 0 }
 				}
 			}
 			else = {

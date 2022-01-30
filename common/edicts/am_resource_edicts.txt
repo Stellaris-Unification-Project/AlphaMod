@@ -68,8 +68,10 @@ private_investments_4 = {
 	}
 	
 	potential = {
-		NOT = { has_authority = auth_machine_intelligence }
-		NOT = { has_ethic = ethic_fanatic_pacifist }
+		NOR = {
+			has_authority = auth_machine_intelligence
+			has_ethic = ethic_fanatic_pacifist
+		}
 		has_active_tradition = tr_supremacy_master_shipwrights
 	}
 	
@@ -150,8 +152,10 @@ private_investments_5 = {
 	
 	potential = {
 		is_gestalt = no
-		NOT = { has_authority = auth_machine_intelligence }
-		NOT = { has_ethic = ethic_fanatic_pacifist }
+		NOR = {
+			has_authority = auth_machine_intelligence
+			has_ethic = ethic_fanatic_pacifist
+		}
 		has_active_tradition = tr_supremacy_adopt
 	}
 	
@@ -293,10 +297,7 @@ private_investments_7 = {
 			has_policy_flag = state_education_preadult
 			has_policy_flag = state_education_transcendent
 		}
-		nor = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist			
-		}
+		is_spiritualist = no
 	}
 	
 	modifier = {
@@ -385,10 +386,7 @@ private_investments_1 = {
 	potential = {
 		is_gestalt = no
 		NOT = { has_authority = auth_machine_intelligence }
-		nor = {
-			has_ethic = ethic_fanatic_authoritarian
-			has_ethic = ethic_authoritarian
-		}
+		is_authoritarian = no
 	}
 	
 	modifier = {
@@ -433,10 +431,7 @@ private_investments_2 = {
 			has_ethic = ethic_fanatic_egalitarian
 			has_ethic = ethic_egalitarian
 		}
-		nor = {
-			has_ethic = ethic_fanatic_xenophobe
-			has_ethic = ethic_xenophobe
-		}
+		is_xenophobe = no
 	}
 	
 	modifier = {
@@ -638,10 +633,7 @@ mandatory_education = {
 		}
 		is_regular_empire = yes
 		is_gestalt = no
-		nor = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist			
-		}
+		is_spiritualist = no
 	}
 	
 	modifier = {

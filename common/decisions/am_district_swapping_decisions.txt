@@ -26,8 +26,10 @@ decision_megacities = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		exists = owner
 		owner = { 
@@ -94,8 +96,10 @@ decision_despecialise_communities = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_swapped_communities = yes
 		exists = owner
 		owner = { not_fanatical = yes }
@@ -129,8 +133,10 @@ decision_parishes = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_infra }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_infra
+			has_planet_flag = pf_filter_vanilla
+		}
 		exists = owner
 		owner = { 
 			has_ethic = ethic_spiritualist 
@@ -211,8 +217,10 @@ decision_warriorhouses = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_infra }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_infra
+			has_planet_flag = pf_filter_vanilla
+		}
 		exists = owner
 		owner = { 
 			has_ethic = ethic_militarist
@@ -294,8 +302,10 @@ decision_labourcamps = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_infra }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_infra
+			has_planet_flag = pf_filter_vanilla
+		}
 		exists = owner
 		owner = { 
 			has_ethic = ethic_authoritarian
@@ -377,8 +387,10 @@ decision_securityzones = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_infra }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_infra
+			has_planet_flag = pf_filter_vanilla
+		}
 		exists = owner
 		owner = { 
 			has_ethic = ethic_xenophobe
@@ -460,8 +472,10 @@ decision_campuses = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_infra }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_infra
+			has_planet_flag = pf_filter_vanilla
+		}
 		exists = owner
 		owner = { 
 			has_ethic = ethic_materialist
@@ -543,8 +557,10 @@ decision_culture_communes = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_infra }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_infra
+			has_planet_flag = pf_filter_vanilla
+		}
 		exists = owner
 		owner = { 
 			has_ethic = ethic_xenophile
@@ -626,8 +642,10 @@ decision_markettowns = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		exists = owner
 		owner = {
@@ -722,8 +740,10 @@ decision_return_to_farming = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_planet_flag = pf_hide_heavy_industries
 		or = {
 			has_planet_flag = pf_biomass_cultivation
@@ -779,8 +799,10 @@ decision_nature_reserves = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		exists = owner
 		owner = {
@@ -799,12 +821,9 @@ decision_nature_reserves = {
 			or = {
 				has_valid_civic = civic_galactic_resorts
 				has_valid_civic = civic_environmentalist
-				has_ethic = ethic_egalitarian
-				has_ethic = ethic_fanatic_egalitarian
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
+				is_egalitarian = yes
+				is_xenophile = yes
+				is_pacifist = yes
 			}
 			not = { has_policy_flag = alp_ecology_max_exploit }
 		}
@@ -835,12 +854,9 @@ decision_nature_reserves = {
 			owner = {
 				or = {
 					has_valid_civic = civic_environmentalist
-					has_ethic = ethic_egalitarian
-					has_ethic = ethic_fanatic_egalitarian
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
+					is_egalitarian = yes
+					is_xenophile = yes
+					is_pacifist = yes
 				}
 				has_monthly_income = {
 					resource = consumer_goods
@@ -900,8 +916,10 @@ decision_biomass_cultivation = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		not = { has_planet_flag = pf_biomass_cultivation }
 		not_special_planet_type_rwok = yes
@@ -923,15 +941,15 @@ decision_biomass_cultivation = {
 	
 	allow = {
 		owner = {
-			not = { has_authority = auth_corporate }
-			not = { has_valid_civic = civic_environmentalist }
+			NOR = {
+				has_authority = auth_corporate
+				has_valid_civic = civic_environmentalist
+			}
 			or = {
 				# has_origin = origin_poisonedpast 
 				is_gestalt = yes
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
+				is_xenophobe = yes
+				is_materialist = yes
 			}
 			not = { has_policy_flag = alp_ecology_max_protection }
 		}
@@ -982,8 +1000,10 @@ decision_farmland_excavation = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		exists = owner
 		owner = { not = { has_valid_civic = civic_environmentalist }}
@@ -1047,8 +1067,10 @@ decision_land_fertilisation = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		exists = owner
 		not_special_planet_type = yes

@@ -214,8 +214,10 @@ machine_fix_energy_deficit = {
 			}
 			if = {
 				limit = {
-					not = { has_building = building_energy_grid }
-					not = { has_building = building_energy_nexus }
+					NOR = {
+						has_building = building_energy_grid
+						has_building = building_energy_nexus
+					}
 					num_districts = { type = district_generator value > 0 }
 				}
 				add_building = building_energy_grid

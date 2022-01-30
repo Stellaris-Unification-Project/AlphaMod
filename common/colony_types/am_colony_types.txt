@@ -31,16 +31,12 @@ col_freeport = {
 				has_ascension_perk = ap_universal_transactions
 				is_criminal_syndicate = yes
 				has_valid_civic = civic_merchant_guilds
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
+				is_xenophile = yes
+				is_pacifist = yes
 			}
 			nor = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-				has_ethic = ethic_militarist
-				has_ethic = ethic_fanatic_militarist			
+				is_xenophobe = yes
+				is_militarist = yes			
 			}
 		}
 		is_special_colony_type = no

@@ -117,8 +117,10 @@ building_auto_mine = {
 	
 	potential = {
 		habitable_structure = no
-		NOT = { is_planet_class = pc_machine }
-		NOT = { has_modifier = resort_colony }
+		NOR = {
+			is_planet_class = pc_machine
+			has_modifier = resort_colony
+		}
 		exists = owner
 	}
 	
@@ -228,8 +230,10 @@ building_auto_farm = {
 	
 	potential = {
 		habitable_structure = no
-		NOT = { is_planet_class = pc_machine }
-		NOT = { has_modifier = resort_colony }
+		NOR = {
+			is_planet_class = pc_machine
+			has_modifier = resort_colony
+		}
 		exists = owner
 		owner = { 
 			is_regular_empire = yes 

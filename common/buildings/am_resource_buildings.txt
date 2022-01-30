@@ -571,8 +571,7 @@ building_biomass_furnace = {
 		NOT = { has_modifier = resort_colony }
 		owner = {
 			nor = {
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
+				is_pacifist = yes
 				has_ethic = ethic_fanatic_xenophile
 			}
 		}

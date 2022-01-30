@@ -14,8 +14,10 @@ alp_private_businesses = {
 		}
 		
 		valid = {
-			not = { has_ethic = "ethic_fanatic_pacifist" }
-			not = { has_ethic = "ethic_pacifist" }
+			NOR = {
+				has_ethic = "ethic_fanatic_pacifist"
+				has_ethic = "ethic_pacifist"
+			}
 			# not = { has_policy_flag = trade_policy_default }
 			NOT = { has_valid_civic = civic_merchant_guilds }
 			NOT = { has_authority = auth_corporate }
@@ -41,8 +43,10 @@ alp_private_businesses = {
 		}
 		
 		valid = {
-			NOT = { has_valid_civic = civic_merchant_guilds }
-			NOT = { has_authority = auth_corporate }
+			NOR = {
+				has_valid_civic = civic_merchant_guilds
+				has_authority = auth_corporate
+			}
 			NOT = { has_valid_civic = civic_corporate_dominion }
 		}
 		
@@ -96,8 +100,10 @@ alp_private_businesses = {
 		}
 		
 		valid = {
-			NOT = { has_authority = auth_corporate }
-			NOT = { has_valid_civic = civic_corporate_dominion }
+			NOR = {
+				has_authority = auth_corporate
+				has_valid_civic = civic_corporate_dominion
+			}
 		}
 		
 		AI_weight = {

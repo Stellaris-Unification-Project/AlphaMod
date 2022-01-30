@@ -771,7 +771,7 @@ add_listening_post_to_random_border_outpost = {
 			starbase = { has_starbase_size < starbase_starport }
 			any_neighbor_system = {
 				exists = space_owner
-				space_owner = { not = { is_same_value = root.owner }}
+				space_owner = { not = { is_same_empire = root.owner }}
 			}
 		}		
 		set_star_flag = sf_done_listening_outpost
@@ -919,7 +919,7 @@ fill_out_random_starport = {
 			limit = {
 				any_neighbor_system = {
 					exists = space_owner
-					space_owner = { not = { is_same_value = root.owner }}
+					space_owner = { not = { is_same_empire = root.owner }}
 				}
 			}
 			set_star_flag = sf_done_starport_2
@@ -951,7 +951,7 @@ upgrade_random_starhold = {
 			limit = {
 				any_neighbor_system = {
 					exists = space_owner
-					space_owner = { not = { is_same_value = root.owner }}
+					space_owner = { not = { is_same_empire = root.owner }}
 				}
 			}
 			set_star_flag = sf_done_starhold_2

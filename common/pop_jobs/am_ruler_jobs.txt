@@ -11,9 +11,10 @@ eugenecist = {
 		is_sapient = yes
 	}
 
+	possible_precalc = can_fill_ruler_job
+
 	possible = {
-		ruler_job_check_trigger = yes
-	}
+		}
 
 	planet_modifier = {
 		pop_growth_speed = 0.1
@@ -63,12 +64,12 @@ beneficiary = {
 		is_being_assimilated = no
 	}
 	
+	possible_precalc = can_fill_ruler_job
 	possible = {
 		owner = { is_gestalt = no }
 		not = { is_pop_category = worker }
 		not = { is_pop_category = specialist }
-		ruler_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		category = planet_beneficiaries
@@ -138,12 +139,12 @@ warlord = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_ruler_job
 	possible = {
 		owner = { is_gestalt = no }
 		not = { is_pop_category = worker }
 		not = { has_ethic = ethic_pacifist }
-		ruler_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		category = planet_soldiers
@@ -270,11 +271,11 @@ celebrity = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_ruler_job
 	possible = {
 		owner = { is_gestalt = no }
 		not = { is_pop_category = worker }
-		ruler_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		category = planet_entertainers
@@ -363,11 +364,11 @@ politician = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_ruler_job
 	possible = {
 		owner = { is_gestalt = no }
 		not = { is_pop_category = worker }
-		ruler_job_check_trigger = yes
-	}
+		}
 
 	resources = {
 		category = planet_administrators

@@ -9,13 +9,13 @@ event = {
 	trigger = {
 		has_global_flag = galactic_market_founded
 
-		OR = {
-			NOT = { is_on_market = sr_wealth }
-			NOT = { is_on_market = sr_natural_fuels }
-			NOT = { is_on_market = sr_actinides }
-			NOT = { is_on_market = sr_precious_stones }
-			NOT = { is_on_market = sr_rare_metals }
-			NOT = { is_on_market = sr_plastics }
+		NAND = {
+			is_on_market = sr_wealth
+			is_on_market = sr_natural_fuels
+			is_on_market = sr_actinides
+			is_on_market = sr_precious_stones
+			is_on_market = sr_rare_metals
+			is_on_market = sr_plastics
 		}
 	}
 

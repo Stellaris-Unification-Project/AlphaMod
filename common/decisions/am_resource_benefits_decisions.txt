@@ -62,8 +62,10 @@ decision_fuels_to_gases = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_resources }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_resources
+			has_planet_flag = pf_filter_vanilla
+		}
 		not = { has_planet_flag = pf_fuels_to_gases }
 	}
 	
@@ -96,8 +98,10 @@ decision_end_fuels_to_gases = {
 	}
 
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_planet_flag = pf_fuels_to_gases
 	}
 	
@@ -122,8 +126,10 @@ decision_actinides_to_motes = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_resources }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_resources
+			has_planet_flag = pf_filter_vanilla
+		}
 		not = { has_planet_flag = pf_actinides_to_motes }
 		has_building = building_actinides_mine
 	}
@@ -153,8 +159,10 @@ decision_end_actinides_to_motes = {
 	}
 
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_planet_flag = pf_actinides_to_motes
 	}
 	
@@ -179,8 +187,10 @@ decision_ice_to_crystals = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_resources }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_resources
+			has_planet_flag = pf_filter_vanilla
+		}
 		not = { has_planet_flag = pf_ice_to_crystals }
 	}
 	
@@ -213,8 +223,10 @@ decision_end_ice_to_crystals = {
 	}
 
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_planet_flag = pf_ice_to_crystals
 	}
 	
@@ -239,16 +251,19 @@ decision_loyalty_rewards = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_pop }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_modifier = loyalty_rewards }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_pop
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_modifier = loyalty_rewards
+		}
 		owner = { 
 			is_regular_empire = yes 
 			not = { has_ethic = ethic_egalitarian }
 			or = {
-				has_ethic = ethic_authoritarian
-				has_ethic = ethic_fanatic_authoritarian
+				is_authoritarian = yes
 				has_ethic = ethic_fanatic_xenophobe
 			}
 		}
@@ -362,8 +377,10 @@ decision_fuels_to_energy = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_resources }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_resources
+			has_planet_flag = pf_filter_vanilla
+		}
 		not = { has_modifier = pm_increased_fuels_burn }
 	}
 	
@@ -392,8 +409,10 @@ decision_end_fuels_to_energy = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_modifier = pm_increased_fuels_burn
 	}
 	
@@ -418,8 +437,10 @@ decision_biomass_to_goods = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_resources }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_resources
+			has_planet_flag = pf_filter_vanilla
+		}
 		not = { has_modifier = pm_increased_green_goods }
 		has_district = district_industrial
 		exists = owner
@@ -447,8 +468,10 @@ decision_end_biomass_to_goods = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_modifier = pm_increased_green_goods
 	}
 	

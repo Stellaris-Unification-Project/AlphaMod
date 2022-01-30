@@ -249,7 +249,9 @@ uses_hab_mining_district = {
 }
 
 not_specialised_habitat = {
-	not = { has_planet_flag = energy_habitat }
-	not = { has_planet_flag = research_habitat }
+	NOR = {
+		has_planet_flag = energy_habitat
+		has_planet_flag = research_habitat
+	}
 	not = { has_planet_flag = mining_habitat }	
 }

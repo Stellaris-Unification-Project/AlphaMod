@@ -3,9 +3,10 @@ biomass_processor_drone = {
 	condition_string = DRONE_JOB_TRIGGER
 	building_icon = building_biomass_furnace
 	
+	possible_precalc = can_fill_drone_job
+	
 	possible = {
-		drone_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		category = planet_labourers
@@ -52,9 +53,10 @@ fuel_processor_drone = {
 	condition_string = DRONE_JOB_TRIGGER
 	building_icon = building_fuel_sourcer
 	
+	possible_precalc = can_fill_drone_job
+	
 	possible = {
-		drone_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		category = planet_labourers
@@ -98,9 +100,10 @@ water_processor_drone = {
 	condition_string = DRONE_JOB_TRIGGER
 	building_icon = building_desalinator
 	
+	possible_precalc = can_fill_drone_job
+	
 	possible = {
-		drone_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		category = planet_labourers
@@ -178,9 +181,10 @@ actinides_utiliser_drone = {
 	condition_string = DRONE_JOB_TRIGGER
 	building_icon = building_nuclear_plant
 	
+	possible_precalc = can_fill_drone_job
+	
 	possible = {
-		drone_job_check_trigger = yes
-	}
+		}
 
 	resources = {
 		category = planet_technician
@@ -217,9 +221,10 @@ biomass_architect_drone = {
 	condition_string = DRONE_JOB_TRIGGER
 	building_icon = building_processedgoods_producer
 	
+	possible_precalc = can_fill_drone_job
+	
 	possible = {
-		drone_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		category = planet_artisans
@@ -286,9 +291,10 @@ altalloys_drone = {
 	condition_string = DRONE_JOB_TRIGGER
 	building_icon = building_foundry_1
 
+	possible_precalc = can_fill_drone_job
+
 	possible = {
-		drone_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		category = planet_metallurgists
@@ -349,9 +355,10 @@ electronics_manufacturer_drone = {
 	condition_string = DRONE_JOB_TRIGGER
 	building_icon = building_foundry_1
 
+	possible_precalc = can_fill_drone_job
+
 	possible = {
-		drone_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		category = planet_artisans

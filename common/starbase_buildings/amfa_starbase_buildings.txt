@@ -82,10 +82,7 @@ sb_empath_enclave = {
 		exists = owner
 		owner = {
 			has_origin = origin_warenders
-			or = {
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
-			}
+			is_pacifist = yes
 		}
 	}
 	
@@ -127,10 +124,7 @@ border_security_post = {
 	potential = {
 		exists = owner
 		owner = {
-			nor = {
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-			}
+			is_xenophile = no
 		}
 		not = { has_starbase_building = border_security_post }
 		solar_system = {
@@ -658,12 +652,9 @@ open_starbase_embassy = {
 		exists = owner
 		owner = {
 			or = {
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
-				has_ethic = ethic_egalitarian
-				has_ethic = ethic_fanatic_egalitarian
+				is_xenophile = yes
+				is_pacifist = yes
+				is_egalitarian = yes
 			}
 		}
 		not = { has_starbase_building = open_starbase_embassy }
@@ -671,10 +662,14 @@ open_starbase_embassy = {
 			any_neighbor_system = {
 				exists = space_owner
 				space_owner = { 
-					not = { is_same_value = from }
-					not = { is_in_federation_with = from }
-					not = { has_commercial_pact = from }
-					not = { has_defensive_pact = from }
+					NOR = {
+						is_same_value = from
+						is_in_federation_with = from
+					}
+					NOR = {
+						has_commercial_pact = from
+						has_defensive_pact = from
+					}
 					not = { has_migration_access = from }
 				}
 			}

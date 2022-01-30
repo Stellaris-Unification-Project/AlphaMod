@@ -25,8 +25,10 @@ decision_market_wealth_injection = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_filter_vanilla
+		}
 		not = { has_modifier = market_wealth_injection }
 		exists = owner
 		owner = { 
@@ -85,8 +87,10 @@ decision_construction_force = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_filter_vanilla
+		}
 		not = { has_modifier = construction_force }
 		exists = owner
 		owner = { is_ai = no }
@@ -123,10 +127,14 @@ decision_aggressive_biomass_sourcing = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_resources }
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_modifier = aggressive_biomass_sourcing }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_resources
+			has_planet_flag = pf_hide_decisions_wealth
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_modifier = aggressive_biomass_sourcing
+		}
 		not = { has_modifier = renewable_biomass_sourcing }
 		exists = owner
 		owner = { is_ai = no }
@@ -166,10 +174,14 @@ decision_renewable_biomass_sourcing = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_resources }
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_modifier = aggressive_biomass_sourcing }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_resources
+			has_planet_flag = pf_hide_decisions_wealth
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_modifier = aggressive_biomass_sourcing
+		}
 		not = { has_modifier = renewable_biomass_sourcing }
 		exists = owner
 		owner = { is_ai = no }
@@ -208,10 +220,14 @@ decision_aggressive_fuels_sourcing = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_resources }
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_modifier = aggressive_fuels_sourcing }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_resources
+			has_planet_flag = pf_hide_decisions_wealth
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_modifier = aggressive_fuels_sourcing
+		}
 		not = { has_modifier = renewable_fuels_sourcing }
 		exists = owner
 		owner = { is_ai = no }
@@ -250,10 +266,14 @@ decision_renewable_fuels_sourcing = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_resources }
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_modifier = aggressive_fuels_sourcing }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_resources
+			has_planet_flag = pf_hide_decisions_wealth
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_modifier = aggressive_fuels_sourcing
+		}
 		not = { has_modifier = renewable_fuels_sourcing }
 		exists = owner
 		owner = { is_ai = no }
@@ -293,10 +313,14 @@ decision_microfusion_generators = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_infra }
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_modifier = microfusion_generators }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_infra
+			has_planet_flag = pf_hide_decisions_wealth
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_modifier = microfusion_generators
+		}
 		exists = owner
 		owner = { is_ai = no }
 	}
@@ -331,8 +355,10 @@ decision_withdraw_microfusion_generators = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_modifier = microfusion_generators
 	}
 	effect = {
@@ -360,10 +386,14 @@ decision_shuttle_service = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_infra }
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_modifier = shuttle_service }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_infra
+			has_planet_flag = pf_hide_decisions_wealth
+		}
+		NOR = {
+			has_planet_flag = pf_filter_vanilla
+			has_modifier = shuttle_service
+		}
 		exists = owner
 		owner = { is_ai = no }
 	}
@@ -395,8 +425,10 @@ decision_shuttle_service_withdraw = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_modifier = shuttle_service
 	}
 	effect = {

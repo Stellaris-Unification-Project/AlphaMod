@@ -619,11 +619,8 @@ prepare_separatist = {
 	
 	if = { 
 		limit = { 
-			owner = { 
-				or = {
-					has_ethic = ethic_xenophobe 
-					has_ethic = ethic_fanatic_xenophobe
-				}
+			owner = {
+				is_xenophobe = yes
 			}
 		}
 		pop_change_ethic = ethic_xenophile
@@ -660,11 +657,8 @@ prepare_nomadic = {
 	
 	if = { 
 		limit = { 
-			owner = { 
-				or = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+			owner = {
+				is_pacifist = yes
 			}
 		}
 		pop_change_ethic = ethic_militarist
@@ -698,11 +692,8 @@ prepare_tribal = {
 	
 	if = { 
 		limit = { 
-			owner = { 
-				or = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+			owner = {
+				is_xenophobe = yes
 			}
 		}
 		pop_change_ethic = ethic_militarist

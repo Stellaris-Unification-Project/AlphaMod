@@ -9,7 +9,7 @@ neighbour_not_owned_by_us = {
 			not = { exists = space_owner }
 			and = {
 				exists = space_owner
-				space_owner = { not = { is_same_value = root.owner }}
+				space_owner = { not = { is_same_empire = root.owner }}
 			}
 		}
 	}
@@ -184,12 +184,18 @@ has_owner_xenophile = {
 }
 
 not_fanatical = {
-	not = { has_ethic = ethic_fanatic_spiritualist }
-	not = { has_ethic = ethic_fanatic_militarist }
-	not = { has_ethic = ethic_fanatic_authoritarian }
-	not = { has_ethic = ethic_fanatic_pacifist }
-	not = { has_ethic = ethic_fanatic_xenophobe }
-	not = { has_ethic = ethic_fanatic_xenophile }
+	NOR = {
+		has_ethic = ethic_fanatic_spiritualist
+		has_ethic = ethic_fanatic_militarist
+	}
+	NOR = {
+		has_ethic = ethic_fanatic_authoritarian
+		has_ethic = ethic_fanatic_pacifist
+	}
+	NOR = {
+		has_ethic = ethic_fanatic_xenophobe
+		has_ethic = ethic_fanatic_xenophile
+	}
 	not = { has_ethic = ethic_fanatic_materialist }
 	#is_machine_empire = no
 	#is_hive_empire = no

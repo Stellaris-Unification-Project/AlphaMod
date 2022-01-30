@@ -316,33 +316,45 @@ is_normal_planet_class = {
 
 not_special_planet_type = {
 	habitable_structure = no
-	NOT = { is_planet_class = pc_machine }
-	NOT = { is_planet_class = pc_hive }
+	NOR = {
+		is_planet_class = pc_machine
+		is_planet_class = pc_hive
+	}
 	NOT = { is_planet_class = pc_city }
 }
 
 not_special_planet_type_rwok = {
-	NOT = { is_planet_class = pc_habitat }
-	NOT = { is_planet_class = pc_machine }
-	NOT = { is_planet_class = pc_hive }
-	NOT = { is_planet_class = pc_city }
+	NOR = {
+		is_planet_class = pc_habitat
+		is_planet_class = pc_machine
+	}
+	NOR = {
+		is_planet_class = pc_hive
+		is_planet_class = pc_city
+	}
 }
 
 not_special_planet_type_mwok = {
 	habitable_structure = no
-	NOT = { is_planet_class = pc_hive }
-	NOT = { is_planet_class = pc_city }
+	NOR = {
+		is_planet_class = pc_hive
+		is_planet_class = pc_city
+	}
 }
 
 not_special_planet_type_rwmwhwok = {
-	NOT = { is_planet_class = pc_habitat }
-	NOT = { is_planet_class = pc_city }
+	NOR = {
+		is_planet_class = pc_habitat
+		is_planet_class = pc_city
+	}
 }
 
 not_special_planet_type_hvok = {
 	habitable_structure = no
-	NOT = { is_planet_class = pc_machine }
-	NOT = { is_planet_class = pc_city }
+	NOR = {
+		is_planet_class = pc_machine
+		is_planet_class = pc_city
+	}
 }
 
 planet_needs_amenities = { planet = { free_amenities < 1 }}

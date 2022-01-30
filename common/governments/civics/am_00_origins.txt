@@ -132,8 +132,10 @@ origin_thehuntisall = {
 	possible = {
 		ethics = {
 			value = ethic_fanatic_xenophobe
-			not = { value = ethic_pacifist }
-			not = { value = ethic_egalitarian }
+			NOR = {
+				value = ethic_pacifist
+				value = ethic_egalitarian
+			}
 		}
 	}
 	
@@ -275,8 +277,10 @@ origin_shroudbringers = {
 	possible = {
 		ethics = {
 			value = ethic_fanatic_spiritualist
-			not = { value = ethic_pacifist }
-			not = { value = ethic_egalitarian }
+			NOR = {
+				value = ethic_pacifist
+				value = ethic_egalitarian
+			}
 		}
 	}
 	
@@ -407,8 +411,10 @@ origin_forgedinfire = {
 
 	possible = {
 		ethics = {
-			NOT = { value = ethic_gestalt_consciousness }
-			NOT = { value = ethic_xenophile }
+			NOR = {
+				value = ethic_gestalt_consciousness
+				value = ethic_xenophile
+			}
 			NOT = { value = ethic_fanatic_xenophile }
 			OR = {
 				text = civic_tooltip_militarist

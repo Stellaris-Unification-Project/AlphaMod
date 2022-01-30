@@ -10,9 +10,9 @@ security_guard = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_worker_job
 	possible = {
 		not_has_important_worker_job = yes
-		worker_job_check_trigger = yes
 		not_fallen_or_gestalt = yes
 	}
 	
@@ -191,9 +191,9 @@ retailer = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_worker_job
 	possible = {
 		not_has_important_worker_job = yes
-		worker_job_check_trigger = yes
 		not_fallen_or_gestalt = yes
 	}
 	
@@ -445,9 +445,9 @@ service = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_worker_job
 	possible = {
 		not_has_important_worker_job = yes
-		worker_job_check_trigger = yes
 		not_fallen_or_gestalt = yes
 	}
 	
@@ -588,9 +588,9 @@ teacher = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_worker_job
 	possible = {
 		not_has_important_worker_job = yes
-		worker_job_check_trigger = yes
 		not_fallen_or_gestalt = yes
 		not = { has_trait = trait_nerve_stapled }
 	}
@@ -713,8 +713,10 @@ student = {
 		not_has_important_worker_job = yes
 		slave_may_be_student = yes
 		not_fallen_or_gestalt = yes
-		not = { has_trait = trait_mechanical }
-		not = { has_trait = trait_nerve_stapled }
+		NOR = {
+			has_trait = trait_mechanical
+			has_trait = trait_nerve_stapled
+		}
 	}
 	
 	resources = {
@@ -798,8 +800,9 @@ labourer = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_worker_job
+
 	possible = {
-		worker_job_check_trigger = yes
 		not_fallen_or_gestalt = yes
 	}
 
@@ -875,10 +878,10 @@ acolyte = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_worker_job
 	possible = {
 		not_has_important_worker_job = yes
 		not = { has_ethic = ethic_materialist }
-		worker_job_check_trigger = yes
 		not_fallen_or_gestalt = yes
 		not = { has_trait = trait_mechanical }
 		not = { has_trait = trait_nerve_stapled }
@@ -1204,9 +1207,9 @@ biomass_processor = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_worker_job
 	possible = {
 		not_has_important_worker_job = yes
-		worker_job_check_trigger = yes
 		owner = { 
 			is_fallen_empire = no
 			is_gestalt = no
@@ -1302,9 +1305,9 @@ fuel_processor = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_worker_job
 	possible = {
 		not_has_important_worker_job = yes
-		worker_job_check_trigger = yes
 		owner = { 
 			is_fallen_empire = no
 			is_gestalt = no
@@ -1416,9 +1419,9 @@ water_processor = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_worker_job
 	possible = {
 		not_has_important_worker_job = yes
-		worker_job_check_trigger = yes
 		owner = { 
 			is_fallen_empire = no
 			is_gestalt = no

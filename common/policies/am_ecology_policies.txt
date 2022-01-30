@@ -11,10 +11,14 @@ alp_ecology = {
 		}
 		
 		valid = {
-			NOT = { has_ethic = "ethic_fanatic_xenophile" }
-			NOT = { has_ethic = "ethic_xenophile" }	
-			NOT = { has_valid_civic = civic_galactic_resorts }
-			NOT = { has_valid_civic = civic_environmentalist }			
+			NOR = {
+				has_ethic = "ethic_fanatic_xenophile"
+				has_ethic = "ethic_xenophile"
+			}	
+			NOR = {
+				has_valid_civic = civic_galactic_resorts
+				has_valid_civic = civic_environmentalist
+			}			
 		}
 		
 		# Cannot switch to Nature Reserves
@@ -30,8 +34,10 @@ alp_ecology = {
 			weight = 0
 			modifier = {
 				weight = 4
-				NOT = { has_ethic = "ethic_fanatic_xenophile" }
-				NOT = { has_ethic = "ethic_xenophile" }				
+				NOR = {
+					has_ethic = "ethic_fanatic_xenophile"
+					has_ethic = "ethic_xenophile"
+				}				
 				or = {
 					has_monthly_income = { resource = sr_ice value < 1 }
 					has_monthly_income = { resource = sr_biomass value < 1 }

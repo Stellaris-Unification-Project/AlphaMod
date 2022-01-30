@@ -26,8 +26,10 @@ country_event = {
 					random_planet_within_border = {
 						limit = { 
 							has_modifier = terraforming_candidate 
-							not = { has_planet_flag = pf_skipped_terraform_candidate }
-							not = { has_planet_flag = pf_terraform_special_project }
+							NOR = {
+								has_planet_flag = pf_skipped_terraform_candidate
+								has_planet_flag = pf_terraform_special_project
+							}
 							is_terraforming = no
 						}
 						if = {
@@ -72,8 +74,10 @@ country_event = {
 					random_planet_within_border = {
 						limit = {
 							is_planet_class = pc_toxic
-							not = { has_modifier = potential_toxic_habitable }	
-							not = { has_deposit = d_biomass_orbital_2 }
+							NOR = {
+								has_modifier = potential_toxic_habitable
+								has_deposit = d_biomass_orbital_2
+							}
 							is_suitable_terraforming_candidate = yes
 						}
 						save_event_target_as = new_terraforming_candidate_identified
@@ -135,8 +139,10 @@ country_event = {
 					random_planet_within_border = {
 						limit = {
 							is_planet_class = pc_frozen
-							not = { has_modifier = potential_frozen_habitable }
-							not = { has_deposit = d_orbital_ice_2 }
+							NOR = {
+								has_modifier = potential_frozen_habitable
+								has_deposit = d_orbital_ice_2
+							}
 							is_suitable_terraforming_candidate = yes
 						}
 						save_event_target_as = new_terraforming_candidate_identified

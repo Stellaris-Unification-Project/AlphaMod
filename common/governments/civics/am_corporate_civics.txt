@@ -105,8 +105,10 @@ civic_executive_excellence = {
 			}
 		}
 		civics = {
-			not = { value = civic_ruthless_competition }
-			not = { value = civic_personnel_resourcing  }
+			NOR = {
+				value = civic_ruthless_competition
+				value = civic_personnel_resourcing
+			}
 		}
 	}
 	random_weight = { base = 5 }

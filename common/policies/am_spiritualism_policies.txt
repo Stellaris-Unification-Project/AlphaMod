@@ -11,8 +11,10 @@ alp_spiritual_belief = {
 		}
 		
 		potential = {
-			NOT = { has_ethic = "ethic_fanatic_spiritualist" }
-			NOT = { has_ethic = "ethic_spiritualist" }
+			NOR = {
+				has_ethic = "ethic_fanatic_spiritualist"
+				has_ethic = "ethic_spiritualist"
+			}
 			NOT = { has_policy_flag = religious_freedom_promoted }			
 		}
 		
@@ -29,8 +31,7 @@ alp_spiritual_belief = {
 					has_policy_flag = religious_freedom_ban
 				}
 				nor = {
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
+					is_spiritualist = yes
 					has_policy_flag = religious_freedom_promoted
 					has_policy_flag = religious_freedom_tolerance
 				}
@@ -46,8 +47,10 @@ alp_spiritual_belief = {
 		}
 		
 		potential = {
-			NOT = { has_ethic = "ethic_fanatic_authoritarian" }
-			NOT = { has_ethic = "ethic_authoritarian" }
+			NOR = {
+				has_ethic = "ethic_fanatic_authoritarian"
+				has_ethic = "ethic_authoritarian"
+			}
 		}
 		
 		modifier = {
@@ -67,8 +70,10 @@ alp_spiritual_belief = {
 		}
 		
 		potential = {
-			NOT = { has_ethic = "ethic_fanatic_materialist" }	
-			NOT = { has_ethic = "ethic_materialist" }			
+			NOR = {
+				has_ethic = "ethic_fanatic_materialist"
+				has_ethic = "ethic_materialist"
+			}			
 		}
 		
 		modifier = {
@@ -88,8 +93,10 @@ alp_spiritual_belief = {
 		}
 		
 		potential = {
-			NOT = { has_ethic = "ethic_fanatic_xenophobe" }
-			NOT = { has_ethic = "ethic_xenophobe" }
+			NOR = {
+				has_ethic = "ethic_fanatic_xenophobe"
+				has_ethic = "ethic_xenophobe"
+			}
 			NOT = { has_ethic = "ethic_materialist" }			
 		}
 		
@@ -110,8 +117,10 @@ alp_spiritual_belief = {
 		}
 		
 		potential = {
-			NOT = { has_ethic = "ethic_fanatic_authoritarian" }
-			NOT = { has_ethic = "ethic_authoritarian" }
+			NOR = {
+				has_ethic = "ethic_fanatic_authoritarian"
+				has_ethic = "ethic_authoritarian"
+			}
 		}
 		
 		modifier = {
@@ -131,8 +140,10 @@ alp_spiritual_belief = {
 		}
 		
 		potential = {
-			NOT = { has_ethic = "ethic_fanatic_xenophile" }
-			NOT = { has_ethic = "ethic_xenophile" }
+			NOR = {
+				has_ethic = "ethic_fanatic_xenophile"
+				has_ethic = "ethic_xenophile"
+			}
 			NOT = { has_policy_flag = religious_freedom_promoted }
 		}
 		
@@ -153,10 +164,14 @@ alp_spiritual_belief = {
 		}
 		
 		potential = {
-			NOT = { has_ethic = "ethic_fanatic_xenophobe" }
-			NOT = { has_ethic = "ethic_xenophobe" }
-			NOT = { has_policy_flag = religious_freedom_onetrue }
-			NOT = { has_policy_flag = religious_freedom_secular }
+			NOR = {
+				has_ethic = "ethic_fanatic_xenophobe"
+				has_ethic = "ethic_xenophobe"
+			}
+			NOR = {
+				has_policy_flag = religious_freedom_onetrue
+				has_policy_flag = religious_freedom_secular
+			}
 		}
 		
 		modifier = {
@@ -176,10 +191,14 @@ alp_spiritual_belief = {
 		}
 		
 		potential = {
-			NOT = { has_ethic = "ethic_fanatic_xenophile" }
-			NOT = { has_policy_flag = religious_freedom_promoted }
-			NOT = { has_policy_flag = religious_freedom_tolerance }
-			NOT = { has_ethic = "ethic_materialist" }
+			NOR = {
+				has_ethic = "ethic_fanatic_xenophile"
+				has_policy_flag = religious_freedom_promoted
+			}
+			NOR = {
+				has_policy_flag = religious_freedom_tolerance
+				has_ethic = "ethic_materialist"
+			}
 			or = {
 				has_authority = auth_imperial
 				has_authority = auth_dictatorial

@@ -14,8 +14,10 @@ district_corporate_arcologies = {
 	}
 	
 	allow = {
-		NOT = { has_modifier = slave_colony }
-		NOT = { has_modifier = penal_colony }
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
 		or = {
 			not = { exists = owner }
 			owner = { is_ai = no }
@@ -334,8 +336,10 @@ district_nature_reserve = {
 	}
 	
 	allow = {
-		NOT = { has_modifier = slave_colony }
-		NOT = { has_modifier = penal_colony }
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
 		or = {
 			not = { exists = owner }
 			owner = { is_ai = no }

@@ -12,8 +12,10 @@ is_empath_field_candidate = {
 
 is_empathic_branch_candidate = {
 	is_colony = yes
-	not = { has_modifier = empathic_field_foreign }
-	not = { has_modifier = empathic_field_domestic }
+	NOR = {
+		has_modifier = empathic_field_foreign
+		has_modifier = empathic_field_domestic
+	}
 	exists = owner
 	owner = {
 		not = { has_ethic = ethic_gestalt_consciousness }

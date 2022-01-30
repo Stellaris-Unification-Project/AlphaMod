@@ -1,7 +1,9 @@
 alp_food_marketing = {
 	potential = {
-		NOT = { has_ethic = "ethic_gestalt_consciousness" }
-		not = { has_policy_flag = alp_private_businesses_prohibited }
+		NOR = {
+			has_ethic = "ethic_gestalt_consciousness"
+			has_policy_flag = alp_private_businesses_prohibited
+		}
 	}
 	
 	option = {
@@ -64,8 +66,10 @@ alp_food_marketing = {
 
 alp_minerals_marketing = {
 	potential = {
-		NOT = { has_ethic = "ethic_gestalt_consciousness" }
-		not = { has_policy_flag = alp_private_businesses_prohibited }
+		NOR = {
+			has_ethic = "ethic_gestalt_consciousness"
+			has_policy_flag = alp_private_businesses_prohibited
+		}
 	}
 	
 	option = {
@@ -128,8 +132,10 @@ alp_minerals_marketing = {
 
 alp_goods_marketing = {
 	potential = {
-		NOT = { has_ethic = "ethic_gestalt_consciousness" }
-		not = { has_policy_flag = alp_private_businesses_prohibited }
+		NOR = {
+			has_ethic = "ethic_gestalt_consciousness"
+			has_policy_flag = alp_private_businesses_prohibited
+		}
 	}
 	
 	option = {

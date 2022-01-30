@@ -13,13 +13,17 @@ decision_moon_colony = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_infra }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_infra
+			has_planet_flag = pf_filter_vanilla
+		}
 		not = { has_planet_flag = pf_filter_districts }
 		owner = { is_machine_empire = no }
 		any_moon = {
-			not = { has_anomaly = yes }
-			not = { is_colony = yes }
+			NOR = {
+				has_anomaly = yes
+				is_colony = yes
+			}
 			not = { has_modifier = terraforming_candidate }
 			or = {
 				is_planet_class = pc_barren
@@ -52,8 +56,10 @@ decision_moon_colony = {
 		hidden_effect = {
 			random_moon = {
 				limit = {
-					not = { has_anomaly = yes }
-					not = { is_colony = yes }
+					NOR = {
+						has_anomaly = yes
+						is_colony = yes
+					}
 					not = { has_modifier = terraforming_candidate }
 					or = {
 						is_planet_class = pc_barren
@@ -99,8 +105,10 @@ decision_transfer_population = {
 	}
 
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_pop }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_pop
+			has_planet_flag = pf_filter_vanilla
+		}
 		not = { has_planet_flag = pf_filter_districts }
 		owner = { 
 			is_regular_empire = yes 

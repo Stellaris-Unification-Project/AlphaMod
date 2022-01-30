@@ -180,10 +180,10 @@ biofuels_engineer = {
 		is_being_assimilated = no
 	}
 	
+	possible_precalc = can_fill_specialist_job
 	possible = {
 		is_specialist_material = yes
-		specialist_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		category = planet_chemists
@@ -250,10 +250,10 @@ electronics_manufacturer = {
 		is_being_assimilated = no
 	}
 	
+	possible_precalc = can_fill_specialist_job
 	possible = {
 		is_specialist_material = yes
-		specialist_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		category = planet_artisans
@@ -302,10 +302,10 @@ processedgoods_manufacturer = {
 		is_being_assimilated = no
 	}
 	
+	possible_precalc = can_fill_specialist_job
 	possible = {
 		is_specialist_material = yes
-		specialist_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		category = planet_artisans
@@ -579,10 +579,10 @@ biomass_architect = {
 		is_being_assimilated = no
 	}
 	
+	possible_precalc = can_fill_specialist_job
 	possible = {
 		is_specialist_material = yes
-		specialist_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		category = planet_artisans
@@ -678,10 +678,10 @@ altalloys_manufacturer = {
 		is_being_assimilated = no
 	}
 
+	possible_precalc = can_fill_specialist_job
 	possible = {
 		is_specialist_material = yes
-		specialist_job_check_trigger = yes
-	}
+		}
 	
 	resources = {
 		category = planet_metallurgists

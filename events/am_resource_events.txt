@@ -101,8 +101,10 @@ event = {
 					habitable_planet = yes
 					is_homeworld = no
 					habitable_structure = no
-					NOT = { is_planet_class = pc_machine }
-					NOT = { is_planet_class = pc_hive }
+					NOR = {
+						is_planet_class = pc_machine
+						is_planet_class = pc_hive
+					}
 					NOT = { is_planet_class = pc_city }
 				}
 				if = {

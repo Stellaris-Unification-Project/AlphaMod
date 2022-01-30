@@ -167,12 +167,12 @@ district_hab_administration = {
 	
 	show_on_uncolonized = {
 		is_planet_class = pc_habitat
-		nor = {
+		NOR = {
 			has_planet_flag = mining_habitat
 			has_planet_flag = research_habitat
 			has_planet_flag = energy_habitat
+			has_planet_flag = pf_hide_hab_administration
 		}
-		not = { has_planet_flag = pf_hide_hab_administration }
 		
 		exists = from
 		from = { 
@@ -182,12 +182,12 @@ district_hab_administration = {
 	
 	potential = {
 		is_planet_class = pc_habitat
-		nor = {
+		NOR = {
 			has_planet_flag = mining_habitat
 			has_planet_flag = research_habitat
 			has_planet_flag = energy_habitat
+			has_planet_flag = pf_hide_hab_administration
 		}
-		not = { has_planet_flag = pf_hide_hab_administration }
 		
 		exists = owner
 		owner = { 

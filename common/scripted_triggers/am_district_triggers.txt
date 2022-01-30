@@ -104,12 +104,18 @@ planet_has_biomass_deposit = {
 }
 
 not_swapped_communities = {
-	not = { has_planet_flag = pf_parishes }
-	not = { has_planet_flag = pf_warriorhouses }
-	not = { has_planet_flag = pf_labour_camps }
-	not = { has_planet_flag = pf_securityzones }
-	not = { has_planet_flag = pf_markettowns }
-	not = { has_planet_flag = pf_campuses }
+	NOR = {
+		has_planet_flag = pf_parishes
+		has_planet_flag = pf_warriorhouses
+	}
+	NOR = {
+		has_planet_flag = pf_labour_camps
+		has_planet_flag = pf_securityzones
+	}
+	NOR = {
+		has_planet_flag = pf_markettowns
+		has_planet_flag = pf_campuses
+	}
 	not = { has_planet_flag = pf_culture_communes }
 }
 

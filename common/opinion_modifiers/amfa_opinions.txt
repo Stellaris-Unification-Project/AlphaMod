@@ -2,12 +2,11 @@
 opinion_border_open_embassy = {
 	trigger = {
 		is_country_type = default
-		nor = {
-			has_ethic = ethic_xenophobe
-			has_ethic = ethic_fanatic_xenophobe
+		is_xenophobe = no
+		NOR = {
+			is_in_federation_with = from
+			has_defensive_pact = from
 		}
-		not = { is_in_federation_with = from }
-		not = { has_defensive_pact = from }
 		not = { is_overlord_to = from }		
 		any_system_within_border = {
 			has_hyperlane_to = from
@@ -31,12 +30,9 @@ opinion_border_security_post = {
 		is_criminal_syndicate = no
 		is_country_type = default
 		or = {
-			has_ethic = ethic_xenophobe
-			has_ethic = ethic_fanatic_xenophobe
-			has_ethic = ethic_militarist
-			has_ethic = ethic_fanatic_militarist
-			has_ethic = ethic_authoritarian
-			has_ethic = ethic_fanatic_authoritarian
+			is_xenophobe = yes
+			is_militarist = yes
+			is_authoritarian = yes
 		}
 		or = {
 			is_in_federation_with = from
@@ -121,10 +117,8 @@ opinion_border_smuggling = {
 		is_criminal_syndicate = no
 		is_country_type = default
 		or = {
-			has_ethic = ethic_militarist
-			has_ethic = ethic_fanatic_militarist
-			has_ethic = ethic_authoritarian
-			has_ethic = ethic_fanatic_authoritarian
+			is_militarist = yes
+			is_authoritarian = yes
 		}	
 		or = {
 			is_in_federation_with = from
@@ -152,10 +146,8 @@ opinion_joint_crews = {
 	trigger = {
 		is_country_type = default
 		or = {
-			has_ethic = ethic_militarist
-			has_ethic = ethic_fanatic_militarist
-			has_ethic = ethic_xenophile
-			has_ethic = ethic_fanatic_xenophile
+			is_militarist = yes
+			is_xenophile = yes
 		}
 		or = {
 			is_in_federation_with = from

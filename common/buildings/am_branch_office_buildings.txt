@@ -475,7 +475,7 @@ building_sedition_center = {
 
 	potential = {
 		has_branch_office = yes
-		branch_office_owner = { NOT = { is_ai = yes }}
+		branch_office_owner = { is_ai = no}
 	}
 
 	allow = {

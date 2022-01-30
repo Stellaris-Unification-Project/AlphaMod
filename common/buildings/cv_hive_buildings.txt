@@ -4,8 +4,10 @@ building_hatching_forge = {
 	category = manufacturing
 
 	potential = {
-		NOT = { has_modifier = resort_colony }
-		NOT = { has_modifier = slave_colony }
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+		}
 		exists = owner
 		owner = { has_valid_civic = civic_hive_alloy_cultivator }
 	}

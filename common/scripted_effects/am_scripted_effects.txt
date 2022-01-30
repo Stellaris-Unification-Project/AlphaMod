@@ -45,10 +45,14 @@ kill_the_unemployed = {
 kill_the_redundant = {
 	random_owned_pop = {
 		limit = {
-			not = { has_job = technician }
-			not = { has_job = miner }
-			not = { has_job = farmer }
-			not = { has_job = artisan }
+			NOR = {
+				has_job = technician
+				has_job = miner
+			}
+			NOR = {
+				has_job = farmer
+				has_job = artisan
+			}
 		}
 		kill_pop = yes
 	}

@@ -12,8 +12,10 @@ conserve_d_mountain_range = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		has_deposit = d_mountain_range
 		exists = owner
@@ -57,8 +59,10 @@ conserve_d_active_volcano = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		has_deposit = d_active_volcano
 		exists = owner
@@ -102,8 +106,10 @@ conserve_d_dangerous_wildlife = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		has_deposit = d_dangerous_wildlife_blocker
 		exists = owner
@@ -147,8 +153,10 @@ conserve_d_dense_jungle = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		has_deposit = d_dense_jungle
 		exists = owner
@@ -192,8 +200,10 @@ conserve_d_toxic_kelp = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		has_deposit = d_toxic_kelp
 		exists = owner
@@ -237,8 +247,10 @@ conserve_d_deep_sinkhole = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		has_deposit = d_deep_sinkhole
 		exists = owner
@@ -282,8 +294,10 @@ conserve_d_quicksand_basin = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		has_deposit = d_quicksand_basin
 		exists = owner
@@ -327,8 +341,10 @@ conserve_d_noxious_swamp = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		has_deposit = d_noxious_swamp
 		exists = owner
@@ -372,8 +388,10 @@ conserve_d_massive_glacier = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_infra }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_infra
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		has_deposit = d_massive_glacier
 		exists = owner

@@ -308,10 +308,14 @@ am_pressed_button_employment_review = {
 		custom_tooltip = decision_run_jobs_evaluation
 		every_owned_pop = {
 			limit = {
-				not = { has_job = criminal }
-				not = { has_job = destitute }
-				not = { is_unemployed = yes }
-				not = { is_pop_category = ruler }
+				NOR = {
+					has_job = criminal
+					has_job = destitute
+				}
+				NOR = {
+					is_unemployed = yes
+					is_pop_category = ruler
+				}
 			}
 			unemploy_pop = yes
 		}
@@ -468,7 +472,7 @@ force_closure_button_effect = {
 			and = {
 				from = { is_galactic_emperor = yes }
 				or = {
-					owner = { is_same_value = from }
+					is_owned_by = from
 					is_homeworld = yes
 					is_capital = yes
 					num_pops > 69

@@ -115,8 +115,10 @@ ap_perfect_selves = {
 	
 	potential = {
 		host_has_dlc = "Utopia"
-		NOT = { has_ascension_perk = ap_perfect_selves }
-		NOT = { has_authority = "auth_machine_intelligence" }
+		NOR = {
+			has_ascension_perk = ap_perfect_selves
+			has_authority = "auth_machine_intelligence"
+		}
 		is_mechanical_empire = no
 		is_cyborg_empire = no
 	}
@@ -158,14 +160,13 @@ ap_perfect_warriors = {
 	
 	potential = {
 		host_has_dlc = "Utopia"
-		NOT = { has_ascension_perk = ap_perfect_warriors }
-		NOT = { has_authority = "auth_machine_intelligence" }
+		NOR = {
+			has_ascension_perk = ap_perfect_warriors
+			has_authority = "auth_machine_intelligence"
+		}
 		is_mechanical_empire = no
 		is_cyborg_empire = no
-		nor = {
-			has_ethic = ethic_fanatic_pacifist
-			has_ethic = ethic_pacifist
-		}
+		is_pacifist = no
 	}
 	
 	ai_weight = {
@@ -207,8 +208,10 @@ ap_masters_of_life = {
 	
 	potential = {
 		host_has_dlc = "Utopia"
-		NOT = { has_ascension_perk = ap_masters_of_life }
-		NOT = { has_authority = "auth_machine_intelligence" }
+		NOR = {
+			has_ascension_perk = ap_masters_of_life
+			has_authority = "auth_machine_intelligence"
+		}
 		is_mechanical_empire = no
 		is_cyborg_empire = no
 		or = {
@@ -257,8 +260,10 @@ ap_masters_of_death = {
 	
 	potential = {
 		host_has_dlc = "Utopia"
-		NOT = { has_ascension_perk = ap_masters_of_death }
-		NOT = { has_authority = "auth_machine_intelligence" }
+		NOR = {
+			has_ascension_perk = ap_masters_of_death
+			has_authority = "auth_machine_intelligence"
+		}
 		is_mechanical_empire = no
 		is_cyborg_empire = no
 		or = {
@@ -336,8 +341,10 @@ ap_virtual_life = {
 
 ap_needs_of_the_many = {
 	possible = {
-		not = { has_ethic = ethic_authoritarian }
-		not = { has_ethic = ethic_fanatic_authoritarian }
+		NOR = {
+			has_ethic = ethic_authoritarian
+			has_ethic = ethic_fanatic_authoritarian
+		}
 	}
 	
 	modifier = {

@@ -41,10 +41,14 @@ alp_law_enforcement = {
 		}
 		
 		valid = {
-			NOT = { has_ethic = "ethic_fanatic_pacifist" }
-			NOT = { has_ethic = "ethic_fanatic_xenophile" }
-			NOT = { has_ethic = "ethic_pacifist" }
-			NOT = { has_valid_civic = civic_police_state }
+			NOR = {
+				has_ethic = "ethic_fanatic_pacifist"
+				has_ethic = "ethic_fanatic_xenophile"
+			}
+			NOR = {
+				has_ethic = "ethic_pacifist"
+				has_valid_civic = civic_police_state
+			}
 		}
 		
 		modifier = {

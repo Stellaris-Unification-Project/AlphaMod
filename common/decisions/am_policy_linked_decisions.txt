@@ -43,8 +43,10 @@ decision_empathic_assessment = {
 				exists = space_owner
 				space_owner = { 
 					is_country_type = default
-					not = { is_same_value = root.owner }
-					not = { has_ethic = ethic_gestalt_consciousness }
+					NOR = {
+						is_same_empire = root.owner
+						has_ethic = ethic_gestalt_consciousness
+					}
 				}	
 				not = {					
 					any_system_planet = {
@@ -66,8 +68,10 @@ decision_empathic_assessment = {
 					exists = space_owner
 					space_owner = { 
 						is_country_type = default
-						not = { is_same_value = root.owner }
-						not = { has_ethic = ethic_gestalt_consciousness }
+						NOR = {
+							is_same_empire = root.owner
+							has_ethic = ethic_gestalt_consciousness
+						}
 					}	
 					not = {					
 						any_system_planet = {
@@ -125,23 +129,20 @@ decision_cull_population = {
 	}
 
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_pop }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_pop
+			has_planet_flag = pf_filter_vanilla
+		}
 		owner = { 
 			is_regular_empire = yes 
 			or = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-				has_ethic = ethic_authoritarian
-				has_ethic = ethic_fanatic_authoritarian
+				is_xenophobe = yes
+				is_authoritarian = yes
 			}
 			nor = {
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-				has_ethic = ethic_egalitarian
-				has_ethic = ethic_fanatic_egalitarian
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist				
+				is_xenophile = yes
+				is_egalitarian = yes
+				is_pacifist = yes				
 			}
 		}
 	}
@@ -269,14 +270,13 @@ decision_promote_pilgrims = {
 	}
 
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_pop }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_pop
+			has_planet_flag = pf_filter_vanilla
+		}
 		owner = { 
-			is_regular_empire = yes 
-			or = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
-			}
+			is_regular_empire = yes
+			is_spiritualist = yes
 		}
 	}
 
@@ -392,15 +392,14 @@ decision_promote_wandering = {
 	}
 
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_pop }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_pop
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		owner = { 
-			is_regular_empire = yes 
-			or = {
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-			}
+			is_regular_empire = yes
+			is_xenophile = yes
 		}
 	}
 
@@ -542,8 +541,10 @@ decision_pioneer_benefits = {
 	}
 
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_pop }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_pop
+			has_planet_flag = pf_filter_vanilla
+		}
 		not = { has_planet_flag = pf_filter_districts }
 		owner = {
 			has_policy_flag = alp_land_ownership_pioneerrights
@@ -589,8 +590,10 @@ decision_immigrant_benefits = {
 	}
 
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_pop }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_pop
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		not = { has_planet_flag = pf_filter_districts }
 		owner = {
@@ -600,7 +603,7 @@ decision_immigrant_benefits = {
 		NOT = { has_modifier = pioneer_benefits }
 		NOT = { has_modifier = immigrant_benefits }
 		# NOT = { has_modifier = planet_luxuries_boost }
-		NOT = { has_upgraded_capital = yes }
+		has_upgraded_capital = no
 		num_pops < 10		
 	}
 	
@@ -647,16 +650,15 @@ decision_allocated_housing = {
 	}
 
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_pop }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_pop
+			has_planet_flag = pf_filter_vanilla
+		}
 		not = { has_planet_flag = pf_filter_districts }
 		owner = {
 			is_regular_empire = yes
 			has_policy_flag = alp_land_ownership_none
-			nor = {
-				has_ethic = ethic_egalitarian
-				has_ethic = ethic_fanatic_egalitarian
-			}
+			is_egalitarian = no
 		}
 		NOT = { has_modifier = allocated_housing }
 		has_upgraded_capital = yes
@@ -693,8 +695,10 @@ decision_end_allocated_housing = {
 	}
 
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		not = { has_planet_flag = pf_filter_districts }
 		has_modifier = allocated_housing
 	}
@@ -724,8 +728,10 @@ decision_education_programs = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_pop }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_pop
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		not = { has_planet_flag = pf_filter_districts }
 		NOT = { has_modifier = education_programs }
@@ -740,10 +746,8 @@ decision_education_programs = {
 				owner = {
 					is_regular_empire = yes
 					or = {
-						has_ethic = ethic_authoritarian
-						has_ethic = ethic_fanatic_authoritarian
-						has_ethic = ethic_xenophobe
-						has_ethic = ethic_fanatic_xenophobe
+						is_authoritarian = yes
+						is_xenophobe = yes
 						has_policy_flag = state_education_transcendent
 						has_policy_flag = state_education_postadult
 					}
@@ -782,8 +786,10 @@ decision_end_education_programs = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		not = { has_planet_flag = pf_filter_districts }
 		has_modifier = education_programs
 	}
@@ -811,8 +817,10 @@ decision_auto_resettlement = {
 	}
 
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_pop }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_pop
+			has_planet_flag = pf_filter_vanilla
+		}
 		exists = owner
 		owner = { 
 			has_policy_flag = resettlement_allowed
@@ -841,8 +849,10 @@ decision_no_auto_resettlement = {
 	}
 
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_modifier = auto_resettling
 	}
 	

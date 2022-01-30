@@ -205,10 +205,8 @@ planet_event = {
 					limit = {
 						owner = {
 							or = {
-								has_ethic = ethic_authoritarian
-								has_ethic = ethic_fanatic_authoritarian
-								has_ethic = ethic_xenophobe
-								has_ethic = ethic_fanatic_xenophobe
+								is_authoritarian = yes
+								is_xenophobe = yes
 							}
 						}
 					}
@@ -228,8 +226,7 @@ planet_event = {
 					limit = {
 						owner = {
 							or = {
-								has_ethic = ethic_xenophobe
-								has_ethic = ethic_fanatic_xenophobe
+								is_xenophobe = yes
 								has_valid_civic = civic_police_state
 							}
 						}
@@ -404,8 +401,10 @@ planet_event = {
 					exists = space_owner
 					space_owner = { 
 						is_country_type = default
-						not = { has_ethic = ethic_gestalt_consciousness }
-						not = { is_same_value = event_target:empathic_country }
+						NOR = {
+							has_ethic = ethic_gestalt_consciousness
+							is_same_value = event_target:empathic_country
+						}
 					}
 					not = { is_same_value = event_target:empathic_solarsystem }
 					any_system_planet = { is_empath_field_candidate = yes }
@@ -479,7 +478,7 @@ planet_event = {
 					starbase = { has_starbase_building = sb_empath_enclave }
 					not = { any_system_planet = { is_colony = yes }}
 					exists = space_owner
-					space_owner = { is_same_value = event_target:empathic_country }
+					is_owned_by = event_target:empathic_country
 				}
 				this = {
 					save_event_target_as = neighbour_domestic_enclave_system
@@ -526,8 +525,10 @@ planet_event = {
 					exists = space_owner
 					space_owner = { 
 						is_country_type = default
-						not = { is_same_value = event_target:empathic_country }
-						not = { has_ethic = ethic_gestalt_consciousness }
+						NOR = {
+							is_same_value = event_target:empathic_country
+							has_ethic = ethic_gestalt_consciousness
+						}
 					}	
 					not = {					
 						any_system_planet = {
@@ -635,8 +636,10 @@ planet_event = {
 					exists = space_owner
 					space_owner = { 
 						is_country_type = default
-						not = { has_ethic = ethic_gestalt_consciousness }
-						not = { is_same_value = event_target:empathic_country }
+						NOR = {
+							has_ethic = ethic_gestalt_consciousness
+							is_same_value = event_target:empathic_country
+						}
 					}
 				}
 				this = {
@@ -660,8 +663,8 @@ planet_event = {
 					}
 					random_system_planet = {
 						limit = {
-							not = { is_same_value = event_target:empathic_planet }
-							nor = { 
+							NOR = {
+								is_same_value = event_target:empathic_planet
 								has_modifier = empathic_field_domestic 
 								has_modifier = empathic_field_branch
 							}
@@ -713,8 +716,10 @@ planet_event = {
 		exists = owner
 		owner = {
 			is_regular_empire = yes
-			not = { has_ethic = ethic_gestalt_consciousness }
-			not = { has_origin = origin_warenders }
+			NOR = {
+				has_ethic = ethic_gestalt_consciousness
+				has_origin = origin_warenders
+			}
 		}
 		has_branch_office = yes
 		has_building = building_empath_peace_mission
@@ -910,10 +915,7 @@ planet_event = {
 				if = {
 					limit = {
 						owner = {
-							nor = {
-								has_ethic = ethic_pacifist
-								has_ethic = ethic_fanatic_pacifist
-							}
+							is_pacifist = no
 						}
 					}
 					add_modifier = {
@@ -938,10 +940,7 @@ planet_event = {
 				if = {
 					limit = {
 						owner = {
-							nor = {
-								has_ethic = ethic_militarist
-								has_ethic = ethic_fanatic_militarist
-							}
+							is_militarist = no
 						}
 					}
 					add_modifier = {
@@ -971,10 +970,7 @@ planet_event = {
 				if = {
 					limit = {
 						owner = {
-							nor = {
-								has_ethic = ethic_xenophobe
-								has_ethic = ethic_fanatic_xenophobe
-							}
+							is_xenophobe = no
 						}
 					}
 					add_modifier = {
@@ -1004,10 +1000,7 @@ planet_event = {
 				if = {
 					limit = {
 						owner = {
-							nor = {
-								has_ethic = ethic_xenophile
-								has_ethic = ethic_fanatic_xenophile
-							}
+							is_xenophile = no
 						}
 					}
 					add_modifier = {
@@ -1037,10 +1030,7 @@ planet_event = {
 				if = {
 					limit = {
 						owner = {
-							nor = {
-								has_ethic = ethic_authoritarian
-								has_ethic = ethic_fanatic_authoritarian
-							}
+							is_authoritarian = no
 						}
 					}
 					add_modifier = {
@@ -1070,10 +1060,7 @@ planet_event = {
 				if = {
 					limit = {
 						owner = {
-							nor = {
-								has_ethic = ethic_egalitarian
-								has_ethic = ethic_fanatic_egalitarian
-							}
+							is_egalitarian = no
 						}
 					}
 					add_modifier = {
@@ -1242,8 +1229,10 @@ planet_event = {
 		if = {
 			limit = {
 				owner = { 
-					not = { has_country_flag = cf_luxury_benefits_cooldown }
-					not = { has_valid_civic = civic_shared_burden }
+					NOR = {
+						has_country_flag = cf_luxury_benefits_cooldown
+						has_valid_civic = civic_shared_burden
+					}
 				}
 			}
 			owner = {

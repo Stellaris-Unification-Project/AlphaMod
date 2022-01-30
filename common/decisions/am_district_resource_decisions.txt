@@ -10,8 +10,10 @@ decision_expanded_suburbia = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_pop }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_pop
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		exists = owner
 		or = {
@@ -65,8 +67,10 @@ decision_end_expanded_suburbia = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_planet_flag = pf_expanded_suburbia
 		exists = owner
 		or = {
@@ -119,10 +123,7 @@ decision_automated_mining = {
 	potential = {
 		owner = { 
 			is_regular_empire = yes
-			nor = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
-			}
+			is_spiritualist = no
 		}
 		not = { has_planet_flag = pf_automated_mining }
 		num_districts = { type = district_mining value > 0 }
@@ -207,10 +208,7 @@ decision_automated_farming = {
 	potential = {
 		owner = {
 			is_regular_empire = yes
-			nor = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
-			}
+			is_spiritualist = no
 		}
 		not = { has_planet_flag = pf_automated_farming }
 		num_districts = { type = district_farming value > 0 }
@@ -234,10 +232,7 @@ decision_automated_farming = {
 	show_tech_unlock_if = {
 		owner = {
 			is_regular_empire = yes
-			nor = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
-			}
+			is_spiritualist = no
 		}
 	}
 	
@@ -312,10 +307,8 @@ decision_generator_privatisation = {
 					is_ai = no
 					or = {
 						has_authority = auth_corporate
-						has_ethic = ethic_pacifist
-						has_ethic = ethic_fanatic_pacifist
-						has_ethic = ethic_egalitarian
-						has_ethic = ethic_fanatic_egalitarian
+						is_pacifist = yes
+						is_egalitarian = yes
 					}
 				}
 			}
@@ -329,8 +322,10 @@ decision_generator_privatisation = {
 		num_districts = { type = district_generator value > 0 }
 		exists = owner
 		owner = {
-			not = { has_policy_flag = alp_private_businesses_prohibited }
-			not = { has_policy_flag = alp_private_businesses_restricted }
+			NOR = {
+				has_policy_flag = alp_private_businesses_prohibited
+				has_policy_flag = alp_private_businesses_restricted
+			}
 		}
 	}
 	
@@ -341,10 +336,8 @@ decision_generator_privatisation = {
 		owner = {
 			or = {
 				has_authority = auth_corporate
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
-				has_ethic = ethic_egalitarian
-				has_ethic = ethic_fanatic_egalitarian
+				is_pacifist = yes
+				is_egalitarian = yes
 			}
 		}
 	}
@@ -410,8 +403,10 @@ decision_end_generator_privatisation = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_axe }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_axe
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		has_planet_flag = pf_privatise_generators
 	}
@@ -455,10 +450,14 @@ decision_preserving_fuels = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_resources }
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = preserving_fuels }
-		not = { has_modifier = plm_preserving_fuels }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_resources
+			has_planet_flag = pf_filter_vanilla
+		}
+		NOR = {
+			has_planet_flag = preserving_fuels
+			has_modifier = plm_preserving_fuels
+		}
 		exists = owner
 		owner = { is_gestalt = no }
 		or = {
@@ -524,8 +523,10 @@ decision_end_preserving_fuels = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_planet_flag = preserving_fuels
 	}
 	
@@ -572,8 +573,10 @@ decision_preserving_biomass = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_resources }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_resources
+			has_planet_flag = pf_filter_vanilla
+		}
 		habitable_structure = no
 		not = { has_planet_flag = preserving_biomass }
 		not = { has_modifier = plm_preserving_biomass }
@@ -625,8 +628,10 @@ decision_end_preserving_biomass = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_planet_flag = preserving_biomass
 	}
 	
@@ -651,8 +656,10 @@ decision_preserving_actinides = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_resources }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_resources
+			has_planet_flag = pf_filter_vanilla
+		}
 		not = { has_planet_flag = preserving_actinides }
 		not = { has_modifier = plm_preserving_actinides }
 		num_districts = { type = district_generator value > 0 }
@@ -714,8 +721,10 @@ decision_end_preserving_actinides = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_planet_flag = preserving_actinides
 		exists = owner
 		or = {
@@ -770,8 +779,10 @@ decision_preserving_ice = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_resources }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_resources
+			has_planet_flag = pf_filter_vanilla
+		}
 		habitable_structure = no
 		not = { has_planet_flag = preserving_ice }
 		not = { has_modifier = plm_preserving_ice }
@@ -836,8 +847,10 @@ decision_end_preserving_ice = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_planet_flag = preserving_ice
 	}
 	
@@ -886,8 +899,10 @@ decision_credit_managers = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_pop }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_pop
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		not = { has_planet_flag = pf_credit_managers }
 		exists = owner
@@ -923,8 +938,10 @@ decision_no_credit_managers = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_wealth }
-		not = { has_planet_flag = pf_hide_decisions_axe }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_wealth
+			has_planet_flag = pf_hide_decisions_axe
+		}
 		not = { has_planet_flag = pf_filter_vanilla }
 		has_planet_flag = pf_credit_managers	
 	}

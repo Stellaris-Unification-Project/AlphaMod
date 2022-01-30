@@ -136,8 +136,10 @@ origin_syncretic_evolution = {
 
 	possible = {
 		ethics = { 
-			NOT = { value = ethic_gestalt_consciousness }
-			NOT = { value = ethic_xenophobe }
+			NOR = {
+				value = ethic_gestalt_consciousness
+				value = ethic_xenophobe
+			}
 			NOT = { value = ethic_fanatic_xenophobe }
 		}
 		civics = { NOT = { value = civic_fanatic_purifiers } }
@@ -293,8 +295,10 @@ origin_shattered_ring = {
 
 	possible = {
 		civics = {
-			NOT = {	value = civic_agrarian_idyll }
-			NOT = { value = civic_moriacrafting }
+			NOR = {
+				value = civic_agrarian_idyll
+				value = civic_moriacrafting
+			}
 		}
 		civics = {
 			NOR = {
@@ -346,8 +350,10 @@ origin_void_dwellers = {
 	possible = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		civics = {
-			NOT = {	value = civic_agrarian_idyll }
-			NOT = { value = civic_moriacrafting }
+			NOR = {
+				value = civic_agrarian_idyll
+				value = civic_moriacrafting
+			}
 		}
 		civics = {
 			NOR = {

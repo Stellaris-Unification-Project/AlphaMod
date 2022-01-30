@@ -10,8 +10,10 @@ end_conserve_d_mountain_range = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_deposit = d_mountain_range_p
 		exists = owner
 	}
@@ -52,8 +54,10 @@ end_conserve_d_active_volcano = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_deposit = d_active_volcano_p
 		exists = owner
 	}
@@ -94,8 +98,10 @@ end_conserve_d_dangerous_wildlife = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_deposit = d_dangerous_wildlife_blocker_p
 		exists = owner
 	}
@@ -136,8 +142,10 @@ end_conserve_d_dense_jungle = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_deposit = d_dense_jungle_p
 		exists = owner
 	}
@@ -178,8 +186,10 @@ end_conserve_d_toxic_kelp = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_deposit = d_toxic_kelp_p
 		exists = owner
 	}
@@ -220,8 +230,10 @@ end_conserve_d_deep_sinkhole = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_deposit = d_deep_sinkhole_p
 		exists = owner
 	}
@@ -262,8 +274,10 @@ end_conserve_d_quicksand_basin = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_deposit = d_quicksand_basin_p
 		exists = owner
 	}
@@ -304,8 +318,10 @@ end_conserve_d_noxious_swamp = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_deposit = d_noxious_swamp_p
 		exists = owner
 	}
@@ -346,8 +362,10 @@ end_conserve_d_massive_glacier = {
 	}
 	
 	potential = {
-		not = { has_planet_flag = pf_hide_decisions_axe }
-		not = { has_planet_flag = pf_filter_vanilla }
+		NOR = {
+			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
+		}
 		has_deposit = d_massive_glacier_p
 		exists = owner
 	}

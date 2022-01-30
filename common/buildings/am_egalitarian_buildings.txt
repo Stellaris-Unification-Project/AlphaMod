@@ -4,8 +4,10 @@ building_university = {
 	category = amenity
 	
 	potential = {
-		NOT = { is_planet_class = pc_machine }
-		NOT = { has_modifier = slave_colony }
+		NOR = {
+			is_planet_class = pc_machine
+			has_modifier = slave_colony
+		}
 		NOT = { has_modifier = penal_colony }
 		not_hostile_planet = yes
 		exists = owner
