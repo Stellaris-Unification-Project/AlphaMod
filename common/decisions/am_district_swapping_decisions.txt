@@ -29,8 +29,8 @@ decision_megacities = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_infra
+			has_planet_flag = pf_filter_vanilla
 		}
-		not = { has_planet_flag = pf_filter_vanilla }
 		exists = owner
 		owner = { 
 			is_gestalt = no
@@ -645,8 +645,8 @@ decision_markettowns = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_infra
+			has_planet_flag = pf_filter_vanilla
 		}
-		not = { has_planet_flag = pf_filter_vanilla }
 		exists = owner
 		owner = {
 			or = {
@@ -802,8 +802,8 @@ decision_nature_reserves = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_infra
+			has_planet_flag = pf_filter_vanilla
 		}
-		not = { has_planet_flag = pf_filter_vanilla }
 		exists = owner
 		owner = {
 			is_gestalt = no
@@ -919,9 +919,9 @@ decision_biomass_cultivation = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_infra
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_biomass_cultivation
 		}
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_biomass_cultivation }
 		not_special_planet_type_rwok = yes
 		planet_has_biomass_deposit = yes
 		or = {
@@ -1003,8 +1003,8 @@ decision_farmland_excavation = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_infra
+			has_planet_flag = pf_filter_vanilla
 		}
-		not = { has_planet_flag = pf_filter_vanilla }
 		exists = owner
 		owner = { not = { has_valid_civic = civic_environmentalist }}
 		not = { has_planet_flag = biomass_cultivation }
@@ -1070,8 +1070,8 @@ decision_land_fertilisation = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_infra
+			has_planet_flag = pf_filter_vanilla
 		}
-		not = { has_planet_flag = pf_filter_vanilla }
 		exists = owner
 		not_special_planet_type = yes
 		is_hostile_planet_ia = no

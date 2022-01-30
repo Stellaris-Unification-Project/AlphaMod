@@ -665,12 +665,10 @@ open_starbase_embassy = {
 					NOR = {
 						is_same_value = from
 						is_in_federation_with = from
-					}
-					NOR = {
 						has_commercial_pact = from
 						has_defensive_pact = from
+						has_migration_access = from
 					}
-					not = { has_migration_access = from }
 				}
 			}
 		}

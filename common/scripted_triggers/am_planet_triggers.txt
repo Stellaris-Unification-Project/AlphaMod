@@ -319,16 +319,14 @@ not_special_planet_type = {
 	NOR = {
 		is_planet_class = pc_machine
 		is_planet_class = pc_hive
+		is_planet_class = pc_city
 	}
-	NOT = { is_planet_class = pc_city }
 }
 
 not_special_planet_type_rwok = {
 	NOR = {
 		is_planet_class = pc_habitat
 		is_planet_class = pc_machine
-	}
-	NOR = {
 		is_planet_class = pc_hive
 		is_planet_class = pc_city
 	}

@@ -2,8 +2,8 @@ is_candidate_for_qualified = {
 	NOR = {
 		has_modifier = pop_qualified
 		has_modifier = pop_transcendent
+		has_trait = trait_mechanical
 	}
-	not = { has_trait = trait_mechanical }
 	is_enslaved = no
 }
 

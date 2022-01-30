@@ -6,8 +6,8 @@ opinion_border_open_embassy = {
 		NOR = {
 			is_in_federation_with = from
 			has_defensive_pact = from
-		}
-		not = { is_overlord_to = from }		
+			is_overlord_to = from
+		}		
 		any_system_within_border = {
 			has_hyperlane_to = from
 			any_neighbor_system = {

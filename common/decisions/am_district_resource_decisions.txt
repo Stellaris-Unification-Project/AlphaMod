@@ -13,8 +13,8 @@ decision_expanded_suburbia = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_pop
+			has_planet_flag = pf_filter_vanilla
 		}
-		not = { has_planet_flag = pf_filter_vanilla }
 		exists = owner
 		or = {
 			owner = { is_ai = no }
@@ -406,8 +406,8 @@ decision_end_generator_privatisation = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
 		}
-		not = { has_planet_flag = pf_filter_vanilla }
 		has_planet_flag = pf_privatise_generators
 	}
 	
@@ -453,8 +453,6 @@ decision_preserving_fuels = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_resources
 			has_planet_flag = pf_filter_vanilla
-		}
-		NOR = {
 			has_planet_flag = preserving_fuels
 			has_modifier = plm_preserving_fuels
 		}
@@ -659,9 +657,9 @@ decision_preserving_actinides = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_resources
 			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = preserving_actinides
+			has_modifier = plm_preserving_actinides
 		}
-		not = { has_planet_flag = preserving_actinides }
-		not = { has_modifier = plm_preserving_actinides }
 		num_districts = { type = district_generator value > 0 }
 	}
 	
@@ -902,9 +900,9 @@ decision_credit_managers = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_pop
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_credit_managers
 		}
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_credit_managers }
 		exists = owner
 		owner = { 
 			is_gestalt = no
@@ -941,8 +939,8 @@ decision_no_credit_managers = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_axe
+			has_planet_flag = pf_filter_vanilla
 		}
-		not = { has_planet_flag = pf_filter_vanilla }
 		has_planet_flag = pf_credit_managers	
 	}
 

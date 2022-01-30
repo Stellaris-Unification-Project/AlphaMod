@@ -187,16 +187,12 @@ not_fanatical = {
 	NOR = {
 		has_ethic = ethic_fanatic_spiritualist
 		has_ethic = ethic_fanatic_militarist
-	}
-	NOR = {
 		has_ethic = ethic_fanatic_authoritarian
 		has_ethic = ethic_fanatic_pacifist
-	}
-	NOR = {
 		has_ethic = ethic_fanatic_xenophobe
 		has_ethic = ethic_fanatic_xenophile
+		has_ethic = ethic_fanatic_materialist
 	}
-	not = { has_ethic = ethic_fanatic_materialist }
 	#is_machine_empire = no
 	#is_hive_empire = no
 }

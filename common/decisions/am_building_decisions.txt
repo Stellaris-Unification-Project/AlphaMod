@@ -47,8 +47,6 @@ decision_robotbuilding_boost = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_pop
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_modifier = planet_robotbuilding_boost
 		}
@@ -105,12 +103,10 @@ decision_paradise_citydomes = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_infra
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_planet_flag = pf_filter_districts
+			has_building = building_paradise_citydomes
 		}
-		not = { has_building = building_paradise_citydomes }
 		exists = owner
 		or = {
 			num_buildings = { type = building_paradise_dome value > 0 }
@@ -170,8 +166,6 @@ decision_vertical_farms = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_infra
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_planet_flag = pf_filter_districts
 		}

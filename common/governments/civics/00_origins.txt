@@ -139,8 +139,8 @@ origin_syncretic_evolution = {
 			NOR = {
 				value = ethic_gestalt_consciousness
 				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
 			}
-			NOT = { value = ethic_fanatic_xenophobe }
 		}
 		civics = { NOT = { value = civic_fanatic_purifiers } }
 	}

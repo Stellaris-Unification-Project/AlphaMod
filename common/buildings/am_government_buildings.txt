@@ -1231,8 +1231,8 @@ building_starbase_relay = {
 		NOR = {
 			has_modifier = penal_colony
 			has_modifier = slave_colony
-		}
-		NOT = { has_modifier = resort_colony }	
+			has_modifier = resort_colony
+		}	
 		exists = owner
 		or = {
 			owner = { is_ai = no }

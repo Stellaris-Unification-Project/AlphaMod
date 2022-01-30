@@ -14,10 +14,7 @@ alp_private_businesses = {
 		}
 		
 		valid = {
-			NOR = {
-				has_ethic = "ethic_fanatic_pacifist"
-				has_ethic = "ethic_pacifist"
-			}
+			is_pacifist = no
 			# not = { has_policy_flag = trade_policy_default }
 			NOT = { has_valid_civic = civic_merchant_guilds }
 			NOT = { has_authority = auth_corporate }
@@ -46,8 +43,8 @@ alp_private_businesses = {
 			NOR = {
 				has_valid_civic = civic_merchant_guilds
 				has_authority = auth_corporate
+				has_valid_civic = civic_corporate_dominion
 			}
-			NOT = { has_valid_civic = civic_corporate_dominion }
 		}
 		
 		modifier = {

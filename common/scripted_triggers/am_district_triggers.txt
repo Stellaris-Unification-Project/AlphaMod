@@ -107,16 +107,12 @@ not_swapped_communities = {
 	NOR = {
 		has_planet_flag = pf_parishes
 		has_planet_flag = pf_warriorhouses
-	}
-	NOR = {
 		has_planet_flag = pf_labour_camps
 		has_planet_flag = pf_securityzones
-	}
-	NOR = {
 		has_planet_flag = pf_markettowns
 		has_planet_flag = pf_campuses
+		has_planet_flag = pf_culture_communes
 	}
-	not = { has_planet_flag = pf_culture_communes }
 }
 
 has_swapped_communities = {

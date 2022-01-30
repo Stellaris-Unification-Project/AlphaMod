@@ -11,10 +11,7 @@ alp_ecology = {
 		}
 		
 		valid = {
-			NOR = {
-				has_ethic = "ethic_fanatic_xenophile"
-				has_ethic = "ethic_xenophile"
-			}	
+			is_xenophile = no	
 			NOR = {
 				has_valid_civic = civic_galactic_resorts
 				has_valid_civic = civic_environmentalist
@@ -34,10 +31,7 @@ alp_ecology = {
 			weight = 0
 			modifier = {
 				weight = 4
-				NOR = {
-					has_ethic = "ethic_fanatic_xenophile"
-					has_ethic = "ethic_xenophile"
-				}				
+				is_xenophile = no				
 				or = {
 					has_monthly_income = { resource = sr_ice value < 1 }
 					has_monthly_income = { resource = sr_biomass value < 1 }

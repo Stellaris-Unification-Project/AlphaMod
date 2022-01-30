@@ -124,8 +124,8 @@ terraforming_platform = {
 			NOR = {
 				has_anomaly = yes
 				is_colony = yes
+				has_modifier = terraforming_candidate
 			}
-			not = { has_modifier = terraforming_candidate }
 		}
 	}
 	

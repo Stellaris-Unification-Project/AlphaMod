@@ -28,8 +28,8 @@ decision_market_wealth_injection = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_filter_vanilla
+			has_modifier = market_wealth_injection
 		}
-		not = { has_modifier = market_wealth_injection }
 		exists = owner
 		owner = { 
 			or = {
@@ -90,8 +90,8 @@ decision_construction_force = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_filter_vanilla
+			has_modifier = construction_force
 		}
-		not = { has_modifier = construction_force }
 		exists = owner
 		owner = { is_ai = no }
 	}
@@ -130,12 +130,10 @@ decision_aggressive_biomass_sourcing = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_resources
 			has_planet_flag = pf_hide_decisions_wealth
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_modifier = aggressive_biomass_sourcing
+			has_modifier = renewable_biomass_sourcing
 		}
-		not = { has_modifier = renewable_biomass_sourcing }
 		exists = owner
 		owner = { is_ai = no }
 	}
@@ -177,12 +175,10 @@ decision_renewable_biomass_sourcing = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_resources
 			has_planet_flag = pf_hide_decisions_wealth
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_modifier = aggressive_biomass_sourcing
+			has_modifier = renewable_biomass_sourcing
 		}
-		not = { has_modifier = renewable_biomass_sourcing }
 		exists = owner
 		owner = { is_ai = no }
 	}
@@ -223,12 +219,10 @@ decision_aggressive_fuels_sourcing = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_resources
 			has_planet_flag = pf_hide_decisions_wealth
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_modifier = aggressive_fuels_sourcing
+			has_modifier = renewable_fuels_sourcing
 		}
-		not = { has_modifier = renewable_fuels_sourcing }
 		exists = owner
 		owner = { is_ai = no }
 	}
@@ -269,12 +263,10 @@ decision_renewable_fuels_sourcing = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_resources
 			has_planet_flag = pf_hide_decisions_wealth
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_modifier = aggressive_fuels_sourcing
+			has_modifier = renewable_fuels_sourcing
 		}
-		not = { has_modifier = renewable_fuels_sourcing }
 		exists = owner
 		owner = { is_ai = no }
 	}
@@ -316,8 +308,6 @@ decision_microfusion_generators = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_infra
 			has_planet_flag = pf_hide_decisions_wealth
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_modifier = microfusion_generators
 		}
@@ -389,8 +379,6 @@ decision_shuttle_service = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_infra
 			has_planet_flag = pf_hide_decisions_wealth
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_modifier = shuttle_service
 		}

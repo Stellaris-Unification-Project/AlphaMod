@@ -311,8 +311,6 @@ am_pressed_button_employment_review = {
 				NOR = {
 					has_job = criminal
 					has_job = destitute
-				}
-				NOR = {
 					is_unemployed = yes
 					is_pop_category = ruler
 				}

@@ -16,15 +16,15 @@ decision_moon_colony = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_infra
 			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
 		}
-		not = { has_planet_flag = pf_filter_districts }
 		owner = { is_machine_empire = no }
 		any_moon = {
 			NOR = {
 				has_anomaly = yes
 				is_colony = yes
+				has_modifier = terraforming_candidate
 			}
-			not = { has_modifier = terraforming_candidate }
 			or = {
 				is_planet_class = pc_barren
 				is_planet_class = pc_toxic
@@ -59,8 +59,8 @@ decision_moon_colony = {
 					NOR = {
 						has_anomaly = yes
 						is_colony = yes
+						has_modifier = terraforming_candidate
 					}
-					not = { has_modifier = terraforming_candidate }
 					or = {
 						is_planet_class = pc_barren
 						is_planet_class = pc_toxic
@@ -108,8 +108,8 @@ decision_transfer_population = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_pop
 			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
 		}
-		not = { has_planet_flag = pf_filter_districts }
 		owner = { 
 			is_regular_empire = yes 
 			has_policy_flag = resettlement_allowed

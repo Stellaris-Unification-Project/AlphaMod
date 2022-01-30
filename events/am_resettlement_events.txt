@@ -65,36 +65,22 @@ country_event = {
 					NOR = {
 						num_pops < 6
 						num_pops = 10
-					}
-					NOR = {
 						num_pops = 15
 						num_pops = 20
-					}
-					NOR = {
 						num_pops = 25
 						num_pops = 30
-					}
-					NOR = {
 						num_pops = 35
 						num_pops = 40
-					}
-					NOR = {
 						num_pops = 45
 						num_pops = 50
-					}
-					NOR = {
 						num_pops = 55
 						num_pops = 60
-					}
-					NOR = {
 						num_pops = 65
 						num_pops = 70
-					}
-					NOR = {
 						num_pops = 75
 						num_pops = 80
-					}
-					not = { num_pops = 85 }				
+						num_pops = 85
+					}				
 				}
 				random_owned_pop = {
 					limit = {

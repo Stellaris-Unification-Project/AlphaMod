@@ -270,8 +270,8 @@ educate_student = {
 			NOR = {
 				has_modifier = pop_qualified
 				has_modifier = pop_transcendent
+				has_trait = trait_mechanical
 			}
-			not = { has_trait = trait_mechanical }
 		}
 		make_pop_qualified = yes
 	}
@@ -285,8 +285,8 @@ planet_educate_student = {
 			NOR = {
 				has_modifier = pop_qualified
 				has_modifier = pop_transcendent
+				has_trait = trait_mechanical
 			}
-			not = { has_trait = trait_mechanical }
 		}
 		make_pop_qualified = yes
 	}

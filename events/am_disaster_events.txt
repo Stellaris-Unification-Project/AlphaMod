@@ -205,29 +205,18 @@ event = {
 								has_modifier = core_meltdown_accelerating
 								has_modifier = core_meltdown_deadline
 								has_modifier = galactic_exodus_urge
-								is_planet_class = pc_habitat
-							}
-							NOR = {
-								is_planet_class = pc_ringworld_habitable
+								is_artificial = yes
 								is_planet_class = pc_city
-							}
-							NOR = {
 								is_planet_class = pc_relic
 								is_planet_class = pc_gas_giant_habitable
-							}
-							NOR = {
 								is_planet_class = pc_frozen_habitable
 								is_planet_class = pc_molten_habitable
-							}
-							NOR = {
 								is_planet_class = pc_asteroid_habitable
 								is_planet_class = pc_ice_asteroid_habitable
-							}
-							NOR = {
 								is_planet_class = pc_toxic_habitable
 								is_planet_class = pc_barren_habitable
+								is_planet_class = pc_nuked
 							}
-							not = { is_planet_class = pc_nuked }
 						}
 						random_list = {
 							15 = {
@@ -256,29 +245,18 @@ event = {
 								has_modifier = core_meltdown_accelerating
 								has_modifier = core_meltdown_deadline
 								has_modifier = galactic_exodus_urge
-								is_planet_class = pc_habitat
-							}
-							NOR = {
-								is_planet_class = pc_ringworld_habitable
+								is_artificial = yes
 								is_planet_class = pc_city
-							}
-							NOR = {
 								is_planet_class = pc_relic
 								is_planet_class = pc_gas_giant_habitable
-							}
-							NOR = {
 								is_planet_class = pc_frozen_habitable
 								is_planet_class = pc_molten_habitable
-							}
-							NOR = {
 								is_planet_class = pc_asteroid_habitable
 								is_planet_class = pc_ice_asteroid_habitable
-							}
-							NOR = {
 								is_planet_class = pc_toxic_habitable
 								is_planet_class = pc_barren_habitable
+								is_planet_class = pc_nuked
 							}
-							not = { is_planet_class = pc_nuked }
 						}
 						random_list = {
 							20 = {

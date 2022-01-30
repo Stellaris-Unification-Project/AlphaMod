@@ -414,8 +414,8 @@ origin_forgedinfire = {
 			NOR = {
 				value = ethic_gestalt_consciousness
 				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
 			}
-			NOT = { value = ethic_fanatic_xenophile }
 			OR = {
 				text = civic_tooltip_militarist
 				value = ethic_militarist

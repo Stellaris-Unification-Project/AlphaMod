@@ -252,6 +252,6 @@ not_specialised_habitat = {
 	NOR = {
 		has_planet_flag = energy_habitat
 		has_planet_flag = research_habitat
-	}
-	not = { has_planet_flag = mining_habitat }	
+		has_planet_flag = mining_habitat
+	}	
 }

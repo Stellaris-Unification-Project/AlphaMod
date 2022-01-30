@@ -12,8 +12,6 @@ decision_no_police_garrisons = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_pop
 			has_planet_flag = pf_hide_decisions_axe
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_planet_flag = pf_no_police_garrisons
 		}
@@ -167,8 +165,6 @@ decision_run_jobs_evaluation = {
 				NOR = {
 					has_job = criminal
 					has_job = destitute
-				}
-				NOR = {
 					is_unemployed = yes
 					is_pop_category = ruler
 				}
@@ -204,8 +200,6 @@ decision_conscription = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_pop
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_planet_flag = pf_filter_districts
 		}
@@ -229,8 +223,6 @@ decision_conscription = {
 		NOR = {
 			has_modifier = planet_employee_subsidies
 			has_modifier = planet_worship_as_work
-		}
-		NOR = {
 			has_modifier = planet_conscription
 			has_modifier = planet_state_labour
 		}
@@ -276,8 +268,6 @@ decision_end_conscription = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_axe
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_planet_flag = pf_filter_districts
 		}
@@ -312,8 +302,6 @@ decision_state_labour = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_pop
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_planet_flag = pf_filter_districts
 		}
@@ -331,8 +319,6 @@ decision_state_labour = {
 		NOR = {
 			has_modifier = planet_employee_subsidies
 			has_modifier = planet_worship_as_work
-		}
-		NOR = {
 			has_modifier = planet_conscription
 			has_modifier = planet_state_labour
 		}
@@ -373,8 +359,6 @@ decision_end_state_labour = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_axe
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_planet_flag = pf_filter_districts
 		}
@@ -409,8 +393,6 @@ decision_worship_as_work = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_pop
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_planet_flag = pf_filter_districts
 		}
@@ -426,8 +408,6 @@ decision_worship_as_work = {
 		NOR = {
 			has_modifier = planet_employee_subsidies
 			has_modifier = planet_worship_as_work
-		}
-		NOR = {
 			has_modifier = planet_conscription
 			has_modifier = planet_state_labour
 		}
@@ -468,8 +448,6 @@ decision_end_worship_as_work = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_axe
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_planet_flag = pf_filter_districts
 		}
@@ -504,8 +482,6 @@ decision_employee_subsidies = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_pop
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_planet_flag = pf_filter_districts
 		}
@@ -525,8 +501,6 @@ decision_employee_subsidies = {
 		NOR = {
 			has_modifier = planet_employee_subsidies
 			has_modifier = planet_worship_as_work
-		}
-		NOR = {
 			has_modifier = planet_conscription
 			has_modifier = planet_state_labour
 		}
@@ -567,8 +541,6 @@ decision_end_employee_subsidies = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_axe
-		}
-		NOR = {
 			has_planet_flag = pf_filter_vanilla
 			has_planet_flag = pf_filter_districts
 		}

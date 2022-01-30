@@ -324,8 +324,8 @@ event = {
 							NOR = {
 								is_planet_class = pc_nuked
 								is_planet_class = pc_asteroid_habitable
+								is_planet_class = pc_shattered
 							}
-							not = { is_planet_class = pc_shattered }
 							is_colony = no
 						}
 						set_planet_size = 12
@@ -783,8 +783,8 @@ country_event = {
 				NOR = {
 					has_star_flag = sf_origin_star_claimable_in
 					exists = space_owner
+					exists = starbase
 				}
-				not = { exists = starbase }
 				not = { any_system_planet = { is_colony = yes }}
 				not = {
 					any_ship_in_system = {

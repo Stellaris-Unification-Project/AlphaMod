@@ -14,8 +14,8 @@ alp_unionism = {
 			NOR = {
 				has_ethic = "ethic_fanatic_spiritualist"
 				has_ethic = "ethic_fanatic_authoritarian"
-			}
-			NOT = { has_ethic = "ethic_authoritarian" }			
+				has_ethic = "ethic_authoritarian"
+			}			
 		}
 		
 		modifier = {

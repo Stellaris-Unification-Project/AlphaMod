@@ -395,8 +395,8 @@ decision_promote_wandering = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_pop
+			has_planet_flag = pf_filter_vanilla
 		}
-		not = { has_planet_flag = pf_filter_vanilla }
 		owner = { 
 			is_regular_empire = yes
 			is_xenophile = yes
@@ -544,8 +544,8 @@ decision_pioneer_benefits = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_pop
 			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
 		}
-		not = { has_planet_flag = pf_filter_districts }
 		owner = {
 			has_policy_flag = alp_land_ownership_pioneerrights
 		}
@@ -593,9 +593,9 @@ decision_immigrant_benefits = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_pop
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
 		}
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_filter_districts }
 		owner = {
 			is_regular_empire = yes
 			has_policy_flag = resettlement_not_allowed
@@ -653,8 +653,8 @@ decision_allocated_housing = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_pop
 			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
 		}
-		not = { has_planet_flag = pf_filter_districts }
 		owner = {
 			is_regular_empire = yes
 			has_policy_flag = alp_land_ownership_none
@@ -698,8 +698,8 @@ decision_end_allocated_housing = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_axe
 			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
 		}
-		not = { has_planet_flag = pf_filter_districts }
 		has_modifier = allocated_housing
 	}
 	effect = {
@@ -731,10 +731,10 @@ decision_education_programs = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_wealth
 			has_planet_flag = pf_hide_decisions_pop
+			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
+			has_modifier = education_programs
 		}
-		not = { has_planet_flag = pf_filter_vanilla }
-		not = { has_planet_flag = pf_filter_districts }
-		NOT = { has_modifier = education_programs }
 		or = {
 			and = {
 				has_building = building_university
@@ -789,8 +789,8 @@ decision_end_education_programs = {
 		NOR = {
 			has_planet_flag = pf_hide_decisions_axe
 			has_planet_flag = pf_filter_vanilla
+			has_planet_flag = pf_filter_districts
 		}
-		not = { has_planet_flag = pf_filter_districts }
 		has_modifier = education_programs
 	}
 	effect = {

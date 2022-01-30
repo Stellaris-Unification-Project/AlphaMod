@@ -104,8 +104,8 @@ event = {
 					NOR = {
 						is_planet_class = pc_machine
 						is_planet_class = pc_hive
+						is_planet_class = pc_city
 					}
-					NOT = { is_planet_class = pc_city }
 				}
 				if = {
 					limit = { is_planet_class = pc_nuked }

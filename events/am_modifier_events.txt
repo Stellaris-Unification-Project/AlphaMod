@@ -10,17 +10,12 @@ event = {
 			limit = {
 				NOR = {
 					is_country_type = primitive
-					is_country_type = fallen_empire
-				}
-				NOR = {
-					is_country_type = awakened_fallen_empire
+					is_fallen_empire = yes
 					is_country_type = enclave
-				}
-				NOR = {
 					is_country_type = nomad
 					is_country_type = dormant_marauders
+					is_country_type = awakened_marauders
 				}
-				not = { is_country_type = awakened_marauders }
 			}
 			remove_modifier = logistics_net_1
  			remove_modifier = logistics_net_2 

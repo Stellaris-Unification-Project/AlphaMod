@@ -48,8 +48,6 @@ kill_the_redundant = {
 			NOR = {
 				has_job = technician
 				has_job = miner
-			}
-			NOR = {
 				has_job = farmer
 				has_job = artisan
 			}
